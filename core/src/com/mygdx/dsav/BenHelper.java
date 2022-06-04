@@ -1,0 +1,132 @@
+package com.mygdx.dsav;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.Input;
+
+/**
+ * Defines helper methods for my LibGDX use.
+ */
+public class BenHelper {
+
+    /**
+     * Draw an Arrow from point p1 to point p2.
+     * @param p1x x-position of p1
+     * @param p1y y-position of p1
+     * @param p2x x-position of p2
+     * @param p2y y-position of p2
+     * @param ang angle (deg) between main line and arrow lines
+     * @param alen length of arrow lines
+     * @param thck thickness of the lines
+     * @param col colour of the arrow
+     */
+    public static void drawArrow(ShapeRenderer shape, float p1x, float p1y, float p2x, float p2y,
+                           float ang, float alen, float thck, Color col) {
+        shape.begin(ShapeRenderer.ShapeType.Filled);
+        shape.setColor(col);
+        shape.rectLine(p1x, p1y, p2x, p2y, thck);
+
+        final float degToRad = (float) Math.PI / 180;
+
+        float p1AngP2 = (float) Math.atan2(degToRad*(p2y-p1y), degToRad*(p2x-p1x));
+
+        float aang1, aang2;
+        aang1 = p1AngP2 + (degToRad * ang);
+        aang2 = p1AngP2 - (degToRad * ang);
+
+        float ap1x, ap1y, ap2x, ap2y;
+        ap1x = p2x - ((float) Math.cos(aang1) * alen);
+        ap1y = p2y - ((float) Math.sin(aang1) * alen);
+        ap2x = p2x - ((float) Math.cos(aang2) * alen);
+        ap2y = p2y - ((float) Math.sin(aang2) * alen);
+
+        shape.rectLine(p2x, p2y, ap1x, ap1y, thck);
+        shape.rectLine(p2x, p2y, ap2x, ap2y, thck);
+        shape.end();
+    }
+
+    /**
+     * Return true if value is between min and max (both inclusive).
+     * @param value value to test
+     * @param min lower bound
+     * @param max upper bound
+     * @return (boolean) min <= value <= max
+     */
+    public static boolean between(int value, int min, int max) {
+        return value >= min && value <= max;
+    }
+
+    /**
+     * Return the x-position of the cursor. <br><br>
+     * Abstracted from LibGdx default because y-position is not calculated correctly. <br>
+     * &#032;&#032;&#032;&#032;- calculated with (0,0) as top left unlike rest of LibGdx.
+     * @return int x-coordinate.
+     */
+    public static int mouseX() {
+        return Gdx.input.getX();
+    }
+
+    /**
+     * Return the y-position of the cursor. <br><br>
+     * Abstracted from LibGdx default because y-position is not calculated correctly. <br>
+     * &#032;&#032;&#032;&#032;- calculated with (0,0) as top left unlike rest of LibGdx.
+     * @return int y-coordinate.
+     */
+    public static int mouseY() {
+        return Gdx.graphics.getHeight() - Gdx.input.getY();
+    }
+
+    /**
+     * Java doesn't have built in boolean->integer apparently...
+     * @param b (boolean)
+     * @return 1 (if b == true) or 0
+     */
+    public static int boolToInt(boolean b) { return b ? 1 : 0; }
+
+    public static class MathsVector {
+        public float x, y;
+
+        public MathsVector() {
+            this(0, 0);
+        }
+
+        public MathsVector(float x, float y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    public static String typing(String text) {
+        for (int i = 29; i < 54; i++) {
+            if (Gdx.input.isKeyJustPressed(i)) {
+                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) ||
+                    Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+                {
+                    text += Input.Keys.toString(i);
+                } else {
+                    text += Input.Keys.toString(i).toLowerCase();
+                }
+
+            }
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) { text += ' '; }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.COMMA)) { text += ','; }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.PERIOD)) { text += '.'; }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && text.length() > 0) {
+            text = text.substring(0, text.length()-1);
+        }
+
+
+        /*
+        if (Gdx.input.isKeyJustPressed(29)) {
+            text += Input.Keys.toString(29);
+            //text += 'a';
+        }
+         */
+
+        return text;
+    }
+}
