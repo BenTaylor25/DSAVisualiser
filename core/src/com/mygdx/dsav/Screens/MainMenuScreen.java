@@ -81,7 +81,7 @@ public class MainMenuScreen extends FactOption {
 
         if (DEBUG) {
             shape.begin();
-
+                shape   // WIP, make hitbox for exit button
             shape.end();
         }
     }
