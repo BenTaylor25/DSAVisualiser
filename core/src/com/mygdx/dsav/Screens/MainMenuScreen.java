@@ -13,12 +13,14 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 
 public class MainMenuScreen extends FactOption {
-    boolean DEBUG = false;
+    boolean DEBUG = true;
     int GW, GH;   // graphical width and height
     BitmapFont font;
     SpriteBatch batch;
     ShapeRenderer shape;
+
     BenHelper.Rect exitButtonBox;
+    BenHelper.Rect stackButtonBox;
 
     public MainMenuScreen() {
         GW = Gdx.graphics.getWidth();
@@ -31,7 +33,9 @@ public class MainMenuScreen extends FactOption {
         font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
         batch = new SpriteBatch();
         shape = new ShapeRenderer();
+
         exitButtonBox = new BenHelper.Rect(GW*0.88f, 0, GW*0.1f, GH*0.09f);
+        stackButtonBox = new BenHelper.Rect(GW*0.19f, GH*0.725f, GW*0.25f, GH*0.085f);
     }
 
     @Override
@@ -45,7 +49,7 @@ public class MainMenuScreen extends FactOption {
     public void reset() {}
 
     @Override
-    public char updateBefore(char factSelector) {
+    public String updateBefore(String factSelector) {
         return factSelector;
     }
 
@@ -61,6 +65,9 @@ public class MainMenuScreen extends FactOption {
             font.getData().setScale(2);
             font.draw(batch, "DSAVisualiser", GW*0.2f, GH*0.9f);
 
+            font.getData().setScale(1.125f);
+            font.draw(batch, "Stack", GW*0.2f, GH*0.775f);
+
             font.getData().setScale(1);
             font.draw(batch, "Ben Taylor", GW*0.01f, GH*0.1f);
 
@@ -73,21 +80,21 @@ public class MainMenuScreen extends FactOption {
         batch.end();
 
         if (DEBUG) {
-            shape.begin(ShapeRenderer.ShapeType.Line);
-                shape.setColor(Color.RED);
-                shape.rect( exitButtonBox.x, exitButtonBox.y,
-                            exitButtonBox.w, exitButtonBox.h );
-            shape.end();
+            shape.setColor(Color.RED);
+            exitButtonBox.draw(shape);
+            stackButtonBox.draw(shape);
         }
     }
 
     @Override
-    public char updateAfter(char factSelector) {
+    public String updateAfter(String factSelector) {
         if (exitButtonBox.checkClick()) {
-            Gdx.app.exit();
+            factSelector = "quit";
+        }
+        if (stackButtonBox.checkClick()) {
+            factSelector = "stack";
         }
 
         return factSelector;
     }
-
 }

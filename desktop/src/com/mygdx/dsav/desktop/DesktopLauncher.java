@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.useGL30 = true;
 		config.width = 1280;
 		config.height = 720;
-		config.resizable = false;
+		//config.resizable = false;
 		new LwjglApplication(new DSAVisualiser(), config);
 	}
 }

@@ -1,28 +1,30 @@
 package com.mygdx.dsav;
 
 import com.mygdx.dsav.Screens.MainMenuScreen;
+import com.mygdx.dsav.Screens.StackScreen;
 
 import java.util.Hashtable;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
 public class DSAVisualiser extends Game {
-	private Hashtable<Character, FactOption> screens;
-	private char oldFactSelector;
-	private char factSelector;
+	private Hashtable<String, FactOption> screens;
+	private String oldFactSelector;
+	private String factSelector;
 	/////
-	// 'm' = menu
-	// 'g' = game
+	//  "menu", 
+	//  "stack"
 	//
 
 	@Override
 	public void create () {
 
 		screens = new Hashtable<>();
-		screens.put('m', new MainMenuScreen());
+		screens.put("menu", new MainMenuScreen());
+		screens.put("stack", new StackScreen());
 
-		oldFactSelector = '!';
-		factSelector = 'm';
+		oldFactSelector = "!";
+		factSelector = "menu";
 	}
 
 	@Override
@@ -31,7 +33,8 @@ public class DSAVisualiser extends Game {
 	@Override
 	public void render() {
 		switch (factSelector) {
-			case 'm':
+			case "menu":
+			case "stack":
 				if ( factSelector != oldFactSelector ) {
 					screens.get(factSelector).reset();
 					oldFactSelector = factSelector;
@@ -39,18 +42,18 @@ public class DSAVisualiser extends Game {
 				factSelector = screens.get(factSelector).frame(factSelector);
 				break;
 
-			case 'q':
+			case "quit":
 				Gdx.app.exit();
 				break;
 
-			case '!':
-				factSelector = 'm';
+			case "!":
+				factSelector = "menu";
 				screens.get(factSelector).reset();
 				break;
 
 			default:
 				System.out.println("factSelector switch defaulted");
-				factSelector = 'q';
+				factSelector = "quit";
 		}
 	}
 

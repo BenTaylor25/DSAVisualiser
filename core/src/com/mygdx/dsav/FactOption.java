@@ -22,7 +22,7 @@ public class FactOption extends Game {
      * @param factSelector
      * @return factSelector
      */
-    public char updateBefore(char factSelector) { return factSelector; }
+    public String updateBefore(String factSelector) { return factSelector; }
 
     /**
      * Called every frame; should be used to draw to the screen. <br><br>
@@ -38,13 +38,13 @@ public class FactOption extends Game {
      * @param factSelector
      * @return factSelector
      */
-    public char updateAfter(char factSelector) { return factSelector; }
+    public String updateAfter(String factSelector) { return factSelector; }
 
     /**
      * Don't override! <br><br>
      * Calls updateBefore(), then draw(), then updateAfter() <br><br>
      */
-    public char frame(char factSelector) {
+    public String frame(String factSelector) {
         factSelector = updateBefore(factSelector);
         draw();
         factSelector = updateAfter(factSelector);

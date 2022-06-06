@@ -3,6 +3,7 @@ package com.mygdx.dsav;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.Input;
 
 /**
@@ -111,13 +112,23 @@ public class BenHelper {
             this.h = h;
         }
 
-        public boolean checkClick() {
+        public boolean checkHover() {
             float mx = mouseX();
             float my = mouseY();
 
+            return mx >= x && mx <= x+w &&
+                   my >= y && my <= y+h;
+        }
+
+        public boolean checkClick() {
             return Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
-                    mx >= x && mx <= x+w &&
-                    my >= y && my <= y+h;
+                   checkHover();
+        }
+
+        public void draw(ShapeRenderer shape) {
+            shape.begin(ShapeType.Line);
+            shape.rect( x, y, w, h );
+            shape.end();
         }
     }
 
