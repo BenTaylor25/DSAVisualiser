@@ -1,7 +1,6 @@
 package com.mygdx.dsav.Screens;
 
 import com.mygdx.dsav.BenHelper;
-import com.mygdx.dsav.DSAVisualiser;
 import com.mygdx.dsav.FactOption;
 
 import com.badlogic.gdx.*;
@@ -14,13 +13,12 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 
 public class MainMenuScreen extends FactOption {
-    boolean DEBUG = true;
+    boolean DEBUG = false;
     int GW, GH;   // graphical width and height
     BitmapFont font;
     SpriteBatch batch;
     ShapeRenderer shape;
     BenHelper.Rect exitButtonBox;
-    int testInt;
 
     public MainMenuScreen() {
         GW = Gdx.graphics.getWidth();
@@ -34,8 +32,6 @@ public class MainMenuScreen extends FactOption {
         batch = new SpriteBatch();
         shape = new ShapeRenderer();
         exitButtonBox = new BenHelper.Rect(GW*0.88f, 0, GW*0.1f, GH*0.09f);
-
-        testInt = 0;
     }
 
     @Override
@@ -46,13 +42,10 @@ public class MainMenuScreen extends FactOption {
     }
 
     @Override
-    public void reset() {
-        testInt = 0;
-    }
+    public void reset() {}
 
     @Override
     public char updateBefore(char factSelector) {
-        testInt++;
         return factSelector;
     }
 
@@ -77,9 +70,6 @@ public class MainMenuScreen extends FactOption {
 
             font.getData().setScale(1);
             font.draw(batch, "Exit", GW*0.9f, GH*0.05f);
-
-            font.getData().setScale(2);
-            font.draw(batch, Integer.toString(testInt), 300, 300);
         batch.end();
 
         if (DEBUG) {
@@ -93,9 +83,6 @@ public class MainMenuScreen extends FactOption {
 
     @Override
     public char updateAfter(char factSelector) {
-        if (testInt >= 250)
-            factSelector = '!';
-        
         if (exitButtonBox.checkClick()) {
             Gdx.app.exit();
         }
