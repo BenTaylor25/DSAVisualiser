@@ -1,5 +1,6 @@
 package com.mygdx.dsav.Screens;
 
+import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.DSAVisualiser;
 import com.mygdx.dsav.FactOption;
 
@@ -18,12 +19,13 @@ public class MainMenuScreen extends FactOption {
     BitmapFont font;
     SpriteBatch batch;
     ShapeRenderer shape;
+    BenHelper.Rect exitButtonBox;
     int testInt;
 
     public MainMenuScreen() {
-        create();
         GW = Gdx.graphics.getWidth();
         GH = Gdx.graphics.getHeight();
+        create();
     }
 
     @Override
@@ -31,6 +33,7 @@ public class MainMenuScreen extends FactOption {
         font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
         batch = new SpriteBatch();
         shape = new ShapeRenderer();
+        exitButtonBox = new BenHelper.Rect(GW*0.88f, 0, GW*0.1f, GH*0.09f);
 
         testInt = 0;
     }
@@ -80,8 +83,10 @@ public class MainMenuScreen extends FactOption {
         batch.end();
 
         if (DEBUG) {
-            shape.begin();
-                shape   // WIP, make hitbox for exit button
+            shape.begin(ShapeRenderer.ShapeType.Line);
+                shape.setColor(Color.RED);
+                shape.rect( exitButtonBox.x, exitButtonBox.y,
+                            exitButtonBox.w, exitButtonBox.h );
             shape.end();
         }
     }
@@ -91,6 +96,9 @@ public class MainMenuScreen extends FactOption {
         if (testInt >= 250)
             factSelector = '!';
         
+        if (exitButtonBox.checkClick()) {
+            Gdx.app.exit();
+        }
 
         return factSelector;
     }

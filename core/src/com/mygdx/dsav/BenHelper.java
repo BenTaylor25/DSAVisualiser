@@ -97,6 +97,30 @@ public class BenHelper {
         }
     }
 
+    public static class Rect {
+        public float x, y, w, h;
+
+        public Rect() {
+            this(0, 0, 0, 0);
+        }
+
+        public Rect(float x, float y, float w, float h) {
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+        }
+
+        public boolean checkClick() {
+            float mx = mouseX();
+            float my = mouseY();
+
+            return Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
+                    mx >= x && mx <= x+w &&
+                    my >= y && my <= y+h;
+        }
+    }
+
     public static String typing(String text) {
         for (int i = 29; i < 54; i++) {
             if (Gdx.input.isKeyJustPressed(i)) {
