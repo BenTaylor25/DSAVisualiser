@@ -10,6 +10,11 @@ import com.badlogic.gdx.Input;
  * Defines helper methods for my LibGDX use.
  */
 public class BenHelper {
+    /**
+     * Will be set to false in production,
+     * but true for testing.
+     */
+    public static final boolean DEBUG = true;
 
     /**
      * Draw an Arrow from point p1 to point p2.

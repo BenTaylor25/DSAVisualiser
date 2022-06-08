@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 
 public class MainMenuScreen extends FactOption {
-    boolean DEBUG = true;
     int GW, GH;   // graphical width and height
     BitmapFont font;
     SpriteBatch batch;
@@ -79,7 +78,7 @@ public class MainMenuScreen extends FactOption {
             font.draw(batch, "Exit", GW*0.9f, GH*0.05f);
         batch.end();
 
-        if (DEBUG) {
+        if (BenHelper.DEBUG) {
             shape.setColor(Color.RED);
             exitButtonBox.draw(shape);
             stackButtonBox.draw(shape);
