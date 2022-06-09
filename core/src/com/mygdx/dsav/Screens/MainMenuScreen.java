@@ -68,9 +68,9 @@ public class MainMenuScreen extends FactOption {
             ScreenUtils.clear(0.15f, 0.25f, 0.35f, 1f);
             Color baseCol = new Color(0.69f, 0.447f, 0.098f, 1);
             Color hoverCol = new Color(1, 1, 1, 1);
-            boolean hoverHere = false;
-
+            boolean hoverHere;
             font.setColor(baseCol);
+
             font.getData().setScale(2);
             font.draw(batch, "DSAVisualiser", GW*0.2f, GH*0.9f);
 

@@ -55,11 +55,17 @@ public class StackScreen extends FactOption {
 
         batch.begin();
             ScreenUtils.clear(0, 0, 1, 1);
+            Color baseCol = new Color(0.69f, 0.447f, 0.098f, 1);
+            Color hoverCol = new Color(1, 1, 1, 1);
+            boolean hoverHere;
+            font.setColor(baseCol);
             
-            font.setColor(0.69f, 0.447f, 0.098f, 1);
+            hoverHere = backButtonBox.checkHover();
+            if (hoverHere) { font.setColor(hoverCol);}
             font.getData().setScale(1.25f);
             font.draw(batch, "Back", GW*0.01f, GH*0.065f);
-
+            if (hoverHere) { font.setColor(baseCol); }
+  
         batch.end();
 
         if (BenHelper.DEBUG) {
