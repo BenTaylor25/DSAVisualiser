@@ -4,7 +4,6 @@ import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
 
 import java.awt.Desktop;
-import java.io.IOException;
 import java.net.URL;
 
 import com.badlogic.gdx.*;
