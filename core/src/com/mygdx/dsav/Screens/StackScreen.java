@@ -54,7 +54,7 @@ public class StackScreen extends FactOption {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-            ScreenUtils.clear(0, 0, 1, 1);
+            ScreenUtils.clear(0.15f, 0.25f, 0.35f, 1f);
             Color baseCol = new Color(0.69f, 0.447f, 0.098f, 1);
             Color hoverCol = new Color(1, 1, 1, 1);
             boolean hoverHere;
