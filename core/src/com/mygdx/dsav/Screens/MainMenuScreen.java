@@ -3,6 +3,10 @@ package com.mygdx.dsav.Screens;
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URL;
+
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -20,6 +24,7 @@ public class MainMenuScreen extends FactOption {
 
     BenHelper.Rect exitButtonBox;
     BenHelper.Rect stackButtonBox;
+    BenHelper.Rect myGHButtonBox;
 
     public MainMenuScreen() {
         GW = Gdx.graphics.getWidth();
@@ -35,6 +40,7 @@ public class MainMenuScreen extends FactOption {
 
         exitButtonBox = new BenHelper.Rect(GW*0.88f, 0, GW*0.1f, GH*0.09f);
         stackButtonBox = new BenHelper.Rect(GW*0.19f, GH*0.725f, GW*0.25f, GH*0.085f);
+        myGHButtonBox = new BenHelper.Rect(GW *0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
     }
 
     @Override
@@ -82,6 +88,7 @@ public class MainMenuScreen extends FactOption {
             shape.setColor(Color.RED);
             exitButtonBox.draw(shape);
             stackButtonBox.draw(shape);
+            myGHButtonBox.draw(shape);
         }
     }
 
@@ -92,6 +99,13 @@ public class MainMenuScreen extends FactOption {
         }
         if (stackButtonBox.checkClick()) {
             factSelector = "stack";
+        }
+        if (myGHButtonBox.checkClick()) {
+            try {
+                Desktop.getDesktop().browse(new URL("https://github.com/BenTaylor25").toURI());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return factSelector;
