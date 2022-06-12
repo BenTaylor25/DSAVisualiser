@@ -2,6 +2,9 @@ package com.mygdx.dsav;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.Input;
@@ -168,5 +171,27 @@ public class BenHelper {
          */
 
         return text;
+    }
+
+    public static void textDrawCentre(SpriteBatch batch, BitmapFont font, 
+        String text, float midX, float midY, float scale) 
+    {
+        batch.begin();
+            font.getData().setScale(scale);
+            GlyphLayout glyph = new GlyphLayout(font, text);
+            
+            float drwX = midX - (glyph.width / 2);
+            float drwY = midY + (glyph.height / 2);
+
+            font.draw(batch, glyph, drwX, drwY);
+        batch.end();
+    }
+    public static void textDrawCentre(SpriteBatch batch, BitmapFont font,
+        String text, Rect hitbox, float scale)
+    {
+        float midX = hitbox.x + (hitbox.w / 2);
+        float midY = hitbox.y + (hitbox.h / 2);
+
+        textDrawCenter(batch, font, text, midX, midY, scale);
     }
 }

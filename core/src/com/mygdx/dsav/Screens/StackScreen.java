@@ -37,9 +37,9 @@ public class StackScreen extends FactOption {
         font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
 
         backButtonBox =  new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
-        inputTextButtonBox = new BenHelper.Rect(GW*0.025f, GH*0.6f, GW*0.3f, GH*0.1f);
+        inputTextButtonBox = new BenHelper.Rect(GW*0.025f, GH*0.525f, GW*0.3f, GH*0.1f);
         pushButtonBox = new BenHelper.Rect(GW*0.105f, GH*0.3f, GW*0.14f, GH*0.14f);
-        outputTextButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.6f, GW*0.3f, GH*0.1f);
+        outputTextButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.525f, GW*0.3f, GH*0.1f);
         peekButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.3f, GW*0.14f, GH*0.14f);
         popButtonBox = new BenHelper.Rect(GW*0.835f, GH*0.3f, GW*0.14f, GH*0.14f);
     }
@@ -82,18 +82,21 @@ public class StackScreen extends FactOption {
         shape.begin(ShapeType.Filled);
             shape.setColor(Color.BLACK);
 
-            // Stack
+            // Stack Drawing
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.35f, GH*0.8f, 2);
             shape.rectLine(GW*0.65f, GH*0.2f, GW*0.65f, GH*0.8f, 2);
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.65f, GH*0.2f, 2);
         shape.end();
 
-        // Input
         inputTextButtonBox.draw(shape);
         pushButtonBox.draw(shape);
         outputTextButtonBox.draw(shape);
         peekButtonBox.draw(shape);
         popButtonBox.draw(shape);
+
+        BenHelper.textDrawCentre(batch, font, "Push", pushButtonBox, 1f);
+
+
 
         if (BenHelper.DEBUG) {
             shape.setColor(Color.RED);
