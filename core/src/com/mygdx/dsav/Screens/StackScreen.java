@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
@@ -17,6 +18,11 @@ public class StackScreen extends FactOption {
     BitmapFont font;
 
     BenHelper.Rect backButtonBox;
+    BenHelper.Rect inputTextButtonBox;
+    BenHelper.Rect pushButtonBox;
+    BenHelper.Rect outputTextButtonBox;
+    BenHelper.Rect peekButtonBox;
+    BenHelper.Rect popButtonBox;
 
     public StackScreen() {
         GW = Gdx.graphics.getWidth();
@@ -31,6 +37,11 @@ public class StackScreen extends FactOption {
         font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
 
         backButtonBox =  new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
+        inputTextButtonBox = new BenHelper.Rect(GW*0.025f, GH*0.6f, GW*0.3f, GH*0.1f);
+        pushButtonBox = new BenHelper.Rect(GW*0.105f, GH*0.3f, GW*0.14f, GH*0.14f);
+        outputTextButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.6f, GW*0.3f, GH*0.1f);
+        peekButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.3f, GW*0.14f, GH*0.14f);
+        popButtonBox = new BenHelper.Rect(GW*0.835f, GH*0.3f, GW*0.14f, GH*0.14f);
     }
 
     @Override
@@ -67,6 +78,22 @@ public class StackScreen extends FactOption {
             if (hoverHere) { font.setColor(baseCol); }
   
         batch.end();
+
+        shape.begin(ShapeType.Filled);
+            shape.setColor(Color.BLACK);
+
+            // Stack
+            shape.rectLine(GW*0.35f, GH*0.2f, GW*0.35f, GH*0.8f, 2);
+            shape.rectLine(GW*0.65f, GH*0.2f, GW*0.65f, GH*0.8f, 2);
+            shape.rectLine(GW*0.35f, GH*0.2f, GW*0.65f, GH*0.2f, 2);
+        shape.end();
+
+        // Input
+        inputTextButtonBox.draw(shape);
+        pushButtonBox.draw(shape);
+        outputTextButtonBox.draw(shape);
+        peekButtonBox.draw(shape);
+        popButtonBox.draw(shape);
 
         if (BenHelper.DEBUG) {
             shape.setColor(Color.RED);
