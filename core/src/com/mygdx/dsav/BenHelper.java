@@ -192,6 +192,6 @@ public class BenHelper {
         float midX = hitbox.x + (hitbox.w / 2);
         float midY = hitbox.y + (hitbox.h / 2);
 
-        textDrawCenter(batch, font, text, midX, midY, scale);
+        textDrawCentre(batch, font, text, midX, midY, scale);
     }
 }
