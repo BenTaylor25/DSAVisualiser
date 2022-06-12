@@ -65,39 +65,37 @@ public class MainMenuScreen extends FactOption {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-            ScreenUtils.clear(0.15f, 0.25f, 0.35f, 1f);
-            Color baseCol = new Color(0.69f, 0.447f, 0.098f, 1);
-            Color hoverCol = new Color(1, 1, 1, 1);
+            ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             boolean hoverHere;
-            font.setColor(baseCol);
+            font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
 
             font.getData().setScale(2);
             font.draw(batch, "DSAVisualiser", GW*0.2f, GH*0.9f);
 
             hoverHere = stackButtonBox.checkHover();
-            if (hoverHere) { font.setColor(hoverCol); }
+            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
             font.getData().setScale(1.125f);
             font.draw(batch, "Stack", GW*0.2f, GH*0.775f);
-            if (hoverHere) { font.setColor(baseCol); }
+            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
 
             hoverHere = myGHButtonBox.checkHover();
-            if (hoverHere) { font.setColor(hoverCol); }
+            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
             font.getData().setScale(1);
             font.draw(batch, "Ben Taylor", GW*0.01f, GH*0.1f);
-            if (hoverHere) { font.setColor(baseCol); }
+            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
 
             hoverHere = fontLinkButtonBox.checkHover();
-            if (hoverHere) { font.setColor(hoverCol); }
+            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
             font.getData().setScale(0.5f);
             font.draw(batch, "Thanks to Riciery Leal for the VCR OSD Mono font",
                 GW*0.01f, GH*0.03f);
-            if (hoverHere) { font.setColor(baseCol); }
+            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
 
             hoverHere = exitButtonBox.checkHover();
-            if (hoverHere) { font.setColor(hoverCol); }
+            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
             font.getData().setScale(1);
             font.draw(batch, "Exit", GW*0.9f, GH*0.05f);
-            if (hoverHere) { font.setColor(baseCol); }
+            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
         batch.end();
 
         if (BenHelper.DEBUG) {

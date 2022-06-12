@@ -65,17 +65,15 @@ public class StackScreen extends FactOption {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-            ScreenUtils.clear(0.15f, 0.25f, 0.35f, 1f);
-            Color baseCol = new Color(0.69f, 0.447f, 0.098f, 1);
-            Color hoverCol = new Color(1, 1, 1, 1);
+            ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             boolean hoverHere;
-            font.setColor(baseCol);
+            font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
             
             hoverHere = backButtonBox.checkHover();
-            if (hoverHere) { font.setColor(hoverCol);}
+            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR);}
             font.getData().setScale(1.25f);
             font.draw(batch, "Back", GW*0.01f, GH*0.065f);
-            if (hoverHere) { font.setColor(baseCol); }
+            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
   
         batch.end();
 
@@ -94,8 +92,9 @@ public class StackScreen extends FactOption {
         peekButtonBox.draw(shape);
         popButtonBox.draw(shape);
 
-        BenHelper.textDrawCentre(batch, font, "Push", pushButtonBox, 1f);
-
+        BenHelper.textDrawCentre(batch, font, "Push", pushButtonBox, 1.25f);
+        BenHelper.textDrawCentre(batch, font, "Peek", peekButtonBox, 1.25f);
+        BenHelper.textDrawCentre(batch, font, "Pop", popButtonBox, 1.25f);
 
 
         if (BenHelper.DEBUG) {
