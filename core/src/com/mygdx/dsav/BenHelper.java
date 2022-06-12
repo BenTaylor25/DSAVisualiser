@@ -177,10 +177,11 @@ public class BenHelper {
     }
 
     public static void textDrawCentre(SpriteBatch batch, BitmapFont font, 
-        String text, float midX, float midY, float scale) 
+        String text, float midX, float midY, float scale, Color col) 
     {
         batch.begin();
             font.getData().setScale(scale);
+            font.setColor(col);
             GlyphLayout glyph = new GlyphLayout(font, text);
             
             float drwX = midX - (glyph.width / 2);
@@ -190,11 +191,21 @@ public class BenHelper {
         batch.end();
     }
     public static void textDrawCentre(SpriteBatch batch, BitmapFont font,
-        String text, Rect hitbox, float scale)
+        String text, Rect hitbox, float scale, Color col)
     {
         float midX = hitbox.x + (hitbox.w / 2);
         float midY = hitbox.y + (hitbox.h / 2);
 
-        textDrawCentre(batch, font, text, midX, midY, scale);
+        textDrawCentre(batch, font, text, midX, midY, scale, col);
+    }
+    public static void textDrawCentre(SpriteBatch batch, BitmapFont font,
+        String text, Rect hitbox, float scale) 
+    {
+        Color col = DEFAULT_TEXT_COLOUR;
+        if (hitbox.checkHover()) {
+            col = HOVER_TEXT_COLOUR;
+        }
+
+        textDrawCentre(batch, font, text, hitbox, scale, col);
     }
 }
