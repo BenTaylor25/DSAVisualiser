@@ -136,10 +136,14 @@ public class BenHelper {
                    checkHover();
         }
 
-        public void draw(ShapeRenderer shape) {
+        public void draw(ShapeRenderer shape, Color col) {
+            shape.setColor(col);
             shape.begin(ShapeType.Line);
-            shape.rect( x, y, w, h );
+                shape.rect( x, y, w, h );
             shape.end();
+        }
+        public void draw(ShapeRenderer shape) {
+            draw(shape, Color.BLACK);
         }
     }
 

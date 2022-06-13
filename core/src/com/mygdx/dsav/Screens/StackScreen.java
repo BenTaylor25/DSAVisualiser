@@ -1,6 +1,7 @@
 package com.mygdx.dsav.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -17,6 +18,9 @@ public class StackScreen extends FactOption {
     ShapeRenderer shape;
     BitmapFont font;
 
+    boolean inputTypingEnabled;
+    String inputTextString;
+    String outputTextString;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect inputTextButtonBox;
     BenHelper.Rect pushButtonBox;
@@ -36,6 +40,9 @@ public class StackScreen extends FactOption {
         shape = new ShapeRenderer();
         font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
 
+        inputTypingEnabled = false;
+        inputTextString = new String("");
+        outputTextString = new String("");
         backButtonBox =  new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         inputTextButtonBox = new BenHelper.Rect(GW*0.025f, GH*0.525f, GW*0.3f, GH*0.1f);
         pushButtonBox = new BenHelper.Rect(GW*0.105f, GH*0.3f, GW*0.14f, GH*0.14f);
@@ -56,6 +63,10 @@ public class StackScreen extends FactOption {
 
     @Override
     public String updateBefore(String factSelector) {
+        if (inputTypingEnabled) {
+            inputTextString = BenHelper.typing(inputTextString);
+        }
+
         return factSelector;
     }
 
@@ -86,12 +97,22 @@ public class StackScreen extends FactOption {
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.65f, GH*0.2f, 2);
         shape.end();
 
-        inputTextButtonBox.draw(shape);
+        if (inputTypingEnabled) {
+            inputTextButtonBox.draw(shape, Color.WHITE);
+        } else {
+            inputTextButtonBox.draw(shape, Color.BLACK);
+        }
         pushButtonBox.draw(shape);
         outputTextButtonBox.draw(shape);
         peekButtonBox.draw(shape);
         popButtonBox.draw(shape);
 
+        if (inputTextString.equals("")) {
+            BenHelper.textDrawCentre(batch, font, "[click to type]", inputTextButtonBox, 1f);
+        } else {
+            BenHelper.textDrawCentre(batch, font, inputTextString, inputTextButtonBox, 1f);
+        }
+        BenHelper.textDrawCentre(batch, font, outputTextString, outputTextButtonBox, 1f);
         BenHelper.textDrawCentre(batch, font, "Push", pushButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, "Peek", peekButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, "Pop", popButtonBox, 1.25f);
@@ -105,6 +126,14 @@ public class StackScreen extends FactOption {
 
     @Override
     public String updateAfter(String factSelector) {
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+            if (inputTextButtonBox.checkClick()) {
+                inputTypingEnabled = true;
+            } else {
+                inputTypingEnabled = false;
+            }
+        }
+        
         if (backButtonBox.checkClick()) {
             factSelector = "menu";
         }
