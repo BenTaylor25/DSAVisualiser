@@ -74,7 +74,7 @@ public class StackScreen extends FactOption {
     @Override
     public String updateBefore(String factSelector) {
         if (inputTypingEnabled) {
-            inputTextString = BenHelper.typing(inputTextString);
+            inputTextString = BenHelper.typing(inputTextString, 20);
         }
 
         return factSelector;

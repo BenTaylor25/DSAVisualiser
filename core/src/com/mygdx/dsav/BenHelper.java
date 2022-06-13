@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 
 /**
  * Defines helper methods for my LibGDX use.
@@ -147,7 +148,15 @@ public class BenHelper {
         }
     }
 
-    public static String typing(String text) {
+    public static String typing(String text, int maxLen) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && text.length() > 0) {
+            text = text.substring(0, text.length()-1);
+        }
+
+        if (text.length() >= maxLen) {
+            return text;
+        }
+
         for (int i = 29; i < 54; i++) {
             if (Gdx.input.isKeyJustPressed(i)) {
                 if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) ||
@@ -157,7 +166,6 @@ public class BenHelper {
                 } else {
                     text += Input.Keys.toString(i).toLowerCase();
                 }
-
             }
         }
 
@@ -165,19 +173,10 @@ public class BenHelper {
         if (Gdx.input.isKeyJustPressed(Input.Keys.COMMA)) { text += ','; }
         if (Gdx.input.isKeyJustPressed(Input.Keys.PERIOD)) { text += '.'; }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && text.length() > 0) {
-            text = text.substring(0, text.length()-1);
-        }
-
-
-        /*
-        if (Gdx.input.isKeyJustPressed(29)) {
-            text += Input.Keys.toString(29);
-            //text += 'a';
-        }
-         */
-
         return text;
+    }
+    public static String typing(String text) {
+        return typing(text, 100);
     }
 
     public static void textDrawCentre(SpriteBatch batch, BitmapFont font, 
