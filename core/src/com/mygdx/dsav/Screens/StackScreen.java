@@ -1,5 +1,9 @@
 package com.mygdx.dsav.Screens;
 
+import com.mygdx.dsav.BenHelper;
+import com.mygdx.dsav.FactOption;
+import com.mygdx.dsav.DataStructs.Stack;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
@@ -9,14 +13,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.mygdx.dsav.BenHelper;
-import com.mygdx.dsav.FactOption;
 
 public class StackScreen extends FactOption {
     float GW, GH;
     SpriteBatch batch;
     ShapeRenderer shape;
     BitmapFont font;
+
+    Stack stack;
 
     boolean inputTypingEnabled;
     String inputTextString;
@@ -40,6 +44,8 @@ public class StackScreen extends FactOption {
         shape = new ShapeRenderer();
         font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
 
+        stack = new Stack();
+
         inputTypingEnabled = false;
         inputTextString = new String("");
         outputTextString = new String("");
@@ -59,7 +65,9 @@ public class StackScreen extends FactOption {
     }
 
     @Override
-    public void reset() {}
+    public void reset() {
+        stack = new Stack();
+    }
 
     @Override
     public String updateBefore(String factSelector) {
@@ -96,6 +104,14 @@ public class StackScreen extends FactOption {
             shape.rectLine(GW*0.65f, GH*0.2f, GW*0.65f, GH*0.8f, 2);
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.65f, GH*0.2f, 2);
         shape.end();
+
+        for (int i = 0; i < stack.size(); i++) {
+            String value = stack.viewStack().get(i);
+            BenHelper.Rect valueRect = new BenHelper.Rect(GW*0.35f, GH*0.2f, GW*0.3f, GH*0.1f);
+            valueRect.y += i * GH*0.1;
+            valueRect.draw(shape);
+            BenHelper.textDrawCentre(batch, font, value, valueRect, 1f);
+        }
 
         if (inputTypingEnabled) {
             inputTextButtonBox.draw(shape, Color.WHITE);
@@ -136,6 +152,12 @@ public class StackScreen extends FactOption {
         
         if (backButtonBox.checkClick()) {
             factSelector = "menu";
+        }
+        else if (pushButtonBox.checkClick()) {
+            if (!inputTextString.equals("")) {
+                stack.push(inputTextString);
+                inputTextString = "";
+            }
         }
 
         return factSelector;
