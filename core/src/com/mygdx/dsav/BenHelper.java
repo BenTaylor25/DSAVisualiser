@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Input.Keys;
 
 /**
  * Defines helper methods for my LibGDX use.
@@ -166,6 +165,12 @@ public class BenHelper {
                 } else {
                     text += Input.Keys.toString(i).toLowerCase();
                 }
+            }
+        }
+
+        for (int i = 7; i <= 16; i ++) {
+            if (Gdx.input.isKeyJustPressed(i)) {
+                text += Input.Keys.toString(i);
             }
         }
 
