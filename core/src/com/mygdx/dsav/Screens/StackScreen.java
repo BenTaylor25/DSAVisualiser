@@ -127,9 +127,11 @@ public class StackScreen extends FactOption {
         popButtonBox.draw(shape);
 
         if (inputTextString.equals("")) {
-            BenHelper.textDrawCentre(batch, font, "[click to type]", inputTextButtonBox, 1f);
+            BenHelper.textDrawCentre(batch, font, "[click to type]", inputTextButtonBox, 1f,
+                BenHelper.DEFAULT_TEXT_COLOUR);
         } else {
-            BenHelper.textDrawCentre(batch, font, inputTextString, inputTextButtonBox, 1f);
+            BenHelper.textDrawCentre(batch, font, inputTextString, inputTextButtonBox, 1f, 
+                BenHelper.DEFAULT_TEXT_COLOUR);
         }
         BenHelper.textDrawCentre(batch, font, outputTextString, outputTextButtonBox, 1f, 
             BenHelper.DEFAULT_TEXT_COLOUR);
