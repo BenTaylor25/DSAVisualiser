@@ -159,6 +159,12 @@ public class StackScreen extends FactOption {
                 inputTextString = "";
             }
         }
+        else if (peekButtonBox.checkClick()) {
+            outputTextString = stack.peek();
+        }
+        else if (popButtonBox.checkClick()) {
+            outputTextString = stack.pop();
+        }
 
         return factSelector;
     }
