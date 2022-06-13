@@ -67,6 +67,8 @@ public class StackScreen extends FactOption {
     @Override
     public void reset() {
         stack = new Stack();
+        inputTextString = "";
+        outputTextString = "";
     }
 
     @Override
@@ -110,7 +112,8 @@ public class StackScreen extends FactOption {
             BenHelper.Rect valueRect = new BenHelper.Rect(GW*0.35f, GH*0.2f, GW*0.3f, GH*0.1f);
             valueRect.y += i * GH*0.1;
             valueRect.draw(shape);
-            BenHelper.textDrawCentre(batch, font, value, valueRect, 1f);
+            BenHelper.textDrawCentre(batch, font, value, valueRect, 1f, 
+                BenHelper.DEFAULT_TEXT_COLOUR);
         }
 
         if (inputTypingEnabled) {
@@ -128,15 +131,16 @@ public class StackScreen extends FactOption {
         } else {
             BenHelper.textDrawCentre(batch, font, inputTextString, inputTextButtonBox, 1f);
         }
-        BenHelper.textDrawCentre(batch, font, outputTextString, outputTextButtonBox, 1f);
+        BenHelper.textDrawCentre(batch, font, outputTextString, outputTextButtonBox, 1f, 
+            BenHelper.DEFAULT_TEXT_COLOUR);
+
         BenHelper.textDrawCentre(batch, font, "Push", pushButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, "Peek", peekButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, "Pop", popButtonBox, 1.25f);
 
 
         if (BenHelper.DEBUG) {
-            shape.setColor(Color.RED);
-            backButtonBox.draw(shape);
+            backButtonBox.draw(shape, Color.RED);
         }
     }
 

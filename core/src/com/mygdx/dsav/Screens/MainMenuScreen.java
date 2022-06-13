@@ -99,11 +99,10 @@ public class MainMenuScreen extends FactOption {
         batch.end();
 
         if (BenHelper.DEBUG) {
-            shape.setColor(Color.RED);
-            exitButtonBox.draw(shape);
-            stackButtonBox.draw(shape);
-            myGHButtonBox.draw(shape);
-            fontLinkButtonBox.draw(shape);
+            exitButtonBox.draw(shape, Color.RED);
+            stackButtonBox.draw(shape, Color.RED);
+            myGHButtonBox.draw(shape, Color.RED);
+            fontLinkButtonBox.draw(shape, Color.RED);
         }
     }
 
