@@ -14,16 +14,20 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen extends FactOption {
     BenHelper.Rect exitButtonBox;
-    BenHelper.Rect stackButtonBox;
     BenHelper.Rect myGHButtonBox;
     BenHelper.Rect fontLinkButtonBox;
+
+    BenHelper.Rect stackButtonBox;
+    BenHelper.Rect queueButtonBox;
 
     @Override
     public void create() {
         exitButtonBox = new BenHelper.Rect(GW*0.9f, 0, GW*0.1f, GH*0.09f);
-        stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
         myGHButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
         fontLinkButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.001f, GW*0.38f, GH*0.05f);
+
+        stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
+        queueButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.64f, GW*0.3f, GH*0.085f);
     }
 
     @Override
@@ -47,17 +51,21 @@ public class MainMenuScreen extends FactOption {
             font.draw(batch, "DSAVisualiser", GW*0.2f, GH*0.9f);
         batch.end();
 
-        BenHelper.textDrawCentre(batch, font, "Stack", stackButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Ben Taylor", myGHButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Thanks to Riciery Leal for the VCR OSD Mono font", 
             fontLinkButtonBox, 0.5f);
         BenHelper.textDrawCentre(batch, font, "Exit", exitButtonBox, 1f);
 
+        BenHelper.textDrawCentre(batch, font, "Stack", stackButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Queue", queueButtonBox, 1.125f);
+
         if (BenHelper.DEBUG) {
             exitButtonBox.draw(shape, Color.RED);
-            stackButtonBox.draw(shape, Color.RED);
             myGHButtonBox.draw(shape, Color.RED);
             fontLinkButtonBox.draw(shape, Color.RED);
+            
+            stackButtonBox.draw(shape, Color.RED);
+            queueButtonBox.draw(shape, Color.RED);
         }
     }
 
@@ -65,9 +73,6 @@ public class MainMenuScreen extends FactOption {
     public String updateAfter(String factSelector) {
         if (exitButtonBox.checkClick()) {
             factSelector = "quit";
-        }
-        else if (stackButtonBox.checkClick()) {
-            factSelector = "stack";
         }
         else if (myGHButtonBox.checkClick()) {
             try {
@@ -82,6 +87,12 @@ public class MainMenuScreen extends FactOption {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        else if (stackButtonBox.checkClick()) {
+            factSelector = "stack";
+        }
+        else if (queueButtonBox.checkClick()) {
+            factSelector = "queue";
         }
 
         return factSelector;

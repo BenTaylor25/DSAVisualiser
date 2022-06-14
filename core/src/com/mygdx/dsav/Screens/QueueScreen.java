@@ -1,6 +1,9 @@
 package com.mygdx.dsav.Screens;
 
+import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
+
+import com.badlogic.gdx.utils.ScreenUtils;
 
 public class QueueScreen extends FactOption {
     
@@ -23,7 +26,10 @@ public class QueueScreen extends FactOption {
 
     @Override
     public void draw() {
-        
+        batch.begin();
+            ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
+            font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
+        batch.end();
     }
 
     @Override
