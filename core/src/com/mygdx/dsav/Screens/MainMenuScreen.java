@@ -66,7 +66,6 @@ public class MainMenuScreen extends FactOption {
 
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
-            boolean hoverHere;
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
 
             font.getData().setScale(2);
