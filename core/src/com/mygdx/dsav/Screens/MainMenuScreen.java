@@ -9,9 +9,6 @@ import java.net.URL;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 
@@ -23,10 +20,6 @@ public class MainMenuScreen extends FactOption {
 
     @Override
     public void create() {
-        font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
-        batch = new SpriteBatch();
-        shape = new ShapeRenderer();
-
         exitButtonBox = new BenHelper.Rect(GW*0.9f, 0, GW*0.1f, GH*0.09f);
         stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
         myGHButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
