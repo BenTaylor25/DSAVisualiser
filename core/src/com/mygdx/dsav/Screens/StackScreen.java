@@ -7,7 +7,6 @@ import com.mygdx.dsav.DataStructs.Stack;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -81,13 +80,12 @@ public class StackScreen extends FactOption {
 
     @Override
     public void draw() {
-        Gdx.gl.glClearColor(1,1,1,1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             boolean hoverHere;
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
+            
+            font.draw(batch, Integer.toString(Gdx.graphics.getFramesPerSecond()), GW/2, GH/2);
 
             hoverHere = backButtonBox.checkHover();
             if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR);}

@@ -6,9 +6,7 @@ import com.mygdx.dsav.FactOption;
 import java.awt.Desktop;
 import java.net.URL;
 
-import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 
@@ -40,9 +38,6 @@ public class MainMenuScreen extends FactOption {
 
     @Override
     public void draw() {
-        Gdx.gl.glClearColor(1,1,1,1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
