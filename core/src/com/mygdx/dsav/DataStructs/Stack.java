@@ -33,6 +33,10 @@ public class Stack {
      * @return The top of the Stack.
      */
     public String pop() {
+        if (size() == 0) {
+            return "";
+        }
+
         String popVal = container.getLast();
         container.removeLast();
         return popVal;
@@ -44,6 +48,10 @@ public class Stack {
      * @return The head of the Stack.
      */
     public String peek() {
+        if (size() == 0) {
+            return "";
+        } 
+
         return container.getLast();
     }
 
