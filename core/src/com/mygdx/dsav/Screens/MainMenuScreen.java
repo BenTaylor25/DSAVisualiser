@@ -38,8 +38,8 @@ public class MainMenuScreen extends FactOption {
         batch = new SpriteBatch();
         shape = new ShapeRenderer();
 
-        exitButtonBox = new BenHelper.Rect(GW*0.88f, 0, GW*0.1f, GH*0.09f);
-        stackButtonBox = new BenHelper.Rect(GW*0.19f, GH*0.725f, GW*0.25f, GH*0.085f);
+        exitButtonBox = new BenHelper.Rect(GW*0.9f, 0, GW*0.1f, GH*0.09f);
+        stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
         myGHButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
         fontLinkButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.001f, GW*0.38f, GH*0.05f);
     }
@@ -71,32 +71,13 @@ public class MainMenuScreen extends FactOption {
 
             font.getData().setScale(2);
             font.draw(batch, "DSAVisualiser", GW*0.2f, GH*0.9f);
-
-            hoverHere = stackButtonBox.checkHover();
-            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
-            font.getData().setScale(1.125f);
-            font.draw(batch, "Stack", GW*0.2f, GH*0.775f);
-            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
-
-            hoverHere = myGHButtonBox.checkHover();
-            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
-            font.getData().setScale(1);
-            font.draw(batch, "Ben Taylor", GW*0.01f, GH*0.1f);
-            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
-
-            hoverHere = fontLinkButtonBox.checkHover();
-            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
-            font.getData().setScale(0.5f);
-            font.draw(batch, "Thanks to Riciery Leal for the VCR OSD Mono font",
-                GW*0.01f, GH*0.03f);
-            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
-
-            hoverHere = exitButtonBox.checkHover();
-            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR); }
-            font.getData().setScale(1);
-            font.draw(batch, "Exit", GW*0.9f, GH*0.05f);
-            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
         batch.end();
+
+        BenHelper.textDrawCentre(batch, font, "Stack", stackButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Ben Taylor", myGHButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Thanks to Riciery Leal for the VCR OSD Mono font", 
+            fontLinkButtonBox, 0.5f);
+        BenHelper.textDrawCentre(batch, font, "Exit", exitButtonBox, 1f);
 
         if (BenHelper.DEBUG) {
             exitButtonBox.draw(shape, Color.RED);
