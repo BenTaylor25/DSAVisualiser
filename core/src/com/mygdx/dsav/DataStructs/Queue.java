@@ -29,6 +29,10 @@ public class Queue {
 
     /**
      * Removes the start of the Queue and returns it.
+     * <p>
+     * Trying to Dequeue from an empty Queue will return the empty string.
+     * <p>
+     * (this is different for different implementations of Queues)
      * 
      * @return The front of the Queue.
      */
@@ -42,6 +46,10 @@ public class Queue {
 
     /**
      * Returns the front of the Queue without removing it.
+     * <p>
+     * Trying to Peek at an empty Queue will return the empty string.
+     * <p>
+     * (this is different for different implementations of Queues)
      * 
      * @return The front of the Queue.
      */

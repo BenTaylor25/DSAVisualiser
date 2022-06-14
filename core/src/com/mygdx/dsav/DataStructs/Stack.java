@@ -29,6 +29,10 @@ public class Stack {
 
     /**
      * Removes the top of the stack and return it.
+     * <p>
+     * Trying to Pop from an empty Stack will return the empty string.
+     * <p>
+     * (this is different for different implementations of Stacks) 
      * 
      * @return The top of the Stack.
      */
@@ -44,6 +48,10 @@ public class Stack {
 
     /**
      * Returns the head of the Stack without removing it. 
+     * <p>
+     * Trying to Peek at an empty Stack will return the empty string.
+     * <p>
+     * (this is different for different implementations of Stacks)
      * 
      * @return The head of the Stack.
      */
