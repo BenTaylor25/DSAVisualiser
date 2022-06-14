@@ -8,20 +8,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class StackScreen extends FactOption {
-    float GW, GH;
-    SpriteBatch batch;
-    ShapeRenderer shape;
-    BitmapFont font;
-
     Stack stack;
-
     boolean inputTypingEnabled;
     String inputTextString;
     String outputTextString;
@@ -35,20 +26,9 @@ public class StackScreen extends FactOption {
     BenHelper.Rect popButtonBox;
     BenHelper.Rect hintButtonBox;
 
-    public StackScreen() {
-        GW = Gdx.graphics.getWidth();
-        GH = Gdx.graphics.getHeight();
-        create();
-    }
-
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        shape = new ShapeRenderer();
-        font = new BitmapFont(Gdx.files.internal("vcr_osd_mono_font.fnt"));
-
         stack = new Stack();
-
         inputTypingEnabled = false;
         inputTextString = new String("");
         outputTextString = new String("");
@@ -61,13 +41,6 @@ public class StackScreen extends FactOption {
         peekButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.3f, GW*0.14f, GH*0.14f);
         popButtonBox = new BenHelper.Rect(GW*0.835f, GH*0.3f, GW*0.14f, GH*0.14f);
         hintButtonBox =  new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
-    }
-
-    @Override
-    public void dispose() {
-        batch.dispose();
-        shape.dispose();
-        font.dispose();
     }
 
     @Override
