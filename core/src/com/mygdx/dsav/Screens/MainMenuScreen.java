@@ -16,21 +16,10 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 
 public class MainMenuScreen extends FactOption {
-    int GW, GH;   // graphical width and height
-    BitmapFont font;
-    SpriteBatch batch;
-    ShapeRenderer shape;
-
     BenHelper.Rect exitButtonBox;
     BenHelper.Rect stackButtonBox;
     BenHelper.Rect myGHButtonBox;
     BenHelper.Rect fontLinkButtonBox;
-
-    public MainMenuScreen() {
-        GW = Gdx.graphics.getWidth();
-        GH = Gdx.graphics.getHeight();
-        create();
-    }
 
     @Override
     public void create() {
@@ -42,13 +31,6 @@ public class MainMenuScreen extends FactOption {
         stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
         myGHButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
         fontLinkButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.001f, GW*0.38f, GH*0.05f);
-    }
-
-    @Override
-    public void dispose() {
-        font.dispose();
-        batch.dispose();
-        shape.dispose();
     }
 
     @Override
