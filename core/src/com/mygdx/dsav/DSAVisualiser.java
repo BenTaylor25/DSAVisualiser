@@ -1,6 +1,7 @@
 package com.mygdx.dsav;
 
 import com.mygdx.dsav.Screens.MainMenuScreen;
+import com.mygdx.dsav.Screens.QueueScreen;
 import com.mygdx.dsav.Screens.StackScreen;
 
 import java.util.Hashtable;
@@ -11,10 +12,6 @@ public class DSAVisualiser extends Game {
 	private Hashtable<String, FactOption> screens;
 	private String oldFactSelector;
 	private String factSelector;
-	/////
-	//  "menu", 
-	//  "stack"
-	//
 
 	@Override
 	public void create () {
@@ -22,19 +19,18 @@ public class DSAVisualiser extends Game {
 		screens = new Hashtable<>();
 		screens.put("menu", new MainMenuScreen());
 		screens.put("stack", new StackScreen());
+		screens.put("queue", new QueueScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
 	}
 
 	@Override
-	public void dispose () {}
-
-	@Override
 	public void render() {
 		switch (factSelector) {
 			case "menu":
 			case "stack":
+			case "queue":
 				if ( factSelector != oldFactSelector ) {
 					screens.get(factSelector).reset();
 					oldFactSelector = factSelector;
