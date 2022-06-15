@@ -80,20 +80,21 @@ public class StackScreen extends FactOption {
 
     @Override
     public void draw() {
+        // clear screen
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
         batch.end();
 
+        // draw Stack outline
         shape.begin(ShapeType.Filled);
             shape.setColor(Color.BLACK);
-
-            // Stack Drawing
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.35f, GH*0.8f, 2);
             shape.rectLine(GW*0.65f, GH*0.2f, GW*0.65f, GH*0.8f, 2);
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.65f, GH*0.2f, 2);
         shape.end();
 
+        // draw Stack items
         for (int i = 0; i < stack.size(); i++) {
             String value = stack.viewStack().get(i);
             BenHelper.Rect valueRect = new BenHelper.Rect(GW*0.35f, GH*0.2f, GW*0.3f, GH*0.1f);
@@ -103,6 +104,7 @@ public class StackScreen extends FactOption {
                 BenHelper.DEFAULT_TEXT_COLOUR);
         }
 
+        // draw button outlines
         if (inputTypingEnabled) {
             inputTextButtonBox.draw(shape, Color.WHITE);
         } else {
@@ -113,6 +115,7 @@ public class StackScreen extends FactOption {
         peekButtonBox.draw(shape);
         popButtonBox.draw(shape);
 
+        // draw text
         BenHelper.textDrawCentre(batch, font, "Stack", titleButtonBox, 1.5f, 
             BenHelper.DEFAULT_TEXT_COLOUR);
 
@@ -134,6 +137,7 @@ public class StackScreen extends FactOption {
 
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
 
+        // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);

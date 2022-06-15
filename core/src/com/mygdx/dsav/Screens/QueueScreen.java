@@ -80,20 +80,20 @@ public class QueueScreen extends FactOption {
 
     @Override
     public void draw() {
+        // clear screen
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
         batch.end();
 
+        // draw Queue outline
         shape.begin(ShapeType.Filled);
             shape.setColor(Color.BLACK);
-
-            // Stack Drawing
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.35f, GH*0.8f, 2);
             shape.rectLine(GW*0.65f, GH*0.2f, GW*0.65f, GH*0.8f, 2);
         shape.end();
 
-        // Queue items
+        // draw Queue items
         for (int i = 0; i < queue.size(); i++) {
             String value = queue.viewQueue().get(i);
             BenHelper.Rect valueRect = new BenHelper.Rect(GW*0.35f, GH*0.2f, GW*0.3f, GH*0.1f);
@@ -103,6 +103,7 @@ public class QueueScreen extends FactOption {
                 BenHelper.DEFAULT_TEXT_COLOUR);
         }
 
+        // draw button outlines
         if (inputTypingEnabled) {
             inputTextButtonBox.draw(shape, Color.WHITE);
         } else {
@@ -113,7 +114,7 @@ public class QueueScreen extends FactOption {
         peekButtonBox.draw(shape);
         dequeueButtonBox.draw(shape);
 
-
+        // draw text
         BenHelper.textDrawCentre(batch, font, "Queue", titleButtonBox, 1.5f, 
             BenHelper.DEFAULT_TEXT_COLOUR);
 
@@ -133,9 +134,9 @@ public class QueueScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 0.75f,
             Color.GRAY);
 
-
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
 
+        // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
