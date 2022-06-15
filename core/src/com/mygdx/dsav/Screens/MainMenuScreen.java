@@ -15,8 +15,13 @@ public class MainMenuScreen extends FactOption {
     BenHelper.Rect myGHButtonBox;
     BenHelper.Rect fontLinkButtonBox;
 
+    BenHelper.Rect arrayButtonBox;
+    BenHelper.Rect llistButtonBox;
     BenHelper.Rect stackButtonBox;
     BenHelper.Rect queueButtonBox;
+    BenHelper.Rect graphButtonBox;
+    BenHelper.Rect streeButtonBox;
+    BenHelper.Rect btreeButtonBox;
 
     @Override
     public void create() {
@@ -24,8 +29,13 @@ public class MainMenuScreen extends FactOption {
         myGHButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
         fontLinkButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.001f, GW*0.38f, GH*0.05f);
 
-        stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
-        queueButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.64f, GW*0.3f, GH*0.085f);
+        arrayButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
+        llistButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.64f, GW*0.3f, GH*0.085f);
+        stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.555f, GW*0.3f, GH*0.085f);
+        queueButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.47f, GW*0.3f, GH*0.085f);
+        graphButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.385f, GW*0.3f, GH*0.085f);
+        streeButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.3f, GW*0.3f, GH*0.085f);
+        btreeButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.215f, GW*0.3f, GH*0.085f);
     }
 
     @Override
@@ -51,16 +61,26 @@ public class MainMenuScreen extends FactOption {
             fontLinkButtonBox, 0.5f);
         BenHelper.textDrawCentre(batch, font, "Exit", exitButtonBox, 1f);
 
+        BenHelper.textDrawCentre(batch, font, "Array", arrayButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Linked List", llistButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Stack", stackButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Queue", queueButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Graph", graphButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Tree", streeButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Binary Tree", btreeButtonBox, 1.125f);
 
         if (BenHelper.DEBUG) {
             exitButtonBox.draw(shape, Color.RED);
             myGHButtonBox.draw(shape, Color.RED);
             fontLinkButtonBox.draw(shape, Color.RED);
             
+            arrayButtonBox.draw(shape, Color.RED);
+            llistButtonBox.draw(shape, Color.RED);
             stackButtonBox.draw(shape, Color.RED);
             queueButtonBox.draw(shape, Color.RED);
+            graphButtonBox.draw(shape, Color.RED);
+            streeButtonBox.draw(shape, Color.RED);
+            btreeButtonBox.draw(shape, Color.RED);
         }
     }
 
@@ -83,11 +103,26 @@ public class MainMenuScreen extends FactOption {
                 e.printStackTrace();
             }
         }
+        else if (arrayButtonBox.checkClick()) {
+            // factSelector = "array";
+        }
+        else if (llistButtonBox.checkClick()) {
+            // factSelector = "llist";
+        }
         else if (stackButtonBox.checkClick()) {
             factSelector = "stack";
         }
         else if (queueButtonBox.checkClick()) {
             factSelector = "queue";
+        }
+        else if (graphButtonBox.checkClick()) {
+            // factSelector = "graph";
+        }
+        else if (streeButtonBox.checkClick()) {
+            // factSelector = "stree";
+        }
+        else if (btreeButtonBox.checkClick()) {
+            // factSelecctor = "btree";
         }
 
         return factSelector;
