@@ -82,17 +82,7 @@ public class StackScreen extends FactOption {
     public void draw() {
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
-            boolean hoverHere;
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
-            
-            font.draw(batch, Integer.toString(Gdx.graphics.getFramesPerSecond()), GW/2, GH/2);
-
-            hoverHere = backButtonBox.checkHover();
-            if (hoverHere) { font.setColor(BenHelper.HOVER_TEXT_COLOUR);}
-            font.getData().setScale(1.25f);
-            font.draw(batch, "Back", GW*0.01f, GH*0.065f);
-            if (hoverHere) { font.setColor(BenHelper.DEFAULT_TEXT_COLOUR); }
-  
         batch.end();
 
         shape.begin(ShapeType.Filled);
@@ -141,6 +131,8 @@ public class StackScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Pop", popButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 0.75f,
             Color.GRAY);
+
+        BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
 
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
