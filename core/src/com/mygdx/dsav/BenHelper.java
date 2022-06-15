@@ -17,7 +17,7 @@ public class BenHelper {
      * Will be set to false in production,
      * but true for testing.
      */
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
     public static final Color BACKGROUND_COLOUR = new Color(0.15f, 0.25f, 0.35f, 1f);
     public static final Color DEFAULT_TEXT_COLOUR = new Color(0.69f, 0.447f, 0.098f, 1);
     public static final Color HOVER_TEXT_COLOUR = new Color(1, 1, 1, 1);
