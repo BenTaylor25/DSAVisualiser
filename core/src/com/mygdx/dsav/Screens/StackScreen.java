@@ -29,9 +29,9 @@ public class StackScreen extends FactOption {
     public void create() {
         stack = new Stack();
         inputTypingEnabled = false;
-        inputTextString = new String("");
-        outputTextString = new String("");
-        hintTextString = new String("");
+        inputTextString = "";
+        outputTextString = "";
+        hintTextString = "";
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox =  new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         inputTextButtonBox = new BenHelper.Rect(GW*0.025f, GH*0.525f, GW*0.3f, GH*0.1f);
