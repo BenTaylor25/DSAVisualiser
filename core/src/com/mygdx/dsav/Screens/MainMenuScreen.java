@@ -104,7 +104,7 @@ public class MainMenuScreen extends FactOption {
             }
         }
         else if (arrayButtonBox.checkClick()) {
-            // factSelector = "array";
+            factSelector = "array";
         }
         else if (llistButtonBox.checkClick()) {
             // factSelector = "llist";
