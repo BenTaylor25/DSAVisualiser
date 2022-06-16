@@ -86,24 +86,7 @@ public class MainMenuScreen extends FactOption {
 
     @Override
     public String updateAfter(String factSelector) {
-        if (exitButtonBox.checkClick()) {
-            factSelector = "quit";
-        }
-        else if (myGHButtonBox.checkClick()) {
-            try {
-                Desktop.getDesktop().browse(new URL("https://github.com/BenTaylor25").toURI());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if (fontLinkButtonBox.checkClick()) {
-            try {
-                Desktop.getDesktop().browse(new URL("https://www.dafont.com/vcr-osd-mono.font").toURI());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else if (arrayButtonBox.checkClick()) {
+        if (arrayButtonBox.checkClick()) {
             factSelector = "array";
         }
         else if (llistButtonBox.checkClick()) {
@@ -123,6 +106,23 @@ public class MainMenuScreen extends FactOption {
         }
         else if (btreeButtonBox.checkClick()) {
             // factSelecctor = "btree";
+        }
+        else if (myGHButtonBox.checkClick()) {
+            try {
+                Desktop.getDesktop().browse(new URL("https://github.com/BenTaylor25").toURI());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (fontLinkButtonBox.checkClick()) {
+            try {
+                Desktop.getDesktop().browse(new URL("https://www.dafont.com/vcr-osd-mono.font").toURI());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (exitButtonBox.checkClick()) {
+            factSelector = "quit";
         }
 
         return factSelector;
