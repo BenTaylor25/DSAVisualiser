@@ -65,8 +65,11 @@ public class ArrayScreen extends FactOption {
         batch.end();
 
         // draw button outlines
-        for (BenHelper.Rect indBB : arrayButtonBoxes) {
-            indBB.draw(shape);
+        for (int i = 0; i < ARRAYSIZE; i++) {
+            arrayButtonBoxes[i].draw(shape);
+        }
+        if (typingSelector != -1) {
+            arrayButtonBoxes[typingSelector].draw(shape, Color.WHITE);
         }
 
         // draw text 
@@ -75,7 +78,7 @@ public class ArrayScreen extends FactOption {
         );
         for (int i = 0; i < ARRAYSIZE; i++) {
             String drawValue = arrayTextString[i];
-            String[] indexWords = {"zero", "one", "two", "three", "four", "five"};
+            String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
             if (drawValue.equals("")) {
                 drawValue = indexWords[i];
             }
