@@ -219,4 +219,17 @@ public class BenHelper {
 
         textDrawCentre(batch, font, text, hitbox, scale, col);
     }
+
+    public static void textDrawCentreSelectable(SpriteBatch batch, BitmapFont font, 
+        String text, Rect hitbox, float scale, boolean selected) 
+    {
+        if (selected) {
+            textDrawCentre( batch, font, text, hitbox, scale,
+                DEFAULT_TEXT_COLOUR
+            );
+        }
+        else {
+            textDrawCentre(batch, font, text, hitbox, scale);
+        }
+    }
 }
