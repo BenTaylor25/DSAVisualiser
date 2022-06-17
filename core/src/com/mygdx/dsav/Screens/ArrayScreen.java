@@ -96,10 +96,19 @@ public class ArrayScreen extends FactOption {
             if (drawValue.equals("")) {
                 drawValue = indexWords[i];
             }
-            BenHelper.textDrawCentre(
-                batch, font, drawValue, 
-                arrayButtonBoxes[i], 1f
-            );
+            if (typingSelector == i) {
+                BenHelper.textDrawCentre(
+                    batch, font, drawValue, 
+                    arrayButtonBoxes[i], 1f,
+                    BenHelper.DEFAULT_TEXT_COLOUR
+                );
+            }
+            else {
+                BenHelper.textDrawCentre(
+                    batch, font, drawValue, 
+                    arrayButtonBoxes[i], 1f
+                );
+            }
 
             BenHelper.textDrawCentre(
                 batch, font, ""+i, 
