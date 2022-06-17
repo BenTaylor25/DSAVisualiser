@@ -109,6 +109,10 @@ public class BenHelper {
         }
     }
 
+    public static boolean screenClicked() {
+        return Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
+    }
+
     public static class Rect {
         public float x, y, w, h;
 
@@ -132,8 +136,7 @@ public class BenHelper {
         }
 
         public boolean checkClick() {
-            return Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
-                   checkHover();
+            return screenClicked() && checkHover();
         }
 
         public void draw(ShapeRenderer shape, Color col) {
