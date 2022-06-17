@@ -1,7 +1,5 @@
 package com.mygdx.dsav.Screens;
 
-import java.util.Arrays;
-
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
@@ -9,8 +7,8 @@ import com.mygdx.dsav.FactOption;
 import com.badlogic.gdx.graphics.Color;
 
 public class ArrayScreen extends FactOption {
-    int ARRAYSIZE;
-    String[] array;
+    final int ARRAYSIZE = 6;
+    String[] arrayTextString;
     int typingSelection;
     String hintTextString;
     BenHelper.Rect titleButtonBox;
@@ -20,25 +18,26 @@ public class ArrayScreen extends FactOption {
 
     @Override
     public void create() {
-        ARRAYSIZE = 6;
-        array = new String[ARRAYSIZE];
-        Arrays.fill(array, "test");
-        typingSelection = -1;
-
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
 
+        typingSelection = -1;
+        arrayTextString = new String[ARRAYSIZE];
         arrayButtonBoxes = new BenHelper.Rect[ARRAYSIZE];
-        Arrays.fill(arrayButtonBoxes, new BenHelper.Rect(GW*0.1f, GH*0.5f, GW*0.15f, GW*0.15f));
-        for (int i = 1; i < ARRAYSIZE; i++) {
+        for (int i = 0; i < ARRAYSIZE; i++) {
+            arrayTextString[i] = "test";
+            arrayButtonBoxes[i] = new BenHelper.Rect(GW*0.05f, GH*0.4f, GW*0.15f, GW*0.15f);
             arrayButtonBoxes[i].x += i * arrayButtonBoxes[i].w;
         }
     }
 
     @Override
     public void reset() {
-        array = new String[6];
-        Arrays.fill(array, "");
+        arrayTextString = new String[6];
+        String[] indexWords = {"zero", "one", "two", "three", "four", "five"};
+        for (int i = 0; i < ARRAYSIZE; i++) {
+            arrayTextString[i] = indexWords[i];
+        }
         typingSelection = -1;
     }
 
@@ -64,9 +63,14 @@ public class ArrayScreen extends FactOption {
         // draw text 
         BenHelper.textDrawCentre(batch, font, "Array", titleButtonBox, 1.5f, 
             BenHelper.DEFAULT_TEXT_COLOUR);
-        for (int i = 0; i < ARRAYSIZE; i++) {   // wip: this isn't displaying
-            BenHelper.textDrawCentre(batch, font, array[i], 
+        for (int i = 0; i < ARRAYSIZE; i++) {
+            BenHelper.textDrawCentre(batch, font, arrayTextString[i], 
                 arrayButtonBoxes[i], 1.25f);
+                
+            BenHelper.textDrawCentre(batch, font, ""+i, 
+                arrayButtonBoxes[i].x + (arrayButtonBoxes[i].w * 0.5f), 
+                arrayButtonBoxes[i].y - (arrayButtonBoxes[i].h * 0.5f), 
+                1.5f, BenHelper.DEFAULT_TEXT_COLOUR);
         }
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
 
