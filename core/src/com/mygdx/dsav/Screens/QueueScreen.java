@@ -5,8 +5,6 @@ import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Queue;
 
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -145,7 +143,7 @@ public class QueueScreen extends FactOption {
 
     @Override
     public String updateAfter(String factSelector) {
-        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+        if (BenHelper.screenClicked()) {
             if (inputTextButtonBox.checkHover()) {
                 inputTypingEnabled = true;
             } else {

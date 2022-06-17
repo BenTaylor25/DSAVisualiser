@@ -4,8 +4,6 @@ import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Stack;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -146,7 +144,7 @@ public class StackScreen extends FactOption {
 
     @Override
     public String updateAfter(String factSelector) {
-        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+        if (BenHelper.screenClicked()) {
             if (inputTextButtonBox.checkHover()) {
                 inputTypingEnabled = true;
             } else {
