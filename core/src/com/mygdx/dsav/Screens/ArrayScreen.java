@@ -46,7 +46,7 @@ public class ArrayScreen extends FactOption {
         if (BenHelper.screenClicked()) {
             typingSelector = -1;
             for (int i = 0; i < ARRAYSIZE; i++) {
-                if (arrayButtonBoxes[i].checkClick()) {
+                if (arrayButtonBoxes[i].checkHover()) {
                     typingSelector = i;
                     break;
                 }
