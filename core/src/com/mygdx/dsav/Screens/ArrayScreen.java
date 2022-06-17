@@ -25,7 +25,7 @@ public class ArrayScreen extends FactOption {
         arrayTextString = new String[ARRAYSIZE];
         arrayButtonBoxes = new BenHelper.Rect[ARRAYSIZE];
         for (int i = 0; i < ARRAYSIZE; i++) {
-            arrayTextString[i] = "test";
+            arrayTextString[i] = "";
             arrayButtonBoxes[i] = new BenHelper.Rect(GW*0.05f, GH*0.4f, GW*0.15f, GW*0.15f);
             arrayButtonBoxes[i].x += i * arrayButtonBoxes[i].w;
         }
@@ -34,9 +34,8 @@ public class ArrayScreen extends FactOption {
     @Override
     public void reset() {
         arrayTextString = new String[6];
-        String[] indexWords = {"zero", "one", "two", "three", "four", "five"};
         for (int i = 0; i < ARRAYSIZE; i++) {
-            arrayTextString[i] = indexWords[i];
+            arrayTextString[i] = "";
         }
         typingSelector = -1;
     }
@@ -71,12 +70,17 @@ public class ArrayScreen extends FactOption {
         }
 
         // draw text 
-        BenHelper.textDrawCentre(batch, font, "Array", titleButtonBox, 
+        BenHelper.textDrawCentre(batch, font, "Array", titleButtonBox,
             1.5f, BenHelper.DEFAULT_TEXT_COLOUR
         );
         for (int i = 0; i < ARRAYSIZE; i++) {
+            String drawValue = arrayTextString[i];
+            String[] indexWords = {"zero", "one", "two", "three", "four", "five"};
+            if (drawValue.equals("")) {
+                drawValue = indexWords[i];
+            }
             BenHelper.textDrawCentre(
-                batch, font, arrayTextString[i], 
+                batch, font, drawValue, 
                 arrayButtonBoxes[i], 1f
             );
 
