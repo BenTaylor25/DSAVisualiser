@@ -97,8 +97,10 @@ public class QueueScreen extends FactOption {
             BenHelper.Rect valueRect = new BenHelper.Rect(GW*0.35f, GH*0.2f, GW*0.3f, GH*0.1f);
             valueRect.y += i * GH*0.1;
             valueRect.draw(shape);
-            BenHelper.textDrawCentre(batch, font, value, valueRect, 1f, 
-                BenHelper.DEFAULT_TEXT_COLOUR);
+            BenHelper.textDrawCentre(batch, font, value, 
+                valueRect, 1f, 
+                BenHelper.DEFAULT_TEXT_COLOUR
+            );
         }
 
         // draw button outlines
@@ -113,24 +115,28 @@ public class QueueScreen extends FactOption {
         dequeueButtonBox.draw(shape);
 
         // draw text
-        BenHelper.textDrawCentre(batch, font, "Queue", titleButtonBox, 1.5f, 
-            BenHelper.DEFAULT_TEXT_COLOUR);
+        BenHelper.textDrawCentre(batch, font, "Queue", 
+            titleButtonBox, 1.5f, BenHelper.DEFAULT_TEXT_COLOUR
+        );
 
-        if (inputTextString.equals("")) {
-            BenHelper.textDrawCentre(batch, font, "[click to type]", inputTextButtonBox, 1f,
-                BenHelper.DEFAULT_TEXT_COLOUR);
-        } else {
-            BenHelper.textDrawCentre(batch, font, inputTextString, inputTextButtonBox, 1f, 
-                BenHelper.DEFAULT_TEXT_COLOUR);
-        }
-        BenHelper.textDrawCentre(batch, font, outputTextString, outputTextButtonBox, 1f, 
-            BenHelper.DEFAULT_TEXT_COLOUR);
+        String drawValue = inputTextString;
+        if (drawValue.equals("")) { drawValue = "[click to type]"; }
+        BenHelper.textDrawCentreSelectable(batch, font, 
+            drawValue, inputTextButtonBox, 1f, 
+            inputTypingEnabled
+        );
+
+        BenHelper.textDrawCentre(batch, font, outputTextString, 
+            outputTextButtonBox, 1f, 
+            BenHelper.DEFAULT_TEXT_COLOUR
+        );
 
         BenHelper.textDrawCentre(batch, font, "Enqueue", enqueueButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, "Peek", peekButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, "Dequeue", dequeueButtonBox, 1.25f);
-        BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 0.75f,
-            Color.GRAY);
+        BenHelper.textDrawCentre(batch, font, hintTextString, 
+            hintButtonBox, 0.75f, Color.GRAY
+        );
 
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
 

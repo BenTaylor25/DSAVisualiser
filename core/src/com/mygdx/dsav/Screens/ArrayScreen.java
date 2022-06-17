@@ -93,22 +93,12 @@ public class ArrayScreen extends FactOption {
         for (int i = 0; i < ARRAYSIZE; i++) {
             String drawValue = arrayTextString[i];
             String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
-            if (drawValue.equals("")) {
-                drawValue = indexWords[i];
-            }
-            if (typingSelector == i) {
-                BenHelper.textDrawCentre(
-                    batch, font, drawValue, 
-                    arrayButtonBoxes[i], 1f,
-                    BenHelper.DEFAULT_TEXT_COLOUR
-                );
-            }
-            else {
-                BenHelper.textDrawCentre(
-                    batch, font, drawValue, 
-                    arrayButtonBoxes[i], 1f
-                );
-            }
+            if (drawValue.equals("")) { drawValue = indexWords[i]; }
+            BenHelper.textDrawCentreSelectable(
+                batch, font, drawValue, 
+                arrayButtonBoxes[i], 1f, 
+                (typingSelector == i)
+            );
 
             BenHelper.textDrawCentre(
                 batch, font, ""+i, 
