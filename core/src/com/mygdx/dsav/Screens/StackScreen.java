@@ -31,13 +31,13 @@ public class StackScreen extends FactOption {
         outputTextString = "";
         hintTextString = "";
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
-        backButtonBox =  new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
+        backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         inputTextButtonBox = new BenHelper.Rect(GW*0.025f, GH*0.525f, GW*0.3f, GH*0.1f);
         pushButtonBox = new BenHelper.Rect(GW*0.105f, GH*0.3f, GW*0.14f, GH*0.14f);
         outputTextButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.525f, GW*0.3f, GH*0.1f);
         peekButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.3f, GW*0.14f, GH*0.14f);
         popButtonBox = new BenHelper.Rect(GW*0.835f, GH*0.3f, GW*0.14f, GH*0.14f);
-        hintButtonBox =  new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+        hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
     }
 
     @Override
