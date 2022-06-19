@@ -173,10 +173,12 @@ public class BenHelper {
     }
 
     /**
-     * Enter a string (what is currently displayed). <br>
-     * Check the keyboard and update string . <br>
+     * Enter a string (what is currently displayed). <br><br>
+     * Check the keyboard and update string. <br><br>
+     * Return the result.
      * @param text 
      * @param maxLen (default: 100)
+     * @return text + keyboardChanges
      */
     public static String typing(String text, int maxLen) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && text.length() > 0) {
