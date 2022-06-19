@@ -91,7 +91,6 @@ public class BenHelper {
 
     /**
      * Java doesn't have built in boolean->integer apparently...
-     * @param b (boolean)
      * @return 1 (if b == true) or 0
      */
     public static int boolToInt(boolean b) { return b ? 1 : 0; }
@@ -109,10 +108,16 @@ public class BenHelper {
         }
     }
 
+    /**
+     * Return true if left mouse button has just been released.
+     */
     public static boolean screenClicked() {
         return Gdx.input.isButtonJustPressed(Input.Buttons.LEFT);
     }
 
+    /**
+     * Rectangle class that has methods for handling hitboxing.
+     */
     public static class Rect {
         public float x, y, w, h;
 
@@ -120,6 +125,12 @@ public class BenHelper {
             this(0, 0, 0, 0);
         }
 
+        /**
+         * @param x
+         * @param y
+         * @param w
+         * @param h
+         */
         public Rect(float x, float y, float w, float h) {
             this.x = x;
             this.y = y;
@@ -127,6 +138,9 @@ public class BenHelper {
             this.h = h;
         }
 
+        /**
+         * Return true if the cursor is in the rectangle.
+         */
         public boolean checkHover() {
             float mx = mouseX();
             float my = mouseY();
@@ -135,10 +149,18 @@ public class BenHelper {
                    my >= y && my <= y+h;
         }
 
+        /**
+         * Return true if the cursor is in the rectangle and 
+         * the left mouse button has been clicked.
+         */
         public boolean checkClick() {
             return screenClicked() && checkHover();
         }
 
+        /**
+         * @param shape (ShapeRenderer)
+         * @param col (default: black)
+         */
         public void draw(ShapeRenderer shape, Color col) {
             shape.setColor(col);
             shape.begin(ShapeType.Line);
@@ -150,6 +172,12 @@ public class BenHelper {
         }
     }
 
+    /**
+     * Enter a string (what is currently displayed). <br>
+     * Check the keyboard and update string . <br>
+     * @param text 
+     * @param maxLen (default: 100)
+     */
     public static String typing(String text, int maxLen) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && text.length() > 0) {
             text = text.substring(0, text.length()-1);
@@ -187,6 +215,16 @@ public class BenHelper {
         return typing(text, 100);
     }
 
+    /**
+     * Draw text with centre midX, midY.
+     * @param batch
+     * @param font
+     * @param text
+     * @param midX
+     * @param midY
+     * @param scale
+     * @param col
+     */
     public static void textDrawCentre(SpriteBatch batch, BitmapFont font, 
         String text, float midX, float midY, float scale, Color col) 
     {
@@ -201,6 +239,15 @@ public class BenHelper {
             font.draw(batch, glyph, drwX, drwY);
         batch.end();
     }
+    /**
+     * Draw text with centre mid(Rect hitbox).
+     * @param batch
+     * @param font
+     * @param text
+     * @param hitbox
+     * @param scale
+     * @param col
+     */
     public static void textDrawCentre(SpriteBatch batch, BitmapFont font,
         String text, Rect hitbox, float scale, Color col)
     {
@@ -209,6 +256,15 @@ public class BenHelper {
 
         textDrawCentre(batch, font, text, midX, midY, scale, col);
     }
+    /**
+     * Draw text with centre mid(Rect hitbox). <br>
+     * Colour will be supplied by the function; variable on hover.
+     * @param batch
+     * @param font
+     * @param text
+     * @param hitbox
+     * @param scale
+     */
     public static void textDrawCentre(SpriteBatch batch, BitmapFont font,
         String text, Rect hitbox, float scale) 
     {
@@ -220,6 +276,17 @@ public class BenHelper {
         textDrawCentre(batch, font, text, hitbox, scale, col);
     }
 
+    /**
+     * Draw text for a selectable hitbox. <br><br>
+     * When unselected, it will have a hover colour when hovered over. <br><br>
+     * When selected, it will just have a static colour.
+     * @param batch
+     * @param font
+     * @param text
+     * @param hitbox
+     * @param scale
+     * @param selected
+     */
     public static void textDrawCentreSelectable(SpriteBatch batch, BitmapFont font, 
         String text, Rect hitbox, float scale, boolean selected) 
     {
