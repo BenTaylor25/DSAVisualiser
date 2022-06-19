@@ -90,7 +90,7 @@ public class MainMenuScreen extends FactOption {
             factSelector = "array";
         }
         else if (llistButtonBox.checkClick()) {
-            // factSelector = "llist";
+            factSelector = "llist";
         }
         else if (stackButtonBox.checkClick()) {
             factSelector = "stack";
