@@ -170,6 +170,28 @@ public class BenHelper {
         public void draw(ShapeRenderer shape) {
             draw(shape, Color.BLACK);
         }
+
+        public void drawDotted(ShapeRenderer shape, Color col, boolean isDotted) {
+            if (!isDotted) {
+                draw(shape, col);
+                return;
+            } 
+            
+            shape.setColor(col);
+            shape.begin(ShapeType.Line);
+                for (float i = x; i < x + w; i += 10) {
+                    shape.circle(i, y, 1);
+                    shape.circle(i, y+h, 1);
+                }
+                for (float j = y; j < y + h; j += 10) {
+                    shape.circle(x, j, 1);
+                    shape.circle(x+w, j, 1);
+                }
+            shape.end();
+        }
+        public void drawDotted(ShapeRenderer shape, boolean isDotted) {
+            drawDotted(shape, Color.BLACK, isDotted);
+        }
     }
 
     /**
