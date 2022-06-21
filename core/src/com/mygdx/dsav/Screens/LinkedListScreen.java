@@ -25,6 +25,7 @@ public class LinkedListScreen extends FactOption {
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
 
+        includeInserted = false;
         typingSelector = -1;
         listTextString = new String[LISTSIZE];
         insertedTextString = "";
@@ -67,9 +68,12 @@ public class LinkedListScreen extends FactOption {
         for (int i = 0; i < LISTSIZE; i++) {
             listButtonBoxes[i].draw(shape);
         }
-        // wip insertable button
+        insertedButtonBox.drawDotted(shape, !includeInserted);
         if (typingSelector >= 0 && typingSelector < LISTSIZE) {
             listButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+        }
+        if (typingSelector == LISTSIZE) {   // insertable
+            insertedButtonBox.drawDotted(shape, BenHelper.HOVER_TEXT_COLOUR, !includeInserted);
         }
 
         // draw text
@@ -81,8 +85,40 @@ public class LinkedListScreen extends FactOption {
             0.75f, Color.GRAY
         );
 
-        // debug: draw hitboxes
+        String[] indexDefaults = {"[zero]", "[one]", "[two]", "[three]"};
+        if (includeInserted) {
+            indexDefaults[2] = "[three]";
+            indexDefaults[3] = "[four]";
+        }
+        for (int i = 0; i < LISTSIZE; i++) {
+            String drawValue = listTextString[i];
+            if (drawValue.equals("")) { drawValue = indexDefaults[i]; }
+            BenHelper.textDrawCentreSelectable(batch, font,
+                drawValue, listButtonBoxes[i], 
+                1f, (typingSelector == i)
+            );
+        }
 
+        String drawValue = insertedTextString;
+        if (drawValue.equals("")) {
+            if (includeInserted) {
+                drawValue = "[two]";
+            } else {
+                drawValue = "[insert]"; 
+            }
+        }
+        BenHelper.textDrawCentreSelectable(batch, font, 
+            drawValue, insertedButtonBox, 
+            1f, (typingSelector == LISTSIZE)
+        );
+
+
+        // debug: draw hitboxes
+        if (BenHelper.DEBUG) {
+            titleButtonBox.draw(shape, Color.RED);
+            backButtonBox.draw(shape, Color.RED);
+            hintButtonBox.draw(shape, Color.RED);
+        }
     }
 
     @Override
