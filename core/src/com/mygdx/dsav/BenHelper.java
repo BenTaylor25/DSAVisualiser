@@ -192,6 +192,61 @@ public class BenHelper {
         public void drawDotted(ShapeRenderer shape, boolean isDotted) {
             drawDotted(shape, Color.BLACK, isDotted);
         }
+
+        /**
+         * Draw an arrow from this Rect to another Rect. <br><br>
+         * Points: 
+         * <ul>
+         *     <li>0: top left</li>
+         *     <li>1: top middle</li>
+         *     <li>2: top right</li>
+         *     <li>3: middle left</li>
+         *     <li>4: middle right</li>
+         *     <li>5: bottom left</li>
+         *     <li>6: bottom middle</li>
+         *     <li>7: bottom right</li>
+         * </ul>
+         * ~
+         * @param shape
+         * @param otherBox
+         * @param thisPoint
+         * @param otherPoint
+         */
+        public void arrowTo(ShapeRenderer shape, Rect otherBox, int thisPoint, int otherPoint) {
+            float startX = getCoords(thisPoint, x, w, new Integer[]{1, 6}, new Integer[]{2, 4, 7});
+            //float startY = getCoords(thisPoint, y);
+            //float endX = getCoords();
+            //float endY = getCoords();
+
+            // wip
+        }
+    }
+
+    private static float getCoords(int point, float start, float dist, Integer[] half, Integer[] full) {
+        float pos = start;
+
+        boolean inHalf = false;
+        boolean inFull = false;
+        for (int x : half) {
+            if (point == x) {
+                inHalf = true;
+            }
+        }
+        if (!inHalf) {
+            for (int x : full) {
+                if (point == x) {
+                    inFull = true;
+                }
+            }
+        }
+
+        if (inHalf) {
+            pos += dist * 0.5f;
+        } else if (inFull) {
+            pos += dist;
+        }
+
+        return pos;
     }
 
     /**

@@ -109,6 +109,9 @@ public class LinkedListScreen extends FactOption {
             insertedButtonBox.drawDotted(shape, BenHelper.HOVER_TEXT_COLOUR, !includeInserted);
         }
 
+        // draw arrows
+        
+
         // draw text
         BenHelper.textDrawCentre(batch, font, "Linked List", titleButtonBox, 
             1.5f, BenHelper.DEFAULT_TEXT_COLOUR
