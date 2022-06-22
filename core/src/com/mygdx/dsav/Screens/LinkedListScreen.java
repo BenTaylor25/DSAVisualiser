@@ -52,7 +52,40 @@ public class LinkedListScreen extends FactOption {
 
     @Override
     public String updateBefore(String factSelector) {
-        
+        if (BenHelper.screenClicked()) {
+            typingSelector = -1;
+
+            if (insertedButtonBox.checkHover()) {
+                typingSelector = LISTSIZE;
+            } else {
+                for (int i = 0; i < LISTSIZE; i++) {
+                    if (listButtonBoxes[i].checkHover()) {
+                        typingSelector = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        hintTextString = "";
+        boolean hoverOnAnyIndex = false;
+        for (int i = 0; i < LISTSIZE; i++) {
+            hoverOnAnyIndex = hoverOnAnyIndex ||
+                listButtonBoxes[i].checkHover();
+        }
+        if (hoverOnAnyIndex) {
+            hintTextString = "Linked List items store a value and a reference to the next item.\n"+
+                "This means that items can be fragmented in memory.";
+        } else if (insertedButtonBox.checkHover()) {
+            hintTextString = "To insert a value into a Linked List\n"+
+                "just copy the 'next' of the item-before to the new item,\n"+
+                "and change the 'next' of the item-before to the new item.";
+        } else if (titleButtonBox.checkHover()) {
+            hintTextString = "A Linked List is a collection of items similar to an Array.\n"+
+                "Linked Lists are generally slower to access, but quicker to modify.\n"+
+                "'Doubly' (AOT 'Singly') Linked Lists also reference previous items.";
+        }
+
         return factSelector;
     }
 
