@@ -21,7 +21,7 @@ public class LinkedListScreen extends FactOption {
     @Override
     public void create() {
         hintTextString = "";
-        titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
+        titleButtonBox = new BenHelper.Rect(GW*0.35f, GH*0.85f, GW*0.3f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
 
