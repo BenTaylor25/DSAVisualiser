@@ -22,6 +22,9 @@ public class BenHelper {
     public static final Color DEFAULT_TEXT_COLOUR = new Color(0.69f, 0.447f, 0.098f, 1);
     public static final Color HOVER_TEXT_COLOUR = new Color(1, 1, 1, 1);
 
+    private static final float GW = Gdx.graphics.getWidth();
+    //private static final float GH = Gdx.graphics.getHeight();
+
     /**
      * Draw an Arrow from point p1 to point p2.
      * @param p1x x-position of p1
@@ -213,12 +216,17 @@ public class BenHelper {
          * @param otherPoint
          */
         public void arrowTo(ShapeRenderer shape, Rect otherBox, int thisPoint, int otherPoint) {
-            float startX = getCoords(thisPoint, x, w, new Integer[]{1, 6}, new Integer[]{2, 4, 7});
-            //float startY = getCoords(thisPoint, y);
-            //float endX = getCoords();
-            //float endY = getCoords();
+            Integer[] horHalf = new Integer[]{1, 6};
+            Integer[] horFull = new Integer[]{2, 4, 7};
+            Integer[] verHalf = new Integer[]{3, 4};
+            Integer[] verFull = new Integer[]{5, 6, 7};
 
-            // wip
+            float startX = getCoords(thisPoint, x, w, horHalf, horFull);
+            float startY = getCoords(thisPoint, y, h, verHalf, verFull);
+            float endX = getCoords(otherPoint, otherBox.x, otherBox.w, horHalf, horFull);
+            float endY = getCoords(otherPoint, otherBox.y, otherBox.h, verHalf, verFull);
+
+            drawArrow(shape, startX, startY, endX, endY, 45, GW/10, GW/100, Color.BLACK);
         }
     }
 
