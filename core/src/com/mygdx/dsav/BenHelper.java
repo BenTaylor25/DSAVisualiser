@@ -200,14 +200,14 @@ public class BenHelper {
          * Draw an arrow from this Rect to another Rect. <br><br>
          * Points: 
          * <ul>
-         *     <li>0: top left</li>
-         *     <li>1: top middle</li>
-         *     <li>2: top right</li>
+         *     <li>0: bottom left</li>
+         *     <li>1: bottom middle</li>
+         *     <li>2: bottom right</li>
          *     <li>3: middle left</li>
          *     <li>4: middle right</li>
-         *     <li>5: bottom left</li>
-         *     <li>6: bottom middle</li>
-         *     <li>7: bottom right</li>
+         *     <li>5: top left</li>
+         *     <li>6: top middle</li>
+         *     <li>7: top right</li>
          * </ul>
          * ~
          * @param shape
