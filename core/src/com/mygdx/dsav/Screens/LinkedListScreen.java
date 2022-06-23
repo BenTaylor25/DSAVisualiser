@@ -110,7 +110,14 @@ public class LinkedListScreen extends FactOption {
         }
 
         // draw arrows
-        
+        listButtonBoxes[0].arrowTo(shape, listButtonBoxes[1], 1, 6);
+        listButtonBoxes[2].arrowTo(shape, listButtonBoxes[3], 6, 1);
+        if (includeInserted) {
+            listButtonBoxes[1].arrowTo(shape, insertedButtonBox, 4, 3);
+            insertedButtonBox.arrowTo(shape, listButtonBoxes[2], 4, 3);
+        } else {
+            listButtonBoxes[1].arrowTo(shape, listButtonBoxes[2], 4, 3);
+        }
 
         // draw text
         BenHelper.textDrawCentre(batch, font, "Linked List", titleButtonBox, 
