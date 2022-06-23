@@ -17,6 +17,7 @@ public class LinkedListScreen extends FactOption {
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect[] listButtonBoxes;
     BenHelper.Rect insertedButtonBox;
+    BenHelper.Rect toggleInsertButtonBox;
 
     @Override
     public void create() {
@@ -31,6 +32,7 @@ public class LinkedListScreen extends FactOption {
         insertedTextString = "";
         listButtonBoxes = new BenHelper.Rect[LISTSIZE];
         insertedButtonBox = new BenHelper.Rect(GW*0.425f, GH*0.425f, GW*0.15f, GH*0.15f);
+        toggleInsertButtonBox = new BenHelper.Rect(GW*0.425f, GH*0.613f, GW*0.15f, GH*0.075f);
 
         for (int i = 0; i < LISTSIZE; i++) {
             listTextString[i] = "";
@@ -64,6 +66,10 @@ public class LinkedListScreen extends FactOption {
                         break;
                     }
                 }
+            }
+
+            if (toggleInsertButtonBox.checkClick()) {
+                includeInserted = !includeInserted;
             }
         }
 
@@ -108,6 +114,7 @@ public class LinkedListScreen extends FactOption {
         if (typingSelector == LISTSIZE) {   // insertable
             insertedButtonBox.drawDotted(shape, BenHelper.HOVER_TEXT_COLOUR, !includeInserted);
         }
+        toggleInsertButtonBox.draw(shape);
 
         // draw arrows
         listButtonBoxes[0].arrowTo(shape, listButtonBoxes[1], 1, 6);
@@ -155,6 +162,11 @@ public class LinkedListScreen extends FactOption {
             1f, (typingSelector == LISTSIZE)
         );
 
+        drawValue = "insert";
+        if (includeInserted) {
+            drawValue = "remove";
+        }
+        BenHelper.textDrawCentre(batch, font, drawValue, toggleInsertButtonBox, 1f);
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
