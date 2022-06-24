@@ -87,13 +87,22 @@ public class LinkedListScreen extends FactOption {
             hintTextString = "Linked List items store a value and a reference to the next item.\n"+
                 "This means that items can be fragmented in memory.";
         } else if (insertedButtonBox.checkHover()) {
-            hintTextString = "To insert a value into a Linked List\n"+
-                "just copy the 'next' of the item-before to the new item,\n"+
-                "and change the 'next' of the item-before to the new item.";
+            hintTextString = "Inserting and Removing values from a Linked List is more efficient \n"+
+                "because you only need to change a few references, whereas in an \n"+
+                "Array, you need to shift many other values.";
         } else if (titleButtonBox.checkHover()) {
-            hintTextString = "A Linked List is a collection of items similar to an Array.\n"+
+            hintTextString = "Linked Lists are similar to Arrays but store a value and a 'next'.\n"+
                 "Linked Lists are generally slower to access, but quicker to modify.\n"+
                 "'Doubly' (AOT 'Singly') Linked Lists also reference previous items.";
+        } else if (toggleInsertButtonBox.checkHover()) {
+            if (includeInserted) {   // 'remove' is shown
+                hintTextString = "To Remove a value from a Linked List\n"+
+                    "just copy the 'next' of the item-to-remove to the item-before.";
+            } else {   // 'insert' is shown
+                hintTextString =  "To Insert a value into a Linked List\n"+
+                    "just copy the 'next' of the item-before to the new item,\n"+
+                    "and change the 'next' of the item-before to the new item.";
+            }
         }
 
         return factSelector;
