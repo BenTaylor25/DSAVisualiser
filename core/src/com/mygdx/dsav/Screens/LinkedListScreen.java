@@ -49,7 +49,11 @@ public class LinkedListScreen extends FactOption {
 
     @Override
     public void reset() {
-        
+        for (int i = 0; i < LISTSIZE; i++) {
+            listTextString[i] = "";
+        }
+        insertedTextString = "";
+        typingSelector = -1;
     }
 
     @Override
@@ -181,6 +185,18 @@ public class LinkedListScreen extends FactOption {
         
         if (backButtonBox.checkClick()) {
             factSelector = "menu";
+        }
+
+        if (typingSelector == LISTSIZE) {
+            insertedTextString = BenHelper.typing(
+                insertedTextString,
+                10
+            );
+        } else if (typingSelector >= 0) {
+            listTextString[typingSelector] = BenHelper.typing(
+                listTextString[typingSelector],
+                10
+            );
         }
 
         return factSelector;
