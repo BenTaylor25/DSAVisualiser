@@ -97,7 +97,8 @@ public class LinkedListScreen extends FactOption {
         } else if (toggleInsertButtonBox.checkHover()) {
             if (includeInserted) {   // 'remove' is shown
                 hintTextString = "To Remove a value from a Linked List\n"+
-                    "just copy the 'next' of the item-to-remove to the item-before.";
+                    "just copy the 'next' of the item-to-remove to the item-before.\n"+
+                    "[But be careful of memory leaks in languages like C++].";
             } else {   // 'insert' is shown
                 hintTextString =  "To Insert a value into a Linked List\n"+
                     "just copy the 'next' of the item-before to the new item,\n"+
