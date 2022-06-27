@@ -2,6 +2,7 @@ package com.mygdx.dsav;
 
 import com.mygdx.dsav.Screens.MainMenuScreen;
 import com.mygdx.dsav.Screens.ArrayScreen;
+import com.mygdx.dsav.Screens.GraphScreen;
 import com.mygdx.dsav.Screens.LinkedListScreen;
 import com.mygdx.dsav.Screens.QueueScreen;
 import com.mygdx.dsav.Screens.StackScreen;
@@ -24,6 +25,7 @@ public class DSAVisualiser extends Game {
 		screens.put("llist", new LinkedListScreen());
 		screens.put("stack", new StackScreen());
 		screens.put("queue", new QueueScreen());
+		screens.put("graph", new GraphScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
@@ -37,6 +39,7 @@ public class DSAVisualiser extends Game {
 			case "llist":
 			case "stack":
 			case "queue":
+			case "graph":
 				if ( factSelector != oldFactSelector ) {
 					screens.get(factSelector).reset();
 					oldFactSelector = factSelector;

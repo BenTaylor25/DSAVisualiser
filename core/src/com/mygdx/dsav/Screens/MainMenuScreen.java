@@ -99,7 +99,7 @@ public class MainMenuScreen extends FactOption {
             factSelector = "queue";
         }
         else if (graphButtonBox.checkClick()) {
-            // factSelector = "graph";
+            factSelector = "graph";
         }
         else if (streeButtonBox.checkClick()) {
             // factSelector = "stree";
