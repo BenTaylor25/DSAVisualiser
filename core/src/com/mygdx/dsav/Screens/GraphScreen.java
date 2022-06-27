@@ -53,7 +53,13 @@ public class GraphScreen extends FactOption {
 
 
         // draw text
+        BenHelper.textDrawCentre(batch, font, "Graph",
+            titleButtonBox, 1.5f
+        );
 
+        BenHelper.textDrawCentre(batch, font, "Back", 
+            backButtonBox, 1.25f
+        );
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
