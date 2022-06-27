@@ -3,9 +3,9 @@ package com.mygdx.dsav.DataStructs;
 import java.util.LinkedList;
 
 class GraphNode {
-    protected String value;
-    protected LinkedList<Integer> connections;
-    protected LinkedList<Integer> weights;
+    public String value;
+    public LinkedList<Integer> connections;
+    public LinkedList<Integer> weights;
 
     /** Creates a Graph Node (used by the Graph class) */
     public GraphNode(String val) {
@@ -38,8 +38,8 @@ class GraphNode {
 
 
 public class Graph {
-    private final boolean isWeighted;
-    private final boolean isDirected;
+    public boolean isWeighted;
+    public boolean isDirected;
     private LinkedList<GraphNode> nodes;
     
     /** 
