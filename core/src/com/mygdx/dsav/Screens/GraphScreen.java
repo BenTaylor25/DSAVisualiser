@@ -21,6 +21,9 @@ public class GraphScreen extends FactOption {
     @Override
     public void create() {
         graph = new Graph();
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            graph.addNode("");
+        }
         hintTextString = "";
         controllerSelector = -1;
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
@@ -86,7 +89,12 @@ public class GraphScreen extends FactOption {
         }
 
         // draw arrows
-        // wip
+        if (graph.nodes.get(0).pointsTo(1)) {
+            graphButtonBoxes[0].arrowTo(
+                shape, graphButtonBoxes[2], 
+                4, 6
+            );
+        }
 
         // draw data items
 
