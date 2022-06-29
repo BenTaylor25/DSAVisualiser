@@ -43,5 +43,13 @@ public class GraphNode {
         }
         return false;
     }
+
+    public void removeConnection(int ind) {
+        for (int i = 0; i < connections.size(); i++) {
+            if (connections.get(i) == ind) {
+                connections.remove(i);
+            }
+        }
+    }
 }
 

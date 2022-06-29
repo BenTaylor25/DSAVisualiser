@@ -63,6 +63,23 @@ public class Graph {
         }
     }
 
+    /**
+     * Toggle vertex.
+     * @param ind
+     * @return
+     */
+    public void toggleVertex(int ind1, int ind2, int weight) {
+        boolean vertexExists = nodes.get(ind1).connections.contains(ind2);
+        if (vertexExists) {
+            nodes.get(ind1).removeConnection(ind2);
+        } else {
+            nodes.get(ind1).connections.add(ind2);
+        }
+    }
+    public void toggleVertex(int ind1, int ind2) {
+        toggleVertex(ind1, ind2, 0);
+    }
+
     /** 
      * Return the value of the node at a given index.
      * @param ind 

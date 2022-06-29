@@ -46,6 +46,9 @@ public class GraphScreen extends FactOption {
     @Override
     public void reset() {
         graph = new Graph();
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            graph. addNode("");
+        }
     }
 
     @Override
@@ -59,7 +62,7 @@ public class GraphScreen extends FactOption {
                 if (controllerButtonBoxes[i].checkHover()) {
                     controllerSelected = true;
                     if (controllerSelector != -1 && controllerSelector != i) {
-                        graph.addVertex(controllerSelector, i);
+                        graph.toggleVertex(controllerSelector, i);
                         controllerSelector = -1;
                     } else {
                         controllerSelector = i;
@@ -89,7 +92,7 @@ public class GraphScreen extends FactOption {
         }
 
         // draw arrows
-        if (graph.nodes.get(0).pointsTo(1)) {
+        if (graph.nodes.get(0).pointsTo(2)) {
             graphButtonBoxes[0].arrowTo(
                 shape, graphButtonBoxes[2], 
                 4, 6
