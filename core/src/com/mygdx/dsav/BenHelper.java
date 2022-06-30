@@ -228,6 +228,68 @@ public class BenHelper {
 
             drawArrow(shape, startX, startY, endX, endY, 45, GW/50, GW/500, Color.BLACK);
         }
+        /**
+         * Calculate points from index.
+         * 
+         * @param shape
+         * @param otherBox
+         * @param ind1
+         * @param ind2
+         */
+        public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2) {
+            assert ind1 != ind2: "BenHelper.Rect.arrowToCalc() - indices are the same";
+            boolean bothInRange = 
+                ind1 >= 0 && ind1 <= 3 &&
+                ind2 >= 0 && ind2 <= 3;
+            assert bothInRange: "BenHelper.Rect.arrowToCalc() - index out of range";
+
+            int tp, op;
+            boolean shouldSwap;
+
+            if (ind1 == 0 || ind2 == 0) {
+                if (ind1 == 1 || ind2 == 1) {
+                    // set(ind1, ind2) = set(0, 1)
+                    tp = 3;
+                    op = 6;
+                }
+                else if (ind1 == 2 || ind2 == 2) {
+                    // set(ind1, ind2) = set(0, 2)
+                    tp = 4;
+                    op = 6;
+                }
+                else {
+                    // set(ind1, ind2) = set(0, 3)
+                    tp = 1;
+                    op = 6;
+                }
+                shouldSwap = (ind2 == 0);
+            }
+            else if (ind1 == 1 || ind2 == 1) {
+                if (ind1 == 2 || ind2 == 2) {
+                    // set(ind1, ind2) = set(1, 2)
+                    tp = 4;
+                    op = 3;
+                }
+                else {
+                    // set(ind1, ind2) = set(1, 3)
+                    tp = 1;
+                    op = 3;
+                }
+                shouldSwap = (ind2 == 1);
+            }
+            else {
+                // set(ind1, ind2) = set(2, 3)
+                tp = 1;
+                op = 4;
+                shouldSwap = (ind2 == 2);
+            }
+
+            if (shouldSwap) {
+                tp = tp ^ op ^ (op = tp);
+            }
+
+            this.arrowTo(shape, otherBox, tp, op);
+        }
     }
 
     private static float getCoords(int point, float start, float dist, Integer[] half, Integer[] full) {

@@ -92,11 +92,21 @@ public class GraphScreen extends FactOption {
         }
 
         // draw arrows
-        if (graph.nodes.get(0).pointsTo(2)) {
-            graphButtonBoxes[0].arrowTo(
-                shape, graphButtonBoxes[2], 
-                4, 6
-            );
+        // if (graph.nodes.get(0).pointsTo(2)) {
+        //     graphButtonBoxes[0].arrowTo(
+        //         shape, graphButtonBoxes[2], 
+        //         4, 6
+        //     );
+        // }
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            for (int j = 0; j < GRAPHSIZE; j ++) {
+                if (i != j && graph.nodes.get(i).pointsTo(j)) {
+                    graphButtonBoxes[i].arrowToCalc(shape, 
+                        graphButtonBoxes[j], 
+                        i, j
+                    );
+                }
+            }
         }
 
         // draw data items
