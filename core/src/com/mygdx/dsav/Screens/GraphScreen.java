@@ -61,8 +61,10 @@ public class GraphScreen extends FactOption {
             for (int i = 0; i < GRAPHSIZE; i++) {
                 if (controllerButtonBoxes[i].checkHover()) {
                     controllerSelected = true;
-                    if (controllerSelector != -1 && controllerSelector != i) {
-                        graph.toggleVertex(controllerSelector, i);
+                    if (controllerSelector != -1) {
+                        if (controllerSelector != i) {
+                            graph.toggleVertex(controllerSelector, i);
+                        }
                         controllerSelector = -1;
                     } else {
                         controllerSelector = i;
