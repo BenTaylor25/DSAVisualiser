@@ -80,6 +80,14 @@ public class GraphScreen extends FactOption {
                 controllerSelector = -1;
             }
         }
+
+        // toggles
+        if (toggleDirectedButtonBox.checkClick()) {
+            graph.isDirected = !graph.isDirected;
+        }
+        else if (toggleWeightedButtonBox.checkClick()) {
+            graph.isWeighted = !graph.isWeighted;
+        }
         
         return factSelector;
     }
@@ -106,6 +114,7 @@ public class GraphScreen extends FactOption {
         toggleDirectedButtonBox.draw(shape);
         toggleWeightedButtonBox.draw(shape);
 
+
         // draw arrows
         for (int i = 0; i < GRAPHSIZE; i++) {
             for (int j = 0; j < GRAPHSIZE; j ++) {
@@ -128,10 +137,21 @@ public class GraphScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Graph",
             titleButtonBox, 1.5f
         );
-
         BenHelper.textDrawCentre(batch, font, "Back", 
             backButtonBox, 1.25f
         );
+
+        String text = "to directed";
+        if (graph.isDirected) text = "to undirected";
+        BenHelper.textDrawCentre(batch, font, text, 
+            toggleDirectedButtonBox, 0.75f
+        );
+        text = "to weighted";
+        if (graph.isWeighted) text = "to unweighted";
+        BenHelper.textDrawCentre(batch, font, text, 
+            toggleWeightedButtonBox, 0.75f
+        );
+
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
