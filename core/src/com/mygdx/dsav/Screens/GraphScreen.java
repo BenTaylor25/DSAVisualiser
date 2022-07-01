@@ -5,7 +5,6 @@ import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Graph;
 
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.Color;
 
 public class GraphScreen extends FactOption {
