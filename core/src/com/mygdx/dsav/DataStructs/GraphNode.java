@@ -48,6 +48,7 @@ public class GraphNode {
         for (int i = 0; i < connections.size(); i++) {
             if (connections.get(i) == ind) {
                 connections.remove(i);
+                weights.remove(i);
             }
         }
     }

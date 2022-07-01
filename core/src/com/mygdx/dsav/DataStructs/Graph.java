@@ -41,8 +41,10 @@ public class Graph {
     public void addVertex(int ind1, int ind2) {
         if (!isWeighted) {
             nodes.get(ind1).connections.add(ind2);
+            nodes.get(ind1).weights.add(0);
             if (!isDirected) {
                 nodes.get(ind2).connections.add(ind1);
+                nodes.get(ind2).weights.add(0);
             }
         }
     }
@@ -72,8 +74,18 @@ public class Graph {
         boolean vertexExists = nodes.get(ind1).connections.contains(ind2);
         if (vertexExists) {
             nodes.get(ind1).removeConnection(ind2);
+
+            if (!isDirected) {
+                nodes.get(ind2).removeConnection(ind1);
+            }
         } else {
             nodes.get(ind1).connections.add(ind2);
+            nodes.get(ind1).weights.add(weight);
+
+            if (!isDirected) {
+                nodes.get(ind2).connections.add(ind1);
+                nodes.get(ind2).weights.add(weight);               
+            }
         }
     }
     public void toggleVertex(int ind1, int ind2) {
