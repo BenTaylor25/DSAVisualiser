@@ -226,7 +226,7 @@ public class BenHelper {
             float endX = getCoords(otherPoint, otherBox.x, otherBox.w, horHalf, horFull);
             float endY = getCoords(otherPoint, otherBox.y, otherBox.h, verHalf, verFull);
 
-            drawArrow(shape, startX, startY, endX, endY, 45, GW/50, GW/500, Color.BLACK);
+            drawArrow(shape, startX, startY, endX, endY, 30, GW/75, GW/500, Color.BLACK);
         }
         /**
          * Calculate points from index.
