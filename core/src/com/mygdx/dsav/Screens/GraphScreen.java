@@ -5,6 +5,7 @@ import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Graph;
 
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.Color;
 
 public class GraphScreen extends FactOption {
@@ -12,6 +13,7 @@ public class GraphScreen extends FactOption {
     Graph graph;
     String hintTextString;
     int controllerSelector;
+    int typingSelector;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
@@ -28,6 +30,7 @@ public class GraphScreen extends FactOption {
         }
         hintTextString = "";
         controllerSelector = -1;
+        typingSelector = -1;
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
@@ -81,6 +84,18 @@ public class GraphScreen extends FactOption {
             }
         }
 
+        // typing
+        if (BenHelper.screenClicked()) {
+            typingSelector = -1;
+
+            for (int i = 0; i < GRAPHSIZE; i++) {
+                if (graphButtonBoxes[i].checkHover()) {
+                    typingSelector = i;
+                    break;
+                }
+            }
+        }
+
         // toggles
         if (toggleDirectedButtonBox.checkClick()) {
             graph.isDirected = !graph.isDirected;
@@ -109,6 +124,9 @@ public class GraphScreen extends FactOption {
             controllerButtonBoxes[controllerSelector].draw(
                 shape, BenHelper.HOVER_TEXT_COLOUR
             );
+        }
+        if (typingSelector >= 0) {
+            graphButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
 
         toggleDirectedButtonBox.draw(shape);
@@ -152,6 +170,16 @@ public class GraphScreen extends FactOption {
             toggleWeightedButtonBox, 0.75f
         );
 
+        String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            text = graph.nodes.get(i).value;
+            if (text.equals("")) { text = defaults[i]; }
+            BenHelper.textDrawCentreSelectable(batch, font, 
+                text, graphButtonBoxes[i], 
+                1f, (typingSelector == i)
+            );
+        }
+
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
@@ -166,6 +194,12 @@ public class GraphScreen extends FactOption {
             factSelector = "menu";
         }
 
+        if (typingSelector >= 0) {
+            graph.nodes.get(typingSelector).value = BenHelper.typing(
+                graph.nodes.get(typingSelector).value,
+                10
+            );
+        }
 
         return factSelector;
     }
