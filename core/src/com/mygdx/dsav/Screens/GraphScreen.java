@@ -18,8 +18,9 @@ public class GraphScreen extends FactOption {
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect toggleDirectedButtonBox;
     BenHelper.Rect toggleWeightedButtonBox;
-    BenHelper.Rect[] graphButtonBoxes;
+    BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
+    BenHelper.Rect[] weightButtonBoxes;
 
     @Override
     public void create() {
@@ -48,6 +49,14 @@ public class GraphScreen extends FactOption {
         controllerButtonBoxes[1] = new BenHelper.Rect(GW*0.86f, GW*0.07f, GW*0.03f, GW*0.03f);
         controllerButtonBoxes[2] = new BenHelper.Rect(GW*0.94f, GW*0.07f, GW*0.03f, GW*0.03f);
         controllerButtonBoxes[3] = new BenHelper.Rect(GW*0.9f,  GW*0.03f, GW*0.03f, GW*0.03f);
+
+        weightButtonBoxes = new BenHelper.Rect[6];
+        weightButtonBoxes[0] = new BenHelper.Rect(0,0,0,0);
+        weightButtonBoxes[1] = new BenHelper.Rect(0,0,0,0);
+        weightButtonBoxes[2] = new BenHelper.Rect(0,0,0,0);
+        weightButtonBoxes[3] = new BenHelper.Rect(0,0,0,0);
+        weightButtonBoxes[4] = new BenHelper.Rect(0,0,0,0);
+        weightButtonBoxes[5] = new BenHelper.Rect(0,0,0,0);
     }
 
     @Override
@@ -162,14 +171,6 @@ public class GraphScreen extends FactOption {
             }
         }
 
-
-
-        // draw data items
-
-
-        // draw button outlines
-
-
         // draw text
         BenHelper.textDrawCentre(batch, font, "Graph",
             titleButtonBox, 1.5f
@@ -204,6 +205,10 @@ public class GraphScreen extends FactOption {
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
+
+            for (int i = 0; i < 6; i++) {
+                weightButtonBoxes[i].draw(shape, Color.RED);
+            }
         }
     }
 
