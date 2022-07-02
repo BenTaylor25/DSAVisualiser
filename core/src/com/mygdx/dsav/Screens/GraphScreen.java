@@ -132,7 +132,7 @@ public class GraphScreen extends FactOption {
         toggleWeightedButtonBox.draw(shape);
 
 
-        // draw arrows
+        // draw arrows and weights
         for (int i = 0; i < GRAPHSIZE; i++) {
             for (int j = 0; j < GRAPHSIZE; j ++) {
                 if (i != j && graph.nodes.get(i).pointsTo(j)) {
@@ -140,9 +140,27 @@ public class GraphScreen extends FactOption {
                         graphButtonBoxes[j], 
                         i, j
                     );
+
+                    int x = graph.nodes.get(i).connections.indexOf(j);
+
+                    float midOffsetX = 0;
+                    float midOffsetY = 0;
+                    boolean oneIsZero = (i == 0 || j == 0);
+                    if (oneIsZero &&i+j == 3) { midOffsetY = GH/25; }
+                    else if (i+j == 3) { midOffsetX = -GW/25; }
+
+                    BenHelper.textDrawCentre(batch, font, 
+                        Integer.toString(graph.nodes.get(i).weights.get(x)), 
+                        (graphButtonBoxes[i].x + graphButtonBoxes[j].x + graphButtonBoxes[i].w)/2 + midOffsetX,
+                        (graphButtonBoxes[i].y + graphButtonBoxes[j].y + graphButtonBoxes[i].h)/2 + midOffsetY,
+                        1f,
+                        BenHelper.DEFAULT_TEXT_COLOUR
+                    );
                 }
             }
         }
+
+
 
         // draw data items
 
