@@ -51,12 +51,12 @@ public class GraphScreen extends FactOption {
         controllerButtonBoxes[3] = new BenHelper.Rect(GW*0.9f,  GW*0.03f, GW*0.03f, GW*0.03f);
 
         weightButtonBoxes = new BenHelper.Rect[6];
-        weightButtonBoxes[0] = new BenHelper.Rect(0,0,0,0);
-        weightButtonBoxes[1] = new BenHelper.Rect(0,0,0,0);
-        weightButtonBoxes[2] = new BenHelper.Rect(0,0,0,0);
-        weightButtonBoxes[3] = new BenHelper.Rect(0,0,0,0);
-        weightButtonBoxes[4] = new BenHelper.Rect(0,0,0,0);
-        weightButtonBoxes[5] = new BenHelper.Rect(0,0,0,0);
+        weightButtonBoxes[0] = new BenHelper.Rect(GW*0.35f, GH*0.55f, GW*0.05f, GW*0.05f);
+        weightButtonBoxes[1] = new BenHelper.Rect(GW*0.6f, GH*0.55f, GW*0.05f, GW*0.05f);
+        weightButtonBoxes[2] = new BenHelper.Rect(GW*0.485f, GH*0.5f, GW*0.05f, GW*0.05f);
+        weightButtonBoxes[3] = new BenHelper.Rect(GW*0.435f, GH*0.5f-GW*0.025f, GW*0.05f, GW*0.05f);
+        weightButtonBoxes[4] = new BenHelper.Rect(GW*0.35f, GH*0.35f, GW*0.05f, GW*0.05f);
+        weightButtonBoxes[5] = new BenHelper.Rect(GW*0.6f, GH*0.35f, GW*0.05f, GW*0.05f);
     }
 
     @Override
