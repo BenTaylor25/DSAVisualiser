@@ -13,6 +13,7 @@ public class GraphScreen extends FactOption {
     String hintTextString;
     int controllerSelector;
     int typingSelector;
+    int weightSelector;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
@@ -31,6 +32,7 @@ public class GraphScreen extends FactOption {
         hintTextString = "";
         controllerSelector = -1;
         typingSelector = -1;
+        weightSelector = -1;
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
@@ -61,6 +63,7 @@ public class GraphScreen extends FactOption {
 
     @Override
     public void reset() {
+        // selectors?
         graph = new Graph(false, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph. addNode("");
@@ -99,6 +102,18 @@ public class GraphScreen extends FactOption {
             for (int i = 0; i < GRAPHSIZE; i++) {
                 if (graphButtonBoxes[i].checkHover()) {
                     typingSelector = i;
+                    break;
+                }
+            }
+        }
+
+        // weights
+        if (BenHelper.screenClicked()) {
+            weightSelector = -1;
+
+            for (int i = 0; i < 6; i++) {
+                if (weightButtonBoxes[i].checkHover()) {
+                    weightSelector = i;
                     break;
                 }
             }
@@ -152,20 +167,34 @@ public class GraphScreen extends FactOption {
 
                     if (graph.isWeighted) {
                         int x = graph.nodes.get(i).connections.indexOf(j);
-
-                        float midOffsetX = 0;
-                        float midOffsetY = 0;
-                        boolean oneIsZero = (i == 0 || j == 0);
-                        if (oneIsZero &&i+j == 3) { midOffsetY = GH/25; }
-                        else if (i+j == 3) { midOffsetX = -GW/25; }
-
-                        BenHelper.textDrawCentre(batch, font, 
-                            Integer.toString(graph.nodes.get(i).weights.get(x)), 
-                            (graphButtonBoxes[i].x + graphButtonBoxes[j].x + graphButtonBoxes[i].w)/2 + midOffsetX,
-                            (graphButtonBoxes[i].y + graphButtonBoxes[j].y + graphButtonBoxes[i].h)/2 + midOffsetY,
-                            1f,
-                            BenHelper.DEFAULT_TEXT_COLOUR
+                        
+                        // weight box index
+                        int wInd;
+                        if (i == 0 || j == 0) {
+                            wInd = i + j - 1;
+                        } else if (i == 1 || j == 1) {
+                            wInd = i + j;
+                        } else {
+                            wInd = 5;
+                        }
+                        
+                        // not perfect, but should be good enough for now
+                        String text = Integer.toString(
+                            graph.nodes.get(i).weights.get(x)
                         );
+
+                        if (wInd == weightSelector) {
+                            BenHelper.textDrawCentre(
+                                batch, font, text, 
+                                weightButtonBoxes[wInd], 1f,
+                                BenHelper.HOVER_TEXT_COLOUR
+                            );
+                        } else {
+                            BenHelper.textDrawCentre(
+                                batch, font, text, 
+                                weightButtonBoxes[wInd], 1f
+                            );
+                        }
                     }
                 }
             }
