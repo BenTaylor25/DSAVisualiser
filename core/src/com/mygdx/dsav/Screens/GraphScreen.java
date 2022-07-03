@@ -254,6 +254,31 @@ public class GraphScreen extends FactOption {
             );
         }
 
+        if (weightSelector >= 0) {
+            int i = 0;
+            if (weightSelector >= 3) { i++; }
+            if (weightSelector == 5) { i++; }
+
+            int j = 3;
+            if (weightSelector == 0) { j = 1; }
+            if (weightSelector == 1 ||
+                weightSelector == 3) { j = 2; }
+
+            if (graph.nodes.get(i).pointsTo(j)) {
+                int x = graph.nodes.get(i).connections.indexOf(j);
+                graph.nodes.get(i).weights.set(x, BenHelper.typingNumbers(
+                    graph.nodes.get(i).weights.get(x)
+                ));
+            }
+
+            if (graph.nodes.get(j).pointsTo(i)) {
+                int x = graph.nodes.get(j).connections.indexOf(i);
+                graph.nodes.get(j).weights.set(x, BenHelper.typingNumbers(
+                    graph.nodes.get(j).weights.get(x)
+                ));
+            }
+        }
+
         return factSelector;
     }
 }

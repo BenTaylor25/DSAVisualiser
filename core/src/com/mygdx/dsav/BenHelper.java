@@ -234,7 +234,7 @@ public class BenHelper {
          * @param shape
          * @param otherBox
          * @param ind1
-         * @param ind2
+         *Color col = BenHelper.DEFAULT_TEXT_COLOUR; @param ind2
          */
         public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2) {
             assert ind1 != ind2: "BenHelper.Rect.arrowToCalc() - indices are the same";
@@ -362,6 +362,33 @@ public class BenHelper {
     }
     public static String typing(String text) {
         return typing(text, 100);
+    }
+
+    public static int typingNumbers(int num, int maxLen) {
+        String sNum = Integer.toString(num);
+        
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && sNum.length() > 0) {
+            sNum = sNum.substring(0, sNum.length()-1);
+        }
+
+        if (sNum.length() == 0) {
+            sNum += "0";
+        }
+
+        if (sNum.length() >= maxLen) {
+            return Integer.parseInt(sNum);
+        }
+
+        for (int i = 7; i <= 16; i ++) {
+            if (Gdx.input.isKeyJustPressed(i)) {
+                sNum += Input.Keys.toString(i);
+            }
+        }
+
+        return Integer.parseInt(sNum);
+    }
+    public static int typingNumbers(int num) {
+        return typingNumbers(num, 4);
     }
 
     /**
