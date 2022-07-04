@@ -235,6 +235,7 @@ public class GraphScreen extends FactOption {
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
+            hintButtonBox.draw(shape, Color.RED);
 
             for (int i = 0; i < 6; i++) {
                 weightButtonBoxes[i].draw(shape, Color.RED);
