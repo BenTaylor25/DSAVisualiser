@@ -73,6 +73,57 @@ public class GraphScreen extends FactOption {
     @Override
     public String updateBefore(String factSelector) {
         hintTextString = "";
+        if (titleButtonBox.checkHover()) {
+
+        }
+        else if (toggleDirectedButtonBox.checkHover()) {
+
+        } 
+        else if (toggleWeightedButtonBox.checkHover()) {
+
+        }
+        else {
+            boolean nodeHover = false;
+            boolean controllerHover = false;
+            boolean weightHover = false;
+            for (int i = 0; i < GRAPHSIZE; i++) {
+                nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
+            }
+            for (int i = 0; i < GRAPHSIZE; i++) {
+                controllerHover = controllerHover || controllerButtonBoxes[i].checkHover();
+            }
+
+            if (graph.isWeighted) {
+                for (int i = 0; i < 6; i++) {
+                    boolean hover = weightButtonBoxes[i].checkHover();
+
+                    int inode = 0;
+                    if (i >= 3) { inode++; }
+                    if (i == 5) { inode++; }
+
+                    int jnode = 3;
+                    if (i == 0) { jnode = 1; }
+                    if (i == 1 || i == 3) { jnode = 2; }
+
+                    boolean vertexExists = graph.nodes.get(inode).pointsTo(jnode) ||
+                        graph.nodes.get(jnode).pointsTo(inode);
+
+                    if (hover && vertexExists) {
+                        weightHover = true;
+                    }
+                } 
+            }
+
+            if (nodeHover) {
+
+            }
+            else if (controllerHover) {
+
+            }
+            else if (weightHover) {
+                hintTextString = "test";
+            }
+        }
 
         // controller
         if (BenHelper.screenClicked()) {
@@ -207,6 +258,9 @@ public class GraphScreen extends FactOption {
         );
         BenHelper.textDrawCentre(batch, font, "Back", 
             backButtonBox, 1.25f
+        );
+        BenHelper.textDrawCentre(batch, font, hintTextString, 
+            hintButtonBox, 0.75f, Color.GRAY
         );
 
         String text = "to directed";
