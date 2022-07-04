@@ -74,13 +74,19 @@ public class GraphScreen extends FactOption {
     public String updateBefore(String factSelector) {
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
-
+            hintTextString = "Graphs are collections of nodes joined together by vertices.\n"+
+                "Graphs are extremely useful when representing relationships.\n"+
+                "Example: Social Media accounts are nodes that connect to others.";
         }
         else if (toggleDirectedButtonBox.checkHover()) {
-
+            hintTextString = "Graphs can be Undirected or Directed.\n"+
+                "Undirected is useful for symetric relations (e.g. friends).\n"+
+                "Directed is useful for asymetric relations (e.g. followers).";
         } 
         else if (toggleWeightedButtonBox.checkHover()) {
-
+            hintTextString = "Graphs can be Unweighted or Weighted.\n"+
+                "Weighted is useful for evaluating the relation.\n"+
+                "Examples: the distance between locations, or Network latency.";
         }
         else {
             boolean nodeHover = false;
@@ -115,13 +121,17 @@ public class GraphScreen extends FactOption {
             }
 
             if (nodeHover) {
-
+                hintTextString = "Graph Nodes store one or more values\n"+
+                    "and the connections it has to other nodes.\n"+
+                    "Sometimes stores connections to it for back reference.";
             }
             else if (controllerHover) {
-
+                hintTextString = "Controller to modify the vertex connections.\n"+
+                    "Click one box to select the corresponding node.\n"+
+                    "Click a second to connect, or unconnect to it.";
             }
             else if (weightHover) {
-                hintTextString = "test";
+                hintTextString = "Modify the Weight of the vertex.";
             }
         }
 
