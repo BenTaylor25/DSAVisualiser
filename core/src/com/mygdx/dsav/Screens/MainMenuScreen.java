@@ -20,8 +20,7 @@ public class MainMenuScreen extends FactOption {
     BenHelper.Rect stackButtonBox;
     BenHelper.Rect queueButtonBox;
     BenHelper.Rect graphButtonBox;
-    BenHelper.Rect streeButtonBox;
-    BenHelper.Rect btreeButtonBox;
+    BenHelper.Rect treeButtonBox;
 
     @Override
     public void create() {
@@ -34,8 +33,7 @@ public class MainMenuScreen extends FactOption {
         stackButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.555f, GW*0.3f, GH*0.085f);
         queueButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.47f, GW*0.3f, GH*0.085f);
         graphButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.385f, GW*0.3f, GH*0.085f);
-        streeButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.3f, GW*0.3f, GH*0.085f);
-        btreeButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.215f, GW*0.3f, GH*0.085f);
+        treeButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.3f, GW*0.3f, GH*0.085f);
     }
 
     @Override
@@ -66,8 +64,7 @@ public class MainMenuScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Stack", stackButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Queue", queueButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Graph", graphButtonBox, 1.125f);
-        BenHelper.textDrawCentre(batch, font, "Tree", streeButtonBox, 1.125f);
-        BenHelper.textDrawCentre(batch, font, "Binary Tree", btreeButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Tree", treeButtonBox, 1.125f);
 
         if (BenHelper.DEBUG) {
             exitButtonBox.draw(shape, Color.RED);
@@ -79,8 +76,7 @@ public class MainMenuScreen extends FactOption {
             stackButtonBox.draw(shape, Color.RED);
             queueButtonBox.draw(shape, Color.RED);
             graphButtonBox.draw(shape, Color.RED);
-            streeButtonBox.draw(shape, Color.RED);
-            btreeButtonBox.draw(shape, Color.RED);
+            treeButtonBox.draw(shape, Color.RED);
         }
     }
 
@@ -101,11 +97,8 @@ public class MainMenuScreen extends FactOption {
         else if (graphButtonBox.checkClick()) {
             factSelector = "graph";
         }
-        else if (streeButtonBox.checkClick()) {
-            // factSelector = "stree";
-        }
-        else if (btreeButtonBox.checkClick()) {
-            // factSelecctor = "btree";
+        else if (treeButtonBox.checkClick()) {
+            // factSelector = "tree";
         }
         else if (myGHButtonBox.checkClick()) {
             try {
