@@ -7,17 +7,28 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 
 public class TreeScreen extends FactOption {
+    final int TREESIZE = 7;
     String hintTextString;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
+    BenHelper.Rect[] treeNodeButtonBox;
 
     @Override
     public void create() {
-        hintTextString = "";
+        hintTextString = ""; 
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+
+        treeNodeButtonBox = new BenHelper.Rect[TREESIZE];
+        treeNodeButtonBox[0] = new BenHelper.Rect(GW*0.425f, GH*0.664f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[1] = new BenHelper.Rect(GW*0.275f, GH*0.426f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[2] = new BenHelper.Rect(GW*0.575f, GH*0.426f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[3] = new BenHelper.Rect(GW*0.125f, GH*0.188f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[4] = new BenHelper.Rect(GW*0.313f, GH*0.188f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[5] = new BenHelper.Rect(GW*0.537f, GH*0.188f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[6] = new BenHelper.Rect(GW*0.725f, GH*0.188f, GW*0.15f, GH*0.15f);
     }
 
     @Override
@@ -39,7 +50,10 @@ public class TreeScreen extends FactOption {
         batch.end();
         
         // draw static shapes
-        
+        for (int i = 0; i < TREESIZE; i++) {
+            treeNodeButtonBox[i].draw(shape);
+        }
+
 
         // draw data items
         
@@ -48,12 +62,27 @@ public class TreeScreen extends FactOption {
         
 
         // draw text
-        
+        BenHelper.textDrawCentre(batch, font, 
+            "Tree", 
+            titleButtonBox, 1.5f,
+            BenHelper.DEFAULT_TEXT_COLOUR
+        );
+        BenHelper.textDrawCentre(batch, font, 
+            "Back", 
+            backButtonBox, 1.25f
+        );
+        BenHelper.textDrawCentre(batch, font, 
+            hintTextString, 
+            hintButtonBox, 0.75f,
+            Color.GRAY
+        );
+
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
+            hintButtonBox.draw(shape, Color.RED);
         }
     }
 
