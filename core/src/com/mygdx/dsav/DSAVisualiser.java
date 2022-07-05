@@ -6,6 +6,7 @@ import com.mygdx.dsav.Screens.GraphScreen;
 import com.mygdx.dsav.Screens.LinkedListScreen;
 import com.mygdx.dsav.Screens.QueueScreen;
 import com.mygdx.dsav.Screens.StackScreen;
+import com.mygdx.dsav.Screens.TreeScreen;
 
 import java.util.Hashtable;
 import com.badlogic.gdx.Game;
@@ -26,6 +27,7 @@ public class DSAVisualiser extends Game {
 		screens.put("stack", new StackScreen());
 		screens.put("queue", new QueueScreen());
 		screens.put("graph", new GraphScreen());
+		screens.put("tree", new TreeScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
@@ -40,6 +42,7 @@ public class DSAVisualiser extends Game {
 			case "stack":
 			case "queue":
 			case "graph":
+			case "tree":
 				if ( factSelector != oldFactSelector ) {
 					screens.get(factSelector).reset();
 					oldFactSelector = factSelector;

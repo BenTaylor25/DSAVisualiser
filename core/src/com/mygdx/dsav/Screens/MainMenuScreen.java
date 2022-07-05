@@ -98,7 +98,7 @@ public class MainMenuScreen extends FactOption {
             factSelector = "graph";
         }
         else if (treeButtonBox.checkClick()) {
-            // factSelector = "tree";
+            factSelector = "tree";
         }
         else if (myGHButtonBox.checkClick()) {
             try {
