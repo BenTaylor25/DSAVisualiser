@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 public class TreeScreen extends FactOption {
     final int TREESIZE = 7;
     String hintTextString;
+    String[] nodeText;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
@@ -17,6 +18,7 @@ public class TreeScreen extends FactOption {
     @Override
     public void create() {
         hintTextString = ""; 
+        nodeText = new String[TREESIZE];
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
@@ -83,6 +85,13 @@ public class TreeScreen extends FactOption {
             hintButtonBox, 0.75f,
             Color.GRAY
         );
+        for (int i = 0; i < TREESIZE; i++) {
+            BenHelper.textDrawCentre(batch, font, 
+                nodeText[i], 
+                treeNodeButtonBox[i], 
+                1f   // wip
+            );
+        }
 
 
         // debug: draw hitboxes
