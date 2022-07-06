@@ -54,6 +54,13 @@ public class TreeScreen extends FactOption {
             treeNodeButtonBox[i].draw(shape);
         }
 
+        // draw arrows
+        treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[1], 1, 6);
+        treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[2], 1, 6);
+        treeNodeButtonBox[1].arrowTo(shape, treeNodeButtonBox[3], 1, 6);
+        treeNodeButtonBox[1].arrowTo(shape, treeNodeButtonBox[4], 1, 6);
+        treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[5], 1, 6);
+        treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[6], 1, 6);
 
         // draw data items
         
