@@ -90,11 +90,14 @@ public class TreeScreen extends FactOption {
             hintButtonBox, 0.75f,
             Color.GRAY
         );
+        String[] defaults = { "[root]", "[A]", "[B]", "[leaf]", "[leaf]", "[leaf]", "[leaf]" };
         for (int i = 0; i < TREESIZE; i++) {
+            String text = nodeText[i];
+            if (text.equals("")) { text = defaults[i]; }
             BenHelper.textDrawCentre(batch, font, 
-                nodeText[i], 
+                text, 
                 treeNodeButtonBox[i], 
-                1f   // wip
+                1f
             );
         }
 
