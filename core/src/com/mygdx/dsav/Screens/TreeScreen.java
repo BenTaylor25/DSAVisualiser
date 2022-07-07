@@ -56,25 +56,31 @@ public class TreeScreen extends FactOption {
     public String updateBefore(String factSelector) {
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
-
+            hintTextString = "Trees are a type of Directed Graph that maintain a hierarchical\n"+
+                "structure. Examples: Computer file structure, OOP Class Structure,\n"+
+                "HTML Document Object Model (Web Development).";
         }
         else if (binaryTreeInfoButtonBox.checkHover()) {
-
+            hintTextString = "Binary Trees are a type of Tree where each node can\n"+
+                "have a maximum of 2 children: a left child and a right child.\n"+
+                "Used in Data Sorting and Searching, Encoding";
         }
         else {
             int ind = 0;
-            while (!treeNodeButtonBox[ind].checkHover() && ind < TREESIZE) {
+            while (ind < TREESIZE && !treeNodeButtonBox[ind].checkHover()) {
                 ind++;
             }
 
             if (ind == 0) {   // hovering on a root node
-
+                hintTextString = "The root node of a Tree has no parent nodes.";
             }
             else if (ind < 3) {   // hovering on a middle layer node
-
+                hintTextString = "Nodes in a Tree are stored with a parent reference and child\n"+
+                    "references. In order to access one node from another on the other\n"+
+                    "side of the tree, you must go through the common ancestor.";
             }
             else if (ind < TREESIZE) {   // hovering on a leaf node
-
+                hintTextString = "Leaf nodes in a Tree are those that have no children.";
             }
         }
         
