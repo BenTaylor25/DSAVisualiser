@@ -80,6 +80,9 @@ public class TreeScreen extends FactOption {
         for (int i = 0; i < TREESIZE; i++) {
             treeNodeButtonBox[i].draw(shape);
         }
+        if (typingSelector >= 0) {
+            treeNodeButtonBox[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
+        }
 
         // draw arrows
         treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[1], 1, 6);
