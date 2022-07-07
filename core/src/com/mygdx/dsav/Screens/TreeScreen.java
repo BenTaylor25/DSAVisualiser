@@ -70,10 +70,16 @@ public class TreeScreen extends FactOption {
         treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[6], 1, 6);
 
         // draw data items
-        
-
-        // draw button outlines
-        
+        String[] defaults = { "[root]", "[A]", "[B]", "[leaf]", "[leaf]", "[leaf]", "[leaf]" };
+        for (int i = 0; i < TREESIZE; i++) {
+            String text = nodeText[i];
+            if (text.equals("")) { text = defaults[i]; }
+            BenHelper.textDrawCentre(batch, font, 
+                text, 
+                treeNodeButtonBox[i], 
+                1f
+            );
+        }     
 
         // draw text
         BenHelper.textDrawCentre(batch, font, 
@@ -90,17 +96,7 @@ public class TreeScreen extends FactOption {
             hintButtonBox, 0.75f,
             Color.GRAY
         );
-        String[] defaults = { "[root]", "[A]", "[B]", "[leaf]", "[leaf]", "[leaf]", "[leaf]" };
-        for (int i = 0; i < TREESIZE; i++) {
-            String text = nodeText[i];
-            if (text.equals("")) { text = defaults[i]; }
-            BenHelper.textDrawCentre(batch, font, 
-                text, 
-                treeNodeButtonBox[i], 
-                1f
-            );
-        }
-
+        
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
