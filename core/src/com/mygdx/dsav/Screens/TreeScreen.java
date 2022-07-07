@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 
 public class TreeScreen extends FactOption {
     final int TREESIZE = 7;
+    int typingSelector;
     String hintTextString;
     String[] nodeText;
     BenHelper.Rect titleButtonBox;
@@ -17,6 +18,7 @@ public class TreeScreen extends FactOption {
 
     @Override
     public void create() {
+        typingSelector = -1;
         hintTextString = ""; 
         nodeText = new String[TREESIZE];
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
@@ -40,11 +42,29 @@ public class TreeScreen extends FactOption {
 
     @Override
     public void reset() {
+        typingSelector = -1;
+        
+        nodeText = new String[TREESIZE];
+        for (int i = 0; i < TREESIZE; i++) {
+            nodeText[i] = "";
+        }
     }
 
     @Override
     public String updateBefore(String factSelector) {
         
+        // typing
+        if (BenHelper.screenClicked()) {
+            typingSelector = -1;
+
+            for (int i = 0; i < TREESIZE; i++) {
+                if (treeNodeButtonBox[i].checkHover()) {
+                    typingSelector = i;
+                    break;
+                }
+            }
+        }
+
         return factSelector;
     }
 
@@ -110,6 +130,13 @@ public class TreeScreen extends FactOption {
     public String updateAfter(String factSelector) {
         if (backButtonBox.checkClick()) {
             factSelector = "menu";
+        }
+
+        if (typingSelector >= 0) {
+            nodeText[typingSelector] = BenHelper.typing(
+                nodeText[typingSelector],
+                10
+            );
         }
         
         return factSelector;
