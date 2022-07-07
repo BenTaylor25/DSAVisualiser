@@ -31,6 +31,11 @@ public class TreeScreen extends FactOption {
         treeNodeButtonBox[4] = new BenHelper.Rect(GW*0.313f, GH*0.188f, GW*0.15f, GH*0.15f);
         treeNodeButtonBox[5] = new BenHelper.Rect(GW*0.537f, GH*0.188f, GW*0.15f, GH*0.15f);
         treeNodeButtonBox[6] = new BenHelper.Rect(GW*0.725f, GH*0.188f, GW*0.15f, GH*0.15f);
+
+        nodeText = new String[TREESIZE];
+        for (int i = 0; i < TREESIZE; i++) {
+            nodeText[i] = "";
+        }
     }
 
     @Override
