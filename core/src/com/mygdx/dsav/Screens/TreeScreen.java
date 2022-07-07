@@ -54,6 +54,29 @@ public class TreeScreen extends FactOption {
 
     @Override
     public String updateBefore(String factSelector) {
+        hintTextString = "";
+        if (titleButtonBox.checkHover()) {
+
+        }
+        else if (binaryTreeInfoButtonBox.checkHover()) {
+
+        }
+        else {
+            int ind = 0;
+            while (!treeNodeButtonBox[ind].checkHover() && ind < TREESIZE) {
+                ind++;
+            }
+
+            if (ind == 0) {   // hovering on a root node
+
+            }
+            else if (ind < 3) {   // hovering on a middle layer node
+
+            }
+            else if (ind < TREESIZE) {   // hovering on a leaf node
+
+            }
+        }
         
         // typing
         if (BenHelper.screenClicked()) {
