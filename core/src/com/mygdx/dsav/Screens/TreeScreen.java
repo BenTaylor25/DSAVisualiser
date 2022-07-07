@@ -14,6 +14,7 @@ public class TreeScreen extends FactOption {
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
+    BenHelper.Rect binaryTreeInfoButtonBox;
     BenHelper.Rect[] treeNodeButtonBox;
 
     @Override
@@ -24,6 +25,7 @@ public class TreeScreen extends FactOption {
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+        binaryTreeInfoButtonBox = new BenHelper.Rect(GW*0.05f, GH*0.8f, GW*0.225f, GH*0.15f);
 
         treeNodeButtonBox = new BenHelper.Rect[TREESIZE];
         treeNodeButtonBox[0] = new BenHelper.Rect(GW*0.425f, GH*0.664f, GW*0.15f, GH*0.15f);
@@ -83,7 +85,7 @@ public class TreeScreen extends FactOption {
         if (typingSelector >= 0) {
             treeNodeButtonBox[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
-
+        
         // draw arrows
         treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[1], 1, 6);
         treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[2], 1, 6);
@@ -119,13 +121,19 @@ public class TreeScreen extends FactOption {
             hintButtonBox, 0.75f,
             Color.GRAY
         );
-        
+        BenHelper.textDrawCentre(batch, font, 
+            "Binary Tree", 
+            binaryTreeInfoButtonBox,
+            1.25f,
+            BenHelper.DEFAULT_TEXT_COLOUR
+        );
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
+            binaryTreeInfoButtonBox.draw(shape, Color.RED);
         }
     }
 
