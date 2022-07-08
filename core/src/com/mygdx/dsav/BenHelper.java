@@ -24,6 +24,8 @@ public class BenHelper {
 
     private static final float GW = Gdx.graphics.getWidth();
     //private static final float GH = Gdx.graphics.getHeight();
+    public static float typingHold;
+    private static int typingChar;
 
     /**
      * Draw an Arrow from point p1 to point p2.
@@ -328,8 +330,31 @@ public class BenHelper {
      * @return text + keyboardChanges
      */
     public static String typing(String text, int maxLen) {
+        if (typingChar != '¬' && Gdx.input.isKeyPressed(typingChar)) {
+            typingHold += Gdx.graphics.getDeltaTime();
+        }
+        else {
+            typingChar = '¬';
+            typingHold = 0;
+        }
+
+        if (typingChar != '¬' && typingHold >= 0.4f) {
+            if (typingChar == Input.Keys.BACKSPACE) {
+                text = text.substring(0, text.length()-1);
+            }
+            else {
+                if (text.length() < maxLen) {
+                    text += Input.Keys.toString(typingChar);
+                    typingHold -= 0.05f;
+                }
+            }
+        }
+
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE) && text.length() > 0) {
             text = text.substring(0, text.length()-1);
+            typingChar = Input.Keys.BACKSPACE;
+            // typingHold = 0;
         }
 
         if (text.length() >= maxLen) {
@@ -342,8 +367,10 @@ public class BenHelper {
                     Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
                 {
                     text += Input.Keys.toString(i);
+                    typingChar = i;
                 } else {
                     text += Input.Keys.toString(i).toLowerCase();
+                    typingChar = i;
                 }
             }
         }
@@ -351,12 +378,13 @@ public class BenHelper {
         for (int i = 7; i <= 16; i ++) {
             if (Gdx.input.isKeyJustPressed(i)) {
                 text += Input.Keys.toString(i);
+                typingChar = i;
             }
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) { text += ' '; }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.COMMA)) { text += ','; }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.PERIOD)) { text += '.'; }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) { text += ' '; typingChar = Input.Keys.valueOf(" "); }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.COMMA)) { text += ','; typingChar = Input.Keys.valueOf(","); }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.PERIOD)) { text += '.'; typingChar = Input.Keys.valueOf("."); }
 
         return text;
     }
