@@ -3,7 +3,6 @@ package com.mygdx.dsav.Screens;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 public class ArrayScreen extends FactOption {
@@ -110,12 +109,6 @@ public class ArrayScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 0.75f,
             Color.GRAY);
-
-        BenHelper.textDrawCentre(batch, font, Float.toString(Gdx.graphics.getDeltaTime()), GW/2, GH/2, 1f, Color.BLACK);
-        BenHelper.textDrawCentre(batch, font, Float.toString(Gdx.graphics.getFramesPerSecond()), GW/2, GH/3, 1f, Color.BLACK);
-        BenHelper.textDrawCentre(batch, font, Float.toString(BenHelper.typingHold), GW/2, GH/4, 1f, Color.BLACK);
-
-
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {

@@ -24,8 +24,9 @@ public class BenHelper {
 
     private static final float GW = Gdx.graphics.getWidth();
     //private static final float GH = Gdx.graphics.getHeight();
-    public static float typingHold;
+    private static float typingHold;
     private static int typingChar;
+    private static boolean isCapital; 
 
     /**
      * Draw an Arrow from point p1 to point p2.
@@ -340,12 +341,22 @@ public class BenHelper {
 
         if (typingChar != '¬' && typingHold >= 0.4f) {
             if (typingChar == Input.Keys.BACKSPACE) {
-                text = text.substring(0, text.length()-1);
+                if (text.length() > 0) {
+                    text = text.substring(0, text.length()-1);
+                    typingHold -= 0.03f;
+                }
             }
             else {
                 if (text.length() < maxLen) {
-                    text += Input.Keys.toString(typingChar);
-                    typingHold -= 0.05f;
+                    String newChar = Input.Keys.toString(typingChar);
+                    if (!isCapital && typingChar >= 29 && typingChar <= 53) {
+                        newChar = newChar.toLowerCase();
+                    }
+
+                    text += newChar;
+
+                    typingHold -= 0.03f;
+                
                 }
             }
         }
@@ -363,12 +374,14 @@ public class BenHelper {
 
         for (int i = 29; i < 54; i++) {
             if (Gdx.input.isKeyJustPressed(i)) {
-                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) ||
-                    Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
-                {
+                isCapital = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) ||
+                    Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT));
+
+                if (isCapital) {
                     text += Input.Keys.toString(i);
                     typingChar = i;
-                } else {
+                } 
+                else {
                     text += Input.Keys.toString(i).toLowerCase();
                     typingChar = i;
                 }
