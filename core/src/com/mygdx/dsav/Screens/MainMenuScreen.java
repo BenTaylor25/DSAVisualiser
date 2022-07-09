@@ -23,7 +23,7 @@ public class MainMenuScreen extends FactOption {
     BenHelper.Rect graphButtonBox;
     BenHelper.Rect treeButtonBox;
     BenHelper.Rect bubbleButtonBox;
-    BenHelper.Rect binaryButtonBox;
+    BenHelper.Rect binSrchButtonBox;
     BenHelper.Rect primsButtonBox;
     BenHelper.Rect dijkstrasButtonBox;
     BenHelper.Rect dfsButtonBox;
@@ -44,7 +44,7 @@ public class MainMenuScreen extends FactOption {
         treeButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.3f, GW*0.3f, GH*0.085f);
 
         bubbleButtonBox = new BenHelper.Rect(GW*0.5f, GH*0.725f, GW*0.3f, GH*0.085f);
-        binaryButtonBox = new BenHelper.Rect(GW*0.5f, GH*0.64f, GW*0.3f, GH*0.085f);
+        binSrchButtonBox = new BenHelper.Rect(GW*0.5f, GH*0.64f, GW*0.3f, GH*0.085f);
         primsButtonBox = new BenHelper.Rect(GW*0.5f, GH*0.555f, GW*0.3f, GH*0.085f);
         dijkstrasButtonBox = new BenHelper.Rect(GW*0.5f, GH*0.47f, GW*0.3f, GH*0.085f);
         dfsButtonBox = new BenHelper.Rect(GW*0.5f, GH*0.385f, GW*0.3f, GH*0.085f);
@@ -81,7 +81,7 @@ public class MainMenuScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Tree", treeButtonBox, 1.125f);
 
         BenHelper.textDrawCentre(batch, font, "Bubble Sort", bubbleButtonBox, 1.125f);
-        BenHelper.textDrawCentre(batch, font, "Binary Search", binaryButtonBox, 1.125f);
+        BenHelper.textDrawCentre(batch, font, "Binary Search", binSrchButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Prim's", primsButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Dijkstra's", dijkstrasButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "DFS", dfsButtonBox, 1.125f);
@@ -101,7 +101,7 @@ public class MainMenuScreen extends FactOption {
             treeButtonBox.draw(shape, Color.RED);
 
             bubbleButtonBox.draw(shape, Color.RED);
-            binaryButtonBox.draw(shape, Color.RED);
+            binSrchButtonBox.draw(shape, Color.RED);
             primsButtonBox.draw(shape, Color.RED);
             dijkstrasButtonBox.draw(shape, Color.RED);
             dfsButtonBox.draw(shape, Color.RED);
@@ -111,40 +111,60 @@ public class MainMenuScreen extends FactOption {
 
     @Override
     public String updateAfter(String factSelector) {
-        if (arrayButtonBox.checkClick()) {
-            factSelector = "array";
-        }
-        else if (llistButtonBox.checkClick()) {
-            factSelector = "llist";
-        }
-        else if (stackButtonBox.checkClick()) {
-            factSelector = "stack";
-        }
-        else if (queueButtonBox.checkClick()) {
-            factSelector = "queue";
-        }
-        else if (graphButtonBox.checkClick()) {
-            factSelector = "graph";
-        }
-        else if (treeButtonBox.checkClick()) {
-            factSelector = "tree";
-        }
-        else if (myGHButtonBox.checkClick()) {
-            try {
-                Desktop.getDesktop().browse(new URL("https://github.com/BenTaylor25").toURI());
-            } catch (Exception e) {
-                e.printStackTrace();
+        if (BenHelper.screenClicked()) {
+            if (arrayButtonBox.checkHover()) {
+                factSelector = "array";
             }
-        }
-        else if (fontLinkButtonBox.checkClick()) {
-            try {
-                Desktop.getDesktop().browse(new URL("https://www.dafont.com/vcr-osd-mono.font").toURI());
-            } catch (Exception e) {
-                e.printStackTrace();
+            else if (llistButtonBox.checkHover()) {
+                factSelector = "llist";
             }
-        }
-        else if (exitButtonBox.checkClick()) {
-            factSelector = "quit";
+            else if (stackButtonBox.checkHover()) {
+                factSelector = "stack";
+            }
+            else if (queueButtonBox.checkHover()) {
+                factSelector = "queue";
+            }
+            else if (graphButtonBox.checkHover()) {
+                factSelector = "graph";
+            }
+            else if (treeButtonBox.checkHover()) {
+                factSelector = "tree";
+            }
+            else if (bubbleButtonBox.checkHover()) {
+                //factSelector = "bubble";
+            }
+            else if (binSrchButtonBox.checkHover()) {
+                //factSelector = "binsrch";
+            }
+            else if (primsButtonBox.checkHover()) {
+                //factSelector = "prim";
+            }
+            else if (dijkstrasButtonBox.checkHover()) {
+                //factSelector = "dijkstras";
+            }
+            else if (dfsButtonBox.checkHover()) {
+                //factSelector = "dfs";
+            }
+            else if (bfsButtonBox.checkHover()) {
+                //factSelector = "bfs";
+            }
+            else if (myGHButtonBox.checkHover()) {
+                try {
+                    Desktop.getDesktop().browse(new URL("https://github.com/BenTaylor25").toURI());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (fontLinkButtonBox.checkHover()) {
+                try {
+                    Desktop.getDesktop().browse(new URL("https://www.dafont.com/vcr-osd-mono.font").toURI());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (exitButtonBox.checkHover()) {
+                factSelector = "quit";
+            }
         }
 
         return factSelector;
