@@ -40,7 +40,8 @@ public class BenHelper {
      * @param col colour of the arrow
      */
     public static void drawArrow(ShapeRenderer shape, float p1x, float p1y, float p2x, float p2y,
-                           float ang, float alen, float thck, Color col) {
+        float ang, float alen, float thck, Color col) 
+    {
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(col);
         shape.rectLine(p1x, p1y, p2x, p2y, thck);
