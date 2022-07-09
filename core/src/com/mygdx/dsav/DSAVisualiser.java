@@ -28,6 +28,12 @@ public class DSAVisualiser extends Game {
 		screens.put("queue", new QueueScreen());
 		screens.put("graph", new GraphScreen());
 		screens.put("tree", new TreeScreen());
+		//screens.put("bubble", new BubbleSortScreen());
+		//screens.put("binsrch", new BinarySearchScreen());
+		//screen.put("prims", new PrimsAlgScreen());
+		//screen.put("dijkstras", new DijkstrasAlgScreen());
+		//screen.put("dfs", new DFSScreen());
+		//screen.put("bfs", new BFSScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
@@ -36,13 +42,11 @@ public class DSAVisualiser extends Game {
 	@Override
 	public void render() {
 		switch (factSelector) {
-			case "menu":
-			case "array":
-			case "llist":
-			case "stack":
-			case "queue":
-			case "graph":
-			case "tree":
+			case "menu": 
+			case "array": case "llist": case "stack":
+			case "queue": case "graph": case "tree":
+			case "bubble": case "binsrch": case "prims":
+			case "dijkstras": case "dfs": case "bfs":
 				if ( factSelector != oldFactSelector ) {
 					screens.get(factSelector).reset();
 					oldFactSelector = factSelector;
