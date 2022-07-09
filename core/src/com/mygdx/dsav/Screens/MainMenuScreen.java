@@ -64,12 +64,10 @@ public class MainMenuScreen extends FactOption {
         batch.begin();
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
-
-            //font.getData().setScale(2);
-            //font.draw(batch, "DSAVisualiser", GW*0.2f, GH*0.9f);
         batch.end();
 
-        BenHelper.textDrawCentre(batch, font, "DSAVisualiser", titleButtonBox, 2);
+        BenHelper.textDrawCentre(batch, font, "DSAVisualiser", titleButtonBox, 2,
+            BenHelper.DEFAULT_TEXT_COLOUR);
         BenHelper.textDrawCentre(batch, font, "Ben Taylor", myGHButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Thanks to Riciery Leal for the VCR OSD Mono font", 
             fontLinkButtonBox, 0.5f);
