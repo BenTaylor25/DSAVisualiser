@@ -1,9 +1,9 @@
 package com.mygdx.dsav.Generators;
 
 public class GBubbleSort {
-    int ptrA, ptrB;
-    String[] arr;
-    boolean hasNext;
+    private int ptrA, ptrB;
+    public String[] arr;
+    public boolean hasNext;
 
     public GBubbleSort(String[] values) {
         arr = values;
