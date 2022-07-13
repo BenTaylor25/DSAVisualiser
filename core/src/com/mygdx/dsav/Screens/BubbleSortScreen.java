@@ -18,6 +18,7 @@ public class BubbleSortScreen extends FactOption {
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect[] arrayButtonBoxes;
     BenHelper.Rect sortButtonBox;
+    int[] activeButtonInds;
 
     @Override
     public void create() {
@@ -27,6 +28,7 @@ public class BubbleSortScreen extends FactOption {
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         sortButtonBox = new BenHelper.Rect(GW*0.425f, GH*0.2f, GW*0.15f, GH*0.15f);
         hintTextString = "";
+        activeButtonInds = new int[]{-1, -1};
 
         typingSelector = -1;
         // arrayTextString = new String[ARRAYSIZE];
@@ -49,6 +51,7 @@ public class BubbleSortScreen extends FactOption {
             arrayGen.arr[i] = "";
         }
         typingSelector = -1;
+        activeButtonInds = new int[]{-1, -1};
     }
 
     @Override
@@ -93,6 +96,11 @@ public class BubbleSortScreen extends FactOption {
         }
         if (typingSelector != -1) {
             arrayButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+        }
+        if (activeButtonInds[0] >= 0 && activeButtonInds[1] >= 0) {
+            for (int x : activeButtonInds) {
+                arrayButtonBoxes[x].draw(shape, Color.WHITE);
+            }
         }
 
         // draw text 
@@ -142,6 +150,7 @@ public class BubbleSortScreen extends FactOption {
 
         if (sortButtonBox.checkClick()) {
             if (arrayGen.hasNext) {
+                activeButtonInds = arrayGen.getInds();
                 arrayGen.next();
             }
         }

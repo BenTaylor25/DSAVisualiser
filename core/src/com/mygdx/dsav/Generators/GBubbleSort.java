@@ -17,6 +17,10 @@ public class GBubbleSort {
         hasNext = values.length > 1;
     }
 
+    public int[] getInds() {
+        return new int[]{ptrA, ptrB};
+    }
+
     public String[] next() {
         assert hasNext;
 
@@ -48,7 +52,7 @@ public class GBubbleSort {
             ArrayList<String> x = new ArrayList<>();
             x.add(a);
             x.add(b);
-            
+
             ArrayList<String> y = new ArrayList<>(x);
             Collections.sort(y);
 
