@@ -1,7 +1,11 @@
 package com.mygdx.dsav.Generators;
 
+import java.util.Collections;
+import java.util.ArrayList;
+
 public class GBubbleSort {
     private int ptrA, ptrB;
+    private boolean swappedThisCycle;
     public String[] arr;
     public boolean hasNext;
 
@@ -9,6 +13,7 @@ public class GBubbleSort {
         arr = values;
         ptrA = 0;
         ptrB = 1;
+        swappedThisCycle = false;
         hasNext = values.length > 1;
     }
 
