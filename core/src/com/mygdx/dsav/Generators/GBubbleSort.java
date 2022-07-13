@@ -24,23 +24,36 @@ public class GBubbleSort {
             String temp = arr[ptrA];
             arr[ptrA] = arr[ptrB];
             arr[ptrB] = temp;
+            swappedThisCycle = true;
         }
 
+        ptrA++;
         ptrB++;
         if (ptrB == arr.length) {
-            ptrA++;
-            ptrB = ptrA + 1;
-        }
-
-        if (ptrB == arr.length) {
-            hasNext = false;
+            ptrA = 0;
+            ptrB = 1;
+            hasNext = swappedThisCycle;
+            swappedThisCycle = false;
         }
         
         return arr;
     }
     
     private boolean shouldSwap(String a, String b) {
-        return true;
+        try {
+            int ia = Integer.parseInt(a);
+            int ib = Integer.parseInt(b);
+            return ia > ib;
+        } catch (NumberFormatException e) {
+            ArrayList<String> x = new ArrayList<>();
+            x.add(a);
+            x.add(b);
+            
+            ArrayList<String> y = new ArrayList<>(x);
+            Collections.sort(y);
+
+            return x.equals(y);
+        }
     }
 
 }
