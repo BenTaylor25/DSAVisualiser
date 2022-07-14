@@ -51,7 +51,7 @@ public class BubbleSortScreen extends FactOption {
 
     @Override
     public String updateBefore(String factSelector) {
-        if (BenHelper.screenClicked()) {
+        if (BenHelper.screenClicked() && !sorting) {
             typingSelector = -1;
             for (int i = 0; i < ARRAYSIZE; i++) {
                 if (arrayButtonBoxes[i].checkHover()) {
@@ -112,9 +112,16 @@ public class BubbleSortScreen extends FactOption {
                 (typingSelector == i)
             );
         }
+
+        String text = "Sort";
+        if (sorting) text = "Next";
+        if (!arrayGen.hasNext) text = "Finish";
+        BenHelper.textDrawCentre(batch, font, text, sortButtonBox, 1.25f);
+
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 0.75f,
             Color.GRAY);
+        
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
@@ -131,17 +138,26 @@ public class BubbleSortScreen extends FactOption {
             factSelector = "menu";
         }
 
-        if (typingSelector != -1) {
+        if (typingSelector != -1 && !sorting) {
             arrayGen.arr[typingSelector] = BenHelper.typing(
                 arrayGen.arr[typingSelector],
                 10
             );
         }
 
-        if (sortButtonBox.checkClick()) {
+        boolean anyEmpty = false;
+        for (String x : arrayGen.arr) {
+            anyEmpty = anyEmpty || x.equals("");
+        }
+        if (sortButtonBox.checkClick() && !anyEmpty) {
             if (arrayGen.hasNext) {
+                sorting = true;
                 activeButtonInds = arrayGen.getInds();
                 arrayGen.next();
+            } else {
+                sorting = false;
+                arrayGen.hasNext = true;
+                activeButtonInds = new int[]{-1, -1};
             }
         }
 
