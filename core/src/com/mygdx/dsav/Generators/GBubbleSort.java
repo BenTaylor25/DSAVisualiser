@@ -56,7 +56,7 @@ public class GBubbleSort {
             ArrayList<String> y = new ArrayList<>(x);
             Collections.sort(y);
 
-            return x.equals(y);
+            return !x.equals(y);
         }
     }
 
