@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Color;
 public class BubbleSortScreen extends FactOption {
     final int ARRAYSIZE = 6;
     boolean sorting;
-    // String[] arrayTextString;
     GBubbleSort arrayGen;
     int typingSelector;
     String hintTextString;
@@ -31,11 +30,9 @@ public class BubbleSortScreen extends FactOption {
         activeButtonInds = new int[]{-1, -1};
 
         typingSelector = -1;
-        // arrayTextString = new String[ARRAYSIZE];
         arrayGen = new GBubbleSort(new String[ARRAYSIZE]);
         arrayButtonBoxes = new BenHelper.Rect[ARRAYSIZE];
         for (int i = 0; i < ARRAYSIZE; i++) {
-            //arrayTextString[i] = "";
             arrayGen.arr[i] = "";
             arrayButtonBoxes[i] = new BenHelper.Rect(GW*0.05f, GH*0.4f, GW*0.15f, GW*0.15f);
             arrayButtonBoxes[i].x += i * arrayButtonBoxes[i].w;
@@ -44,10 +41,8 @@ public class BubbleSortScreen extends FactOption {
 
     @Override
     public void reset() {
-        // arrayTextString = new String[6];
         arrayGen = new GBubbleSort(new String[ARRAYSIZE]);
         for (int i = 0; i < ARRAYSIZE; i++) {
-            // arrayTextString[i] = "";
             arrayGen.arr[i] = "";
         }
         typingSelector = -1;
@@ -108,7 +103,6 @@ public class BubbleSortScreen extends FactOption {
             1.5f, BenHelper.DEFAULT_TEXT_COLOUR
         );
         for (int i = 0; i < ARRAYSIZE; i++) {
-            // String drawValue = arrayTextString[i];
             String drawValue = arrayGen.arr[i];
             String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
             if (drawValue.equals("")) { drawValue = indexWords[i]; }
@@ -138,10 +132,6 @@ public class BubbleSortScreen extends FactOption {
         }
 
         if (typingSelector != -1) {
-            // arrayTextString[typingSelector] = BenHelper.typing(
-            //     arrayTextString[typingSelector],
-            //     10
-            // );
             arrayGen.arr[typingSelector] = BenHelper.typing(
                 arrayGen.arr[typingSelector],
                 10
