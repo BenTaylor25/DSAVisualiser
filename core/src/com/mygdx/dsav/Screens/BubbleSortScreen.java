@@ -68,10 +68,27 @@ public class BubbleSortScreen extends FactOption {
                 arrayButtonBoxes[i].checkHover();
         }
         if (hoverOnAnyIndex) {
-            hintTextString = "You can access and modify any item in \nthe Array individually.";
+            hintTextString = "Arrays are quicker to sort than Linked Lists\n"+
+                "because you can access them in O(1) time.";
         }
         else if (titleButtonBox.checkHover()) {
-            hintTextString = "An Array is a collection of items that \nare stored in adjacent memory spaces.";
+            hintTextString = "Bubble Sort is a simple, but inefficient Sorting Algorithm.\n"+
+                "Check adjacent pairs along the array and stop when\n"+
+                "a full cycle is completed with no swaps. O(n^2) Time, O(1) Space.";
+        }
+        else if (sortButtonBox.checkHover()) {
+            if (!sorting) {   // "Sort" is shown
+                hintTextString = "Click to start sorting.\n"+
+                    "Make sure every index has a value first.";
+            }
+            else if (arrayGen.hasNext) {   // "Next" is shown
+                hintTextString = "The highlighted squares are the indices that have just been\n"+
+                    "checked. Click to check the next indices.";
+            }
+            else {   // "Finish" is shown
+                hintTextString = "The Algorithm is finished. The list should be in order.\n"+
+                    "Click to return to editing mode.";
+            }
         }
 
         return factSelector;
