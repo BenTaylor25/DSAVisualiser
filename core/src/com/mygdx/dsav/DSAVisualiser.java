@@ -8,7 +8,7 @@ import com.mygdx.dsav.Screens.QueueScreen;
 import com.mygdx.dsav.Screens.StackScreen;
 import com.mygdx.dsav.Screens.TreeScreen;
 import com.mygdx.dsav.Screens.BubbleSortScreen;
-//import com.mygdx.dsav.Screens.BinarySearchScreen;
+import com.mygdx.dsav.Screens.BinarySearchScreen;
 //import com.mygdx.dsav.Screens.PrimsAlgScreen;
 //import com.mygdx.dsav.Screens.DijkstrasAlgScreen;
 //import com.mygdx.dsav.Screens.DFSScreen;
@@ -35,7 +35,7 @@ public class DSAVisualiser extends Game {
 		screens.put("graph", new GraphScreen());
 		screens.put("tree", new TreeScreen());
 		screens.put("bubble", new BubbleSortScreen());
-		//screens.put("binsrch", new BinarySearchScreen());
+		screens.put("binsrch", new BinarySearchScreen());
 		//screen.put("prims", new PrimsAlgScreen());
 		//screen.put("dijkstras", new DijkstrasAlgScreen());
 		//screen.put("dfs", new DFSScreen());

@@ -134,7 +134,7 @@ public class MainMenuScreen extends FactOption {
                 factSelector = "bubble";
             }
             else if (binSrchButtonBox.checkHover()) {
-                //factSelector = "binsrch";
+                factSelector = "binsrch";
             }
             else if (primsButtonBox.checkHover()) {
                 //factSelector = "prim";
