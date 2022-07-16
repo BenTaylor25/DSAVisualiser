@@ -373,7 +373,7 @@ public class BenHelper {
             return text;
         }
 
-        for (int i = 29; i < 54; i++) {
+        for (int i = 29; i <= 54; i++) {
             if (Gdx.input.isKeyJustPressed(i)) {
                 isCapital = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) ||
                     Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT));
