@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 public class BubbleSortScreen extends FactOption {
     final int ARRAYSIZE = 6;
     boolean sorting;
-    GBubbleSort arrayGen;
+    GBubbleSort generator;
     int typingSelector;
     String hintTextString;
     BenHelper.Rect titleButtonBox;
@@ -30,10 +30,10 @@ public class BubbleSortScreen extends FactOption {
         activeButtonInds = new int[]{-1, -1};
 
         typingSelector = -1;
-        arrayGen = new GBubbleSort(new String[ARRAYSIZE]);
+        generator = new GBubbleSort(new String[ARRAYSIZE]);
         arrayButtonBoxes = new BenHelper.Rect[ARRAYSIZE];
         for (int i = 0; i < ARRAYSIZE; i++) {
-            arrayGen.arr[i] = "";
+            generator.arr[i] = "";
             arrayButtonBoxes[i] = new BenHelper.Rect(GW*0.05f, GH*0.4f, GW*0.15f, GW*0.15f);
             arrayButtonBoxes[i].x += i * arrayButtonBoxes[i].w;
         }
@@ -41,9 +41,9 @@ public class BubbleSortScreen extends FactOption {
 
     @Override
     public void reset() {
-        arrayGen = new GBubbleSort(new String[ARRAYSIZE]);
+        generator = new GBubbleSort(new String[ARRAYSIZE]);
         for (int i = 0; i < ARRAYSIZE; i++) {
-            arrayGen.arr[i] = "";
+            generator.arr[i] = "";
         }
         typingSelector = -1;
         activeButtonInds = new int[]{-1, -1};
@@ -81,7 +81,7 @@ public class BubbleSortScreen extends FactOption {
                 hintTextString = "Click to start sorting.\n"+
                     "Make sure every index has a value first.";
             }
-            else if (arrayGen.hasNext) {   // "Next" is shown
+            else if (generator.hasNext) {   // "Next" is shown
                 hintTextString = "The highlighted squares are the indices that have just been\n"+
                     "checked. Click to check the next indices.";
             }
@@ -120,7 +120,7 @@ public class BubbleSortScreen extends FactOption {
             1.5f, BenHelper.DEFAULT_TEXT_COLOUR
         );
         for (int i = 0; i < ARRAYSIZE; i++) {
-            String drawValue = arrayGen.arr[i];
+            String drawValue = generator.arr[i];
             String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
             if (drawValue.equals("")) { drawValue = indexWords[i]; }
             BenHelper.textDrawCentreSelectable(
@@ -132,7 +132,7 @@ public class BubbleSortScreen extends FactOption {
 
         String text = "Sort";
         if (sorting) text = "Next";
-        if (!arrayGen.hasNext) text = "Finish";
+        if (!generator.hasNext) text = "Finish";
         BenHelper.textDrawCentre(batch, font, text, sortButtonBox, 1.25f);
 
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
@@ -157,24 +157,24 @@ public class BubbleSortScreen extends FactOption {
         }
 
         if (typingSelector != -1 && !sorting) {
-            arrayGen.arr[typingSelector] = BenHelper.typing(
-                arrayGen.arr[typingSelector],
+            generator.arr[typingSelector] = BenHelper.typing(
+                generator.arr[typingSelector],
                 10
             );
         }
 
         boolean anyEmpty = false;
-        for (String x : arrayGen.arr) {
+        for (String x : generator.arr) {
             anyEmpty = anyEmpty || x.equals("");
         }
         if (sortButtonBox.checkClick() && !anyEmpty) {
-            if (arrayGen.hasNext) {
+            if (generator.hasNext) {
                 sorting = true;
-                activeButtonInds = arrayGen.getInds();
-                arrayGen.next();
+                activeButtonInds = generator.getInds();
+                generator.next();
             } else {
                 sorting = false;
-                arrayGen.hasNext = true;
+                generator.hasNext = true;
                 activeButtonInds = new int[]{-1, -1};
             }
         }
