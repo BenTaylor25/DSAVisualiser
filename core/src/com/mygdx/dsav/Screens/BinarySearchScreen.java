@@ -44,12 +44,22 @@ public class BinarySearchScreen extends FactOption {
         }
         typingSelector = -1;
         activeButtonInds = new int[]{-1, -1};
-    
     }
 
     @Override
     public String updateBefore(String factSelector) {
-        
+        if (BenHelper.screenClicked() && !searching) {
+            typingSelector = -1;
+            for (int i = 0; i < ARRAYSIZE; i++) {
+                if (arrayButtonBoxes[i].checkHover()) {
+                    typingSelector = i;
+                    break;
+                }
+            }
+        }      
+
+        // hint text
+
         return factSelector;
     }
 
@@ -60,9 +70,6 @@ public class BinarySearchScreen extends FactOption {
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
         batch.end();
-        
-        // draw static shapes
-        
 
         // draw data items
         
@@ -86,6 +93,16 @@ public class BinarySearchScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 
             0.75f, Color.GRAY
         );
+        String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
+        for (int i = 0; i < ARRAYSIZE; i++) {
+            String drawValue = generator.arr[i];
+            if (drawValue.equals("")) { drawValue = indexWords[i]; }
+            BenHelper.textDrawCentreSelectable(
+                batch, font, drawValue, 
+                arrayButtonBoxes[i], 1f,
+                (typingSelector == i)
+            );
+        }
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
@@ -99,6 +116,14 @@ public class BinarySearchScreen extends FactOption {
     public String updateAfter(String factSelector) {
         if (backButtonBox.checkClick()) {
             factSelector = "menu";
+        }
+
+        // typing
+        if (typingSelector != -1 && !searching) {
+            generator.arr[typingSelector] = BenHelper.typing(
+                generator.arr[typingSelector],
+                10
+            );
         }
         
         return factSelector;
