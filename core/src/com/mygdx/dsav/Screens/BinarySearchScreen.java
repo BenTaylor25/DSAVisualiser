@@ -102,6 +102,28 @@ public class BinarySearchScreen extends FactOption {
                 (typingSelector == i)
             );
         }
+        // Search Button Text
+        boolean full = true;
+        for (String x : generator.arr) {
+            full = full && !x.equals("");
+        }
+        String searchButtonText = "[fill]";
+        if (full) {
+            searchButtonText = "Sort";
+            if (generator.isSorted()) {
+                searchButtonText = "Search";
+                if (searching) {
+                    searchButtonText = "Next";
+                    if (!generator.hasNext) {
+                        searchButtonText = "Finish";
+                    }
+                }
+            }
+        }
+        BenHelper.textDrawCentre(
+            batch, font, searchButtonText, 
+            searchButtonBox, 1.25f
+        );
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {

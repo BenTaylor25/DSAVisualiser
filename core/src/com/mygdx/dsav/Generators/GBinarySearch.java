@@ -17,7 +17,7 @@ public class GBinarySearch {
             try {
                 int ia = Integer.parseInt(arr[i]);
                 int ib = Integer.parseInt(arr[i+1]);
-                isSorted = isSorted && ia < ib;
+                isSorted = isSorted && ia <= ib;
             } catch (NumberFormatException e) {
                 ArrayList<String> x = new ArrayList<>();
                 x.add(arr[i]);
