@@ -83,11 +83,15 @@ public class BinarySearchScreen extends FactOption {
         // draw text
         BenHelper.textDrawCentre(batch, font, "Binary Search", titleButtonBox, 1.5f);
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
+        BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 
+            0.75f, Color.GRAY
+        );
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
+            hintButtonBox.draw(shape, Color.RED);
         }
     }
 
