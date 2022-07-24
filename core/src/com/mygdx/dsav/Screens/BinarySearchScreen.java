@@ -16,7 +16,7 @@ public class BinarySearchScreen extends FactOption {
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect[] arrayButtonBoxes;
-    BenHelper.Rect sortButtonBox;
+    BenHelper.Rect searchButtonBox;
     int[] activeButtonInds;
 
     @Override
@@ -25,6 +25,7 @@ public class BinarySearchScreen extends FactOption {
         titleButtonBox = new BenHelper.Rect(GW*0.3f, GH*0.85f, GW*0.4f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+        searchButtonBox = new BenHelper.Rect(GW*0.425f, GH*0.2f, GW*0.15f, GH*0.15f);
 
         typingSelector = -1;
         generator = new GBinarySearch(new String[ARRAYSIZE]);
@@ -71,9 +72,6 @@ public class BinarySearchScreen extends FactOption {
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
         batch.end();
 
-        // draw data items
-        
-
         // draw button outlines
         for (int i = 0; i < ARRAYSIZE; i++) {
             arrayButtonBoxes[i].draw(shape);
@@ -86,6 +84,7 @@ public class BinarySearchScreen extends FactOption {
                 arrayButtonBoxes[x].draw(shape, Color.WHITE);
             }
         }
+        searchButtonBox.draw(shape);
 
         // draw text
         BenHelper.textDrawCentre(batch, font, "Binary Search", titleButtonBox, 1.5f);
@@ -126,6 +125,17 @@ public class BinarySearchScreen extends FactOption {
             );
         }
         
+        boolean anyEmpty = false;
+        for (String x : generator.arr) {
+            anyEmpty = anyEmpty || x.equals("");
+        }
+        if (searchButtonBox.checkClick() && !anyEmpty) {
+            if (!generator.isSorted()) {
+                generator.sort();
+            }
+        }
+
+
         return factSelector;
     }
 }
