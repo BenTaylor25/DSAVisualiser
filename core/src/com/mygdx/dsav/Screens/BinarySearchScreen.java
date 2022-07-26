@@ -188,9 +188,11 @@ public class BinarySearchScreen extends FactOption {
                 searching = true;
                 if (generator.hasNext) {
                     // next step of search
+                    // generator.next()
                 }
                 else {
                     // finish
+                    // generator.reset()
                 }
             }
         }
