@@ -55,10 +55,15 @@ public class BinarySearchScreen extends FactOption {
     public String updateBefore(String factSelector) {
         if (BenHelper.screenClicked() && !searching) {
             typingSelector = -1;
-            for (int i = 0; i < ARRAYSIZE; i++) {
-                if (arrayButtonBoxes[i].checkHover()) {
-                    typingSelector = i;
-                    break;
+            if (targetButtonBox.checkHover()) {
+                typingSelector = ARRAYSIZE;
+            }
+            else {
+                for (int i = 0; i < ARRAYSIZE; i++) {
+                    if (arrayButtonBoxes[i].checkHover()) {
+                        typingSelector = i;
+                        break;
+                    }
                 }
             }
         }      
@@ -81,7 +86,12 @@ public class BinarySearchScreen extends FactOption {
             arrayButtonBoxes[i].draw(shape);
         }
         if (typingSelector != -1) {
-            arrayButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+            if (typingSelector == ARRAYSIZE) {
+                targetButtonBox.draw(shape, Color.WHITE);
+            }
+            else {
+                arrayButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+            }
         }
         if (activeButtonInds[0] >= 0 && activeButtonInds[1] >= 0) {
             for (int x : activeButtonInds) {
@@ -152,10 +162,18 @@ public class BinarySearchScreen extends FactOption {
 
         // typing
         if (typingSelector != -1 && !searching) {
-            generator.arr[typingSelector] = BenHelper.typing(
-                generator.arr[typingSelector],
-                10
-            );
+            if (typingSelector == ARRAYSIZE) {
+                targetTextString = BenHelper.typing(
+                    targetTextString,
+                    10
+                );
+            }
+            else {
+                generator.arr[typingSelector] = BenHelper.typing(
+                    generator.arr[typingSelector],
+                    10
+                );
+            }
         }
         
         boolean anyEmpty = false;
