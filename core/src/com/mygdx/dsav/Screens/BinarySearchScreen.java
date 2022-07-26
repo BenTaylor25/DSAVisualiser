@@ -155,6 +155,15 @@ public class BinarySearchScreen extends FactOption {
             if (!generator.isSorted()) {
                 generator.sort();
             }
+            else {
+                searching = true;
+                if (generator.hasNext) {
+                    // next step of search
+                }
+                else {
+                    // finish
+                }
+            }
         }
 
 
