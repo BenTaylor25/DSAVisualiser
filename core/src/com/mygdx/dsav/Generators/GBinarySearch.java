@@ -16,7 +16,7 @@ public class GBinarySearch {
         reset();
     }
 
-    private void reset() {
+    public void reset() {
         selected = -1;
         lowerBound = 0;
         upperBound = arr.length - 1;
