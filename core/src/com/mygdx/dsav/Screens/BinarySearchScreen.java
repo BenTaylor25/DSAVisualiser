@@ -101,6 +101,9 @@ public class BinarySearchScreen extends FactOption {
         }
         searchButtonBox.draw(shape);
         targetButtonBox.draw(shape);
+        if (generator.selected >= 0) {
+            arrayButtonBoxes[generator.selected].draw(shape, Color.WHITE);
+        }
 
         // draw text
         BenHelper.textDrawCentre(batch, font, "Binary Search", titleButtonBox, 1.5f);
@@ -198,7 +201,6 @@ public class BinarySearchScreen extends FactOption {
                 }
             }
         }
-
 
         return factSelector;
     }
