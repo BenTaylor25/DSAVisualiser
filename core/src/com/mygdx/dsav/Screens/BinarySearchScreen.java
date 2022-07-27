@@ -176,7 +176,7 @@ public class BinarySearchScreen extends FactOption {
             }
         }
         
-        boolean anyEmpty = false;
+        boolean anyEmpty = targetTextString.equals("");
         for (String x : generator.arr) {
             anyEmpty = anyEmpty || x.equals("");
         }
@@ -193,6 +193,7 @@ public class BinarySearchScreen extends FactOption {
                 else {
                     // finish
                     generator.reset();
+                    searching = false;
                 }
             }
         }
