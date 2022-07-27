@@ -47,6 +47,7 @@ public class BinarySearchScreen extends FactOption {
         for (int i = 0; i < ARRAYSIZE; i++) {
             generator.arr[i] = "";
         }
+        targetTextString = "";
         typingSelector = -1;
         activeButtonInds = new int[]{-1, -1};
     }
@@ -118,7 +119,7 @@ public class BinarySearchScreen extends FactOption {
             );
         }
         // Search Button Text
-        boolean full = true;
+        boolean full = !targetTextString.equals("");
         for (String x : generator.arr) {
             full = full && !x.equals("");
         }
