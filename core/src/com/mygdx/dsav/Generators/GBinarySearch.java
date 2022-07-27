@@ -20,6 +20,7 @@ public class GBinarySearch {
         selected = -1;
         lowerBound = 0;
         upperBound = arr.length - 1;
+        hasNext = true;
     }
 
     public boolean isSorted() {
