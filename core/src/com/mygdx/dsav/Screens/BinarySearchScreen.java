@@ -193,13 +193,11 @@ public class BinarySearchScreen extends FactOption {
                 if (generator.hasNext) {
                     // next step of search
                     generator.next(targetTextString);
-                    System.out.println("?");
                 }
                 else {
                     // finish
                     generator.reset();
                     searching = false;
-                    System.out.println("reset?");
                 }
             }
         }

@@ -51,12 +51,12 @@ public class GBinarySearch {
         } else {
             if (cmp < 0) {
                 // current leftOf target
-                lowerBound = selected;
+                lowerBound = selected + 1;
             } else {
                 // current rightOf target
-                upperBound = selected;
+                upperBound = selected - 1;
             }
-            hasNext = (upperBound - lowerBound) > 0;
+            hasNext = (upperBound - lowerBound) >= 0;
         }
 
     }
