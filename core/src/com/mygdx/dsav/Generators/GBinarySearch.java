@@ -1,7 +1,6 @@
 package com.mygdx.dsav.Generators;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class GBinarySearch {
@@ -24,12 +23,24 @@ public class GBinarySearch {
     }
 
     public boolean isSorted() {
-        ArrayList<String> x = new ArrayList<>(Arrays.asList(arr));
-        ArrayList<String> y = new ArrayList<>(x);
-        
-        Collections.sort(y);
-        
-        return x.equals(y);
+        boolean isSorted = true;
+        for (int i = 0; i < arr.length-1; i++) {
+            try {
+                int ia = Integer.parseInt(arr[i]);
+                int ib = Integer.parseInt(arr[i+1]);
+                isSorted = isSorted && ia <= ib;
+            } catch (NumberFormatException e) {
+                ArrayList<String> x = new ArrayList<>();
+                x.add(arr[i]);
+                x.add(arr[i+1]);
+
+                ArrayList<String> y = new ArrayList<>(x);
+                Collections.sort(y);
+
+                isSorted = isSorted && x.equals(y);
+            }
+        }
+        return isSorted;
     }
 
     public void sort() {
