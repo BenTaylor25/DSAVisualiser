@@ -12,6 +12,7 @@ public class BinarySearchScreen extends FactOption {
     GBinarySearch generator;
     int typingSelector;
     String hintTextString;
+    String resultTextString;
     String targetTextString;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
@@ -19,16 +20,19 @@ public class BinarySearchScreen extends FactOption {
     BenHelper.Rect[] arrayButtonBoxes;
     BenHelper.Rect searchButtonBox;
     BenHelper.Rect targetButtonBox;
+    BenHelper.Rect resultButtonBox;
     int[] activeButtonInds;
 
     @Override
     public void create() {
         hintTextString = "";
+        resultTextString = "";
         titleButtonBox = new BenHelper.Rect(GW*0.3f, GH*0.85f, GW*0.4f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         searchButtonBox = new BenHelper.Rect(GW*0.425f, GH*0.3f, GW*0.15f, GH*0.15f);
         targetButtonBox = new BenHelper.Rect(GW*0.12f, GH*0.15f, GW*0.15f, GW*0.15f);
+        resultButtonBox = new BenHelper.Rect(GW*0.3f, GH*0.1f, GW*0.4f, GH*0.1f);
         targetTextString = "";
 
         typingSelector = -1;
@@ -111,6 +115,9 @@ public class BinarySearchScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 
             0.75f, Color.GRAY
         );
+        BenHelper.textDrawCentre(batch, font, resultTextString, resultButtonBox,
+            0.75f, Color.GRAY
+        );
         String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
         for (int i = 0; i < ARRAYSIZE; i++) {
             String drawValue = generator.arr[i];
@@ -155,6 +162,7 @@ public class BinarySearchScreen extends FactOption {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
+            resultButtonBox.draw(shape, Color.RED);
         }
     }
 
@@ -193,11 +201,16 @@ public class BinarySearchScreen extends FactOption {
                 if (generator.hasNext) {
                     // next step of search
                     generator.next(targetTextString);
+
+                    if (!generator.hasNext) {
+                        resultTextString = generator.found ? "found" : "not found";
+                    }
                 }
                 else {
                     // finish
                     generator.reset();
                     searching = false;
+                    resultTextString = "";
                 }
             }
         }

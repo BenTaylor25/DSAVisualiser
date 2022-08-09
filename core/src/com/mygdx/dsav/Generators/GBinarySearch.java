@@ -9,6 +9,7 @@ public class GBinarySearch {
     public int selected;
     public String[] arr;
     public boolean hasNext;
+    public boolean found;
 
     public GBinarySearch(String[] values) {
         arr = values;
@@ -20,6 +21,7 @@ public class GBinarySearch {
         lowerBound = 0;
         upperBound = arr.length - 1;
         hasNext = true;
+        found = false;
     }
 
     public boolean isSorted() {
@@ -59,6 +61,7 @@ public class GBinarySearch {
         if (cmp == 0) {
             // found
             hasNext = false;
+            found = true;
         } else {
             if (cmp < 0) {
                 // current leftOf target
