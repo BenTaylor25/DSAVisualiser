@@ -75,6 +75,26 @@ public class BinarySearchScreen extends FactOption {
         }      
 
         // hint text
+        hintTextString = "";
+
+        boolean arrayHover = false;
+        for (BenHelper.Rect x : arrayButtonBoxes) {
+            if (x.checkHover()) {
+                arrayHover = true;
+            }
+        }
+
+        if (titleButtonBox.checkHover()) {
+            hintTextString = "Binary Search is where you compare the item in middle of the\n" +
+                "array first so that you can rule out half of the items at once.\n" +
+                "The array must be sorted. O(log n) Time, O(1) Space.";
+        }
+        else if (arrayHover && !searching) {
+            hintTextString = "Enter data to search through.";
+        }
+        else if (targetButtonBox.checkHover() && !searching) {
+            hintTextString = "Enter a value to search the array for.";
+        }
 
         return factSelector;
     }
