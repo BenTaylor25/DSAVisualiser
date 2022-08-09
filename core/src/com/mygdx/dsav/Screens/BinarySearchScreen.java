@@ -32,7 +32,7 @@ public class BinarySearchScreen extends FactOption {
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         searchButtonBox = new BenHelper.Rect(GW*0.425f, GH*0.3f, GW*0.15f, GH*0.15f);
         targetButtonBox = new BenHelper.Rect(GW*0.12f, GH*0.15f, GW*0.15f, GW*0.15f);
-        resultButtonBox = new BenHelper.Rect(GW*0.3f, GH*0.1f, GW*0.4f, GH*0.1f);
+        resultButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.1f, GW*0.2f, GH*0.1f);
         targetTextString = "";
 
         typingSelector = -1;
