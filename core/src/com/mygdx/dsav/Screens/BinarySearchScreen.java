@@ -54,6 +54,7 @@ public class BinarySearchScreen extends FactOption {
         targetTextString = "";
         typingSelector = -1;
         activeButtonInds = new int[]{-1, -1};
+        searching = false;
     }
 
     @Override
@@ -90,6 +91,7 @@ public class BinarySearchScreen extends FactOption {
         for (int i = 0; i < ARRAYSIZE; i++) {
             arrayButtonBoxes[i].draw(shape);
         }
+        targetButtonBox.draw(shape);
         if (typingSelector != -1) {
             if (typingSelector == ARRAYSIZE) {
                 targetButtonBox.draw(shape, Color.WHITE);
@@ -104,9 +106,11 @@ public class BinarySearchScreen extends FactOption {
             }
         }
         searchButtonBox.draw(shape);
-        targetButtonBox.draw(shape);
         if (generator.selected >= 0) {
             arrayButtonBoxes[generator.selected].draw(shape, Color.WHITE);
+        } 
+        else if (generator.selected == ARRAYSIZE) {
+            targetButtonBox.draw(shape, Color.WHITE);
         }
 
         // draw text
