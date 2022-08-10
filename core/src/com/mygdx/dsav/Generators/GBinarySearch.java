@@ -45,6 +45,16 @@ public class GBinarySearch {
         return isSorted;
     }
 
+    public boolean isFull() {
+        boolean full = true;
+        for (String x : arr) {
+            if (x.equals("")) {
+                full = false;
+            }
+        }
+        return full;
+    }
+
     public void sort() {
         GBubbleSort gen = new GBubbleSort(arr);
         while (gen.hasNext) {

@@ -95,6 +95,29 @@ public class BinarySearchScreen extends FactOption {
         else if (targetButtonBox.checkHover() && !searching) {
             hintTextString = "Enter a value to search the array for.";
         }
+        else if (searchButtonBox.checkHover()) {
+            boolean showFill = !generator.isFull();
+            boolean showSort = !generator.isSorted();
+            boolean showSearch = !searching;
+            boolean showNext = searching && generator.hasNext;
+            boolean showFinish = searching && !generator.hasNext;
+
+            if (showFill) {
+                hintTextString = "fill?";
+            }
+            else if (showSort) {
+                hintTextString = "sort?";
+            }
+            else if (showSearch) {
+                hintTextString = "search?";
+            }
+            else if (showNext) {
+                hintTextString = "next?";
+            }
+            else if (showFinish) {
+                hintTextString = "finish?";
+            }
+        }
 
         return factSelector;
     }
