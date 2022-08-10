@@ -103,19 +103,28 @@ public class BinarySearchScreen extends FactOption {
             boolean showFinish = searching && !generator.hasNext;
 
             if (showFill) {
-                hintTextString = "fill?";
+                hintTextString = "The array items and the target must be set to perform the \n" +
+                    "Algorithm.";
             }
             else if (showSort) {
-                hintTextString = "sort?";
+                hintTextString = "The array must be sorted for the Binary Search to work.\n" +
+                    "This is because we rule out half of the array every iteration;\n" +
+                    "If leftItems < current and current < target, then leftItems < target.";
             }
             else if (showSearch) {
-                hintTextString = "search?";
+                hintTextString = "Begin the Binary Search.\n" +
+                    "We start from the middle of the Array \n" +
+                    "(left middle on even length array)";
             }
             else if (showNext) {
-                hintTextString = "next?";
+                hintTextString = "The current item is not equal to the target so we need to keep\n" +
+                    "looking. If the current is too small, so will all items to the\n" +
+                    "left, so we can just look at the right. (and vice versa).";
             }
             else if (showFinish) {
-                hintTextString = "finish?";
+                hintTextString = "When either the target has been found, or there are no\n" +
+                    "more spaces to check, the Algorithm has been completed.\n" +
+                    "Click to return to editing mode.";
             }
         }
 
