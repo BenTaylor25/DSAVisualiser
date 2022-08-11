@@ -22,11 +22,19 @@ public class BenHelper {
     public static final Color DEFAULT_TEXT_COLOUR = new Color(0.69f, 0.447f, 0.098f, 1);
     public static final Color HOVER_TEXT_COLOUR = new Color(1, 1, 1, 1);
 
-    private static final float GW = Gdx.graphics.getWidth();
+    //private static final float GW = Gdx.graphics.getWidth();
     //private static final float GH = Gdx.graphics.getHeight();
     private static float typingHold;
     private static int typingChar;
     private static boolean isCapital; 
+
+    private static float GW() {
+        return Gdx.graphics.getWidth();
+    }
+
+    private static float GH() {
+        return Gdx.graphics.getHeight();
+    }
 
     /**
      * Draw an Arrow from point p1 to point p2.
@@ -149,8 +157,8 @@ public class BenHelper {
          * Return true if the cursor is in the rectangle.
          */
         public boolean checkHover() {
-            float mx = mouseX();
-            float my = mouseY();
+            float mx = mouseX() / GW() * 1280;
+            float my = mouseY() / GH() * 720;
 
             return mx >= x && mx <= x+w &&
                    my >= y && my <= y+h;
@@ -230,7 +238,7 @@ public class BenHelper {
             float endX = getCoords(otherPoint, otherBox.x, otherBox.w, horHalf, horFull);
             float endY = getCoords(otherPoint, otherBox.y, otherBox.h, verHalf, verFull);
 
-            drawArrow(shape, startX, startY, endX, endY, 30, GW/75, GW/500, Color.BLACK);
+            drawArrow(shape, startX, startY, endX, endY, 30, GW()/75, GW()/500, Color.BLACK);
         }
         /**
          * Calculate points from index.
