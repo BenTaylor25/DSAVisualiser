@@ -367,7 +367,7 @@ public class BenHelper {
                     boolean differentChar = text.length() >= 2 &&
                         text.charAt(text.length()-1) == text.charAt(text.length()-2);
                     if (differentChar) {
-                        typingHold = 0;
+                        typingHold -= 0.03f;
                     };
                 }
             }
