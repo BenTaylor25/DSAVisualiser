@@ -22,8 +22,6 @@ public class BenHelper {
     public static final Color DEFAULT_TEXT_COLOUR = new Color(0.69f, 0.447f, 0.098f, 1);
     public static final Color HOVER_TEXT_COLOUR = new Color(1, 1, 1, 1);
 
-    //private static final float GW = Gdx.graphics.getWidth();
-    //private static final float GH = Gdx.graphics.getHeight();
     private static float typingHold;
     private static int typingChar;
     private static boolean isCapital; 
