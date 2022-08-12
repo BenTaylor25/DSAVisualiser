@@ -137,7 +137,7 @@ public class MainMenuScreen extends FactOption {
                 factSelector = "binsrch";
             }
             else if (primsButtonBox.checkHover()) {
-                //factSelector = "prim";
+                factSelector = "prims";
             }
             else if (dijkstrasButtonBox.checkHover()) {
                 //factSelector = "dijkstras";

@@ -9,7 +9,7 @@ import com.mygdx.dsav.Screens.StackScreen;
 import com.mygdx.dsav.Screens.TreeScreen;
 import com.mygdx.dsav.Screens.BubbleSortScreen;
 import com.mygdx.dsav.Screens.BinarySearchScreen;
-//import com.mygdx.dsav.Screens.PrimsAlgScreen;
+import com.mygdx.dsav.Screens.PrimsAlgScreen;
 //import com.mygdx.dsav.Screens.DijkstrasAlgScreen;
 //import com.mygdx.dsav.Screens.DFSScreen;
 //import com.mygdx.dsav.Screens.BFSScreen;
@@ -36,10 +36,10 @@ public class DSAVisualiser extends Game {
 		screens.put("tree", new TreeScreen());
 		screens.put("bubble", new BubbleSortScreen());
 		screens.put("binsrch", new BinarySearchScreen());
-		//screen.put("prims", new PrimsAlgScreen());
-		//screen.put("dijkstras", new DijkstrasAlgScreen());
-		//screen.put("dfs", new DFSScreen());
-		//screen.put("bfs", new BFSScreen());
+		screens.put("prims", new PrimsAlgScreen());
+		//screens.put("dijkstras", new DijkstrasAlgScreen());
+		//screens.put("dfs", new DFSScreen());
+		//screens.put("bfs", new BFSScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
@@ -70,7 +70,7 @@ public class DSAVisualiser extends Game {
 				break;
 
 			default:
-				System.out.println("factSelector switch defaulted");
+				System.out.println("FACTSELECTOR SWITCH DEFAULTED");
 				factSelector = "quit";
 		}
 	}
