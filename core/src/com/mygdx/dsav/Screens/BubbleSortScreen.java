@@ -114,6 +114,7 @@ public class BubbleSortScreen extends FactOption {
                 arrayButtonBoxes[x].draw(shape, Color.WHITE);
             }
         }
+        sortButtonBox.draw(shape);
 
         // draw text 
         BenHelper.textDrawCentre(batch, font, "Bubble Sort", titleButtonBox,
@@ -145,7 +146,6 @@ public class BubbleSortScreen extends FactOption {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
-            sortButtonBox.draw(shape, Color.RED);
         }
     }
 
