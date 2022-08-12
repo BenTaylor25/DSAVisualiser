@@ -17,15 +17,13 @@ public class PrimsAlgScreen extends FactOption {
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
-    BenHelper.Rect toggleDirectedButtonBox;
-    BenHelper.Rect toggleWeightedButtonBox;
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
     BenHelper.Rect[] weightButtonBoxes;
 
     @Override
     public void create() {
-        graph = new Graph();
+        graph = new Graph(true, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph.addNode("");
         }
@@ -36,9 +34,6 @@ public class PrimsAlgScreen extends FactOption {
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
-
-        toggleDirectedButtonBox = new BenHelper.Rect(GW*0.175f, GH*0.85f, GW*0.15f, GH*0.075f);
-        toggleWeightedButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.85f, GW*0.15f, GH*0.075f);
 
         graphButtonBoxes = new BenHelper.Rect[GRAPHSIZE];
         graphButtonBoxes[0] = new BenHelper.Rect(GW*0.425f, GH*0.625f, GW*0.15f, GH*0.15f);
@@ -63,8 +58,7 @@ public class PrimsAlgScreen extends FactOption {
 
     @Override
     public void reset() {
-        // selectors?
-        graph = new Graph(false, false);
+        graph = new Graph(true, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph. addNode("");
         }
@@ -181,14 +175,6 @@ public class PrimsAlgScreen extends FactOption {
                 }
             }
         }
-
-        // toggles
-        if (toggleDirectedButtonBox.checkClick()) {
-            graph.isDirected = !graph.isDirected;
-        }
-        else if (toggleWeightedButtonBox.checkClick()) {
-            graph.isWeighted = !graph.isWeighted;
-        }
         
         return factSelector;
     }
@@ -214,11 +200,7 @@ public class PrimsAlgScreen extends FactOption {
         if (typingSelector >= 0) {
             graphButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
-
-        toggleDirectedButtonBox.draw(shape);
-        toggleWeightedButtonBox.draw(shape);
-
-
+       
         // draw arrows and weights
         for (int i = 0; i < GRAPHSIZE; i++) {
             for (int j = 0; j < GRAPHSIZE; j ++) {
@@ -275,17 +257,7 @@ public class PrimsAlgScreen extends FactOption {
             hintButtonBox, 0.75f, Color.GRAY
         );
 
-        String text = "to directed";
-        if (graph.isDirected) text = "to undirected";
-        BenHelper.textDrawCentre(batch, font, text, 
-            toggleDirectedButtonBox, 0.75f
-        );
-        text = "to weighted";
-        if (graph.isWeighted) text = "to unweighted";
-        BenHelper.textDrawCentre(batch, font, text, 
-            toggleWeightedButtonBox, 0.75f
-        );
-
+        String text = "";
         String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
         for (int i = 0; i < GRAPHSIZE; i++) {
             text = graph.nodes.get(i).value;
