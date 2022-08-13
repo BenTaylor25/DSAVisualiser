@@ -11,6 +11,7 @@ public class PrimsAlgScreen extends FactOption {
     final int GRAPHSIZE = 4;
     Graph graph;
     String hintTextString;
+    boolean algActive;
     int controllerSelector;
     int typingSelector;
     int weightSelector;
@@ -64,6 +65,7 @@ public class PrimsAlgScreen extends FactOption {
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph. addNode("");
         }
+        algActive = false;
     }
 
     @Override
@@ -134,7 +136,7 @@ public class PrimsAlgScreen extends FactOption {
         */
 
         // controller
-        if (BenHelper.screenClicked()) {
+        if (BenHelper.screenClicked() && !algActive) {
             boolean controllerSelected = false;
             for (int i = 0; i < GRAPHSIZE; i++) {
                 if (controllerButtonBoxes[i].checkHover()) {
@@ -155,7 +157,7 @@ public class PrimsAlgScreen extends FactOption {
         }
 
         // typing
-        if (BenHelper.screenClicked()) {
+        if (BenHelper.screenClicked() && !algActive) {
             typingSelector = -1;
 
             for (int i = 0; i < GRAPHSIZE; i++) {
@@ -167,7 +169,7 @@ public class PrimsAlgScreen extends FactOption {
         }
 
         // weights
-        if (BenHelper.screenClicked()) {
+        if (BenHelper.screenClicked() && !algActive) {
             weightSelector = -1;
 
             for (int i = 0; i < 6; i++) {
