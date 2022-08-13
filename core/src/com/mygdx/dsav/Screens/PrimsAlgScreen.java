@@ -261,12 +261,22 @@ public class PrimsAlgScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, hintTextString, 
             hintButtonBox, 0.75f, Color.GRAY
         );
-        // text config
-        BenHelper.textDrawCentre(batch, font, "[...]",
+        
+        String text = "[...]";
+        if (algActive) {
+            // text = generator.hasNext ? "Next" : "Finish";
+        } else {
+            text = "[Connect]";
+            // if (generator.isConnected()) { 
+            //     // fix typing selector to correct range
+            //     text = typingSelector == 0 ? "[Select]" : "Start";
+            // }
+        }
+        BenHelper.textDrawCentre(batch, font, text,
             algButtonBox, 1.25f
         );
 
-        String text = "";
+        //text = "";
         String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
         for (int i = 0; i < GRAPHSIZE; i++) {
             text = graph.nodes.get(i).value;
