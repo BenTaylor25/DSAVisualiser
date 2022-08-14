@@ -12,4 +12,8 @@ public class GPrimsAlg {
             graph.addNode("");
         }
     }
+
+    public boolean isConnected() {
+        return true;
+    }
 }

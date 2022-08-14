@@ -260,10 +260,10 @@ public class PrimsAlgScreen extends FactOption {
             // text = generator.hasNext ? "Next" : "Finish";
         } else {
             text = "[Connect]";
-            // if (generator.isConnected()) { 
-            //     // fix typing selector to correct range
-            //     text = typingSelector == 0 ? "[Select]" : "Start";
-            // }
+            if (generator.isConnected()) { 
+                // fix typing selector to correct range
+                text = typingSelector == -1 ? "[Select]" : "Start";
+            }
         }
         BenHelper.textDrawCentre(batch, font, text,
             algButtonBox, 1.25f
