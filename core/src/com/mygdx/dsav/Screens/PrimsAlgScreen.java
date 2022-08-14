@@ -2,14 +2,13 @@ package com.mygdx.dsav.Screens;
 
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
-import com.mygdx.dsav.DataStructs.Graph;
-
+import com.mygdx.dsav.Generators.GPrimsAlg;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 
 public class PrimsAlgScreen extends FactOption {
     final int GRAPHSIZE = 4;
-    Graph graph;
+    GPrimsAlg generator;
     String hintTextString;
     boolean algActive;
     int controllerSelector;
@@ -25,10 +24,7 @@ public class PrimsAlgScreen extends FactOption {
 
     @Override
     public void create() {
-        graph = new Graph(true, false);
-        for (int i = 0; i < GRAPHSIZE; i++) {
-            graph.addNode("");
-        }
+        generator = new GPrimsAlg(GRAPHSIZE);
         hintTextString = "";
         controllerSelector = -1;
         typingSelector = -1;
@@ -61,10 +57,7 @@ public class PrimsAlgScreen extends FactOption {
 
     @Override
     public void reset() {
-        graph = new Graph(true, false);
-        for (int i = 0; i < GRAPHSIZE; i++) {
-            graph. addNode("");
-        }
+        generator = new GPrimsAlg(GRAPHSIZE);
         algActive = false;
     }
 
@@ -143,7 +136,7 @@ public class PrimsAlgScreen extends FactOption {
                     controllerSelected = true;
                     if (controllerSelector != -1) {
                         if (controllerSelector != i) {
-                            graph.toggleVertex(controllerSelector, i);
+                            generator.graph.toggleVertex(controllerSelector, i);
                         }
                         controllerSelector = -1;
                     } else {
@@ -209,14 +202,14 @@ public class PrimsAlgScreen extends FactOption {
         // draw arrows and weights
         for (int i = 0; i < GRAPHSIZE; i++) {
             for (int j = 0; j < GRAPHSIZE; j ++) {
-                if (i != j && graph.nodes.get(i).pointsTo(j)) {
+                if (i != j && generator.graph.nodes.get(i).pointsTo(j)) {
                     graphButtonBoxes[i].arrowToCalc(shape, 
                         graphButtonBoxes[j], 
                         i, j
                     );
 
-                    if (graph.isWeighted) {
-                        int x = graph.nodes.get(i).connections.indexOf(j);
+                    if (generator.graph.isWeighted) {
+                        int x = generator.graph.nodes.get(i).connections.indexOf(j);
                         
                         // weight box index
                         int wInd;
@@ -230,7 +223,7 @@ public class PrimsAlgScreen extends FactOption {
                         
                         // not perfect, but should be good enough for now
                         String text = Integer.toString(
-                            graph.nodes.get(i).weights.get(x)
+                            generator.graph.nodes.get(i).weights.get(x)
                         );
 
                         if (wInd == weightSelector) {
@@ -279,7 +272,7 @@ public class PrimsAlgScreen extends FactOption {
         //text = "";
         String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
         for (int i = 0; i < GRAPHSIZE; i++) {
-            text = graph.nodes.get(i).value;
+            text = generator.graph.nodes.get(i).value;
             if (text.equals("")) { text = defaults[i]; }
             BenHelper.textDrawCentreSelectable(batch, font, 
                 text, graphButtonBoxes[i], 
@@ -307,8 +300,8 @@ public class PrimsAlgScreen extends FactOption {
         }
 
         if (typingSelector >= 0) {
-            graph.nodes.get(typingSelector).value = BenHelper.typing(
-                graph.nodes.get(typingSelector).value,
+            generator.graph.nodes.get(typingSelector).value = BenHelper.typing(
+                generator.graph.nodes.get(typingSelector).value,
                 10
             );
         }
@@ -323,17 +316,17 @@ public class PrimsAlgScreen extends FactOption {
             if (weightSelector == 1 ||
                 weightSelector == 3) { j = 2; }
 
-            if (graph.nodes.get(i).pointsTo(j)) {
-                int x = graph.nodes.get(i).connections.indexOf(j);
-                graph.nodes.get(i).weights.set(x, BenHelper.typingNumbers(
-                    graph.nodes.get(i).weights.get(x)
+            if (generator.graph.nodes.get(i).pointsTo(j)) {
+                int x = generator.graph.nodes.get(i).connections.indexOf(j);
+                generator.graph.nodes.get(i).weights.set(x, BenHelper.typingNumbers(
+                    generator.graph.nodes.get(i).weights.get(x)
                 ));
             }
 
-            if (graph.nodes.get(j).pointsTo(i)) {
-                int x = graph.nodes.get(j).connections.indexOf(i);
-                graph.nodes.get(j).weights.set(x, BenHelper.typingNumbers(
-                    graph.nodes.get(j).weights.get(x)
+            if (generator.graph.nodes.get(j).pointsTo(i)) {
+                int x = generator.graph.nodes.get(j).connections.indexOf(i);
+                generator.graph.nodes.get(j).weights.set(x, BenHelper.typingNumbers(
+                    generator.graph.nodes.get(j).weights.get(x)
                 ));
             }
         }
