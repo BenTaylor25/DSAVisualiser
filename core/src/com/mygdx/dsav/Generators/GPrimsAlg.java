@@ -7,7 +7,7 @@ public class GPrimsAlg {
     public Graph graph;
 
     public GPrimsAlg(int size) {
-        graph = new Graph();
+        graph = new Graph(true, false);
         for (int i = 0; i < size; i++) {
             graph.addNode("");
         }
