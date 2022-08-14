@@ -14,6 +14,7 @@ public class GPrimsAlg {
     }
 
     public boolean isConnected() {
+        // change of plan: revisit after DFS and BFS (so that I can use one of them here)
         return true;
     }
 }
