@@ -13,14 +13,12 @@ public class DfsScreen extends FactOption {
     boolean algActive;
     int controllerSelector;
     int typingSelector;
-    int weightSelector;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect algButtonBox;
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
-    BenHelper.Rect[] weightButtonBoxes;
 
     @Override
     public void create() {
@@ -28,7 +26,6 @@ public class DfsScreen extends FactOption {
         hintTextString = "";
         controllerSelector = -1;
         typingSelector = -1;
-        weightSelector = -1;
         titleButtonBox = new BenHelper.Rect(GW*0.3f, GH*0.85f, GW*0.4f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
@@ -45,14 +42,6 @@ public class DfsScreen extends FactOption {
         controllerButtonBoxes[1] = new BenHelper.Rect(GW*0.86f, GW*0.07f, GW*0.03f, GW*0.03f);
         controllerButtonBoxes[2] = new BenHelper.Rect(GW*0.94f, GW*0.07f, GW*0.03f, GW*0.03f);
         controllerButtonBoxes[3] = new BenHelper.Rect(GW*0.9f,  GW*0.03f, GW*0.03f, GW*0.03f);
-
-        weightButtonBoxes = new BenHelper.Rect[6];
-        weightButtonBoxes[0] = new BenHelper.Rect(GW*0.35f, GH*0.55f, GW*0.05f, GW*0.05f);
-        weightButtonBoxes[1] = new BenHelper.Rect(GW*0.6f, GH*0.55f, GW*0.05f, GW*0.05f);
-        weightButtonBoxes[2] = new BenHelper.Rect(GW*0.485f, GH*0.5f, GW*0.05f, GW*0.05f);
-        weightButtonBoxes[3] = new BenHelper.Rect(GW*0.435f, GH*0.5f-GW*0.025f, GW*0.05f, GW*0.05f);
-        weightButtonBoxes[4] = new BenHelper.Rect(GW*0.35f, GH*0.35f, GW*0.05f, GW*0.05f);
-        weightButtonBoxes[5] = new BenHelper.Rect(GW*0.6f, GH*0.35f, GW*0.05f, GW*0.05f);
     }
 
     @Override
@@ -136,7 +125,7 @@ public class DfsScreen extends FactOption {
                     controllerSelected = true;
                     if (controllerSelector != -1) {
                         if (controllerSelector != i) {
-                            // generator.graph.toggleVertex(controllerSelector, i);
+                            generator.graph.toggleVertex(controllerSelector, i);
                         }
                         controllerSelector = -1;
                     } else {
@@ -161,18 +150,6 @@ public class DfsScreen extends FactOption {
             }
         }
 
-        // weights
-        if (BenHelper.screenClicked() && !algActive) {
-            weightSelector = -1;
-
-            for (int i = 0; i < 6; i++) {
-                if (weightButtonBoxes[i].checkHover()) {
-                    weightSelector = i;
-                    break;
-                }
-            }
-        }
-        
         return factSelector;
     }
 
@@ -202,46 +179,12 @@ public class DfsScreen extends FactOption {
         // draw arrows and weights
         for (int i = 0; i < GRAPHSIZE; i++) {
             for (int j = 0; j < GRAPHSIZE; j ++) {
-                /*
                 if (i != j && generator.graph.nodes.get(i).pointsTo(j)) {
                     graphButtonBoxes[i].arrowToCalc(shape, 
                         graphButtonBoxes[j], 
                         i, j
                     );
-
-                    if (generator.graph.isWeighted) {
-                        int x = generator.graph.nodes.get(i).connections.indexOf(j);
-                        
-                        // weight box index
-                        int wInd;
-                        if (i == 0 || j == 0) {
-                            wInd = i + j - 1;
-                        } else if (i == 1 || j == 1) {
-                            wInd = i + j;
-                        } else {
-                            wInd = 5;
-                        }
-                        
-                        // not perfect, but should be good enough for now
-                        String text = Integer.toString(
-                            generator.graph.nodes.get(i).weights.get(x)
-                        );
-
-                        if (wInd == weightSelector) {
-                            BenHelper.textDrawCentre(
-                                batch, font, text, 
-                                weightButtonBoxes[wInd], 1f,
-                                BenHelper.HOVER_TEXT_COLOUR
-                            );
-                        } else {
-                            BenHelper.textDrawCentre(
-                                batch, font, text, 
-                                weightButtonBoxes[wInd], 1f
-                            );
-                        }
-                    }
                 }
-                */
             }
         }
 
@@ -276,14 +219,12 @@ public class DfsScreen extends FactOption {
         //text = "";
         String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
         for (int i = 0; i < GRAPHSIZE; i++) {
-            /*
             text = generator.graph.nodes.get(i).value;
             if (text.equals("")) { text = defaults[i]; }
             BenHelper.textDrawCentreSelectable(batch, font, 
                 text, graphButtonBoxes[i], 
                 1f, (typingSelector == i)
             );
-            */
         }
 
 
@@ -292,10 +233,6 @@ public class DfsScreen extends FactOption {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
-
-            for (int i = 0; i < 6; i++) {
-                weightButtonBoxes[i].draw(shape, Color.RED);
-            }
         }
     }
 
@@ -306,39 +243,10 @@ public class DfsScreen extends FactOption {
         }
 
         if (typingSelector >= 0) {
-            /*
             generator.graph.nodes.get(typingSelector).value = BenHelper.typing(
                 generator.graph.nodes.get(typingSelector).value,
                 10
             );
-            */
-        }
-
-        if (weightSelector >= 0) {
-            int i = 0;
-            if (weightSelector >= 3) { i++; }
-            if (weightSelector == 5) { i++; }
-
-            int j = 3;
-            if (weightSelector == 0) { j = 1; }
-            if (weightSelector == 1 ||
-                weightSelector == 3) { j = 2; }
-
-            /*
-            if (generator.graph.nodes.get(i).pointsTo(j)) {
-                int x = generator.graph.nodes.get(i).connections.indexOf(j);
-                generator.graph.nodes.get(i).weights.set(x, BenHelper.typingNumbers(
-                    generator.graph.nodes.get(i).weights.get(x)
-                ));
-            }
-
-            if (generator.graph.nodes.get(j).pointsTo(i)) {
-                int x = generator.graph.nodes.get(j).connections.indexOf(i);
-                generator.graph.nodes.get(j).weights.set(x, BenHelper.typingNumbers(
-                    generator.graph.nodes.get(j).weights.get(x)
-                ));
-            }
-            */
         }
 
         return factSelector;
