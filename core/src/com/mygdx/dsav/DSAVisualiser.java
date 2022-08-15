@@ -11,8 +11,8 @@ import com.mygdx.dsav.Screens.BubbleSortScreen;
 import com.mygdx.dsav.Screens.BinarySearchScreen;
 import com.mygdx.dsav.Screens.PrimsAlgScreen;
 //import com.mygdx.dsav.Screens.DijkstrasAlgScreen;
-//import com.mygdx.dsav.Screens.DFSScreen;
-//import com.mygdx.dsav.Screens.BFSScreen;
+import com.mygdx.dsav.Screens.DfsScreen;
+//import com.mygdx.dsav.Screens.BfsScreen;
 
 import java.util.Hashtable;
 import com.badlogic.gdx.Game;
@@ -38,8 +38,8 @@ public class DSAVisualiser extends Game {
 		screens.put("binsrch", new BinarySearchScreen());
 		screens.put("prims", new PrimsAlgScreen());
 		//screens.put("dijkstras", new DijkstrasAlgScreen());
-		//screens.put("dfs", new DFSScreen());
-		//screens.put("bfs", new BFSScreen());
+		screens.put("dfs", new DfsScreen());
+		//screens.put("bfs", new BfsScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
