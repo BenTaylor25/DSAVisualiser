@@ -19,6 +19,7 @@ public class GraphScreen extends FactOption {
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect toggleDirectedButtonBox;
     BenHelper.Rect toggleWeightedButtonBox;
+    BenHelper.Rect controllerHintButtonBox;
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
     BenHelper.Rect[] weightButtonBoxes;
@@ -39,6 +40,7 @@ public class GraphScreen extends FactOption {
 
         toggleDirectedButtonBox = new BenHelper.Rect(GW*0.175f, GH*0.85f, GW*0.15f, GH*0.075f);
         toggleWeightedButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.85f, GW*0.15f, GH*0.075f);
+        controllerHintButtonBox = new BenHelper.Rect(GW*0.86f, GW*0.03f, GW*0.11f, GW*0.11f);
 
         graphButtonBoxes = new BenHelper.Rect[GRAPHSIZE];
         graphButtonBoxes[0] = new BenHelper.Rect(GW*0.425f, GH*0.625f, GW*0.15f, GH*0.15f);
@@ -90,13 +92,10 @@ public class GraphScreen extends FactOption {
         }
         else {
             boolean nodeHover = false;
-            boolean controllerHover = false;
+            boolean controllerHover = controllerHintButtonBox.checkHover();
             boolean weightHover = false;
             for (int i = 0; i < GRAPHSIZE; i++) {
                 nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
-            }
-            for (int i = 0; i < GRAPHSIZE; i++) {
-                controllerHover = controllerHover || controllerButtonBoxes[i].checkHover();
             }
 
             if (graph.isWeighted) {
@@ -300,6 +299,7 @@ public class GraphScreen extends FactOption {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
+            controllerHintButtonBox.draw(shape, Color.RED);
 
             for (int i = 0; i < 6; i++) {
                 weightButtonBoxes[i].draw(shape, Color.RED);
