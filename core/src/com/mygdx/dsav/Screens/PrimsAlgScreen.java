@@ -18,6 +18,7 @@ public class PrimsAlgScreen extends FactOption {
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect algButtonBox;
+    BenHelper.Rect controllerHintButtonBox;
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
     BenHelper.Rect[] weightButtonBoxes;
@@ -33,6 +34,7 @@ public class PrimsAlgScreen extends FactOption {
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         algButtonBox = new BenHelper.Rect(GW*0.1f, GH*0.7f, GW*0.15f, GH*0.15f);
+        controllerHintButtonBox = new BenHelper.Rect(GW*0.86f, GW*0.03f, GW*0.11f, GW*0.11f);
 
         graphButtonBoxes = new BenHelper.Rect[GRAPHSIZE];
         graphButtonBoxes[0] = new BenHelper.Rect(GW*0.425f, GH*0.625f, GW*0.15f, GH*0.15f);
@@ -82,13 +84,10 @@ public class PrimsAlgScreen extends FactOption {
         }
         else {
             boolean nodeHover = false;
-            boolean controllerHover = false;
+            boolean controllerHover = controllerHintButtonBox.checkHover();
             boolean weightHover = false;
             for (int i = 0; i < GRAPHSIZE; i++) {
                 nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
-            }
-            for (int i = 0; i < GRAPHSIZE; i++) {
-                controllerHover = controllerHover || controllerButtonBoxes[i].checkHover();
             }
 
             if (graph.isWeighted) {
@@ -286,6 +285,7 @@ public class PrimsAlgScreen extends FactOption {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
+            controllerHintButtonBox.draw(shape, Color.RED);
 
             for (int i = 0; i < 6; i++) {
                 weightButtonBoxes[i].draw(shape, Color.RED);
