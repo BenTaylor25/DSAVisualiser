@@ -144,6 +144,7 @@ public class QueueScreen extends FactOption {
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
+            hintButtonBox.draw(shape, Color.RED);
         }
     }
 
