@@ -1,5 +1,7 @@
 package com.mygdx.dsav.DataStructs;
 
+// import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Graph {
@@ -117,5 +119,24 @@ public class Graph {
 
         s += "]";
         return s;
+    }
+
+    public boolean isConnected() {
+        LinkedList<Integer> countedNodes = new LinkedList<>(Arrays.asList(0));
+        int ptr = 0;
+
+        while (ptr < countedNodes.size()) {
+            GraphNode n = nodes.get(countedNodes.get(ptr));
+
+            for (int x : n.connections) {
+                if (!countedNodes.contains(x)) {
+                    countedNodes.add(x);
+                }
+            }
+
+            ptr++;
+        }
+
+        return countedNodes.size() == 4;
     }
 }
