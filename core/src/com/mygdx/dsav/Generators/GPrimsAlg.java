@@ -12,9 +12,5 @@ public class GPrimsAlg {
             graph.addNode("");
         }
     }
-
-    public boolean isConnected() {
-        // change of plan: revisit after DFS and BFS (so that I can use one of them here)
-        return true;
-    }
+    
 }

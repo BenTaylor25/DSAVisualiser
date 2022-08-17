@@ -259,8 +259,7 @@ public class PrimsAlgScreen extends FactOption {
             // text = generator.hasNext ? "Next" : "Finish";
         } else {
             text = "[Connect]";
-            if (generator.isConnected()) { 
-                // fix typing selector to correct range
+            if (generator.graph.isConnected()) { 
                 text = typingSelector == -1 ? "[Select]" : "Start";
             }
         }
