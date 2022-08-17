@@ -5,6 +5,7 @@ import com.mygdx.dsav.DataStructs.Graph;
 
 public class GPrimsAlg {
     public Graph graph;
+    public boolean hasNext;
 
     public GPrimsAlg(int size) {
         graph = new Graph(true, false);
@@ -12,5 +13,14 @@ public class GPrimsAlg {
             graph.addNode("");
         }
     }
+
+    public void reset() {
+        hasNext = true;
+    }
     
+    public void next() {
+        assert hasNext;
+
+        //
+    }
 }
