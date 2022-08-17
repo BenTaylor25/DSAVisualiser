@@ -264,7 +264,7 @@ public class PrimsAlgScreen extends FactOption {
             }
         }
         BenHelper.textDrawCentre(batch, font, text,
-            algButtonBox, 1.25f
+            algButtonBox, 1f
         );
 
         //text = "";
