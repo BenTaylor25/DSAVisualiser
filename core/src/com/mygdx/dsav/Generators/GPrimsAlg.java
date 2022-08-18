@@ -12,6 +12,7 @@ public class GPrimsAlg {
         for (int i = 0; i < size; i++) {
             graph.addNode("");
         }
+        hasNext = true;
     }
 
     public void reset() {
