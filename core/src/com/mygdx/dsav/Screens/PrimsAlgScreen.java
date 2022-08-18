@@ -150,7 +150,10 @@ public class PrimsAlgScreen extends FactOption {
 
         // typing
         if (BenHelper.screenClicked() && !algActive) {
-            typingSelector = -1;
+            // reset typing selector unless algorithm is about to start
+            if (!algButtonBox.checkHover()) {
+                typingSelector = -1;
+            }
 
             for (int i = 0; i < GRAPHSIZE; i++) {
                 if (graphButtonBoxes[i].checkHover()) {
@@ -327,6 +330,22 @@ public class PrimsAlgScreen extends FactOption {
                 generator.graph.nodes.get(j).weights.set(x, BenHelper.typingNumbers(
                     generator.graph.nodes.get(j).weights.get(x)
                 ));
+            }
+        }
+
+        // Generator call
+        if (algButtonBox.checkClick()) {
+            if (algActive) {
+                if (generator.hasNext) {
+                    generator.next();
+                } else {
+                    System.out.println(generator.hasNext);
+                    algActive = false;
+                }
+            } else {
+                if (generator.graph.isConnected() && typingSelector != -1) {
+                    algActive = true;
+                }
             }
         }
 
