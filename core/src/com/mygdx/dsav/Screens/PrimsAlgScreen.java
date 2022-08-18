@@ -256,7 +256,7 @@ public class PrimsAlgScreen extends FactOption {
         
         String text = "[...]";
         if (algActive) {
-            // text = generator.hasNext ? "Next" : "Finish";
+            text = generator.hasNext ? "Next" : "Finish";
         } else {
             text = "[Connect]";
             if (generator.graph.isConnected()) { 
