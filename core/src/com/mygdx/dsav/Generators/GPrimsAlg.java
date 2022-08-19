@@ -5,13 +5,17 @@ import com.mygdx.dsav.DataStructs.Graph;
 
 public class GPrimsAlg {
     public Graph graph;
+    public Graph visitedGraph;
     public boolean hasNext;
 
     public GPrimsAlg(int size) {
         graph = new Graph(true, false);
+        visitedGraph = new Graph();
         for (int i = 0; i < size; i++) {
             graph.addNode("");
+            visitedGraph.addNode("");
         }
+        visitedGraph.toggleVertex(0, 1);
         hasNext = true;
     }
 

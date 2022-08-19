@@ -210,6 +210,14 @@ public class PrimsAlgScreen extends FactOption {
                         i, j
                     );
 
+                    if (generator.visitedGraph.nodes.get(i).pointsTo(j)) {
+                        graphButtonBoxes[i].arrowToCalc(shape, 
+                            graphButtonBoxes[j], 
+                            i, j, 
+                            BenHelper.HOVER_TEXT_COLOUR
+                        );
+                    }
+
                     if (generator.graph.isWeighted) {
                         int x = generator.graph.nodes.get(i).connections.indexOf(j);
                         

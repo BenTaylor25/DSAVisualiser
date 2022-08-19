@@ -225,7 +225,7 @@ public class BenHelper {
          * @param thisPoint
          * @param otherPoint
          */
-        public void arrowTo(ShapeRenderer shape, Rect otherBox, int thisPoint, int otherPoint) {
+        public void arrowTo(ShapeRenderer shape, Rect otherBox, int thisPoint, int otherPoint, Color col) {
             Integer[] horHalf = new Integer[]{1, 6};
             Integer[] horFull = new Integer[]{2, 4, 7};
             Integer[] verHalf = new Integer[]{3, 4};
@@ -236,17 +236,13 @@ public class BenHelper {
             float endX = getCoords(otherPoint, otherBox.x, otherBox.w, horHalf, horFull);
             float endY = getCoords(otherPoint, otherBox.y, otherBox.h, verHalf, verFull);
 
-            drawArrow(shape, startX, startY, endX, endY, 30, GW()/75, GW()/500, Color.BLACK);
+            drawArrow(shape, startX, startY, endX, endY, 30, GW()/75, GW()/500, col);
         }
-        /**
-         * Calculate points from index.
-         * 
-         * @param shape
-         * @param otherBox
-         * @param ind1
-         *Color col = BenHelper.DEFAULT_TEXT_COLOUR; @param ind2
-         */
-        public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2) {
+        public void arrowTo(ShapeRenderer shape, Rect otherBox, int thisPoint, int otherPoint) {
+            arrowTo(shape, otherBox, thisPoint, otherPoint, Color.BLACK);
+        }
+
+        public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2, Color col) {
             assert ind1 != ind2: "BenHelper.Rect.arrowToCalc() - indices are the same";
             boolean bothInRange = 
                 ind1 >= 0 && ind1 <= 3 &&
@@ -298,9 +294,15 @@ public class BenHelper {
                 tp = tp ^ op ^ (op = tp);
             }
 
-            this.arrowTo(shape, otherBox, tp, op);
+            this.arrowTo(shape, otherBox, tp, op, col);
+        }
+
+        public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2) {
+            arrowToCalc(shape, otherBox, ind1, ind2, Color.BLACK);
         }
     }
+    
+
 
     private static float getCoords(int point, float start, float dist, Integer[] half, Integer[] full) {
         float pos = start;
