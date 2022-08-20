@@ -121,7 +121,7 @@ public class Graph {
         return s;
     }
 
-    public LinkedList<Integer> getConnections(int start) {
+    public LinkedList<Integer> getConnectedNodes(int start) {
         LinkedList<Integer> countedNodes = new LinkedList<>(Arrays.asList(start));
         int ptr = 0;
 
@@ -141,6 +141,6 @@ public class Graph {
     }
 
     public boolean isConnected() {
-        return getConnections(0).size() == 4;
+        return getConnectedNodes(0).size() == 4;
     }
 }
