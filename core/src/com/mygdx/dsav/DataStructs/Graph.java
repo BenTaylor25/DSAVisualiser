@@ -143,4 +143,33 @@ public class Graph {
     public boolean isConnected() {
         return getConnectedNodes(0).size() == 4;
     }
+
+    public int[] getShortestNewConnection(LinkedList<Integer> visitedNodes) {
+        int[] rv = new int[]{-1, -1};
+        int shortest = Integer.MAX_VALUE;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = i+1; j < 4; j++) {
+                boolean iIn = visitedNodes.contains(i);
+                boolean jIn = visitedNodes.contains(j);
+
+                if (iIn ^ jIn) {   // XOR; if one is- but the other is not in
+                    if (nodes.get(i).connections.contains(j)) {
+                        int ptr = 0;
+                        while (nodes.get(i).connections.get(ptr) != j) { ptr++; }
+
+                        int weightOfConnection = nodes.get(i).weights.get(ptr);
+                        if (weightOfConnection < shortest) {
+                            shortest = weightOfConnection;
+                            rv[0] = i;
+                            rv[1] = j;
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        return rv;
+    }
 }
