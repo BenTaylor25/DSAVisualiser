@@ -309,7 +309,7 @@ public class PrimsAlgScreen extends FactOption {
             factSelector = "menu";
         }
 
-        if (typingSelector >= 0) {
+        if (typingSelector >= 0 && !algActive) {
             generator.graph.nodes.get(typingSelector).value = BenHelper.typing(
                 generator.graph.nodes.get(typingSelector).value,
                 10
