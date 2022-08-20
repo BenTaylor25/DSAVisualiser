@@ -345,7 +345,7 @@ public class PrimsAlgScreen extends FactOption {
         if (algButtonBox.checkClick()) {
             if (algActive) {
                 if (generator.hasNext) {
-                    generator.next();
+                    generator.next(typingSelector);
                 } else {
                     System.out.println(generator.hasNext);
                     algActive = false;

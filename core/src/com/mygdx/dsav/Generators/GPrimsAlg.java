@@ -22,9 +22,9 @@ public class GPrimsAlg {
         hasNext = true;
     }
     
-    public void next() {
+    public void next(int start) {
         assert hasNext;
 
-        //
+        LinkedList<Integer> visitedNodes = visitedGraph.getConnectedNodes(start) 
     }
 }
