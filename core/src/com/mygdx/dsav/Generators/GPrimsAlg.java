@@ -9,8 +9,10 @@ public class GPrimsAlg {
     public Graph graph;
     public Graph visitedGraph;
     public boolean hasNext;
+    private int _size;
 
     public GPrimsAlg(int size) {
+        _size = size;
         graph = new Graph(true, false);
         visitedGraph = new Graph();
         for (int i = 0; i < size; i++) {
@@ -22,6 +24,10 @@ public class GPrimsAlg {
 
     public void reset() {
         hasNext = true;
+        visitedGraph = new Graph();
+        for (int i = 0; i < _size; i++) {
+            visitedGraph.addNode("");
+        }
     }
     
     public void next(int start) {

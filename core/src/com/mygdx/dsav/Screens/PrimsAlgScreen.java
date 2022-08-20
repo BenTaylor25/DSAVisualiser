@@ -347,7 +347,7 @@ public class PrimsAlgScreen extends FactOption {
                 if (generator.hasNext) {
                     generator.next(typingSelector);
                 } else {
-                    System.out.println(generator.hasNext);
+                    generator.reset();
                     algActive = false;
                 }
             } else {
