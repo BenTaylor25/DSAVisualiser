@@ -15,7 +15,6 @@ public class GPrimsAlg {
             graph.addNode("");
             visitedGraph.addNode("");
         }
-        visitedGraph.toggleVertex(0, 1);
         hasNext = true;
     }
 
