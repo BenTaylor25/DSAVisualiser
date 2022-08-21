@@ -96,7 +96,7 @@ public class PrimsAlgScreen extends FactOption {
                         // If all weights are the same
                         // (doesn't work perfectly, see getWeightDifference()) 
                         if (generator.graph.getWeightDifference() <= 0) {
-                            hintTextString += "\nYou may wish to vary the Edge Weights before starting.";
+                            hintTextString += "\nYou may wish to vary the Edge\nWeights before starting.";
                         }
                     }
                 } else {
