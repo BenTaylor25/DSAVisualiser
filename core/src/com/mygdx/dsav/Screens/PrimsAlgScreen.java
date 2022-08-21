@@ -71,6 +71,9 @@ public class PrimsAlgScreen extends FactOption {
                 "of a Graph. The MST is a connected subset of a Graph that\n"+
                 "has the minimum total weight across Edges. O(ElogN) Time.";
         }
+        else if (algButtonBox.checkHover()) {
+            
+        }
         else {
             boolean nodeHover = false;
             boolean controllerHover = controllerHintButtonBox.checkHover();
@@ -104,12 +107,13 @@ public class PrimsAlgScreen extends FactOption {
                     "but it may be helpful to present using an example.";
             }
             else if (controllerHover) {
-                hintTextString = "\n"+
-                    "\n"+
-                    "";
+                hintTextString = "Controller to modify the Edge connections.\n"+
+                    "Click one box to select the corresponding Node.\n"+
+                    "Click a second to connect to- or disconnect from it.";
             }
             else if (weightHover) {
-                hintTextString = "";
+                hintTextString = "Modify the Weight of the Edge.\n"+
+                    "This impacts the Algorithm.";
             }
         }
 
