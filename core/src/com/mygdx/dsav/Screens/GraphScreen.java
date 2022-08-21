@@ -76,7 +76,7 @@ public class GraphScreen extends FactOption {
     public String updateBefore(String factSelector) {
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
-            hintTextString = "Graphs are collections of nodes joined together by vertices.\n"+
+            hintTextString = "Graphs are collections of 'Nodes' joined together by 'Edges'.\n"+
                 "Graphs are extremely useful when representing relationships.\n"+
                 "Example: Social Media accounts are nodes that connect to others.";
         }
@@ -120,17 +120,17 @@ public class GraphScreen extends FactOption {
             }
 
             if (nodeHover) {
-                hintTextString = "Graph Nodes store one or more values\n"+
+                hintTextString = "Graph Nodes store one or more values,\n"+
                     "and the connections it has to other nodes.\n"+
                     "Sometimes stores connections to it for back reference.";
             }
             else if (controllerHover) {
-                hintTextString = "Controller to modify the vertex connections.\n"+
+                hintTextString = "Controller to modify the Edge connections.\n"+
                     "Click one box to select the corresponding node.\n"+
                     "Click a second to connect, or unconnect to it.";
             }
             else if (weightHover) {
-                hintTextString = "Modify the Weight of the vertex.";
+                hintTextString = "Modify the Weight of the Edge.";
             }
         }
 
