@@ -92,6 +92,12 @@ public class PrimsAlgScreen extends FactOption {
                     } else {
                         // "Start" is shown
                         hintTextString = "Start Prim's Algorithm.";
+
+                        // If all weights are the same
+                        // (doesn't work perfectly, see getWeightDifference()) 
+                        if (generator.graph.getWeightDifference() <= 0) {
+                            hintTextString += "\nYou may wish to vary the Edge Weights before starting.";
+                        }
                     }
                 } else {
                     // "[Connect]" is shown

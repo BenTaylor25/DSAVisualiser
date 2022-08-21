@@ -172,4 +172,28 @@ public class Graph {
 
         return rv;
     }
+
+    /** This doesn't seem to work exactly as intended
+     * (flag when all weights are the same)
+     * but it works for the most important case
+     * (flag when all weights are 0)
+     * (the default; it flags if the user hasn't changed anything)
+     */
+    public int getWeightDifference() {
+        if (!isConnected()) {
+            return -1;
+        }
+
+        int max = 0;
+        int min = 0;
+
+        for (GraphNode node : nodes) {
+            for (int w : node.weights) {
+                if (w > max) { max = w; }
+                else if (w < min) { min = w; }
+            }
+        }
+
+        return max - min;
+    }
 }
