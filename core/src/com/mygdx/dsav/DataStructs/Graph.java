@@ -173,7 +173,8 @@ public class Graph {
         return rv;
     }
 
-    /** This doesn't seem to work exactly as intended
+    /** 
+     * This doesn't seem to work exactly as intended
      * (flag when all weights are the same)
      * but it works for the most important case
      * (flag when all weights are 0)
