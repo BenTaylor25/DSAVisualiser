@@ -72,7 +72,37 @@ public class PrimsAlgScreen extends FactOption {
                 "has the minimum total weight across Edges. O(ElogN) Time.";
         }
         else if (algButtonBox.checkHover()) {
-            
+            // if (algActive) {
+            //     generator.hasNext ? "Next" : "Finish";
+            // } else {
+            //     "[Connect]";
+            //     if (generator.graph.isConnected()) { 
+            //         typingSelector == -1 ? "[Select]" : "Start";
+            //     }
+            // }
+
+            if (algActive) {
+                if (generator.hasNext) {
+                    // "Next" is shown
+
+                } else {
+                    // "Finish" is shown
+
+                }
+            } else {
+                if (generator.graph.isConnected()) {
+                    if (typingSelector == -1) {
+                        // "[Select]" is shown
+
+                    } else {
+                        // "Start" is shown
+                        
+                    }
+                } else {
+                    // "[Connect]" is shown
+
+                }
+            }
         }
         else {
             boolean nodeHover = false;
