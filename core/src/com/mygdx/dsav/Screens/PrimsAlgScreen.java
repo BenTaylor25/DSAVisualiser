@@ -72,35 +72,32 @@ public class PrimsAlgScreen extends FactOption {
                 "has the minimum total weight across Edges. O(ElogN) Time.";
         }
         else if (algButtonBox.checkHover()) {
-            // if (algActive) {
-            //     generator.hasNext ? "Next" : "Finish";
-            // } else {
-            //     "[Connect]";
-            //     if (generator.graph.isConnected()) { 
-            //         typingSelector == -1 ? "[Select]" : "Start";
-            //     }
-            // }
-
             if (algActive) {
                 if (generator.hasNext) {
                     // "Next" is shown
-
+                    hintTextString = "Add the smallest Edge that connects a new\n"+
+                        "Node to the current Minimum Spanning Tree.";
                 } else {
                     // "Finish" is shown
-
+                    hintTextString = "The Minimum Spanning Tree has been obtained.\n"+
+                        "Also see Kruskal's Algorithm for an\n"+
+                        "alternative way to reach the MST.";
                 }
             } else {
                 if (generator.graph.isConnected()) {
                     if (typingSelector == -1) {
                         // "[Select]" is shown
-
+                        hintTextString = "Prim's Algorithm requires a starting Node.\n"+
+                            "Select a Node to set the starting point.";
                     } else {
                         // "Start" is shown
-                        
+                        hintTextString = "Start Prim's Algorithm.";
                     }
                 } else {
                     // "[Connect]" is shown
-
+                    hintTextString = "The Graph must be Connected (all Nodes must be reachable\n"+
+                        "from all others via Edges) in order to start the Algorithm.\n"+
+                        "This is not neccesarily the case in practice.";
                 }
             }
         }
