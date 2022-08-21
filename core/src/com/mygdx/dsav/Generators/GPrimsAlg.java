@@ -3,7 +3,6 @@ package com.mygdx.dsav.Generators;
 import java.util.LinkedList;
 
 import com.mygdx.dsav.DataStructs.Graph;
-// import com.mygdx.dsav.DataStructs.GraphNode;
 
 public class GPrimsAlg {
     public Graph graph;
