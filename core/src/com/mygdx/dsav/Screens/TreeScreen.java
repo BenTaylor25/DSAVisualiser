@@ -61,9 +61,9 @@ public class TreeScreen extends FactOption {
                 "HTML Document Object Model (Web Development).";
         }
         else if (binaryTreeInfoButtonBox.checkHover()) {
-            hintTextString = "Binary Trees are a type of Tree where each node can\n"+
+            hintTextString = "Binary Trees are a type of Tree where each Node can\n"+
                 "have a maximum of 2 children: a left child and a right child.\n"+
-                "Used in Data Sorting and Searching, Encoding";
+                "Used in Data Sorting and Searching, and Encoding.";
         }
         else {
             int ind = 0;
@@ -72,15 +72,15 @@ public class TreeScreen extends FactOption {
             }
 
             if (ind == 0) {   // hovering on a root node
-                hintTextString = "The root node of a Tree has no parent nodes.";
+                hintTextString = "The root node of a Tree has no parent Nodes.";
             }
             else if (ind < 3) {   // hovering on a middle layer node
                 hintTextString = "Nodes in a Tree are stored with a parent reference and child\n"+
-                    "references. In order to access one node from another on the other\n"+
+                    "references. In order to access one Node from another on the other\n"+
                     "side of the tree, you must go through the common ancestor.";
             }
             else if (ind < TREESIZE) {   // hovering on a leaf node
-                hintTextString = "Leaf nodes in a Tree are those that have no children.";
+                hintTextString = "Leaf Nodes in a Tree are those that have no children.";
             }
         }
         
