@@ -66,21 +66,10 @@ public class PrimsAlgScreen extends FactOption {
     @Override
     public String updateBefore(String factSelector) {
         hintTextString = "";
-        /*
         if (titleButtonBox.checkHover()) {
-            hintTextString = "Graphs are collections of nodes joined together by vertices.\n"+
-                "Graphs are extremely useful when representing relationships.\n"+
-                "Example: Social Media accounts are nodes that connect to others.";
-        }
-        else if (toggleDirectedButtonBox.checkHover()) {
-            hintTextString = "Graphs can be Undirected or Directed.\n"+
-                "Undirected is useful for symetric relations (e.g. friends).\n"+
-                "Directed is useful for asymetric relations (e.g. followers).";
-        } 
-        else if (toggleWeightedButtonBox.checkHover()) {
-            hintTextString = "Graphs can be Unweighted or Weighted.\n"+
-                "Weighted is useful for evaluating the relation.\n"+
-                "Examples: the distance between locations, or Network latency.";
+            hintTextString = "Prim's Algorithm is used to find the Minimum Spanning Tree\n"+
+                "of a Graph. The MST is a connected subset of a Graph that\n"+
+                "has the minimum total weight across Edges. O(ElogN) Time.";
         }
         else {
             boolean nodeHover = false;
@@ -90,42 +79,39 @@ public class PrimsAlgScreen extends FactOption {
                 nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
             }
 
-            if (graph.isWeighted) {
-                for (int i = 0; i < 6; i++) {
-                    boolean hover = weightButtonBoxes[i].checkHover();
+            for (int i = 0; i < 6; i++) {
+                boolean hover = weightButtonBoxes[i].checkHover();
 
-                    int inode = 0;
-                    if (i >= 3) { inode++; }
-                    if (i == 5) { inode++; }
+                int inode = 0;
+                if (i >= 3) { inode++; }
+                if (i == 5) { inode++; }
 
-                    int jnode = 3;
-                    if (i == 0) { jnode = 1; }
-                    if (i == 1 || i == 3) { jnode = 2; }
+                int jnode = 3;
+                if (i == 0) { jnode = 1; }
+                if (i == 1 || i == 3) { jnode = 2; }
 
-                    boolean vertexExists = graph.nodes.get(inode).pointsTo(jnode) ||
-                        graph.nodes.get(jnode).pointsTo(inode);
+                // My Prim's Alg is undirected, so if B->A, A->B (we only need to check one)
+                boolean vertexExists = generator.graph.nodes.get(inode).pointsTo(jnode);
 
-                    if (hover && vertexExists) {
-                        weightHover = true;
-                    }
-                } 
-            }
+                if (hover && vertexExists) {
+                    weightHover = true;
+                }
+            } 
+            
 
             if (nodeHover) {
-                hintTextString = "Graph Nodes store one or more values\n"+
-                    "and the connections it has to other nodes.\n"+
-                    "Sometimes stores connections to it for back reference.";
+                hintTextString = "The values of the Nodes do not impact the Algorithm,\n"+
+                    "but it may be helpful to present using an example.";
             }
             else if (controllerHover) {
-                hintTextString = "Controller to modify the vertex connections.\n"+
-                    "Click one box to select the corresponding node.\n"+
-                    "Click a second to connect, or unconnect to it.";
+                hintTextString = "\n"+
+                    "\n"+
+                    "";
             }
             else if (weightHover) {
-                hintTextString = "Modify the Weight of the vertex.";
+                hintTextString = "";
             }
         }
-        */
 
         // controller
         if (BenHelper.screenClicked() && !algActive) {
