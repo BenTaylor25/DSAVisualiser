@@ -120,14 +120,13 @@ public class GraphScreen extends FactOption {
             }
 
             if (nodeHover) {
-                hintTextString = "Graph Nodes store one or more values,\n"+
-                    "and the connections it has to other nodes.\n"+
-                    "Sometimes stores connections to it for back reference.";
+                hintTextString = "Graph Nodes store one or more values, and the connections\n"+
+                    "it has to other nodes. Nodes are also known as Vertices.";
             }
             else if (controllerHover) {
-                hintTextString = "Controller to modify the Edge connections.\n"+
-                    "Click one box to select the corresponding node.\n"+
-                    "Click a second to connect, or unconnect to it.";
+                hintTextString = "Controller to modify the Edge connections. Click one box\n"+
+                    "to select the corresponding Node. Click a second to connect\n"+
+                    "to- or disconnect from it. Edges are also known as Arcs.";
             }
             else if (weightHover) {
                 hintTextString = "Modify the Weight of the Edge.";
