@@ -8,25 +8,30 @@ import com.badlogic.gdx.graphics.Color;
 
 public class DfsScreen extends FactOption {
     final int TREESIZE = 7;
+    boolean algActive;
     int typingSelector;
     String hintTextString;
     String[] nodeText;
+    String orderText;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
     BenHelper.Rect[] treeNodeButtonBox;
     BenHelper.Rect algButtonBox;
+    BenHelper.Rect orderButtonBox;
 
     @Override
     public void create() {
+        algActive = false;
         typingSelector = -1;
-        hintTextString = ""; 
+        hintTextString = "";
+        orderText = "Order:\n------\n";
         nodeText = new String[TREESIZE];
         titleButtonBox = new BenHelper.Rect(GW*0.275f, GH*0.85f, GW*0.425f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         algButtonBox = new BenHelper.Rect(GW*0.1f, GH*0.7f, GW*0.15f, GH*0.15f);
-
+        orderButtonBox = new BenHelper.Rect(GW*0.75f, GH*0.4f, GW*0.15f, GH*0.45f);
 
         treeNodeButtonBox = new BenHelper.Rect[TREESIZE];
         treeNodeButtonBox[0] = new BenHelper.Rect(GW*0.425f, GH*0.664f, GW*0.15f, GH*0.15f);
@@ -162,12 +167,26 @@ public class DfsScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, 
             algText, algButtonBox, 1f
         );
+        // BenHelper.textDrawCentre(batch, font, 
+        //     orderText, orderButtonBox, 1f,
+        //     BenHelper.DEFAULT_TEXT_COLOUR
+        // );
+        if (algActive) {
+            batch.begin();
+                font.draw(
+                    batch, orderText, 
+                    orderButtonBox.x + orderButtonBox.w/5, 
+                    orderButtonBox.y + orderButtonBox.h
+                );
+            batch.end();
+        }
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
+            orderButtonBox.draw(shape, Color.RED);
         }
     }
 
