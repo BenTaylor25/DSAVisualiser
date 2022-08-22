@@ -14,8 +14,8 @@ public class DfsScreen extends FactOption {
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
-    BenHelper.Rect binaryTreeInfoButtonBox;
     BenHelper.Rect[] treeNodeButtonBox;
+    BenHelper.Rect algButtonBox;
 
     @Override
     public void create() {
@@ -25,7 +25,8 @@ public class DfsScreen extends FactOption {
         titleButtonBox = new BenHelper.Rect(GW*0.275f, GH*0.85f, GW*0.425f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
-        binaryTreeInfoButtonBox = new BenHelper.Rect(GW*0.05f, GH*0.8f, GW*0.225f, GH*0.15f);
+        algButtonBox = new BenHelper.Rect(GW*0.1f, GH*0.7f, GW*0.15f, GH*0.15f);
+
 
         treeNodeButtonBox = new BenHelper.Rect[TREESIZE];
         treeNodeButtonBox[0] = new BenHelper.Rect(GW*0.425f, GH*0.664f, GW*0.15f, GH*0.15f);
@@ -60,11 +61,6 @@ public class DfsScreen extends FactOption {
             hintTextString = "Trees are a type of Directed Graph that maintain a hierarchical\n"+
                 "structure. Examples: Computer file structure, OOP Class Structure,\n"+
                 "HTML Document Object Model (Web Development).";
-        }
-        else if (binaryTreeInfoButtonBox.checkHover()) {
-            hintTextString = "Binary Trees are a type of Tree where each Node can\n"+
-                "have a maximum of 2 children: a left child and a right child.\n"+
-                "Used in Data Sorting and Searching, and Encoding.";
         }
         else {
             int ind = 0;
@@ -125,6 +121,8 @@ public class DfsScreen extends FactOption {
         treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[5], 1, 6);
         treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[6], 1, 6);
 
+        algButtonBox.draw(shape);
+
         // draw data items
         String[] defaults = { "[root]", "[A]", "[B]", "[leaf]", "[leaf]", "[leaf]", "[leaf]" };
         for (int i = 0; i < TREESIZE; i++) {
@@ -135,7 +133,7 @@ public class DfsScreen extends FactOption {
                 treeNodeButtonBox[i], 
                 1f
             );
-        }     
+        }
 
         // draw text
         BenHelper.textDrawCentre(batch, font, 
@@ -152,11 +150,17 @@ public class DfsScreen extends FactOption {
             hintButtonBox, 0.75f,
             Color.GRAY
         );
+        String algText = "algText";
+        // if (algActive) {
+        //     text = generator.hasNext ? "Next" : "Finish";
+        // } else {
+        //     text = "[Connect]";
+        //     if (generator.graph.isConnected()) { 
+        //         text = typingSelector == -1 ? "[Select]" : "Start";
+        //     }
+        // }
         BenHelper.textDrawCentre(batch, font, 
-            "Binary Tree", 
-            binaryTreeInfoButtonBox,
-            1.25f,
-            BenHelper.DEFAULT_TEXT_COLOUR
+            algText, algButtonBox, 1f
         );
 
         // debug: draw hitboxes
@@ -164,7 +168,6 @@ public class DfsScreen extends FactOption {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
-            binaryTreeInfoButtonBox.draw(shape, Color.RED);
         }
     }
 
