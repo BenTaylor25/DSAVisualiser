@@ -22,7 +22,7 @@ public class DfsScreen extends FactOption {
         typingSelector = -1;
         hintTextString = ""; 
         nodeText = new String[TREESIZE];
-        titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
+        titleButtonBox = new BenHelper.Rect(GW*0.275f, GH*0.85f, GW*0.425f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         binaryTreeInfoButtonBox = new BenHelper.Rect(GW*0.05f, GH*0.8f, GW*0.225f, GH*0.15f);
@@ -54,6 +54,7 @@ public class DfsScreen extends FactOption {
 
     @Override
     public String updateBefore(String factSelector) {
+        /*
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
             hintTextString = "Trees are a type of Directed Graph that maintain a hierarchical\n"+
@@ -83,6 +84,7 @@ public class DfsScreen extends FactOption {
                 hintTextString = "Leaf Nodes in a Tree are those that have no children.";
             }
         }
+        */
         
         // typing
         if (BenHelper.screenClicked()) {
@@ -137,7 +139,7 @@ public class DfsScreen extends FactOption {
 
         // draw text
         BenHelper.textDrawCentre(batch, font, 
-            "Tree", 
+            "Depth First Search", 
             titleButtonBox, 1.5f,
             BenHelper.DEFAULT_TEXT_COLOUR
         );
