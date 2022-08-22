@@ -2,147 +2,94 @@ package com.mygdx.dsav.Screens;
 
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
-import com.mygdx.dsav.Generators.GDfsAlg;
+
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 
 public class DfsScreen extends FactOption {
-    final int GRAPHSIZE = 4;
-    GDfsAlg generator;
-    String hintTextString;
-    boolean algActive;
-    int controllerSelector;
+    final int TREESIZE = 7;
     int typingSelector;
+    String hintTextString;
+    String[] nodeText;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
-    BenHelper.Rect algButtonBox;
-    BenHelper.Rect controllerHintButtonBox;
-    BenHelper.Rect[] graphButtonBoxes; 
-    BenHelper.Rect[] controllerButtonBoxes;
+    BenHelper.Rect binaryTreeInfoButtonBox;
+    BenHelper.Rect[] treeNodeButtonBox;
 
     @Override
     public void create() {
-        generator = new GDfsAlg(GRAPHSIZE);
-        hintTextString = "";
-        controllerSelector = -1;
         typingSelector = -1;
-        titleButtonBox = new BenHelper.Rect(GW*0.3f, GH*0.85f, GW*0.4f, GH*0.15f);
+        hintTextString = ""; 
+        nodeText = new String[TREESIZE];
+        titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
-        algButtonBox = new BenHelper.Rect(GW*0.1f, GH*0.7f, GW*0.15f, GH*0.15f);
-        controllerHintButtonBox = new BenHelper.Rect(GW*0.86f, GW*0.03f, GW*0.11f, GW*0.11f);
+        binaryTreeInfoButtonBox = new BenHelper.Rect(GW*0.05f, GH*0.8f, GW*0.225f, GH*0.15f);
 
-        graphButtonBoxes = new BenHelper.Rect[GRAPHSIZE];
-        graphButtonBoxes[0] = new BenHelper.Rect(GW*0.425f, GH*0.625f, GW*0.15f, GH*0.15f);
-        graphButtonBoxes[1] = new BenHelper.Rect(GW*0.175f, GH*0.425f, GW*0.15f, GH*0.15f);
-        graphButtonBoxes[2] = new BenHelper.Rect(GW*0.675f, GH*0.425f, GW*0.15f, GH*0.15f);
-        graphButtonBoxes[3] = new BenHelper.Rect(GW*0.425f, GH*0.225f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox = new BenHelper.Rect[TREESIZE];
+        treeNodeButtonBox[0] = new BenHelper.Rect(GW*0.425f, GH*0.664f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[1] = new BenHelper.Rect(GW*0.275f, GH*0.426f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[2] = new BenHelper.Rect(GW*0.575f, GH*0.426f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[3] = new BenHelper.Rect(GW*0.125f, GH*0.188f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[4] = new BenHelper.Rect(GW*0.313f, GH*0.188f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[5] = new BenHelper.Rect(GW*0.537f, GH*0.188f, GW*0.15f, GH*0.15f);
+        treeNodeButtonBox[6] = new BenHelper.Rect(GW*0.725f, GH*0.188f, GW*0.15f, GH*0.15f);
 
-        controllerButtonBoxes = new BenHelper.Rect[GRAPHSIZE];
-        controllerButtonBoxes[0] = new BenHelper.Rect(GW*0.9f,  GW*0.11f, GW*0.03f, GW*0.03f);
-        controllerButtonBoxes[1] = new BenHelper.Rect(GW*0.86f, GW*0.07f, GW*0.03f, GW*0.03f);
-        controllerButtonBoxes[2] = new BenHelper.Rect(GW*0.94f, GW*0.07f, GW*0.03f, GW*0.03f);
-        controllerButtonBoxes[3] = new BenHelper.Rect(GW*0.9f,  GW*0.03f, GW*0.03f, GW*0.03f);
+        nodeText = new String[TREESIZE];
+        for (int i = 0; i < TREESIZE; i++) {
+            nodeText[i] = "";
+        }
     }
 
     @Override
     public void reset() {
-        generator = new GDfsAlg(GRAPHSIZE);
-        algActive = false;
+        typingSelector = -1;
+        
+        nodeText = new String[TREESIZE];
+        for (int i = 0; i < TREESIZE; i++) {
+            nodeText[i] = "";
+        }
     }
 
     @Override
     public String updateBefore(String factSelector) {
         hintTextString = "";
-        /*
         if (titleButtonBox.checkHover()) {
-            hintTextString = "Graphs are collections of nodes joined together by vertices.\n"+
-                "Graphs are extremely useful when representing relationships.\n"+
-                "Example: Social Media accounts are nodes that connect to others.";
+            hintTextString = "Trees are a type of Directed Graph that maintain a hierarchical\n"+
+                "structure. Examples: Computer file structure, OOP Class Structure,\n"+
+                "HTML Document Object Model (Web Development).";
         }
-        else if (toggleDirectedButtonBox.checkHover()) {
-            hintTextString = "Graphs can be Undirected or Directed.\n"+
-                "Undirected is useful for symetric relations (e.g. friends).\n"+
-                "Directed is useful for asymetric relations (e.g. followers).";
-        } 
-        else if (toggleWeightedButtonBox.checkHover()) {
-            hintTextString = "Graphs can be Unweighted or Weighted.\n"+
-                "Weighted is useful for evaluating the relation.\n"+
-                "Examples: the distance between locations, or Network latency.";
+        else if (binaryTreeInfoButtonBox.checkHover()) {
+            hintTextString = "Binary Trees are a type of Tree where each Node can\n"+
+                "have a maximum of 2 children: a left child and a right child.\n"+
+                "Used in Data Sorting and Searching, and Encoding.";
         }
         else {
-            boolean nodeHover = false;
-            boolean controllerHover = controllerHintButtonBox.checkHover();
-            boolean weightHover = false;
-            for (int i = 0; i < GRAPHSIZE; i++) {
-                nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
+            int ind = 0;
+            while (ind < TREESIZE && !treeNodeButtonBox[ind].checkHover()) {
+                ind++;
             }
 
-            if (graph.isWeighted) {
-                for (int i = 0; i < 6; i++) {
-                    boolean hover = weightButtonBoxes[i].checkHover();
-
-                    int inode = 0;
-                    if (i >= 3) { inode++; }
-                    if (i == 5) { inode++; }
-
-                    int jnode = 3;
-                    if (i == 0) { jnode = 1; }
-                    if (i == 1 || i == 3) { jnode = 2; }
-
-                    boolean vertexExists = graph.nodes.get(inode).pointsTo(jnode) ||
-                        graph.nodes.get(jnode).pointsTo(inode);
-
-                    if (hover && vertexExists) {
-                        weightHover = true;
-                    }
-                } 
+            if (ind == 0) {   // hovering on a root node
+                hintTextString = "The root node of a Tree has no parent Nodes.";
             }
-
-            if (nodeHover) {
-                hintTextString = "Graph Nodes store one or more values\n"+
-                    "and the connections it has to other nodes.\n"+
-                    "Sometimes stores connections to it for back reference.";
+            else if (ind < 3) {   // hovering on a middle layer node
+                hintTextString = "Nodes in a Tree are stored with a parent reference and child\n"+
+                    "references. In order to access one Node from another on the other\n"+
+                    "side of the tree, you must go through the common ancestor.";
             }
-            else if (controllerHover) {
-                hintTextString = "Controller to modify the vertex connections.\n"+
-                    "Click one box to select the corresponding node.\n"+
-                    "Click a second to connect, or unconnect to it.";
-            }
-            else if (weightHover) {
-                hintTextString = "Modify the Weight of the vertex.";
+            else if (ind < TREESIZE) {   // hovering on a leaf node
+                hintTextString = "Leaf Nodes in a Tree are those that have no children.";
             }
         }
-        */
-
-        // controller
-        if (BenHelper.screenClicked() && !algActive) {
-            boolean controllerSelected = false;
-            for (int i = 0; i < GRAPHSIZE; i++) {
-                if (controllerButtonBoxes[i].checkHover()) {
-                    controllerSelected = true;
-                    if (controllerSelector != -1) {
-                        if (controllerSelector != i) {
-                            generator.graph.toggleVertex(controllerSelector, i);
-                        }
-                        controllerSelector = -1;
-                    } else {
-                        controllerSelector = i;
-                    }
-                }
-            }
-            if (!controllerSelected) {
-                controllerSelector = -1;
-            }
-        }
-
+        
         // typing
-        if (BenHelper.screenClicked() && !algActive) {
+        if (BenHelper.screenClicked()) {
             typingSelector = -1;
 
-            for (int i = 0; i < GRAPHSIZE; i++) {
-                if (graphButtonBoxes[i].checkHover()) {
+            for (int i = 0; i < TREESIZE; i++) {
+                if (treeNodeButtonBox[i].checkHover()) {
                     typingSelector = i;
                     break;
                 }
@@ -161,78 +108,61 @@ public class DfsScreen extends FactOption {
         batch.end();
         
         // draw static shapes
-        for (int i = 0; i < GRAPHSIZE; i++) {
-            graphButtonBoxes[i].draw(shape);
-            controllerButtonBoxes[i].draw(shape);
-        }
-        if (controllerSelector != -1) {
-            controllerButtonBoxes[controllerSelector].draw(
-                shape, BenHelper.HOVER_TEXT_COLOUR
-            );
+        for (int i = 0; i < TREESIZE; i++) {
+            treeNodeButtonBox[i].draw(shape);
         }
         if (typingSelector >= 0) {
-            graphButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
+            treeNodeButtonBox[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
-        algButtonBox.draw(shape);
-       
-        // draw arrows and weights
-        for (int i = 0; i < GRAPHSIZE; i++) {
-            for (int j = 0; j < GRAPHSIZE; j ++) {
-                if (i != j && generator.graph.nodes.get(i).pointsTo(j)) {
-                    graphButtonBoxes[i].arrowToCalc(shape, 
-                        graphButtonBoxes[j], 
-                        i, j
-                    );
-                }
-            }
-        }
+        
+        // draw arrows
+        treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[1], 1, 6);
+        treeNodeButtonBox[0].arrowTo(shape, treeNodeButtonBox[2], 1, 6);
+        treeNodeButtonBox[1].arrowTo(shape, treeNodeButtonBox[3], 1, 6);
+        treeNodeButtonBox[1].arrowTo(shape, treeNodeButtonBox[4], 1, 6);
+        treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[5], 1, 6);
+        treeNodeButtonBox[2].arrowTo(shape, treeNodeButtonBox[6], 1, 6);
+
+        // draw data items
+        String[] defaults = { "[root]", "[A]", "[B]", "[leaf]", "[leaf]", "[leaf]", "[leaf]" };
+        for (int i = 0; i < TREESIZE; i++) {
+            String text = nodeText[i];
+            if (text.equals("")) { text = defaults[i]; }
+            BenHelper.textDrawCentre(batch, font, 
+                text, 
+                treeNodeButtonBox[i], 
+                1f
+            );
+        }     
 
         // draw text
-        BenHelper.textDrawCentre(batch, font, "Depth First Search",
-            titleButtonBox, 1.5f, 
+        BenHelper.textDrawCentre(batch, font, 
+            "Tree", 
+            titleButtonBox, 1.5f,
             BenHelper.DEFAULT_TEXT_COLOUR
         );
-        BenHelper.textDrawCentre(batch, font, "Back", 
+        BenHelper.textDrawCentre(batch, font, 
+            "Back", 
             backButtonBox, 1.25f
         );
-        BenHelper.textDrawCentre(batch, font, hintTextString, 
-            hintButtonBox, 0.75f, Color.GRAY
+        BenHelper.textDrawCentre(batch, font, 
+            hintTextString, 
+            hintButtonBox, 0.75f,
+            Color.GRAY
         );
-        
-        String text = "[...]";
-        if (algActive) {
-            // text = generator.hasNext ? "Next" : "Finish";
-        } else {
-            text = "[Connect]";
-            /*
-            if (generator.isConnected()) { 
-                // fix typing selector to correct range
-                text = typingSelector == -1 ? "[Select]" : "Start";
-            }
-            */
-        }
-        BenHelper.textDrawCentre(batch, font, text,
-            algButtonBox, 1f
+        BenHelper.textDrawCentre(batch, font, 
+            "Binary Tree", 
+            binaryTreeInfoButtonBox,
+            1.25f,
+            BenHelper.DEFAULT_TEXT_COLOUR
         );
-
-        //text = "";
-        String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
-        for (int i = 0; i < GRAPHSIZE; i++) {
-            text = generator.graph.nodes.get(i).value;
-            if (text.equals("")) { text = defaults[i]; }
-            BenHelper.textDrawCentreSelectable(batch, font, 
-                text, graphButtonBoxes[i], 
-                1f, (typingSelector == i)
-            );
-        }
-
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
-            controllerHintButtonBox.draw(shape, Color.RED);
+            binaryTreeInfoButtonBox.draw(shape, Color.RED);
         }
     }
 
@@ -243,12 +173,12 @@ public class DfsScreen extends FactOption {
         }
 
         if (typingSelector >= 0) {
-            generator.graph.nodes.get(typingSelector).value = BenHelper.typing(
-                generator.graph.nodes.get(typingSelector).value,
+            nodeText[typingSelector] = BenHelper.typing(
+                nodeText[typingSelector],
                 10
             );
         }
-
+        
         return factSelector;
     }
 }
