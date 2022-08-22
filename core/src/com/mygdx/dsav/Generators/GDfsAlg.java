@@ -1,15 +1,24 @@
 package com.mygdx.dsav.Generators;
 
-import com.mygdx.dsav.DataStructs.Graph;
-//import com.mygdx.dsav.DataStructs.GraphNode;
-
 public class GDfsAlg {
-    public Graph graph;
+    public String[] nodeValues;
+    public boolean hasNext;
     
     public GDfsAlg(int size) {
-        graph = new Graph();
+        nodeValues = new String[size];
         for (int i = 0; i < size; i++) {
-            graph.addNode("");
+            nodeValues[i] = "";
         }
+        hasNext = true;
+    }
+
+    public boolean allNamed() {
+        boolean rv = true;
+
+        for (String node : nodeValues) {
+            rv = rv && !node.equals("");
+        }
+
+        return rv;
     }
 }

@@ -2,16 +2,16 @@ package com.mygdx.dsav.Screens;
 
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
-
+import com.mygdx.dsav.Generators.GDfsAlg;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.graphics.Color;
 
 public class DfsScreen extends FactOption {
     final int TREESIZE = 7;
+    GDfsAlg generator;
     boolean algActive;
     int typingSelector;
     String hintTextString;
-    String[] nodeText;
     String orderText;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
@@ -22,11 +22,11 @@ public class DfsScreen extends FactOption {
 
     @Override
     public void create() {
+        generator = new GDfsAlg(TREESIZE);
         algActive = false;
         typingSelector = -1;
         hintTextString = "";
         orderText = "Order:\n------\n";
-        nodeText = new String[TREESIZE];
         titleButtonBox = new BenHelper.Rect(GW*0.275f, GH*0.85f, GW*0.425f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
@@ -41,21 +41,13 @@ public class DfsScreen extends FactOption {
         treeNodeButtonBox[4] = new BenHelper.Rect(GW*0.313f, GH*0.188f, GW*0.15f, GH*0.15f);
         treeNodeButtonBox[5] = new BenHelper.Rect(GW*0.537f, GH*0.188f, GW*0.15f, GH*0.15f);
         treeNodeButtonBox[6] = new BenHelper.Rect(GW*0.725f, GH*0.188f, GW*0.15f, GH*0.15f);
-
-        nodeText = new String[TREESIZE];
-        for (int i = 0; i < TREESIZE; i++) {
-            nodeText[i] = "";
-        }
     }
 
     @Override
     public void reset() {
         typingSelector = -1;
         
-        nodeText = new String[TREESIZE];
-        for (int i = 0; i < TREESIZE; i++) {
-            nodeText[i] = "";
-        }
+        generator = new GDfsAlg(TREESIZE);
     }
 
     @Override
@@ -131,7 +123,7 @@ public class DfsScreen extends FactOption {
         // draw data items
         String[] defaults = { "[root]", "[A]", "[B]", "[leaf]", "[leaf]", "[leaf]", "[leaf]" };
         for (int i = 0; i < TREESIZE; i++) {
-            String text = nodeText[i];
+            String text = generator.nodeValues[i];
             if (text.equals("")) { text = defaults[i]; }
             BenHelper.textDrawCentre(batch, font, 
                 text, 
@@ -156,21 +148,17 @@ public class DfsScreen extends FactOption {
             Color.GRAY
         );
         String algText = "algText";
-        // if (algActive) {
-        //     text = generator.hasNext ? "Next" : "Finish";
-        // } else {
-        //     text = "[Connect]";
-        //     if (generator.graph.isConnected()) { 
-        //         text = typingSelector == -1 ? "[Select]" : "Start";
-        //     }
-        // }
+        if (algActive) {
+            algText = generator.hasNext ? "Next" : "Finish";
+        } else {
+            algText = "[Name]";
+            if (generator.allNamed()) { 
+                algText = "Start";
+            }
+        }
         BenHelper.textDrawCentre(batch, font, 
             algText, algButtonBox, 1f
         );
-        // BenHelper.textDrawCentre(batch, font, 
-        //     orderText, orderButtonBox, 1f,
-        //     BenHelper.DEFAULT_TEXT_COLOUR
-        // );
         if (algActive) {
             batch.begin();
                 font.draw(
@@ -197,8 +185,8 @@ public class DfsScreen extends FactOption {
         }
 
         if (typingSelector >= 0) {
-            nodeText[typingSelector] = BenHelper.typing(
-                nodeText[typingSelector],
+            generator.nodeValues[typingSelector] = BenHelper.typing(
+                generator.nodeValues[typingSelector],
                 10
             );
         }
