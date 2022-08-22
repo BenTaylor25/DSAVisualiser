@@ -61,6 +61,7 @@ public class PrimsAlgScreen extends FactOption {
     public void reset() {
         generator = new GPrimsAlg(GRAPHSIZE);
         algActive = false;
+        typingSelector = -1;
     }
 
     @Override
