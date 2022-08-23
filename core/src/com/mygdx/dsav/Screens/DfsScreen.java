@@ -132,6 +132,19 @@ public class DfsScreen extends FactOption {
             );
         }
 
+        // alg traversal
+        for (int i = 0; i < TREESIZE-1; i++) {
+            for (int j = i+1; j < TREESIZE; j++) {
+                if (generator.visitedTree.nodes.get(i).connections.contains(j)) {
+                    treeNodeButtonBox[i].arrowTo(shape, 
+                        treeNodeButtonBox[j], 
+                        1, 6,
+                        BenHelper.HOVER_TEXT_COLOUR
+                    );
+                }
+            }
+        }
+
         // draw text
         BenHelper.textDrawCentre(batch, font, 
             "Depth First Search", 
