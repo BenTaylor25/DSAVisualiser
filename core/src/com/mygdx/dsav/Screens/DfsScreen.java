@@ -204,6 +204,21 @@ public class DfsScreen extends FactOption {
             );
         }
         
+        if (algButtonBox.checkClick()) {
+            if (algActive) {
+                if (generator.hasNext) {
+                    generator.next();
+                } else {
+                    algActive = false;
+                    generator.reset();
+                }
+            } else {
+                if (generator.allNamed()) {
+                    algActive = true;
+                }
+            }
+        }
+
         return factSelector;
     }
 }
