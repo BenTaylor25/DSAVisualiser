@@ -174,6 +174,7 @@ public class DfsScreen extends FactOption {
         );
         if (algActive) {
             batch.begin();
+                font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
                 font.draw(
                     batch, orderText, 
                     orderButtonBox.x + orderButtonBox.w/5, 
