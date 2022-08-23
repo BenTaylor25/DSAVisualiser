@@ -14,7 +14,6 @@ public class GDfsAlg {
         for (int i = 0; i < size; i++) {
             nodeValues[i] = "";
         }
-        hasNext = true;
 
         // BFS
         // order = new int[][]{ 
@@ -37,6 +36,7 @@ public class GDfsAlg {
             visitedTree.addNode("");
         }
 
+        hasNext = true;
         orderPtr = 0;
     }
 
@@ -50,7 +50,7 @@ public class GDfsAlg {
         return rv;
     }
 
-    public void next() {
+    public int next() {
         assert hasNext;
 
         int[] joinNodes = order[orderPtr];
@@ -58,5 +58,7 @@ public class GDfsAlg {
         orderPtr++;
 
         hasNext = orderPtr < order.length;
+        
+        return order[orderPtr-1][1];
     }
 }

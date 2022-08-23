@@ -46,6 +46,8 @@ public class DfsScreen extends FactOption {
     @Override
     public void reset() {
         typingSelector = -1;
+
+        orderText = "Order:\n------\n";
         
         generator = new GDfsAlg(TREESIZE);
     }
@@ -208,14 +210,17 @@ public class DfsScreen extends FactOption {
         if (algButtonBox.checkClick()) {
             if (algActive) {
                 if (generator.hasNext) {
-                    generator.next();
+                    int i = generator.next();
+                    orderText += generator.nodeValues[i] + "\n";
                 } else {
                     algActive = false;
                     generator.reset();
+                    orderText = "Order:\n------\n";
                 }
             } else {
                 if (generator.allNamed()) {
                     algActive = true;
+                    orderText += generator.nodeValues[0] + "\n";
                 }
             }
         }
