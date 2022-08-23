@@ -51,6 +51,6 @@ public class GDfsAlg {
         visitedTree.addVertex(joinNodes[0], joinNodes[1]);
         orderPtr++;
 
-        hasNext = orderPtr == order.length;
+        hasNext = orderPtr < order.length;
     }
 }
