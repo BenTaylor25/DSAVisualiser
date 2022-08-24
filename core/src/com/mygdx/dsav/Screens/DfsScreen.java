@@ -84,7 +84,7 @@ public class DfsScreen extends FactOption {
                 if (generator.allNamed()) {
                     // "Start" is shown
                     hintTextString = "Click to start the Algorithm.\n"+
-                        "The graph isn't required to be a tree for the Algorithm\n"+
+                        "The Graph isn't required to be a Tree for the Algorithm\n"+
                         "to work but I think it makes it easier to understand.";
                 } else {
                     // "[Name]" is shown
