@@ -146,7 +146,7 @@ public class MainMenuScreen extends FactOption {
                 factSelector = "dfs";
             }
             else if (bfsButtonBox.checkHover()) {
-                //factSelector = "bfs";
+                factSelector = "bfs";
             }
             else if (myGHButtonBox.checkHover()) {
                 try {

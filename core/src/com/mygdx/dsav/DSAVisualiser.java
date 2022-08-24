@@ -12,7 +12,7 @@ import com.mygdx.dsav.Screens.BinarySearchScreen;
 import com.mygdx.dsav.Screens.PrimsAlgScreen;
 //import com.mygdx.dsav.Screens.DijkstrasAlgScreen;
 import com.mygdx.dsav.Screens.DfsScreen;
-//import com.mygdx.dsav.Screens.BfsScreen;
+import com.mygdx.dsav.Screens.BfsScreen;
 
 import java.util.Hashtable;
 import com.badlogic.gdx.Game;
@@ -39,7 +39,7 @@ public class DSAVisualiser extends Game {
 		screens.put("prims", new PrimsAlgScreen());
 		//screens.put("dijkstras", new DijkstrasAlgScreen());
 		screens.put("dfs", new DfsScreen());
-		//screens.put("bfs", new BfsScreen());
+		screens.put("bfs", new BfsScreen());
 
 		oldFactSelector = "!";
 		factSelector = "menu";
