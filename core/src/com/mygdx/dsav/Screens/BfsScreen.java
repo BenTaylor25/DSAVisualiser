@@ -66,9 +66,9 @@ public class BfsScreen extends FactOption {
         
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
-            hintTextString = "Breadth First Search is a Graph Searching Algorithm. Visit all\n"+
-                "neighbours of the current node before visiting their neighbours.\n"+
-                "BFS is implemented using a Queue.";
+            hintTextString = "Breadth First Search is a Graph Searching Algorithm.\n"+
+                "Visit all neighbours of the current node before visiting\n"+
+                "their neighbours. BFS is implemented using a Queue.";
         }
         else if (algButtonBox.checkHover()) {
             if (algActive) {
