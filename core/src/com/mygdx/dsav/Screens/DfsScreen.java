@@ -4,6 +4,9 @@ import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.Generators.GDfsAlg;
 import com.badlogic.gdx.utils.ScreenUtils;
+
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Color;
 
 public class DfsScreen extends FactOption {
@@ -12,7 +15,7 @@ public class DfsScreen extends FactOption {
     boolean algActive;
     int typingSelector;
     String hintTextString;
-    String orderText;
+    ArrayList<String> orderText;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
@@ -26,7 +29,9 @@ public class DfsScreen extends FactOption {
         algActive = false;
         typingSelector = -1;
         hintTextString = "";
-        orderText = "Order:\n------\n";
+        orderText = new ArrayList<>();
+        orderText.add("Order:");
+        orderText.add("------");
         titleButtonBox = new BenHelper.Rect(GW*0.275f, GH*0.85f, GW*0.425f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
@@ -47,7 +52,9 @@ public class DfsScreen extends FactOption {
     public void reset() {
         typingSelector = -1;
 
-        orderText = "Order:\n------\n";
+        orderText = new ArrayList<>();
+        orderText.add("Order:");
+        orderText.add("------");
         
         generator = new GDfsAlg(TREESIZE);
     }
@@ -175,14 +182,14 @@ public class DfsScreen extends FactOption {
             algText, algButtonBox, 1f
         );
         if (algActive) {
-            batch.begin();
-                font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
-                font.draw(
-                    batch, orderText, 
-                    orderButtonBox.x + orderButtonBox.w/5, 
-                    orderButtonBox.y + orderButtonBox.h
+            for (int i = 0; i < orderText.size(); i++) {
+                BenHelper.textDrawCentre(batch, font, 
+                    orderText.get(i), 
+                    orderButtonBox.x + orderButtonBox.w / 2, 
+                    orderButtonBox.y + orderButtonBox.h - (i+1)*30, 
+                    1f, BenHelper.DEFAULT_TEXT_COLOUR
                 );
-            batch.end();
+            }
         }
 
         // debug: draw hitboxes
@@ -211,16 +218,21 @@ public class DfsScreen extends FactOption {
             if (algActive) {
                 if (generator.hasNext) {
                     int i = generator.next();
-                    orderText += generator.nodeValues[i] + "\n";
+                    // orderText += generator.nodeValues[i] + "\n";
+                    orderText.add(generator.nodeValues[i]);
                 } else {
                     algActive = false;
                     generator.reset();
-                    orderText = "Order:\n------\n";
+                    // orderText = "Order:\n------\n";
+                    orderText = new ArrayList<>();
+                    orderText.add("Order:");
+                    orderText.add("------");
                 }
             } else {
                 if (generator.allNamed()) {
                     algActive = true;
-                    orderText += generator.nodeValues[0] + "\n";
+                    // orderText += generator.nodeValues[0] + "\n";
+                    orderText.add(generator.nodeValues[0]);
                 }
             }
         }
