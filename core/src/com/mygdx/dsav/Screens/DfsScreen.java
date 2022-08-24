@@ -236,12 +236,10 @@ public class DfsScreen extends FactOption {
             if (algActive) {
                 if (generator.hasNext) {
                     int i = generator.next();
-                    // orderText += generator.nodeValues[i] + "\n";
                     orderText.add(generator.nodeValues[i]);
                 } else {
                     algActive = false;
                     generator.reset();
-                    // orderText = "Order:\n------\n";
                     orderText = new ArrayList<>();
                     orderText.add("Order:");
                     orderText.add("------");
@@ -249,7 +247,6 @@ public class DfsScreen extends FactOption {
             } else {
                 if (generator.allNamed()) {
                     algActive = true;
-                    // orderText += generator.nodeValues[0] + "\n";
                     orderText.add(generator.nodeValues[0]);
                 }
             }
