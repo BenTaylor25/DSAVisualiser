@@ -55,38 +55,56 @@ public class DfsScreen extends FactOption {
         orderText = new ArrayList<>();
         orderText.add("Order:");
         orderText.add("------");
+
+        algActive = false;
         
         generator = new GDfsAlg(TREESIZE);
     }
 
     @Override
     public String updateBefore(String factSelector) {
-        /*
+        
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
-            hintTextString = "Trees are a type of Directed Graph that maintain a hierarchical\n"+
-                "structure. Examples: Computer file structure, OOP Class Structure,\n"+
-                "HTML Document Object Model (Web Development).";
+            hintTextString = "Depth First Search is a Graph Searching Algorithm. For every\n"+
+                "neighbour you visit, visit all of their neighbours before\n"+
+                "returning back. DFS is implemented using a Stack.";
+        }
+        else if (algButtonBox.checkHover()) {
+            if (algActive) {
+                if (generator.hasNext) {
+                    // "Next" is shown
+                    hintTextString = "Click to visit the next node.";
+                } else {
+                    // "Finish" is shown
+                    hintTextString = "The Algorithm is finished.\n"+
+                        "Click to return to editing mode.";
+                }
+            } else {
+                if (generator.allNamed()) {
+                    // "Start" is shown
+                    hintTextString = "Click to start the Algorithm.\n"+
+                        "The graph isn't required to be a tree for the Algorithm\n"+
+                        "to work but I think it makes it easier to understand.";
+                } else {
+                    // "[Name]" is shown
+                    hintTextString = "Please give each node a value.";
+                }
+            }
+        }
+        else if (orderButtonBox.checkHover() && algActive) {
+            hintTextString = "This list keeps track of the order that the nodes were \n"+
+                "visited. This is going to be different for DFS and BFS.";
         }
         else {
-            int ind = 0;
-            while (ind < TREESIZE && !treeNodeButtonBox[ind].checkHover()) {
-                ind++;
-            }
-
-            if (ind == 0) {   // hovering on a root node
-                hintTextString = "The root node of a Tree has no parent Nodes.";
-            }
-            else if (ind < 3) {   // hovering on a middle layer node
-                hintTextString = "Nodes in a Tree are stored with a parent reference and child\n"+
-                    "references. In order to access one Node from another on the other\n"+
-                    "side of the tree, you must go through the common ancestor.";
-            }
-            else if (ind < TREESIZE) {   // hovering on a leaf node
-                hintTextString = "Leaf Nodes in a Tree are those that have no children.";
+            for (int ind = 0; ind < TREESIZE; ind++) {
+                if (treeNodeButtonBox[ind].checkHover()) {
+                    // hover over one of the nodes
+                    hintTextString = "Click to edit node values.";
+                    break;
+                }
             }
         }
-        */
         
         // typing
         if (BenHelper.screenClicked()) {
