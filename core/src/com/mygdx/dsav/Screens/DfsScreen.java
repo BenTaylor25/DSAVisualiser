@@ -186,7 +186,7 @@ public class DfsScreen extends FactOption {
                 BenHelper.textDrawCentre(batch, font, 
                     orderText.get(i), 
                     orderButtonBox.x + orderButtonBox.w / 2, 
-                    orderButtonBox.y + orderButtonBox.h - (i+1)*30, 
+                    orderButtonBox.y + orderButtonBox.h - (i+1.3f)*30, 
                     1f, BenHelper.DEFAULT_TEXT_COLOUR
                 );
             }
