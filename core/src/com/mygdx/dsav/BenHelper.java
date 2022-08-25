@@ -357,6 +357,7 @@ public class BenHelper {
             }
             else {
                 if (text.length() < maxLen) {
+                    assert typingChar >= 0 : "typingChar < 0";
                     String newChar = Input.Keys.toString(typingChar);
                     if (!isCapital && typingChar >= 29 && typingChar <= 53) {
                         newChar = newChar.toLowerCase();
