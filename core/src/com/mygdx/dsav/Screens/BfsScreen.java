@@ -185,7 +185,7 @@ public class BfsScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, 
             hintTextString, 
             hintButtonBox, 0.75f,
-            Color.GRAY
+            BenHelper.HINT_TEXT_COLOUR
         );
         String algText = "algText";
         if (algActive) {

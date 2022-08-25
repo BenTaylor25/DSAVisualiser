@@ -268,7 +268,7 @@ public class GraphScreen extends FactOption {
             backButtonBox, 1.25f
         );
         BenHelper.textDrawCentre(batch, font, hintTextString, 
-            hintButtonBox, 0.75f, Color.GRAY
+            hintButtonBox, 0.75f, BenHelper.HINT_TEXT_COLOUR
         );
 
         String text = "to directed";

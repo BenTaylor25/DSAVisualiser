@@ -171,10 +171,10 @@ public class BinarySearchScreen extends FactOption {
         );
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 
-            0.75f, Color.GRAY
+            0.75f, BenHelper.HINT_TEXT_COLOUR
         );
         BenHelper.textDrawCentre(batch, font, resultTextString, resultButtonBox,
-            0.75f, Color.GRAY
+            0.75f, BenHelper.DEFAULT_TEXT_COLOUR
         );
         String[] indexWords = {"[zero]", "[one]", "[two]", "[three]", "[four]", "[five]"};
         for (int i = 0; i < ARRAYSIZE; i++) {

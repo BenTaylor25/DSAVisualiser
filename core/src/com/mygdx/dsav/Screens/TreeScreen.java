@@ -148,7 +148,7 @@ public class TreeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, 
             hintTextString, 
             hintButtonBox, 0.75f,
-            Color.GRAY
+            BenHelper.HINT_TEXT_COLOUR
         );
         BenHelper.textDrawCentre(batch, font, 
             "Binary Tree", 

@@ -146,7 +146,7 @@ public class LinkedListScreen extends FactOption {
         );
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 
-            0.75f, Color.GRAY
+            0.75f, BenHelper.HINT_TEXT_COLOUR
         );
 
         String[] indexDefaults = {"[zero]", "[one]", "[two]", "[three]"};

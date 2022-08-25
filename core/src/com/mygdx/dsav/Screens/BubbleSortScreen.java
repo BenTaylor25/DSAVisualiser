@@ -138,7 +138,7 @@ public class BubbleSortScreen extends FactOption {
 
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         BenHelper.textDrawCentre(batch, font, hintTextString, hintButtonBox, 0.75f,
-            Color.GRAY);
+            BenHelper.HINT_TEXT_COLOUR);
         
 
         // debug: draw hitboxes
