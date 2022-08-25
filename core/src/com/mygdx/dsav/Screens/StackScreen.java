@@ -106,7 +106,7 @@ public class StackScreen extends FactOption {
 
         // draw button outlines
         if (inputTypingEnabled) {
-            inputTextButtonBox.draw(shape, Color.WHITE);
+            inputTextButtonBox.draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         } else {
             inputTextButtonBox.draw(shape, Color.BLACK);
         }

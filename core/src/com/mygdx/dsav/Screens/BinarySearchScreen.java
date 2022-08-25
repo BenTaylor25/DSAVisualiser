@@ -146,23 +146,23 @@ public class BinarySearchScreen extends FactOption {
         targetButtonBox.draw(shape);
         if (typingSelector != -1) {
             if (typingSelector == ARRAYSIZE) {
-                targetButtonBox.draw(shape, Color.WHITE);
+                targetButtonBox.draw(shape, BenHelper.HOVER_TEXT_COLOUR);
             }
             else {
-                arrayButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+                arrayButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
             }
         }
         if (activeButtonInds[0] >= 0 && activeButtonInds[1] >= 0) {
             for (int x : activeButtonInds) {
-                arrayButtonBoxes[x].draw(shape, Color.WHITE);
+                arrayButtonBoxes[x].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
             }
         }
         searchButtonBox.draw(shape);
         if (generator.selected >= 0) {
-            arrayButtonBoxes[generator.selected].draw(shape, Color.WHITE);
+            arrayButtonBoxes[generator.selected].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         } 
         else if (generator.selected == ARRAYSIZE) {
-            targetButtonBox.draw(shape, Color.WHITE);
+            targetButtonBox.draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
 
         // draw text

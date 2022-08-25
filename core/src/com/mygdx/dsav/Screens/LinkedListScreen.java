@@ -123,7 +123,7 @@ public class LinkedListScreen extends FactOption {
         }
         insertedButtonBox.drawDotted(shape, !includeInserted);
         if (typingSelector >= 0 && typingSelector < LISTSIZE) {
-            listButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+            listButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
         if (typingSelector == LISTSIZE) {   // insertable
             insertedButtonBox.drawDotted(shape, BenHelper.HOVER_TEXT_COLOUR, !includeInserted);

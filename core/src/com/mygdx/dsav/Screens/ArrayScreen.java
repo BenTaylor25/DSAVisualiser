@@ -82,7 +82,7 @@ public class ArrayScreen extends FactOption {
             arrayButtonBoxes[i].draw(shape);
         }
         if (typingSelector != -1) {
-            arrayButtonBoxes[typingSelector].draw(shape, Color.WHITE);
+            arrayButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
 
         // draw text 
