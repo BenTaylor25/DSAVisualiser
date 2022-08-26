@@ -12,10 +12,10 @@ public class ColorHandler {
                 BenHelper.HINT_TEXT_COLOUR = new Color(Color.GRAY);
                 break;
             
-            case "test":
-                BenHelper.BACKGROUND_COLOUR = new Color(0.85f, 0.75f, 0.65f, 1);
-                BenHelper.DEFAULT_TEXT_COLOUR = new Color(0.31f, 0.553f, 0.902f, 1);
-                BenHelper.HOVER_TEXT_COLOUR = new Color(0, 0, 0, 1);
+            case "light":
+                BenHelper.BACKGROUND_COLOUR = new Color(Color.WHITE);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(Color.BLACK);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(Color.TEAL);
                 BenHelper.HINT_TEXT_COLOUR = new Color(Color.GRAY);
                 break;
 

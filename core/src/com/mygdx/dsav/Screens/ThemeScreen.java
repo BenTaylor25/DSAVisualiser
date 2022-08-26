@@ -123,7 +123,10 @@ public class ThemeScreen extends FactOption {
                 ColorHandler.setTheme("classic");
             }
             else if (lightButtonBox.checkHover()) {
-                ColorHandler.setTheme("test");
+                ColorHandler.setTheme("light");
+            }
+            else if (darkButtonBox.checkHover()) {
+                ColorHandler.setTheme("dark");
             }
         }
 
