@@ -14,7 +14,15 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect hintButtonBox;
 
     BenHelper.Rect classicButtonBox;
-    BenHelper.Rect testButtonBox;
+    BenHelper.Rect lightButtonBox;
+    BenHelper.Rect darkButtonBox;
+    BenHelper.Rect fourButtonBox;
+    BenHelper.Rect fiveButtonBox;
+    BenHelper.Rect sixButtonBox;
+    BenHelper.Rect sevenButtonBox;
+    BenHelper.Rect eightButtonBox;
+    BenHelper.Rect nineButtonBox;
+    BenHelper.Rect customButtonBox;
 
     @Override
     public void create() {
@@ -23,8 +31,19 @@ public class ThemeScreen extends FactOption {
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
 
-        classicButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
-        testButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
+        classicButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.7f, GW*0.2f, GH*0.1f);
+        lightButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.6f, GW*0.2f, GH*0.1f);
+        darkButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
+
+        fourButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
+        fiveButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
+        sixButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
+
+        sevenButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.7f, GW*0.2f, GH*0.1f);
+        eightButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
+        nineButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
+
+        customButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.4f, GW*0.2f, GH*0.1f);
     }
 
     @Override
@@ -61,7 +80,18 @@ public class ThemeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         
         BenHelper.textDrawCentre(batch, font, "Classic", classicButtonBox, 1);
-        BenHelper.textDrawCentre(batch, font, "Test", testButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Light", lightButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Dark", darkButtonBox, 1);
+
+        BenHelper.textDrawCentre(batch, font, "four", fourButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "five", fiveButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "six", sixButtonBox, 1);
+
+        BenHelper.textDrawCentre(batch, font, "seven", sevenButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "eight", eightButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "nine", nineButtonBox, 1);
+
+        BenHelper.textDrawCentre(batch, font, "Custom", customButtonBox, 1);
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
@@ -70,7 +100,15 @@ public class ThemeScreen extends FactOption {
             hintButtonBox.draw(shape, Color.RED);
 
             classicButtonBox.draw(shape, Color.RED);
-            testButtonBox.draw(shape, Color.RED);
+            lightButtonBox.draw(shape, Color.RED);
+            darkButtonBox.draw(shape, Color.RED);
+            fourButtonBox.draw(shape, Color.RED);
+            fiveButtonBox.draw(shape, Color.RED);
+            sixButtonBox.draw(shape, Color.RED);
+            sevenButtonBox.draw(shape, Color.RED);
+            eightButtonBox.draw(shape, Color.RED);
+            nineButtonBox.draw(shape, Color.RED);
+            customButtonBox.draw(shape, Color.RED);
         }
     }
 
@@ -84,7 +122,7 @@ public class ThemeScreen extends FactOption {
             else if (classicButtonBox.checkHover()) {
                 ColorHandler.setTheme("classic");
             }
-            else if (testButtonBox.checkHover()) {
+            else if (lightButtonBox.checkHover()) {
                 ColorHandler.setTheme("test");
             }
         }
