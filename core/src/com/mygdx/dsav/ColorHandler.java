@@ -46,6 +46,14 @@ public class ColorHandler {
                 BenHelper.HOVER_TEXT_COLOUR = new Color(0.447f, 0.318f, 0.965f, 1);
                 BenHelper.HINT_TEXT_COLOUR = new Color(0.525f, 0.416f, 0.706f, 1);
                 break;
+            
+            case "protanopia":
+                BenHelper.BACKGROUND_COLOUR = new Color(0.612f, 0.953f, 0.851f, 1);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(0.243f, 0.384f, 0.655f, 1);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(0.341f, 0.486f, 0.757f, 1);
+                BenHelper.HINT_TEXT_COLOUR = new Color(0.482f, 0.482f, 0.482f, 1);
+                break;
+
 
         }
     }

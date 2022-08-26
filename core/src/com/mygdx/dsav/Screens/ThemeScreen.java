@@ -19,7 +19,7 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect cherryButtonBox;
     BenHelper.Rect appleButtonBox;
     BenHelper.Rect midnightButtonBox;
-    BenHelper.Rect sevenButtonBox;
+    BenHelper.Rect protanopiaButtonBox;
     BenHelper.Rect eightButtonBox;
     BenHelper.Rect nineButtonBox;
     BenHelper.Rect customButtonBox;
@@ -39,7 +39,7 @@ public class ThemeScreen extends FactOption {
         appleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
         midnightButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
 
-        sevenButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
+        protanopiaButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
         eightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
         nineButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
 
@@ -87,7 +87,7 @@ public class ThemeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Apple", appleButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Midnight", midnightButtonBox, 1);
 
-        BenHelper.textDrawCentre(batch, font, "seven", sevenButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Protanopia", protanopiaButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "eight", eightButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "nine", nineButtonBox, 1);
 
@@ -105,7 +105,7 @@ public class ThemeScreen extends FactOption {
             cherryButtonBox.draw(shape, Color.RED);
             appleButtonBox.draw(shape, Color.RED);
             midnightButtonBox.draw(shape, Color.RED);
-            sevenButtonBox.draw(shape, Color.RED);
+            protanopiaButtonBox.draw(shape, Color.RED);
             eightButtonBox.draw(shape, Color.RED);
             nineButtonBox.draw(shape, Color.RED);
             customButtonBox.draw(shape, Color.RED);
@@ -136,6 +136,9 @@ public class ThemeScreen extends FactOption {
             }
             else if (midnightButtonBox.checkHover()) {
                 ColorHandler.setTheme("midnight");
+            }
+            else if (protanopiaButtonBox.checkHover()) {
+                ColorHandler.setTheme("protanopia");
             }
         }
 
