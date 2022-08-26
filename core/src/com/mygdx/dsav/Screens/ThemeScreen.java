@@ -1,6 +1,7 @@
 package com.mygdx.dsav.Screens;
 
 import com.mygdx.dsav.BenHelper;
+import com.mygdx.dsav.ColorHandler;
 import com.mygdx.dsav.FactOption;
 
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -75,10 +76,19 @@ public class ThemeScreen extends FactOption {
 
     @Override
     public String updateAfter(String factSelector) {
-        if (backButtonBox.checkClick()) {
-            factSelector = "menu";
+        if (BenHelper.screenClicked()) {
+            if (backButtonBox.checkHover()) {
+                factSelector = "menu";
+            }
+
+            else if (classicButtonBox.checkHover()) {
+                ColorHandler.setTheme("classic");
+            }
+            else if (testButtonBox.checkHover()) {
+                ColorHandler.setTheme("test");
+            }
         }
-        
+
         return factSelector;
     }
 }
