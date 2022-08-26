@@ -12,12 +12,18 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
 
+    BenHelper.Rect classicButtonBox;
+    BenHelper.Rect testButtonBox;
+
     @Override
     public void create() {
         hintTextString = "";
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+
+        classicButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
+        testButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
     }
 
     @Override
@@ -48,12 +54,22 @@ public class ThemeScreen extends FactOption {
         
 
         // draw text
+        BenHelper.textDrawCentre(batch, font, "Theme", titleButtonBox, 1.5f,
+            BenHelper.DEFAULT_TEXT_COLOUR
+        );
+        BenHelper.textDrawCentre(batch, font, "Back", backButtonBox, 1.25f);
         
+        BenHelper.textDrawCentre(batch, font, "Classic", classicButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Test", testButtonBox, 1);
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
             backButtonBox.draw(shape, Color.RED);
+            hintButtonBox.draw(shape, Color.RED);
+
+            classicButtonBox.draw(shape, Color.RED);
+            testButtonBox.draw(shape, Color.RED);
         }
     }
 
