@@ -32,6 +32,14 @@ public class ColorHandler {
                 BenHelper.HOVER_TEXT_COLOUR = new Color(0.48f, 0.286f, 0.533f, 1);
                 BenHelper.HINT_TEXT_COLOUR = new Color(0.82f, 0.4f, 0.443f, 1);
                 break;
+            
+            case "five":
+                BenHelper.BACKGROUND_COLOUR = new Color(0.867f, 0.929f, 0.659f, 1);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(0.522f, 0.627f, 0.173f, 1);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(0.584f, 0.706f, 0.192f, 1);
+                BenHelper.HINT_TEXT_COLOUR = new Color(0.565f, 0.612f, 0.42f, 1);
+                break;
+
 
         }
     }

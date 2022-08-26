@@ -131,6 +131,9 @@ public class ThemeScreen extends FactOption {
             else if (fourButtonBox.checkHover()) {
                 ColorHandler.setTheme("cherry");
             }
+            else if (fiveButtonBox.checkHover()) {
+                ColorHandler.setTheme("five");
+            }
         }
 
         return factSelector;
