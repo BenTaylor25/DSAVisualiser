@@ -26,6 +26,9 @@ public class DSAVisualiser extends Game {
 
 	@Override
 	public void create () {
+		// local storage
+		//
+		ColorHandler.setTheme("classic");
 
 		screens = new Hashtable<>();
 		screens.put("menu", new MainMenuScreen());

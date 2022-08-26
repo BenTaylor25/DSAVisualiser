@@ -19,10 +19,10 @@ public class BenHelper {
      */
     public static final boolean DEBUG = false;
     // 
-    public static Color BACKGROUND_COLOUR = new Color(0.15f, 0.25f, 0.35f, 1);
-    public static Color DEFAULT_TEXT_COLOUR = new Color(0.69f, 0.447f, 0.098f, 1);
-    public static Color HOVER_TEXT_COLOUR = new Color(1, 1, 1, 1);
-    public static Color HINT_TEXT_COLOUR = new Color(Color.GRAY);
+    public static Color BACKGROUND_COLOUR;// = new Color(0.15f, 0.25f, 0.35f, 1);
+    public static Color DEFAULT_TEXT_COLOUR;// = new Color(0.69f, 0.447f, 0.098f, 1);
+    public static Color HOVER_TEXT_COLOUR;// = new Color(1, 1, 1, 1);
+    public static Color HINT_TEXT_COLOUR;// = new Color(Color.GRAY);
 
     private static float typingHold;
     private static int typingChar;
