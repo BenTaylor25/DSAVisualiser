@@ -40,6 +40,12 @@ public class ColorHandler {
                 BenHelper.HINT_TEXT_COLOUR = new Color(0.565f, 0.612f, 0.42f, 1);
                 break;
 
+            case "midnight":
+                BenHelper.BACKGROUND_COLOUR = new Color(0.11f, 0.063f, 0.31f, 1);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(0.682f, 0.608f, 0.98f, 1);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(0.447f, 0.318f, 0.965f, 1);
+                BenHelper.HINT_TEXT_COLOUR = new Color(0.525f, 0.416f, 0.706f, 1);
+                break;
 
         }
     }
