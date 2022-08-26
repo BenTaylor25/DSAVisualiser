@@ -20,8 +20,8 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect appleButtonBox;
     BenHelper.Rect midnightButtonBox;
     BenHelper.Rect protanopiaButtonBox;
-    BenHelper.Rect eightButtonBox;
-    BenHelper.Rect nineButtonBox;
+    BenHelper.Rect deuteranopiaButtonBox;
+    BenHelper.Rect tritanopiaButtonBox;
     BenHelper.Rect customButtonBox;
 
     @Override
@@ -40,8 +40,8 @@ public class ThemeScreen extends FactOption {
         midnightButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
 
         protanopiaButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
-        eightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
-        nineButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
+        deuteranopiaButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
+        tritanopiaButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
 
         customButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.4f, GW*0.2f, GH*0.1f);
     }
@@ -88,8 +88,8 @@ public class ThemeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Midnight", midnightButtonBox, 1);
 
         BenHelper.textDrawCentre(batch, font, "Protanopia", protanopiaButtonBox, 1);
-        BenHelper.textDrawCentre(batch, font, "eight", eightButtonBox, 1);
-        BenHelper.textDrawCentre(batch, font, "nine", nineButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Deuteranopia", deuteranopiaButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Tritanopia", tritanopiaButtonBox, 1);
 
         BenHelper.textDrawCentre(batch, font, "Custom", customButtonBox, 1);
 
@@ -106,8 +106,8 @@ public class ThemeScreen extends FactOption {
             appleButtonBox.draw(shape, Color.RED);
             midnightButtonBox.draw(shape, Color.RED);
             protanopiaButtonBox.draw(shape, Color.RED);
-            eightButtonBox.draw(shape, Color.RED);
-            nineButtonBox.draw(shape, Color.RED);
+            deuteranopiaButtonBox.draw(shape, Color.RED);
+            tritanopiaButtonBox.draw(shape, Color.RED);
             customButtonBox.draw(shape, Color.RED);
         }
     }
@@ -139,6 +139,12 @@ public class ThemeScreen extends FactOption {
             }
             else if (protanopiaButtonBox.checkHover()) {
                 ColorHandler.setTheme("protanopia");
+            }
+            else if (deuteranopiaButtonBox.checkHover()) {
+                ColorHandler.setTheme("deuteranopia");
+            }
+            else if (tritanopiaButtonBox.checkHover()) {
+                ColorHandler.setTheme("tritanopia");
             }
         }
 
