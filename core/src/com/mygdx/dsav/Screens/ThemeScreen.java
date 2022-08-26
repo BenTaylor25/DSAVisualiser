@@ -16,7 +16,7 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect classicButtonBox;
     BenHelper.Rect lightButtonBox;
     BenHelper.Rect darkButtonBox;
-    BenHelper.Rect fourButtonBox;
+    BenHelper.Rect cherryButtonBox;
     BenHelper.Rect fiveButtonBox;
     BenHelper.Rect sixButtonBox;
     BenHelper.Rect sevenButtonBox;
@@ -35,7 +35,7 @@ public class ThemeScreen extends FactOption {
         lightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
         darkButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.7f, GW*0.2f, GH*0.1f);
 
-        fourButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.6f, GW*0.2f, GH*0.1f);
+        cherryButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.6f, GW*0.2f, GH*0.1f);
         fiveButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
         sixButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
 
@@ -83,7 +83,7 @@ public class ThemeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Light", lightButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Dark", darkButtonBox, 1);
 
-        BenHelper.textDrawCentre(batch, font, "Cherry", fourButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Cherry", cherryButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "five", fiveButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "six", sixButtonBox, 1);
 
@@ -102,7 +102,7 @@ public class ThemeScreen extends FactOption {
             classicButtonBox.draw(shape, Color.RED);
             lightButtonBox.draw(shape, Color.RED);
             darkButtonBox.draw(shape, Color.RED);
-            fourButtonBox.draw(shape, Color.RED);
+            cherryButtonBox.draw(shape, Color.RED);
             fiveButtonBox.draw(shape, Color.RED);
             sixButtonBox.draw(shape, Color.RED);
             sevenButtonBox.draw(shape, Color.RED);
@@ -128,11 +128,11 @@ public class ThemeScreen extends FactOption {
             else if (darkButtonBox.checkHover()) {
                 ColorHandler.setTheme("dark");
             }
-            else if (fourButtonBox.checkHover()) {
+            else if (cherryButtonBox.checkHover()) {
                 ColorHandler.setTheme("cherry");
             }
             else if (fiveButtonBox.checkHover()) {
-                ColorHandler.setTheme("five");
+                ColorHandler.setTheme("apple");
             }
         }
 
