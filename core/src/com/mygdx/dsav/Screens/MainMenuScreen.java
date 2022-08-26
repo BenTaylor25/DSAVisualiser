@@ -152,6 +152,9 @@ public class MainMenuScreen extends FactOption {
             else if (bfsButtonBox.checkHover()) {
                 factSelector = "bfs";
             }
+            else if (themeButtonBox.checkHover()) {
+                factSelector = "theme";
+            }
             else if (myGHButtonBox.checkHover()) {
                 try {
                     Desktop.getDesktop().browse(new URL("https://github.com/BenTaylor25").toURI());

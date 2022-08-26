@@ -1,6 +1,7 @@
 package com.mygdx.dsav;
 
 import com.mygdx.dsav.Screens.MainMenuScreen;
+import com.mygdx.dsav.Screens.ThemeScreen;
 import com.mygdx.dsav.Screens.ArrayScreen;
 import com.mygdx.dsav.Screens.GraphScreen;
 import com.mygdx.dsav.Screens.LinkedListScreen;
@@ -28,6 +29,7 @@ public class DSAVisualiser extends Game {
 
 		screens = new Hashtable<>();
 		screens.put("menu", new MainMenuScreen());
+		screens.put("theme", new ThemeScreen());
 		screens.put("array", new ArrayScreen());
 		screens.put("llist", new LinkedListScreen());
 		screens.put("stack", new StackScreen());
@@ -48,7 +50,7 @@ public class DSAVisualiser extends Game {
 	@Override
 	public void render() {
 		switch (factSelector) {
-			case "menu": 
+			case "menu": case "theme":
 			case "array": case "llist": case "stack":
 			case "queue": case "graph": case "tree":
 			case "bubble": case "binsrch": case "prims":
