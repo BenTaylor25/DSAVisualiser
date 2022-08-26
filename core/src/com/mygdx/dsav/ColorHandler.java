@@ -54,7 +54,21 @@ public class ColorHandler {
                 BenHelper.HINT_TEXT_COLOUR = new Color(0.482f, 0.482f, 0.482f, 1);
                 break;
 
+            case "deuteranopia":
+                BenHelper.BACKGROUND_COLOUR = new Color(0.949f, 0.953f, 0.612f, 1);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(0.345f, 0.486f, 0.757f, 1);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(0.49f, 0.6f, 0.812f, 1);
+                BenHelper.HINT_TEXT_COLOUR = new Color(0.482f, 0.482f, 0.482f, 1);
+                break;
+            
+            case "tritanopia":
+                BenHelper.BACKGROUND_COLOUR = new Color(0.855f, 0.816f, 0.494f, 1);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(0.655f, 0.243f, 0.388f, 1);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(0.757f, 0.345f, 0.49f, 1);
+                BenHelper.HINT_TEXT_COLOUR = new Color(0.482f, 0.482f, 0.482f, 1);
+                break;
 
+            
         }
     }
 }
