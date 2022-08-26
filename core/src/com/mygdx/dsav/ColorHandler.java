@@ -19,7 +19,13 @@ public class ColorHandler {
                 BenHelper.HINT_TEXT_COLOUR = new Color(Color.GRAY);
                 break;
 
-            
+            case "dark":
+                BenHelper.BACKGROUND_COLOUR = new Color(0.1f, 0.1f, 0.1f, 1);
+                BenHelper.DEFAULT_TEXT_COLOUR = new Color(1, 0.9f, 0.75f, 1);
+                BenHelper.HOVER_TEXT_COLOUR = new Color(0.48f, 0.286f, 0.533f, 1);
+                BenHelper.HINT_TEXT_COLOUR = new Color(0.6f, 0.6f, 0.6f, 1);
+                break;
+
         }
     }
 }
