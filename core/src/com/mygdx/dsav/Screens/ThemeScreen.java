@@ -32,15 +32,15 @@ public class ThemeScreen extends FactOption {
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
 
         classicButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.7f, GW*0.2f, GH*0.1f);
-        lightButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.6f, GW*0.2f, GH*0.1f);
-        darkButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
+        lightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
+        darkButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.7f, GW*0.2f, GH*0.1f);
 
-        fourButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
+        fourButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.6f, GW*0.2f, GH*0.1f);
         fiveButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
-        sixButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
+        sixButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
 
-        sevenButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.7f, GW*0.2f, GH*0.1f);
-        eightButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
+        sevenButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
+        eightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
         nineButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
 
         customButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.4f, GW*0.2f, GH*0.1f);
@@ -83,7 +83,7 @@ public class ThemeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Light", lightButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Dark", darkButtonBox, 1);
 
-        BenHelper.textDrawCentre(batch, font, "four", fourButtonBox, 1);
+        BenHelper.textDrawCentre(batch, font, "Cherry", fourButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "five", fiveButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "six", sixButtonBox, 1);
 
@@ -127,6 +127,9 @@ public class ThemeScreen extends FactOption {
             }
             else if (darkButtonBox.checkHover()) {
                 ColorHandler.setTheme("dark");
+            }
+            else if (fourButtonBox.checkHover()) {
+                ColorHandler.setTheme("cherry");
             }
         }
 
