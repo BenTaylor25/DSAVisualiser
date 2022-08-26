@@ -15,6 +15,7 @@ public class MainMenuScreen extends FactOption {
     BenHelper.Rect exitButtonBox;
     BenHelper.Rect myGHButtonBox;
     BenHelper.Rect fontLinkButtonBox;
+    BenHelper.Rect themeButtonBox;
 
     BenHelper.Rect arrayButtonBox;
     BenHelper.Rect llistButtonBox;
@@ -35,6 +36,7 @@ public class MainMenuScreen extends FactOption {
         exitButtonBox = new BenHelper.Rect(GW*0.9f, 0, GW*0.1f, GH*0.09f);
         myGHButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.06f, GW*0.175f, GH*0.08f);
         fontLinkButtonBox = new BenHelper.Rect(GW*0.001f, GH*0.001f, GW*0.38f, GH*0.05f);
+        themeButtonBox = new BenHelper.Rect(GW*0.9f, GH*0.09f, GW*0.1f, GH*0.075f);
 
         arrayButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.725f, GW*0.3f, GH*0.085f);
         llistButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.64f, GW*0.3f, GH*0.085f);
@@ -68,10 +70,11 @@ public class MainMenuScreen extends FactOption {
 
         BenHelper.textDrawCentre(batch, font, "DSAVisualiser", titleButtonBox, 2,
             BenHelper.DEFAULT_TEXT_COLOUR);
+        BenHelper.textDrawCentre(batch, font, "Theme", themeButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Ben Taylor", myGHButtonBox, 1);
         BenHelper.textDrawCentre(batch, font, "Thanks to Riciery Leal for the VCR OSD Mono font", 
             fontLinkButtonBox, 0.5f);
-        BenHelper.textDrawCentre(batch, font, "Exit", exitButtonBox, 1f);
+        BenHelper.textDrawCentre(batch, font, "Exit", exitButtonBox, 1.25f);
 
         BenHelper.textDrawCentre(batch, font, "Array", arrayButtonBox, 1.125f);
         BenHelper.textDrawCentre(batch, font, "Linked List", llistButtonBox, 1.125f);
@@ -89,6 +92,7 @@ public class MainMenuScreen extends FactOption {
 
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
+            themeButtonBox.draw(shape, Color.RED);
             exitButtonBox.draw(shape, Color.RED);
             myGHButtonBox.draw(shape, Color.RED);
             fontLinkButtonBox.draw(shape, Color.RED);
