@@ -13,6 +13,7 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
     boolean showCustom;
+    int typingSelector;
 
     BenHelper.Rect classicButtonBox;
     BenHelper.Rect lightButtonBox;
@@ -45,6 +46,7 @@ public class ThemeScreen extends FactOption {
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
         showCustom = false;
+        typingSelector = -1;
 
         classicButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.7f, GW*0.2f, GH*0.1f);
         lightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
@@ -74,6 +76,7 @@ public class ThemeScreen extends FactOption {
     @Override
     public void reset() {
         showCustom = false;
+        typingSelector = -1;
     }
 
     @Override
@@ -128,6 +131,11 @@ public class ThemeScreen extends FactOption {
             BenHelper.textDrawCentre(batch, font, "#"+cHoverHexCol, cHoverInputBox, 1);
             BenHelper.textDrawCentre(batch, font, "Hint:", cHintTextBox, 1);
             BenHelper.textDrawCentre(batch, font, "#"+cHintHexCol, cHintInputBox, 1);
+
+            if (typingSelector == 0) BenHelper.textDrawCentre(batch, font, "#"+cTextHexCol, cTextInputBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+            if (typingSelector == 1) BenHelper.textDrawCentre(batch, font, "#"+cBgHexCol, cBgInputBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+            if (typingSelector == 2) BenHelper.textDrawCentre(batch, font, "#"+cHoverHexCol, cHoverInputBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+            if (typingSelector == 3) BenHelper.textDrawCentre(batch, font, "#"+cHintHexCol, cHintInputBox, 1, BenHelper.HOVER_TEXT_COLOUR);
         }
 
 
@@ -162,6 +170,8 @@ public class ThemeScreen extends FactOption {
     @Override
     public String updateAfter(String factSelector) {
         if (BenHelper.screenClicked()) {
+            typingSelector = -1;
+            
             if (backButtonBox.checkHover()) {
                 factSelector = "menu";
             }
@@ -198,6 +208,43 @@ public class ThemeScreen extends FactOption {
                 ColorHandler.setTheme("classic");
                 // ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
             }
+
+            else if (showCustom) {
+                if (cTextInputBox.checkHover()) {
+                    typingSelector = 0;
+                }
+                else if (cBgInputBox.checkHover()) {
+                    typingSelector = 1;
+                }
+                else if (cHoverInputBox.checkHover()) {
+                    typingSelector = 2;
+                }
+                else if (cHintInputBox.checkHover()) {
+                    typingSelector = 3;
+                }
+            }
+        }
+
+        // typing
+        switch (typingSelector) {
+            case -1:
+                break;
+            
+            case 0:
+                cTextHexCol = BenHelper.typing(cTextHexCol, 6);
+                break;
+
+            case 1:
+                cBgHexCol = BenHelper.typing(cBgHexCol, 6);
+                break;
+            
+            case 2:
+                cHoverHexCol = BenHelper.typing(cHoverHexCol, 6);
+                break;
+
+            case 3:
+                cHintHexCol = BenHelper.typing(cHintHexCol, 6);
+                break;
         }
 
         return factSelector;
