@@ -12,6 +12,7 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
+    boolean showCustom;
 
     BenHelper.Rect classicButtonBox;
     BenHelper.Rect lightButtonBox;
@@ -24,30 +25,55 @@ public class ThemeScreen extends FactOption {
     BenHelper.Rect tritanopiaButtonBox;
     BenHelper.Rect customButtonBox;
 
+    String cTextHexCol;
+    BenHelper.Rect cTextTextBox;
+    BenHelper.Rect cTextInputBox;
+    String cBgHexCol;
+    BenHelper.Rect cBgTextBox;
+    BenHelper.Rect cBgInputBox;
+    String cHoverHexCol;
+    BenHelper.Rect cHoverTextBox;
+    BenHelper.Rect cHoverInputBox;
+    String cHintHexCol;
+    BenHelper.Rect cHintTextBox;
+    BenHelper.Rect cHintInputBox;
+
     @Override
     public void create() {
         hintTextString = "";
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+        showCustom = false;
 
         classicButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.7f, GW*0.2f, GH*0.1f);
         lightButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.7f, GW*0.2f, GH*0.1f);
         darkButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.7f, GW*0.2f, GH*0.1f);
-
         cherryButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.6f, GW*0.2f, GH*0.1f);
         appleButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.6f, GW*0.2f, GH*0.1f);
         midnightButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.6f, GW*0.2f, GH*0.1f);
-
         protanopiaButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.5f, GW*0.2f, GH*0.1f);
         deuteranopiaButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.5f, GW*0.2f, GH*0.1f);
         tritanopiaButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
-
         customButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.4f, GW*0.2f, GH*0.1f);
+
+        cTextHexCol = "";
+        cTextTextBox = new BenHelper.Rect(GW*0.2f, GH*0.25f, GW*0.15f, GH*0.1f);
+        cTextInputBox = new BenHelper.Rect(GW*0.35f, GH*0.25f, GW*0.125f, GH*0.1f);
+        cBgHexCol = "";
+        cBgTextBox = new BenHelper.Rect(GW*0.525f, GH*0.25f, GW*0.15f, GH*0.1f);
+        cBgInputBox = new BenHelper.Rect(GW*0.675f, GH*0.25f, GW*0.125f, GH*0.1f);
+        cHoverHexCol = "";
+        cHoverTextBox = new BenHelper.Rect(GW*0.2f, GH*0.15f, GW*0.15f, GH*0.1f);
+        cHoverInputBox = new BenHelper.Rect(GW*0.35f, GH*0.15f, GW*0.125f, GH*0.1f);
+        cHintHexCol = "";
+        cHintTextBox = new BenHelper.Rect(GW*0.525f, GH*0.15f, GW*0.15f, GH*0.1f);
+        cHintInputBox = new BenHelper.Rect(GW*0.675f, GH*0.15f, GW*0.125f, GH*0.1f);
     }
 
     @Override
     public void reset() {
+        showCustom = false;
     }
 
     @Override
@@ -93,6 +119,18 @@ public class ThemeScreen extends FactOption {
 
         BenHelper.textDrawCentre(batch, font, "Custom", customButtonBox, 1);
 
+        if (showCustom) {
+            BenHelper.textDrawCentre(batch, font, "Text:", cTextTextBox, 1);
+            BenHelper.textDrawCentre(batch, font, "#"+cTextHexCol, cTextInputBox, 1);
+            BenHelper.textDrawCentre(batch, font, "Background:", cBgTextBox, 1);
+            BenHelper.textDrawCentre(batch, font, "#"+cBgHexCol, cBgInputBox, 1);
+            BenHelper.textDrawCentre(batch, font, "Hover:", cHoverTextBox, 1);
+            BenHelper.textDrawCentre(batch, font, "#"+cHoverHexCol, cHoverInputBox, 1);
+            BenHelper.textDrawCentre(batch, font, "Hint:", cHintTextBox, 1);
+            BenHelper.textDrawCentre(batch, font, "#"+cHintHexCol, cHintInputBox, 1);
+        }
+
+
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
             titleButtonBox.draw(shape, Color.RED);
@@ -109,6 +147,15 @@ public class ThemeScreen extends FactOption {
             deuteranopiaButtonBox.draw(shape, Color.RED);
             tritanopiaButtonBox.draw(shape, Color.RED);
             customButtonBox.draw(shape, Color.RED);
+
+            cTextTextBox.draw(shape, Color.RED);
+            cTextInputBox.draw(shape, Color.RED);
+            cBgTextBox.draw(shape, Color.RED);
+            cBgInputBox.draw(shape, Color.RED);
+            cHoverTextBox.draw(shape, Color.RED);
+            cHoverInputBox.draw(shape, Color.RED);
+            cHintTextBox.draw(shape, Color.RED);
+            cHintInputBox.draw(shape, Color.RED);
         }
     }
 
@@ -145,6 +192,11 @@ public class ThemeScreen extends FactOption {
             }
             else if (tritanopiaButtonBox.checkHover()) {
                 ColorHandler.setTheme("tritanopia");
+            }
+            else if (customButtonBox.checkHover()) {
+                showCustom = true;
+                ColorHandler.setTheme("classic");
+                // ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
             }
         }
 
