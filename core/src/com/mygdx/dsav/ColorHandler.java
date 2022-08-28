@@ -73,4 +73,21 @@ public class ColorHandler {
             
         }
     }
+
+    private static boolean isValidHex(String str) {
+        String hexChars = "0123456789ABCDEF";
+        for (int i = 0; i < str.length(); i++) {
+            if (!hexChars.contains("" + Character.toUpperCase(str.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void tryCustomTheme(String cText, String cBg, String cHover, String cHint) {
+        if (isValidHex(cText)) {
+        //     float[] rgb = hexToUnitInterval(cText);
+        //     BenHelper.DEFAULT_TEXT_COLOUR = new Color(rgb[0], rgb[1], rgb[2], 1);
+        }
+    }
 }

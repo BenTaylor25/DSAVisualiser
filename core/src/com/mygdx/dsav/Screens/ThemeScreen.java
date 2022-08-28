@@ -234,7 +234,7 @@ public class ThemeScreen extends FactOption {
                     showCustom = true;
                     ColorHandler.setTheme("classic");
                     ColorHandler.currentTheme = "custom";
-                    // ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
+                    ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
                 }
  
                 if (showCustom) {
