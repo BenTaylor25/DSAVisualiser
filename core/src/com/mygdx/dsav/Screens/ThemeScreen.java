@@ -179,42 +179,52 @@ public class ThemeScreen extends FactOption {
             else if (classicButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("classic");
+                ColorHandler.currentTheme = "classic";
             }
             else if (lightButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("light");
+                ColorHandler.currentTheme = "light";
             }
             else if (darkButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("dark");
+                ColorHandler.currentTheme = "dark";
             }
             else if (cherryButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("cherry");
+                ColorHandler.currentTheme = "cherry";
             }
             else if (appleButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("apple");
+                ColorHandler.currentTheme = "apple";
             }
             else if (midnightButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("midnight");
+                ColorHandler.currentTheme = "midnight";
             }
             else if (protanopiaButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("protanopia");
+                ColorHandler.currentTheme = "protanopia";
             }
             else if (deuteranopiaButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("deuteranopia");
+                ColorHandler.currentTheme = "deuteranopia";
             }
             else if (tritanopiaButtonBox.checkHover()) {
                 showCustom = false;
                 ColorHandler.setTheme("tritanopia");
+                ColorHandler.currentTheme = "tritanopia";
             }
             else if (customButtonBox.checkHover()) {
                 showCustom = true;
                 ColorHandler.setTheme("classic");
+                ColorHandler.currentTheme = "custom";
                 // ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
             }
 

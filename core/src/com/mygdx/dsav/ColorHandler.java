@@ -3,6 +3,8 @@ package com.mygdx.dsav;
 import com.badlogic.gdx.graphics.Color;
 
 public class ColorHandler {
+    public static String currentTheme;
+
     public static void setTheme(String mode) {
         switch (mode) {
             case "classic":
