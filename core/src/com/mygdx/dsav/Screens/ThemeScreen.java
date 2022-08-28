@@ -227,15 +227,10 @@ public class ThemeScreen extends FactOption {
             }
             else {
                 // custom colour theme
-                boolean shouldReloadCustom = customButtonBox.checkHover() || 
-                    showCustom && typingSelector != -1;
-
-                if (shouldReloadCustom) {
-                    showCustom = true;
-                    ColorHandler.setTheme("classic");
-                    ColorHandler.currentTheme = "custom";
-                    ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
-                }
+                showCustom = true;
+                ColorHandler.setTheme("classic");
+                ColorHandler.currentTheme = "custom";
+                ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
  
                 if (showCustom) {
                     // typing selectors
