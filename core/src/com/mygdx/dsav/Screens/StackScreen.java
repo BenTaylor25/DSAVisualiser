@@ -86,7 +86,7 @@ public class StackScreen extends FactOption {
 
         // draw Stack outline
         shape.begin(ShapeType.Filled);
-            shape.setColor(Color.BLACK);
+            shape.setColor(BenHelper.HINT_TEXT_COLOUR);
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.35f, GH*0.8f, 2);
             shape.rectLine(GW*0.65f, GH*0.2f, GW*0.65f, GH*0.8f, 2);
             shape.rectLine(GW*0.35f, GH*0.2f, GW*0.65f, GH*0.2f, 2);
@@ -108,7 +108,7 @@ public class StackScreen extends FactOption {
         if (inputTypingEnabled) {
             inputTextButtonBox.draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         } else {
-            inputTextButtonBox.draw(shape, Color.BLACK);
+            inputTextButtonBox.draw(shape, BenHelper.HINT_TEXT_COLOUR);
         }
         pushButtonBox.draw(shape);
         outputTextButtonBox.draw(shape);

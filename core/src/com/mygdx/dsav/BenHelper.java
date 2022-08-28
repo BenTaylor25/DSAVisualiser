@@ -183,7 +183,7 @@ public class BenHelper {
             shape.end();
         }
         public void draw(ShapeRenderer shape) {
-            draw(shape, Color.BLACK);
+            draw(shape, BenHelper.HINT_TEXT_COLOUR);
         }
 
         public void drawDotted(ShapeRenderer shape, Color col, boolean isDotted) {
@@ -205,7 +205,7 @@ public class BenHelper {
             shape.end();
         }
         public void drawDotted(ShapeRenderer shape, boolean isDotted) {
-            drawDotted(shape, Color.BLACK, isDotted);
+            drawDotted(shape, BenHelper.HINT_TEXT_COLOUR, isDotted);
         }
 
         /**
@@ -241,7 +241,7 @@ public class BenHelper {
             drawArrow(shape, startX, startY, endX, endY, 30, GW()/75, GW()/500, col);
         }
         public void arrowTo(ShapeRenderer shape, Rect otherBox, int thisPoint, int otherPoint) {
-            arrowTo(shape, otherBox, thisPoint, otherPoint, Color.BLACK);
+            arrowTo(shape, otherBox, thisPoint, otherPoint, BenHelper.HINT_TEXT_COLOUR);
         }
 
         public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2, Color col) {
@@ -300,7 +300,7 @@ public class BenHelper {
         }
 
         public void arrowToCalc(ShapeRenderer shape, Rect otherBox, int ind1, int ind2) {
-            arrowToCalc(shape, otherBox, ind1, ind2, Color.BLACK);
+            arrowToCalc(shape, otherBox, ind1, ind2, BenHelper.HINT_TEXT_COLOUR);
         }
     }
     
