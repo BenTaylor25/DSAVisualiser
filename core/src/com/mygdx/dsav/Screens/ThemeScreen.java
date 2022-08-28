@@ -221,27 +221,35 @@ public class ThemeScreen extends FactOption {
                 ColorHandler.setTheme("tritanopia");
                 ColorHandler.currentTheme = "tritanopia";
             }
-            else if (customButtonBox.checkHover()) {
-                showCustom = true;
-                ColorHandler.setTheme("classic");
-                ColorHandler.currentTheme = "custom";
-                // ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
-            }
+            else {
+                // custom colour theme
+                boolean shouldReloadCustom = customButtonBox.checkHover() || 
+                    showCustom && typingSelector != -1;
 
-            else if (showCustom) {
-                if (cTextInputBox.checkHover()) {
-                    typingSelector = 0;
+                if (shouldReloadCustom) {
+                    showCustom = true;
+                    ColorHandler.setTheme("classic");
+                    ColorHandler.currentTheme = "custom";
+                    // ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
                 }
-                else if (cBgInputBox.checkHover()) {
-                    typingSelector = 1;
-                }
-                else if (cHoverInputBox.checkHover()) {
-                    typingSelector = 2;
-                }
-                else if (cHintInputBox.checkHover()) {
-                    typingSelector = 3;
+ 
+                if (showCustom) {
+                    // typing selectors
+                    if (cTextInputBox.checkHover()) {
+                        typingSelector = 0;
+                    }
+                    else if (cBgInputBox.checkHover()) {
+                        typingSelector = 1;
+                    }
+                    else if (cHoverInputBox.checkHover()) {
+                        typingSelector = 2;
+                    }
+                    else if (cHintInputBox.checkHover()) {
+                        typingSelector = 3;
+                    }
                 }
             }
+           
         }
 
         // typing
