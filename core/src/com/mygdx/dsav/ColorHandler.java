@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 
 public class ColorHandler {
     public static String currentTheme;
+    private static final String HEXCHARS = "0123456789ABCDEF";
 
     public static void setTheme(String mode) {
         switch (mode) {
@@ -75,19 +76,54 @@ public class ColorHandler {
     }
 
     private static boolean isValidHex(String str) {
-        String hexChars = "0123456789ABCDEF";
+        if (str.length() != 6) { return false; }
+
         for (int i = 0; i < str.length(); i++) {
-            if (!hexChars.contains("" + Character.toUpperCase(str.charAt(i)))) {
+            char thisChar = Character.toUpperCase(str.charAt(i));
+            if (!HEXCHARS.contains("" + thisChar)) {
                 return false;
             }
         }
         return true;
     }
 
+    private static float[] hexToUnitInterval(String str) {
+        assert isValidHex(str);
+
+        float[] unitInterval = new float[3];
+
+        for (int i = 0; i < 3; i++) {
+            char cSxtns = Character.toUpperCase(str.charAt(i*2));
+            char cOnes = Character.toUpperCase(str.charAt(i*2+1));
+
+            int iSxtns = HEXCHARS.indexOf(cSxtns);
+            int iOnes = HEXCHARS.indexOf(cOnes);
+
+            unitInterval[i] = (16 * iSxtns + iOnes) / 255;
+        }
+
+        return unitInterval;
+    }
+
     public static void tryCustomTheme(String cText, String cBg, String cHover, String cHint) {
         if (isValidHex(cText)) {
-        //     float[] rgb = hexToUnitInterval(cText);
-        //     BenHelper.DEFAULT_TEXT_COLOUR = new Color(rgb[0], rgb[1], rgb[2], 1);
+            float[] rgb = hexToUnitInterval(cText);
+            BenHelper.DEFAULT_TEXT_COLOUR = new Color(rgb[0], rgb[1], rgb[2], 1);
+        }
+        
+        if (isValidHex(cBg)) {
+            float[] rgb = hexToUnitInterval(cBg);
+            BenHelper.BACKGROUND_COLOUR = new Color(rgb[0], rgb[1], rgb[2], 1);
+        }
+
+        if (isValidHex(cHover)) {
+            float[] rgb = hexToUnitInterval(cHover);
+            BenHelper.HOVER_TEXT_COLOUR = new Color(rgb[0], rgb[1], rgb[2], 1);
+        }
+
+        if (isValidHex(cHint)) {
+            float[] rgb = hexToUnitInterval(cHint);
+            BenHelper.HINT_TEXT_COLOUR = new Color(rgb[0], rgb[1], rgb[2], 1);
         }
     }
 }
