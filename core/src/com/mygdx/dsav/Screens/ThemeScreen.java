@@ -177,30 +177,39 @@ public class ThemeScreen extends FactOption {
             }
 
             else if (classicButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("classic");
             }
             else if (lightButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("light");
             }
             else if (darkButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("dark");
             }
             else if (cherryButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("cherry");
             }
             else if (appleButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("apple");
             }
             else if (midnightButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("midnight");
             }
             else if (protanopiaButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("protanopia");
             }
             else if (deuteranopiaButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("deuteranopia");
             }
             else if (tritanopiaButtonBox.checkHover()) {
+                showCustom = false;
                 ColorHandler.setTheme("tritanopia");
             }
             else if (customButtonBox.checkHover()) {
