@@ -82,6 +82,9 @@ public class ThemeScreen extends FactOption {
     @Override
     public String updateBefore(String factSelector) {
         
+        hintTextString = "";
+        // wip
+
         return factSelector;
     }
 
