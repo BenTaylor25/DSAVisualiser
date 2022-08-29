@@ -77,10 +77,6 @@ public class ThemeScreen extends FactOption {
     public void reset() {
         showCustom = false;
         typingSelector = -1;
-        cTextHexCol = "";   // should this happen?
-        cBgHexCol = "";
-        cHoverHexCol = "";
-        cHintHexCol = "";
     }
 
     @Override
