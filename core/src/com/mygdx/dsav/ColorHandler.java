@@ -99,7 +99,7 @@ public class ColorHandler {
             int iSxtns = HEXCHARS.indexOf(cSxtns);
             int iOnes = HEXCHARS.indexOf(cOnes);
 
-            unitInterval[i] = (16 * iSxtns + iOnes) / 255;
+            unitInterval[i] = (16f * iSxtns + iOnes) / 255;
         }
 
         return unitInterval;
