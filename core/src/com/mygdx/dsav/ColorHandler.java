@@ -3,7 +3,7 @@ package com.mygdx.dsav;
 import com.badlogic.gdx.graphics.Color;
 
 public class ColorHandler {
-    public static String currentTheme;
+    public static String currentTheme = "classic";
     private static final String HEXCHARS = "0123456789ABCDEF";
 
     public static void setTheme(String mode) {
