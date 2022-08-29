@@ -124,34 +124,64 @@ public class ThemeScreen extends FactOption {
 
         switch (ColorHandler.currentTheme) {
             case "classic":
-                BenHelper.textDrawCentre(batch, font, "Classic", classicButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Classic", classicButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "light":
-                BenHelper.textDrawCentre(batch, font, "Light", lightButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Light", lightButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "dark":
-                BenHelper.textDrawCentre(batch, font, "Dark", darkButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Dark", darkButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "apple":
-                BenHelper.textDrawCentre(batch, font, "Apple", appleButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Apple", appleButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "cherry":
-                BenHelper.textDrawCentre(batch, font, "Cherry", cherryButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Cherry", cherryButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "midnight":
-                BenHelper.textDrawCentre(batch, font, "Midnight", midnightButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Midnight", midnightButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "protanopia":
-                BenHelper.textDrawCentre(batch, font, "Protanopia", protanopiaButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Protanopia", protanopiaButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "deuteranopia":
-                BenHelper.textDrawCentre(batch, font, "Deuteranopia", deuteranopiaButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Deuteranopia", deuteranopiaButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "tritanopia":
-                BenHelper.textDrawCentre(batch, font, "Tritanopia", tritanopiaButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Tritanopia", tritanopiaButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
             case "custom":
-                BenHelper.textDrawCentre(batch, font, "Custom", customButtonBox, 1, BenHelper.HOVER_TEXT_COLOUR);
+                BenHelper.textDrawCentre(
+                    batch, font, "Custom", customButtonBox, 
+                    1, BenHelper.HOVER_TEXT_COLOUR
+                );
                 break;
         }
 
