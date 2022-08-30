@@ -83,7 +83,39 @@ public class ThemeScreen extends FactOption {
     public String updateBefore(String factSelector) {
         
         hintTextString = "";
-        // wip
+        if (titleButtonBox.checkHover()) {
+            hintTextString = "Modify the look of the DSAVisualiser.";
+        }
+        else if (classicButtonBox.checkHover()) {
+            hintTextString = "This is the default look of the DSAVisualiser.";
+        }
+        else if (lightButtonBox.checkHover()) {
+            hintTextString = "Standard light mode.";
+        }
+        else if (darkButtonBox.checkHover()) {
+            hintTextString = "Standard dark mode.";
+        }
+        else if (appleButtonBox.checkHover()) {
+            hintTextString = "Apple theme.";
+        }
+        else if (cherryButtonBox.checkHover()) {
+            hintTextString = "Cherry blossom theme.";
+        }
+        else if (midnightButtonBox.checkHover()) {
+            hintTextString = "Midnight theme.";
+        }
+        else if (protanopiaButtonBox.checkHover()) {
+            hintTextString = "Theme created with Protanopia colour blindness in mind.";
+        }
+        else if (deuteranopiaButtonBox.checkHover()) {
+            hintTextString = "Theme created with Deuteranopia colour blindness in mind.";
+        }
+        else if (tritanopiaButtonBox.checkHover()) {
+            hintTextString = "Theme created with Tritanopia colour blindness in mind.";
+        }
+        else if (customButtonBox.checkHover()) {
+            hintTextString = "Create your own theme using hex colour codes.";
+        }
 
         return factSelector;
     }
@@ -124,6 +156,10 @@ public class ThemeScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "Tritanopia", tritanopiaButtonBox, 1);
 
         BenHelper.textDrawCentre(batch, font, "Custom", customButtonBox, 1);
+
+        BenHelper.textDrawCentre(batch, font, hintTextString, 
+            hintButtonBox, 0.75f, BenHelper.HINT_TEXT_COLOUR
+        );
 
         switch (ColorHandler.currentTheme) {
             case "classic":
