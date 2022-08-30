@@ -359,7 +359,6 @@ public class ThemeScreen extends FactOption {
                     }
                 }
             }
-           
         }
 
         // typing
