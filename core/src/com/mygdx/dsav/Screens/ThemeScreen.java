@@ -116,6 +116,28 @@ public class ThemeScreen extends FactOption {
         else if (customButtonBox.checkHover()) {
             hintTextString = "Create your own theme using hex colour codes.";
         }
+        else if (showCustom) {
+            boolean hoverTextBox =
+                cTextTextBox.checkHover() ||
+                cBgTextBox.checkHover() ||
+                cHoverTextBox.checkHover() ||
+                cHintTextBox.checkHover();
+            
+            boolean hoverHexBox = 
+                cTextInputBox.checkHover() ||
+                cBgInputBox.checkHover() ||
+                cHoverInputBox.checkHover() ||
+                cHintInputBox.checkHover();
+
+            if (hoverTextBox) {
+                hintTextString = "The palette of this app is made of 4 colours.\n" +
+                    "Text colour, Background colour, Hover / Selected\n" +
+                    "colour and Hint Text / Border colour.";
+            }
+            else if (hoverHexBox) {
+                hintTextString = "Enter a hex value to enable a colour (#RRGGBB).";
+            }
+        }
 
         return factSelector;
     }
