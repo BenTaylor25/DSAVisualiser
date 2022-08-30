@@ -96,13 +96,13 @@ public class ThemeScreen extends FactOption {
             hintTextString = "Standard dark mode.";
         }
         else if (appleButtonBox.checkHover()) {
-            hintTextString = "Apple theme.";
+            hintTextString = "Alternative light mode with an Apple theme.";
         }
         else if (cherryButtonBox.checkHover()) {
-            hintTextString = "Cherry blossom theme.";
+            hintTextString = "Alternative light mode with a Cherry Blossom theme.";
         }
         else if (midnightButtonBox.checkHover()) {
-            hintTextString = "Midnight theme.";
+            hintTextString = "Alternative dark mode with a Midnight theme.";
         }
         else if (protanopiaButtonBox.checkHover()) {
             hintTextString = "Theme created with Protanopia colour blindness in mind.";
