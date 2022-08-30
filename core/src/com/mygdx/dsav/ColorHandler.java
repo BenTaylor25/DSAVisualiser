@@ -1,7 +1,8 @@
 package com.mygdx.dsav;
 
 import com.badlogic.gdx.graphics.Color;
-//import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 
 public class ColorHandler {
     private static String currentTheme = "classic";
@@ -15,6 +16,10 @@ public class ColorHandler {
         currentTheme = newTheme;
 
         // modify file
+        if (Gdx.files.isLocalStorageAvailable()) {
+            FileHandle file = Gdx.files.local("data/colourLoad.txt");
+            file.writeString(currentTheme, false);
+        }
     }
 
     public static void applyTheme(String mode) {
