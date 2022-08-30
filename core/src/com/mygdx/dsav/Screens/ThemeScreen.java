@@ -149,15 +149,6 @@ public class ThemeScreen extends FactOption {
             ScreenUtils.clear(BenHelper.BACKGROUND_COLOUR);
             font.setColor(BenHelper.DEFAULT_TEXT_COLOUR);
         batch.end();
-        
-        // draw static shapes
-        
-
-        // draw data items
-        
-
-        // draw button outlines
-        
 
         // draw text
         BenHelper.textDrawCentre(batch, font, "Theme", titleButtonBox, 1.5f,
