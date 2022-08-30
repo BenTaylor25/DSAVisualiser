@@ -45,7 +45,7 @@ public class ThemeScreen extends FactOption {
         titleButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.85f, GW*0.2f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
-        showCustom = ColorHandler.currentTheme == "custom";
+        showCustom = ColorHandler.getCurrentTheme() == "custom";
         typingSelector = -1;
 
         classicButtonBox = new BenHelper.Rect(GW*0.2f, GH*0.7f, GW*0.2f, GH*0.1f);
@@ -75,7 +75,7 @@ public class ThemeScreen extends FactOption {
 
     @Override
     public void reset() {
-        showCustom = ColorHandler.currentTheme == "custom";
+        showCustom = ColorHandler.getCurrentTheme() == "custom";
         typingSelector = -1;
     }
 
@@ -174,7 +174,7 @@ public class ThemeScreen extends FactOption {
             hintButtonBox, 0.75f, BenHelper.HINT_TEXT_COLOUR
         );
 
-        switch (ColorHandler.currentTheme) {
+        switch (ColorHandler.getCurrentTheme()) {
             case "classic":
                 BenHelper.textDrawCentre(
                     batch, font, "Classic", classicButtonBox, 
@@ -293,54 +293,54 @@ public class ThemeScreen extends FactOption {
 
             else if (classicButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("classic");
-                ColorHandler.currentTheme = "classic";
+                ColorHandler.applyTheme("classic");
+                ColorHandler.setCurrentTheme("classic");
             }
             else if (lightButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("light");
-                ColorHandler.currentTheme = "light";
+                ColorHandler.applyTheme("light");
+                ColorHandler.setCurrentTheme("light");
             }
             else if (darkButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("dark");
-                ColorHandler.currentTheme = "dark";
+                ColorHandler.applyTheme("dark");
+                ColorHandler.setCurrentTheme("dark");
             }
             else if (cherryButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("cherry");
-                ColorHandler.currentTheme = "cherry";
+                ColorHandler.applyTheme("cherry");
+                ColorHandler.setCurrentTheme("cherry");
             }
             else if (appleButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("apple");
-                ColorHandler.currentTheme = "apple";
+                ColorHandler.applyTheme("apple");
+                ColorHandler.setCurrentTheme("apple");
             }
             else if (midnightButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("midnight");
-                ColorHandler.currentTheme = "midnight";
+                ColorHandler.applyTheme("midnight");
+                ColorHandler.setCurrentTheme("midnight");
             }
             else if (protanopiaButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("protanopia");
-                ColorHandler.currentTheme = "protanopia";
+                ColorHandler.applyTheme("protanopia");
+                ColorHandler.setCurrentTheme("protanopia");
             }
             else if (deuteranopiaButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("deuteranopia");
-                ColorHandler.currentTheme = "deuteranopia";
+                ColorHandler.applyTheme("deuteranopia");
+                ColorHandler.setCurrentTheme("deuteranopia");
             }
             else if (tritanopiaButtonBox.checkHover()) {
                 showCustom = false;
-                ColorHandler.setTheme("tritanopia");
-                ColorHandler.currentTheme = "tritanopia";
+                ColorHandler.applyTheme("tritanopia");
+                ColorHandler.setCurrentTheme("tritanopia");
             }
             else {
                 // custom colour theme
                 showCustom = true;
-                ColorHandler.setTheme("classic");
-                ColorHandler.currentTheme = "custom";
+                ColorHandler.applyTheme("classic");
+                ColorHandler.setCurrentTheme("custom");
                 ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
  
                 if (showCustom) {

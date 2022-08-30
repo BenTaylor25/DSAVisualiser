@@ -1,12 +1,23 @@
 package com.mygdx.dsav;
 
 import com.badlogic.gdx.graphics.Color;
+//import com.badlogic.gdx.Gdx;
 
 public class ColorHandler {
-    public static String currentTheme = "classic";
+    private static String currentTheme = "classic";
     private static final String HEXCHARS = "0123456789ABCDEF";
 
-    public static void setTheme(String mode) {
+    public static String getCurrentTheme() {
+        return currentTheme;
+    }
+
+    public static void setCurrentTheme(String newTheme) {
+        currentTheme = newTheme;
+
+        // modify file
+    }
+
+    public static void applyTheme(String mode) {
         switch (mode) {
             case "classic":
                 BenHelper.BACKGROUND_COLOUR = new Color(0.15f, 0.25f, 0.35f, 1);
