@@ -18,6 +18,7 @@ import com.mygdx.dsav.Screens.BfsScreen;
 import java.util.Hashtable;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 
 public class DSAVisualiser extends Game {
 	private Hashtable<String, FactOption> screens;
@@ -28,7 +29,14 @@ public class DSAVisualiser extends Game {
 	public void create () {
 		// local storage
 		//
-		ColorHandler.applyTheme("classic");
+		String localTheme;
+		try {
+			FileHandle fh = Gdx.files.local("data/colourLoad.txt");
+			localTheme = fh.readString();
+		} catch (Exception _) {
+			localTheme = "classic";
+		}
+		ColorHandler.applyTheme(localTheme);
 
 		screens = new Hashtable<>();
 		screens.put("menu", new MainMenuScreen());
