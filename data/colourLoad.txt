@@ -1,1 +1,1 @@
-dark
+custom #4D4B9F #898988 #FFFFFF #FFFFFF

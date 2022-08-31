@@ -21,6 +21,18 @@ public class ColorHandler {
             file.writeString(currentTheme, false);
         }
     }
+    public static void setCurrentTheme(String[] cCols) {
+            String customColours = "";
+            for (String c : cCols) {
+                customColours += " #"+c.toUpperCase();
+            }
+
+            if (Gdx.files.isLocalStorageAvailable()) {
+                FileHandle file = Gdx.files.local("data/colourLoad.txt");
+                file.writeString("custom", false);
+                file.writeString(customColours, true);
+            }
+    }
 
     public static void applyTheme(String mode) {
         switch (mode) {
