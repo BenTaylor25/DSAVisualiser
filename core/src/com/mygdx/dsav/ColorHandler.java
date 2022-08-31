@@ -115,7 +115,7 @@ public class ColorHandler {
         return true;
     }
 
-    private static float[] hexToUnitInterval(String str) {
+    public static float[] hexToUnitInterval(String str) {
         assert isValidHex(str);
 
         float[] unitInterval = new float[3];
@@ -131,6 +131,19 @@ public class ColorHandler {
         }
 
         return unitInterval;
+    }
+
+    public static String unitIntervalToHex(float r, float g, float b) {
+        String hex = "";
+
+        hex += HEXCHARS.charAt((int)r*255/16);
+        hex += HEXCHARS.charAt((int)r*255%16);
+        hex += HEXCHARS.charAt((int)g*255/16);
+        hex += HEXCHARS.charAt((int)g*255%16);
+        hex += HEXCHARS.charAt((int)b*255/16);
+        hex += HEXCHARS.charAt((int)b*255%16);
+
+        return hex;
     }
 
     public static void tryCustomTheme(String cText, String cBg, String cHover, String cHint) {

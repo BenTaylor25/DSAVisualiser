@@ -19,6 +19,7 @@ import java.util.Hashtable;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 
 public class DSAVisualiser extends Game {
 	private Hashtable<String, FactOption> screens;
@@ -36,7 +37,28 @@ public class DSAVisualiser extends Game {
 		} catch (Exception _) {
 			localTheme = "classic";
 		}
-		ColorHandler.applyTheme(localTheme);
+
+		if (localTheme.length() > 5 && 
+			localTheme.substring(0, 6).equals("custom")) 
+		{
+			// ColorHandler.applyTheme("classic");
+			String[] cols = localTheme.split("\\s+#");   // split on " #"
+
+			float[] c;
+			c = ColorHandler.hexToUnitInterval(cols[1]);
+			BenHelper.DEFAULT_TEXT_COLOUR = new Color(c[0], c[1], c[2], 1);
+			c = ColorHandler.hexToUnitInterval(cols[2]);
+			BenHelper.BACKGROUND_COLOUR = new Color(c[0], c[1], c[2], 1);
+			c = ColorHandler.hexToUnitInterval(cols[3]);
+			BenHelper.HOVER_TEXT_COLOUR = new Color(c[0], c[1], c[2], 1);
+			c = ColorHandler.hexToUnitInterval(cols[4]);
+			BenHelper.HINT_TEXT_COLOUR = new Color(c[0], c[1], c[2], 1);
+	
+			ColorHandler.setCurrentTheme("custom");
+			ColorHandler.tryCustomTheme(cols[1], cols[2], cols[3], cols[4]);
+		} else {
+			ColorHandler.applyTheme(localTheme);
+		}
 
 		screens = new Hashtable<>();
 		screens.put("menu", new MainMenuScreen());

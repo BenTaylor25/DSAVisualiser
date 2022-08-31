@@ -71,6 +71,29 @@ public class ThemeScreen extends FactOption {
         cHintHexCol = "";
         cHintTextBox = new BenHelper.Rect(GW*0.525f, GH*0.15f, GW*0.15f, GH*0.1f);
         cHintInputBox = new BenHelper.Rect(GW*0.675f, GH*0.15f, GW*0.125f, GH*0.1f);
+
+        if (showCustom) {
+            cTextHexCol = ColorHandler.unitIntervalToHex(
+                BenHelper.DEFAULT_TEXT_COLOUR.r, 
+                BenHelper.DEFAULT_TEXT_COLOUR.g, 
+                BenHelper.DEFAULT_TEXT_COLOUR.b
+            );
+            cBgHexCol = ColorHandler.unitIntervalToHex(
+                BenHelper.BACKGROUND_COLOUR.r, 
+                BenHelper.BACKGROUND_COLOUR.g, 
+                BenHelper.BACKGROUND_COLOUR.b
+            );
+            cHoverHexCol = ColorHandler.unitIntervalToHex(
+                BenHelper.HOVER_TEXT_COLOUR.r, 
+                BenHelper.HOVER_TEXT_COLOUR.g, 
+                BenHelper.HOVER_TEXT_COLOUR.b
+            );
+            cHintHexCol = ColorHandler.unitIntervalToHex(
+                BenHelper.HINT_TEXT_COLOUR.r, 
+                BenHelper.HINT_TEXT_COLOUR.g, 
+                BenHelper.HINT_TEXT_COLOUR.b
+            );
+        }
     }
 
     @Override
@@ -234,6 +257,7 @@ public class ThemeScreen extends FactOption {
                     batch, font, "Custom", customButtonBox, 
                     1, BenHelper.HOVER_TEXT_COLOUR
                 );
+
                 break;
         }
 
