@@ -27,8 +27,13 @@ public class ColorHandler {
     public static void setCurrentTheme(String[] cCols) {
             currentTheme = "custom";
             String customColours = "";
-            for (String c : cCols) {
-                customColours += " #"+c.toUpperCase();
+            String[] defaults = new String[]{"B07219", "264059", "FFFFFF", "808080"};
+            for (int i = 0; i < 4; i++) {
+                if (isValidHex(cCols[i].toUpperCase())) {
+                    customColours += " #"+cCols[i].toUpperCase();
+                } else {
+                    customColours += " #"+defaults[i];
+                }
             }
 
             if (Gdx.files.isLocalStorageAvailable()) {

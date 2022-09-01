@@ -363,6 +363,7 @@ public class ThemeScreen extends FactOption {
             else {
                 // custom colour theme
                 showCustom = true;
+                ColorHandler.applyTheme("classic");
                 ColorHandler.setCurrentTheme(new String[]{cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol});
                 ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
  
