@@ -59,16 +59,16 @@ public class ThemeScreen extends FactOption {
         tritanopiaButtonBox = new BenHelper.Rect(GW*0.6f, GH*0.5f, GW*0.2f, GH*0.1f);
         customButtonBox = new BenHelper.Rect(GW*0.4f, GH*0.4f, GW*0.2f, GH*0.1f);
 
-        cTextHexCol = "";
+        cTextHexCol = "B07219";
         cTextTextBox = new BenHelper.Rect(GW*0.2f, GH*0.25f, GW*0.15f, GH*0.1f);
         cTextInputBox = new BenHelper.Rect(GW*0.35f, GH*0.25f, GW*0.125f, GH*0.1f);
-        cBgHexCol = "";
+        cBgHexCol = "264059";
         cBgTextBox = new BenHelper.Rect(GW*0.525f, GH*0.25f, GW*0.15f, GH*0.1f);
         cBgInputBox = new BenHelper.Rect(GW*0.675f, GH*0.25f, GW*0.125f, GH*0.1f);
-        cHoverHexCol = "";
+        cHoverHexCol = "FFFFFF";
         cHoverTextBox = new BenHelper.Rect(GW*0.2f, GH*0.15f, GW*0.15f, GH*0.1f);
         cHoverInputBox = new BenHelper.Rect(GW*0.35f, GH*0.15f, GW*0.125f, GH*0.1f);
-        cHintHexCol = "";
+        cHintHexCol = "808080";
         cHintTextBox = new BenHelper.Rect(GW*0.525f, GH*0.15f, GW*0.15f, GH*0.1f);
         cHintInputBox = new BenHelper.Rect(GW*0.675f, GH*0.15f, GW*0.125f, GH*0.1f);
 
@@ -363,7 +363,6 @@ public class ThemeScreen extends FactOption {
             else {
                 // custom colour theme
                 showCustom = true;
-                ColorHandler.applyTheme("classic");
                 ColorHandler.setCurrentTheme(new String[]{cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol});
                 ColorHandler.tryCustomTheme(cTextHexCol, cBgHexCol, cHoverHexCol, cHintHexCol);
  

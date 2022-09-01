@@ -28,8 +28,6 @@ public class DSAVisualiser extends Game {
 
 	@Override
 	public void create () {
-		// local storage
-		//
 		String localTheme;
 		try {
 			FileHandle fh = Gdx.files.local("data/colourLoad.txt");
@@ -54,9 +52,10 @@ public class DSAVisualiser extends Game {
 			c = ColorHandler.hexToUnitInterval(cols[4]);
 			BenHelper.HINT_TEXT_COLOUR = new Color(c[0], c[1], c[2], 1);
 	
-			ColorHandler.setCurrentTheme("custom");
+			ColorHandler.setCurrentThemeName("custom");
 			ColorHandler.tryCustomTheme(cols[1], cols[2], cols[3], cols[4]);
 		} else {
+			ColorHandler.setCurrentThemeName(localTheme);
 			ColorHandler.applyTheme(localTheme);
 		}
 

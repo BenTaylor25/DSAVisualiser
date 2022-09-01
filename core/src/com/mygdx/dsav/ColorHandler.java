@@ -12,6 +12,9 @@ public class ColorHandler {
         return currentTheme;
     }
 
+    public static void setCurrentThemeName(String newName) {
+        currentTheme = newName;
+    }
     public static void setCurrentTheme(String newTheme) {
         currentTheme = newTheme;
 
@@ -22,6 +25,7 @@ public class ColorHandler {
         }
     }
     public static void setCurrentTheme(String[] cCols) {
+            currentTheme = "custom";
             String customColours = "";
             for (String c : cCols) {
                 customColours += " #"+c.toUpperCase();
@@ -98,8 +102,6 @@ public class ColorHandler {
                 BenHelper.HOVER_TEXT_COLOUR = new Color(0.757f, 0.345f, 0.49f, 1);
                 BenHelper.HINT_TEXT_COLOUR = new Color(0.482f, 0.482f, 0.482f, 1);
                 break;
-
-            
         }
     }
 
@@ -136,12 +138,12 @@ public class ColorHandler {
     public static String unitIntervalToHex(float r, float g, float b) {
         String hex = "";
 
-        hex += HEXCHARS.charAt((int)r*255/16);
-        hex += HEXCHARS.charAt((int)r*255%16);
-        hex += HEXCHARS.charAt((int)g*255/16);
-        hex += HEXCHARS.charAt((int)g*255%16);
-        hex += HEXCHARS.charAt((int)b*255/16);
-        hex += HEXCHARS.charAt((int)b*255%16);
+        hex += HEXCHARS.charAt((int) (r*255/16));
+        hex += HEXCHARS.charAt((int) (r*255%16));
+        hex += HEXCHARS.charAt((int) (g*255/16));
+        hex += HEXCHARS.charAt((int) (g*255%16));
+        hex += HEXCHARS.charAt((int) (b*255/16));
+        hex += HEXCHARS.charAt((int) (b*255%16));
 
         return hex;
     }
