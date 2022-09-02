@@ -30,7 +30,7 @@ public class DSAVisualiser extends Game {
 	public void create () {
 		String localTheme;
 		try {
-			FileHandle fh = Gdx.files.local("data/colourLoad.txt");
+			FileHandle fh = Gdx.files.local("dsavData/colourLoad.txt");
 			localTheme = fh.readString();
 		} catch (Exception _) {
 			localTheme = "classic";

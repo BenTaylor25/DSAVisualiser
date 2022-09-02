@@ -20,7 +20,7 @@ public class ColorHandler {
 
         // modify file
         if (Gdx.files.isLocalStorageAvailable()) {
-            FileHandle file = Gdx.files.local("data/colourLoad.txt");
+            FileHandle file = Gdx.files.local("dsavData/colourLoad.txt");
             file.writeString(currentTheme, false);
         }
     }
@@ -37,7 +37,7 @@ public class ColorHandler {
             }
 
             if (Gdx.files.isLocalStorageAvailable()) {
-                FileHandle file = Gdx.files.local("data/colourLoad.txt");
+                FileHandle file = Gdx.files.local("dsavData/colourLoad.txt");
                 file.writeString("custom", false);
                 file.writeString(customColours, true);
             }
