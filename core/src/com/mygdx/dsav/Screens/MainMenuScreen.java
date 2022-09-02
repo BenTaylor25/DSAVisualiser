@@ -144,7 +144,7 @@ public class MainMenuScreen extends FactOption {
                 factSelector = "prims";
             }
             else if (dijkstrasButtonBox.checkHover()) {
-                //factSelector = "dijkstras";
+                factSelector = "dijkstras";
             }
             else if (dfsButtonBox.checkHover()) {
                 factSelector = "dfs";
