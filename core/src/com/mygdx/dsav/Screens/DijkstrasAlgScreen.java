@@ -17,8 +17,6 @@ public class DijkstrasAlgScreen extends FactOption {
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
-    BenHelper.Rect toggleDirectedButtonBox;
-    BenHelper.Rect toggleWeightedButtonBox;
     BenHelper.Rect controllerHintButtonBox;
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
@@ -26,7 +24,7 @@ public class DijkstrasAlgScreen extends FactOption {
 
     @Override
     public void create() {
-        graph = new Graph();
+        graph = new Graph(true, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph.addNode("");
         }
@@ -38,8 +36,6 @@ public class DijkstrasAlgScreen extends FactOption {
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
 
-        toggleDirectedButtonBox = new BenHelper.Rect(GW*0.175f, GH*0.85f, GW*0.15f, GH*0.075f);
-        toggleWeightedButtonBox = new BenHelper.Rect(GW*0.675f, GH*0.85f, GW*0.15f, GH*0.075f);
         controllerHintButtonBox = new BenHelper.Rect(GW*0.86f, GW*0.03f, GW*0.11f, GW*0.11f);
 
         graphButtonBoxes = new BenHelper.Rect[GRAPHSIZE];
@@ -66,7 +62,7 @@ public class DijkstrasAlgScreen extends FactOption {
     @Override
     public void reset() {
         // selectors?
-        graph = new Graph(false, false);
+        graph = new Graph(true, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph. addNode("");
         }
@@ -178,14 +174,6 @@ public class DijkstrasAlgScreen extends FactOption {
             }
         }
 
-        // toggles
-        if (toggleDirectedButtonBox.checkClick()) {
-            graph.isDirected = !graph.isDirected;
-        }
-        else if (toggleWeightedButtonBox.checkClick()) {
-            graph.isWeighted = !graph.isWeighted;
-        }
-        
         return factSelector;
     }
 
@@ -210,10 +198,6 @@ public class DijkstrasAlgScreen extends FactOption {
         if (typingSelector >= 0) {
             graphButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
-
-        toggleDirectedButtonBox.draw(shape);
-        toggleWeightedButtonBox.draw(shape);
-
 
         // draw arrows and weights
         for (int i = 0; i < GRAPHSIZE; i++) {
@@ -271,17 +255,7 @@ public class DijkstrasAlgScreen extends FactOption {
             hintButtonBox, 0.75f, BenHelper.HINT_TEXT_COLOUR
         );
 
-        String text = "to directed";
-        if (graph.isDirected) text = "to undirected";
-        BenHelper.textDrawCentre(batch, font, text, 
-            toggleDirectedButtonBox, 0.75f
-        );
-        text = "to weighted";
-        if (graph.isWeighted) text = "to unweighted";
-        BenHelper.textDrawCentre(batch, font, text, 
-            toggleWeightedButtonBox, 0.75f
-        );
-
+        String text;
         String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
         for (int i = 0; i < GRAPHSIZE; i++) {
             text = graph.nodes.get(i).value;
