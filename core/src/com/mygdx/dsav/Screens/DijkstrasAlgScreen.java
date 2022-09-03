@@ -5,6 +5,9 @@ import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Graph;
 
 import com.badlogic.gdx.utils.ScreenUtils;
+
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Color;
 
 public class DijkstrasAlgScreen extends FactOption {
@@ -21,6 +24,8 @@ public class DijkstrasAlgScreen extends FactOption {
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
     BenHelper.Rect[] weightButtonBoxes;
+    BenHelper.Rect orderButtonBox;
+    ArrayList<String> orderText;
 
     @Override
     public void create() {
@@ -57,6 +62,24 @@ public class DijkstrasAlgScreen extends FactOption {
         weightButtonBoxes[3] = new BenHelper.Rect(GW*0.435f, GH*0.5f-GW*0.025f, GW*0.05f, GW*0.05f);
         weightButtonBoxes[4] = new BenHelper.Rect(GW*0.35f, GH*0.35f, GW*0.05f, GW*0.05f);
         weightButtonBoxes[5] = new BenHelper.Rect(GW*0.6f, GH*0.35f, GW*0.05f, GW*0.05f);
+
+        orderButtonBox = new BenHelper.Rect(GW*0.825f, GH*0.35f, GW*0.175f, GH*0.625f);
+        orderText = new ArrayList<>();
+        orderText.add("Node Value");
+        orderText.add("Order : Weight");
+        orderText.add("---");
+
+        orderText.add("WWWWWWWWWW");
+        orderText.add("0 : 5555");
+        orderText.add("");
+        orderText.add("WWWWWWWWWW");
+        orderText.add("1 : 5555");
+        orderText.add("");
+        orderText.add("WWWWWWWWWW");
+        orderText.add("2 : 5555");
+        orderText.add("");
+        orderText.add("WWWWWWWWWW");
+        orderText.add("3 : 5555");
     }
 
     @Override
@@ -266,6 +289,15 @@ public class DijkstrasAlgScreen extends FactOption {
             );
         }
 
+        for (int i = 0; i < orderText.size(); i++) {
+            BenHelper.textDrawCentre(batch, font, 
+                orderText.get(i), 
+                orderButtonBox.x + orderButtonBox.w / 2, 
+                orderButtonBox.y + orderButtonBox.h - (i+1.3f)*30, 
+                0.75f, BenHelper.DEFAULT_TEXT_COLOUR
+            );
+        }
+
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
@@ -273,6 +305,7 @@ public class DijkstrasAlgScreen extends FactOption {
             backButtonBox.draw(shape, Color.RED);
             hintButtonBox.draw(shape, Color.RED);
             controllerHintButtonBox.draw(shape, Color.RED);
+            orderButtonBox.draw(shape, Color.RED);
 
             for (int i = 0; i < 6; i++) {
                 weightButtonBoxes[i].draw(shape, Color.RED);
