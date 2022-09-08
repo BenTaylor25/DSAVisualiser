@@ -69,17 +69,17 @@ public class DijkstrasAlgScreen extends FactOption {
         orderText.add("Order : Weight");
         orderText.add("---");
 
-        orderText.add("WWWWWWWWWW");
-        orderText.add("0 : 5555");
-        orderText.add("");
-        orderText.add("WWWWWWWWWW");
-        orderText.add("1 : 5555");
-        orderText.add("");
-        orderText.add("WWWWWWWWWW");
-        orderText.add("2 : 5555");
-        orderText.add("");
-        orderText.add("WWWWWWWWWW");
-        orderText.add("3 : 5555");
+        // orderText.add("WWWWWWWWWW");
+        // orderText.add("0 : 5555");
+        // orderText.add("");
+        // orderText.add("WWWWWWWWWW");
+        // orderText.add("1 : 5555");
+        // orderText.add("");
+        // orderText.add("WWWWWWWWWW");
+        // orderText.add("2 : 5555");
+        // orderText.add("");
+        // orderText.add("WWWWWWWWWW");
+        // orderText.add("3 : 5555");
     }
 
     @Override
