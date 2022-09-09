@@ -3,7 +3,7 @@ package com.mygdx.dsav.Screens;
 import com.mygdx.dsav.BenHelper;
 import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Graph;
-
+import com.mygdx.dsav.Generators.GDijkstrasAlg;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Color;
 
 public class DijkstrasAlgScreen extends FactOption {
     final int GRAPHSIZE = 4;
+    GDijkstrasAlg generator;
     Graph graph;
     String hintTextString;
     int controllerSelector;
@@ -29,6 +30,7 @@ public class DijkstrasAlgScreen extends FactOption {
 
     @Override
     public void create() {
+        generator = new GDijkstrasAlg();
         graph = new Graph(true, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph.addNode("");
