@@ -18,13 +18,16 @@ public class DijkstrasAlgScreen extends FactOption {
     int controllerSelector;
     int typingSelector;
     int weightSelector;
+    boolean algActive;
     BenHelper.Rect titleButtonBox;
     BenHelper.Rect backButtonBox;
     BenHelper.Rect hintButtonBox;
+    BenHelper.Rect algButtonBox;
     BenHelper.Rect controllerHintButtonBox;
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
     BenHelper.Rect[] weightButtonBoxes;
+
     BenHelper.Rect orderButtonBox;
     ArrayList<String> orderText;
 
@@ -39,9 +42,11 @@ public class DijkstrasAlgScreen extends FactOption {
         controllerSelector = -1;
         typingSelector = -1;
         weightSelector = -1;
+        algActive = false;
         titleButtonBox = new BenHelper.Rect(GW*0.25f, GH*0.85f, GW*0.5f, GH*0.15f);
         backButtonBox = new BenHelper.Rect(0, 0, GW*0.1f, GH*0.1f);
         hintButtonBox = new BenHelper.Rect(GW*0.15f, 0, GW*0.7f, GH*0.1f);
+        algButtonBox = new BenHelper.Rect(GW*0.1f, GH*0.7f, GW*0.15f, GH*0.15f);
 
         controllerHintButtonBox = new BenHelper.Rect(GW*0.86f, GW*0.03f, GW*0.11f, GW*0.11f);
 
@@ -223,6 +228,7 @@ public class DijkstrasAlgScreen extends FactOption {
         if (typingSelector >= 0) {
             graphButtonBoxes[typingSelector].draw(shape, BenHelper.HOVER_TEXT_COLOUR);
         }
+        algButtonBox.draw(shape, BenHelper.HINT_TEXT_COLOUR);
 
         // draw arrows and weights
         for (int i = 0; i < GRAPHSIZE; i++) {
@@ -268,6 +274,8 @@ public class DijkstrasAlgScreen extends FactOption {
             }
         }
 
+        algButtonBox = new BenHelper.Rect(GW*0.1f, GH*0.7f, GW*0.15f, GH*0.15f);
+        
         // draw text
         BenHelper.textDrawCentre(batch, font, "Dijkstra's Algorithm",
             titleButtonBox, 1.5f, 
@@ -278,6 +286,10 @@ public class DijkstrasAlgScreen extends FactOption {
         );
         BenHelper.textDrawCentre(batch, font, hintTextString, 
             hintButtonBox, 0.75f, BenHelper.HINT_TEXT_COLOUR
+        );
+        String algText = "[test]";
+        BenHelper.textDrawCentre(batch, font, 
+            algText, algButtonBox, 1f
         );
 
         String text;
@@ -352,6 +364,26 @@ public class DijkstrasAlgScreen extends FactOption {
                 ));
             }
         }
+        
+        // if (algButtonBox.checkClick()) {
+        //     if (algActive) {
+        //         if (generator.hasNext) {
+        //             int i = generator.next();
+        //             orderText.add(generator.nodeValues[i]);
+        //         } else {
+        //             algActive = false;
+        //             generator.reset();
+        //             orderText = new ArrayList<>();
+        //             orderText.add("Order:");
+        //             orderText.add("------");
+        //         }
+        //     } else {
+        //         if (generator.allNamed()) {
+        //             algActive = true;
+        //             orderText.add(generator.nodeValues[0]);
+        //         }
+        //     }
+        // }
 
         return factSelector;
     }
