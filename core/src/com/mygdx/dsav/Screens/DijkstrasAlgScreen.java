@@ -33,7 +33,7 @@ public class DijkstrasAlgScreen extends FactOption {
 
     @Override
     public void create() {
-        generator = new GDijkstrasAlg();
+        generator = new GDijkstrasAlg(GRAPHSIZE);
         graph = new Graph(true, false);
         for (int i = 0; i < GRAPHSIZE; i++) {
             graph.addNode("");
