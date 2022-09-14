@@ -24,4 +24,10 @@ public class GDijkstrasAlg {
             graph.addNode("");
         }
     }
+
+    public void next() {
+        assert hasNext;
+
+        //
+    }
 }
