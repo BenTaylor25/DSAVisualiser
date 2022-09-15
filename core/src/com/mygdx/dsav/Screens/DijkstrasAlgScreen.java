@@ -287,7 +287,16 @@ public class DijkstrasAlgScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, hintTextString, 
             hintButtonBox, 0.75f, BenHelper.HINT_TEXT_COLOUR
         );
-        String algText = "[test]";
+        
+        String algText = "[...]";
+        if (algActive) {
+            algText = generator.hasNext ? "Next" : "Finish";
+        } else {
+            algText = "[Connect]";
+            if (generator.graph.isConnected()) {
+                algText = typingSelector == -1 ? "[Select]" : "Start";
+            }
+        }
         BenHelper.textDrawCentre(batch, font, 
             algText, algButtonBox, 1f
         );
