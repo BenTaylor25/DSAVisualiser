@@ -1,9 +1,12 @@
 package com.mygdx.dsav.Generators;
 
+import java.util.ArrayList;
+
 import com.mygdx.dsav.DataStructs.Graph;
 
 public class GDijkstrasAlg {
     public Graph graph;
+    public ArrayList<Integer> visitedNodes;
     
     public boolean hasNext;
     private int _size;
