@@ -73,7 +73,6 @@ public class DijkstrasAlgScreen extends FactOption {
         orderText = new ArrayList<>();
         orderText.add("Node Value");
         orderText.add("Weight:Previous");
-        orderText.add("Previous Node");
         orderText.add("---");
 
         orderText.add("AAAAAAAAAA");
