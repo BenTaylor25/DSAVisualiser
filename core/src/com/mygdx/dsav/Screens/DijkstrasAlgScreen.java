@@ -373,25 +373,27 @@ public class DijkstrasAlgScreen extends FactOption {
             }
         }
         
-        // if (algButtonBox.checkClick()) {
-        //     if (algActive) {
-        //         if (generator.hasNext) {
-        //             int i = generator.next();
-        //             orderText.add(generator.nodeValues[i]);
-        //         } else {
-        //             algActive = false;
-        //             generator.reset();
-        //             orderText = new ArrayList<>();
-        //             orderText.add("Order:");
-        //             orderText.add("------");
-        //         }
-        //     } else {
-        //         if (generator.allNamed()) {
-        //             algActive = true;
-        //             orderText.add(generator.nodeValues[0]);
-        //         }
-        //     }
-        // }
+        if (algButtonBox.checkClick()) {
+            if (algActive) {
+                if (generator.hasNext) {
+                    generator.next(typingSelector);
+                    // orderText.add(generator.nodeValues[i]);
+                } else {
+                    algActive = false;
+                    generator.reset();
+                    orderText = new ArrayList<>();
+                    orderText.add("Node Value");
+                    orderText.add("Weight:Previous");
+                    orderText.add("---");
+                }
+            } 
+            // else {
+            //     if (generator.allNamed()) {
+            //         algActive = true;
+            //         orderText.add(generator.nodeValues[0]);
+            //     }
+            // }
+        }
 
         return factSelector;
     }
