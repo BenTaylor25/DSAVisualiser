@@ -32,6 +32,7 @@ public class GDijkstrasAlg {
         hasStarted = false;
         graph = new Graph(true, false);
         visitedGraph = new Graph();
+        nodeData = new ArrayList<>();
         for (int i = 0; i < _size; i++) {
             graph.addNode("");
             visitedGraph.addNode("");
