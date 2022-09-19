@@ -2,19 +2,8 @@ package com.mygdx.dsav.Generators;
 
 import java.util.ArrayList;
 
+import com.mygdx.dsav.DijkNodeData;
 import com.mygdx.dsav.DataStructs.Graph;
-
-class DijkNodeData {
-    public String nodeName;
-    public int minWeight;
-    public String prevNode;
-
-    public DijkNodeData(String name, int weight, String prev) {
-        nodeName = name;
-        minWeight = weight;
-        prevNode = prev;
-    }
-}
 
 public class GDijkstrasAlg {
     public Graph graph;

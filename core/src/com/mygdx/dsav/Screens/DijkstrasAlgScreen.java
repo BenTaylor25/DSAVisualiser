@@ -1,6 +1,7 @@
 package com.mygdx.dsav.Screens;
 
 import com.mygdx.dsav.BenHelper;
+import com.mygdx.dsav.DijkNodeData;
 import com.mygdx.dsav.FactOption;
 import com.mygdx.dsav.DataStructs.Graph;
 import com.mygdx.dsav.Generators.GDijkstrasAlg;
@@ -320,11 +321,21 @@ public class DijkstrasAlgScreen extends FactOption {
         //         orderButtonBox.y + orderButtonBox.h - (i+0.5f)*30, 
         //         0.75f, BenHelper.DEFAULT_TEXT_COLOUR
         //     );
-        // }        
-        BenHelper.textDrawCentre(batch, font, "Node Value", orderButtonBox.x + orderButtonBox.w, orderButtonBox.y + orderButtonBox.h, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
-        BenHelper.textDrawCentre(batch, font, "Weight:Previous", orderButtonBox.x + orderButtonBox.w, orderButtonBox.y + orderButtonBox.h - 15, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
-        BenHelper.textDrawCentre(batch, font, "---", orderButtonBox.x + orderButtonBox.w, orderButtonBox.y + orderButtonBox.h - 30, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
-
+        // }
+        //
+        // BenHelper.Rect obb = orderButtonBox;
+        float nodeDataX = orderButtonBox.x + orderButtonBox.w / 2;
+        float nodeDataY = orderButtonBox.y + orderButtonBox.h;
+        BenHelper.textDrawCentre(batch, font, "Node Value", nodeDataX, nodeDataY - 15, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+        BenHelper.textDrawCentre(batch, font, "Weight:Previous", nodeDataX, nodeDataY - 45, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+        BenHelper.textDrawCentre(batch, font, "---", nodeDataX, nodeDataY - 75, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            DijkNodeData n = generator.nodeData.get(i);
+            // this line isn't showing? 
+            BenHelper.textDrawCentre(batch, font, n.nodeName, nodeDataX, nodeDataY - (105 + i*30), 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+            BenHelper.textDrawCentre(batch, font, n.minWeight+":"+n.prevNode, nodeDataX, nodeDataY - (135 + i*30), 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+            // BenHelper.textDrawCentre(batch, font, n.nodeName, nodeDataX, nodeDataY - (i*105), 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+        }
 
         // debug: draw hitboxes
         if (BenHelper.DEBUG) {
