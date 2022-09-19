@@ -313,14 +313,17 @@ public class DijkstrasAlgScreen extends FactOption {
             );
         }
 
-        for (int i = 0; i < orderText.size(); i++) {
-            BenHelper.textDrawCentre(batch, font, 
-                orderText.get(i), 
-                orderButtonBox.x + orderButtonBox.w / 2, 
-                orderButtonBox.y + orderButtonBox.h - (i+0.5f)*30, 
-                0.75f, BenHelper.DEFAULT_TEXT_COLOUR
-            );
-        }
+        // for (int i = 0; i < orderText.size(); i++) {
+        //     BenHelper.textDrawCentre(batch, font, 
+        //         orderText.get(i), 
+        //         orderButtonBox.x + orderButtonBox.w / 2, 
+        //         orderButtonBox.y + orderButtonBox.h - (i+0.5f)*30, 
+        //         0.75f, BenHelper.DEFAULT_TEXT_COLOUR
+        //     );
+        // }        
+        BenHelper.textDrawCentre(batch, font, "Node Value", orderButtonBox.x + orderButtonBox.w, orderButtonBox.y + orderButtonBox.h, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+        BenHelper.textDrawCentre(batch, font, "Weight:Previous", orderButtonBox.x + orderButtonBox.w, orderButtonBox.y + orderButtonBox.h - 15, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+        BenHelper.textDrawCentre(batch, font, "---", orderButtonBox.x + orderButtonBox.w, orderButtonBox.y + orderButtonBox.h - 30, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
 
 
         // debug: draw hitboxes
