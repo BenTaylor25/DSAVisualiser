@@ -181,7 +181,9 @@ public class DijkstrasAlgScreen extends FactOption {
 
         // typing
         if (BenHelper.screenClicked()) {
-            typingSelector = -1;
+            if (!algButtonBox.checkHover()) {
+                typingSelector = -1;
+            }
 
             for (int i = 0; i < GRAPHSIZE; i++) {
                 if (graphButtonBoxes[i].checkHover()) {
@@ -387,12 +389,11 @@ public class DijkstrasAlgScreen extends FactOption {
                     orderText.add("---");
                 }
             } 
-            // else {
-            //     if (generator.allNamed()) {
-            //         algActive = true;
-            //         orderText.add(generator.nodeValues[0]);
-            //     }
-            // }
+            else {
+                if (generator.graph.isConnected() && typingSelector != -1) {
+                    algActive = true;
+                }
+            }
         }
 
         return factSelector;
