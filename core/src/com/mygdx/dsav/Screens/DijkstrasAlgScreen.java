@@ -7,8 +7,6 @@ import com.mygdx.dsav.DataStructs.Graph;
 import com.mygdx.dsav.Generators.GDijkstrasAlg;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.graphics.Color;
 
 public class DijkstrasAlgScreen extends FactOption {
@@ -27,9 +25,7 @@ public class DijkstrasAlgScreen extends FactOption {
     BenHelper.Rect[] graphButtonBoxes; 
     BenHelper.Rect[] controllerButtonBoxes;
     BenHelper.Rect[] weightButtonBoxes;
-
     BenHelper.Rect orderButtonBox;
-    ArrayList<String> orderText;
 
     @Override
     public void create() {
@@ -69,6 +65,8 @@ public class DijkstrasAlgScreen extends FactOption {
         weightButtonBoxes[3] = new BenHelper.Rect(GW*0.435f, GH*0.5f-GW*0.025f, GW*0.05f, GW*0.05f);
         weightButtonBoxes[4] = new BenHelper.Rect(GW*0.35f, GH*0.35f, GW*0.05f, GW*0.05f);
         weightButtonBoxes[5] = new BenHelper.Rect(GW*0.6f, GH*0.35f, GW*0.05f, GW*0.05f);
+
+        orderButtonBox = new BenHelper.Rect(GW*0.825f, GH*0.35f, GW*0.175f, GH*0.625f);
     }
 
     @Override
@@ -372,10 +370,6 @@ public class DijkstrasAlgScreen extends FactOption {
                 } else {
                     algActive = false;
                     generator.reset();
-                    orderText = new ArrayList<>();
-                    orderText.add("Node Value");
-                    orderText.add("Weight:Previous");
-                    orderText.add("---");
                 }
             } 
             else {
