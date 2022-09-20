@@ -25,7 +25,7 @@ public class GDijkstrasAlg {
         for (int i = 0; i < _size; i++) {
             graph.addNode("");
             visitedGraph.addNode("");
-            nodeData.add(new DijkNodeData("", 99999, "None"));
+            nodeData.add(new DijkNodeData("test", 99999, "None"));
         }
     }
 
