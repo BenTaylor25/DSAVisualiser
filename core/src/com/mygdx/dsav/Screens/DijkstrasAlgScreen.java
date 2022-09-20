@@ -69,24 +69,6 @@ public class DijkstrasAlgScreen extends FactOption {
         weightButtonBoxes[3] = new BenHelper.Rect(GW*0.435f, GH*0.5f-GW*0.025f, GW*0.05f, GW*0.05f);
         weightButtonBoxes[4] = new BenHelper.Rect(GW*0.35f, GH*0.35f, GW*0.05f, GW*0.05f);
         weightButtonBoxes[5] = new BenHelper.Rect(GW*0.6f, GH*0.35f, GW*0.05f, GW*0.05f);
-
-        orderButtonBox = new BenHelper.Rect(GW*0.825f, GH*0.35f, GW*0.175f, GH*0.625f);
-        orderText = new ArrayList<>();
-        orderText.add("Node Value");
-        orderText.add("Weight:Previous");
-        orderText.add("---");
-
-        orderText.add("AAAAAAAAAA");
-        orderText.add("5555:None");
-        orderText.add("");
-        orderText.add("BBBBBBBBBB");
-        orderText.add("5555:AAAAAAAAAA");
-        orderText.add("");
-        orderText.add("CCCCCCCCCC");
-        orderText.add("5555:AAAAAAAAAA");
-        orderText.add("");
-        orderText.add("DDDDDDDDDD");
-        orderText.add("5555:BBBBBBBBBB");
     }
 
     @Override
@@ -314,16 +296,6 @@ public class DijkstrasAlgScreen extends FactOption {
             );
         }
 
-        // for (int i = 0; i < orderText.size(); i++) {
-        //     BenHelper.textDrawCentre(batch, font, 
-        //         orderText.get(i), 
-        //         orderButtonBox.x + orderButtonBox.w / 2, 
-        //         orderButtonBox.y + orderButtonBox.h - (i+0.5f)*30, 
-        //         0.75f, BenHelper.DEFAULT_TEXT_COLOUR
-        //     );
-        // }
-        //
-        // BenHelper.Rect obb = orderButtonBox;
         float nodeDataX = orderButtonBox.x + orderButtonBox.w / 2;
         float nodeDataY = orderButtonBox.y + orderButtonBox.h;
         BenHelper.textDrawCentre(batch, font, "Node Value", nodeDataX, nodeDataY - 15, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
