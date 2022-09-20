@@ -188,6 +188,11 @@ public class DijkstrasAlgScreen extends FactOption {
             }
         }
 
+        // sync node data values to graph nodes
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            generator.nodeData.get(i).nodeName = generator.graph.nodes.get(i).value;
+        }
+
         return factSelector;
     }
 
