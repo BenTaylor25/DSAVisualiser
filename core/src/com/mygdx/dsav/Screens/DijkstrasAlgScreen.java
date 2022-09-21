@@ -376,8 +376,7 @@ public class DijkstrasAlgScreen extends FactOption {
                     algActive = false;
                     generator.reset();
                 }
-            } 
-            else {
+            } else {
                 if (generator.graph.isConnected() && typingSelector != -1) {
                     algActive = true;
                 }
