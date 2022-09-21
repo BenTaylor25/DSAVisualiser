@@ -372,7 +372,6 @@ public class DijkstrasAlgScreen extends FactOption {
             if (algActive) {
                 if (generator.hasNext) {
                     generator.next(typingSelector);
-                    // orderText.add(generator.nodeValues[i]);
                 } else {
                     algActive = false;
                     generator.reset();
