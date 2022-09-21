@@ -7,7 +7,7 @@ import com.mygdx.dsav.DataStructs.Graph;
 
 public class GDijkstrasAlg {
     public Graph graph;
-    // public ArrayList<Integer> visitedNodes;
+    public ArrayList<Integer> visitedNodes;
     public Graph visitedGraph;
     public ArrayList<DijkNodeData> nodeData;
     
@@ -20,6 +20,7 @@ public class GDijkstrasAlg {
         hasNext = true;
         hasStarted = false;
         graph = new Graph(true, false);
+        visitedNodes = new ArrayList<>();
         visitedGraph = new Graph();
         nodeData = new ArrayList<>();
         for (int i = 0; i < _size; i++) {
@@ -44,10 +45,13 @@ public class GDijkstrasAlg {
         // if just pressed start
         if (!hasStarted) {
             assert typingSelector != -1;
-            // visitedNodes.add(typingSelector);
+
+            visitedNodes.add(typingSelector);
+            nodeData.get(typingSelector).minWeight = 0;
+
             hasStarted = true;
+        } else {
+            System.out.println("next");
         }
-
-
     }
 }
