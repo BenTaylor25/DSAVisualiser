@@ -144,7 +144,12 @@ public class Graph {
         return getConnectedNodes(0).size() == 4;
     }
 
-    public int[] getShortestNewConnection(LinkedList<Integer> visitedNodes) {
+    /**
+     * 
+     * @param visitedNodes
+     * @param cumulative should the weight of the from node be considered? (Dijkstra's)
+     */
+    public int[] getShortestNewConnection(LinkedList<Integer> visitedNodes, boolean cumulative) {
         int[] rv = new int[]{-1, -1};
         int shortest = Integer.MAX_VALUE;
 
