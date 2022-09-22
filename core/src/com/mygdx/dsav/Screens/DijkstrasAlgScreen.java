@@ -330,18 +330,17 @@ public class DijkstrasAlgScreen extends FactOption {
                 generator.graph.nodes.get(typingSelector).value,
                 10
             );
- 
-        
-            // sync node data values to graph nodes
-            String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
-            for (int i = 0; i < GRAPHSIZE; i++) {
-                if (generator.graph.nodes.get(i).value.equals("")) {
-                    generator.nodeData.get(i).nodeName = defaults[i];
-                } else {
-                    generator.nodeData.get(i).nodeName = generator.graph.nodes.get(i).value;
-                }
-            }           
         }
+        // sync node data values to graph nodes
+        String[] defaults = {"[A]", "[B]", "[C]", "[D]"};
+        for (int i = 0; i < GRAPHSIZE; i++) {
+            if (generator.graph.nodes.get(i).value.equals("")) {
+                generator.nodeData.get(i).nodeName = defaults[i];
+            } else {
+                generator.nodeData.get(i).nodeName = generator.graph.nodes.get(i).value;
+            }
+        }           
+        
 
         if (weightSelector >= 0) {
             int i = 0;
