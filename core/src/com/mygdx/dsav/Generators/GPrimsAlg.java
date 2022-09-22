@@ -33,7 +33,7 @@ public class GPrimsAlg {
         assert hasNext;
 
         LinkedList<Integer> visitedNodes = visitedGraph.getConnectedNodes(start);
-        int[] newNodes = graph.getShortestNewConnection(visitedNodes, false);
+        int[] newNodes = graph.getShortestNewConnection(visitedNodes);
         visitedGraph.addVertex(newNodes[0], newNodes[1]);
 
         hasNext = !visitedGraph.isConnected();
