@@ -71,11 +71,9 @@ public class DijkstrasAlgScreen extends FactOption {
 
     @Override
     public void reset() {
-        // selectors?
-        generator.graph = new Graph(true, false);
-        for (int i = 0; i < GRAPHSIZE; i++) {
-            generator.graph. addNode("");
-        }
+        generator = new GDijkstrasAlg(GRAPHSIZE);
+        algActive = false;
+        typingSelector = -1;
     }
 
     @Override

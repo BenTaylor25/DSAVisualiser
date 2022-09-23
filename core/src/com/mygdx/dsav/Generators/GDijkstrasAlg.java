@@ -33,9 +33,13 @@ public class GDijkstrasAlg {
     public void reset() {
         hasNext = true;
         hasStarted = false;
-        graph = new Graph(true, false);
+        visitedNodes = new ArrayList<>();
+        visitedGraph = new Graph();
+        nodeData = new ArrayList<>();
         for (int i = 0; i < _size; i++) {
             graph.addNode("");
+            visitedGraph.addNode("");
+            nodeData.add(new DijkNodeData("", 99999, "None"));
         }
     }
 
