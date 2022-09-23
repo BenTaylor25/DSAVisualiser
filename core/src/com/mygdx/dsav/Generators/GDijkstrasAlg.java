@@ -51,7 +51,11 @@ public class GDijkstrasAlg {
 
             hasStarted = true;
         } else {
-            System.out.println("next");
+            // LinkedList<Integer> visitedNodes = visitedGraph.getConnectedNodes(start);
+            int[] newNodes = graph.getShortestNewCumulativeConnection(visitedNodes, nodeData);
+            visitedGraph.addVertex(newNodes[0], newNodes[1]);
+
+            hasNext = !visitedGraph.isConnected();
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.mygdx.dsav.DataStructs;
 
+import java.util.ArrayList;
 // import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -175,7 +176,7 @@ public class Graph {
         return rv;
     }
 
-    public int[] getShortestNewCumulativeConnection(LinkedList<Integer> visitedNodes, DijkNodeData nodeData) {
+    public int[] getShortestNewCumulativeConnection(ArrayList<Integer> visitedNodes, ArrayList<DijkNodeData> nodeData) {
         int[] rv = new int[]{-1, -1};
         int shortest = Integer.MAX_VALUE;
 
@@ -189,7 +190,20 @@ public class Graph {
                         int ptr = 0;
                         while (nodes.get(i).connections.get(ptr) != j) { ptr++; }
 
-                        int weightOfConnection = nodes.get(i).weights.get(ptr);
+                        int fromWeight;
+                        int weightOfConnection;                        
+                        if (iIn) {
+                            fromWeight = nodeData.get(i).minWeight;
+                            weightOfConnection = nodes.get(i).weights.get(ptr) + fromWeight;
+
+                            nodeData.get(j).minWeight = weightOfConnection;
+                        } else {
+                            fromWeight = nodeData.get(j).minWeight;
+                            weightOfConnection = nodes.get(i).weights.get(ptr) + fromWeight;
+
+                            nodeData.get(i).minWeight = weightOfConnection;
+                        }
+                        
                         if (weightOfConnection < shortest) {
                             shortest = weightOfConnection;
                             rv[0] = i;
