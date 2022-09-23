@@ -213,11 +213,11 @@ public class Graph {
             }
         }
 
-        if (shortestIIn) {
+        if (rv[0] != -1 && shortestIIn) {
             nodeData.get(rv[1]).minWeight = shortest;
             nodeData.get(rv[1]).prevNode = nodeData.get(0).nodeName;
             visitedNodes.add(rv[1]);
-        } else {
+        } else if (rv[0] != -1) {
             nodeData.get(rv[0]).minWeight = shortest;
             nodeData.get(rv[0]).prevNode = nodeData.get(1).nodeName;
             visitedNodes.add(rv[0]);
