@@ -180,9 +180,11 @@ public class Graph {
         int[] rv = new int[]{-1, -1};
         int shortest = Integer.MAX_VALUE;
 
+        boolean iIn = false;                   
+
         for (int i = 0; i < 3; i++) {
             for (int j = i+1; j < 4; j++) {
-                boolean iIn = visitedNodes.contains(i);
+                iIn = visitedNodes.contains(i);
                 boolean jIn = visitedNodes.contains(j);
 
                 if (iIn ^ jIn) {   // XOR; if one is- but the other is not in
@@ -191,18 +193,13 @@ public class Graph {
                         while (nodes.get(i).connections.get(ptr) != j) { ptr++; }
 
                         int fromWeight;
-                        int weightOfConnection;                        
                         if (iIn) {
                             fromWeight = nodeData.get(i).minWeight;
-                            weightOfConnection = nodes.get(i).weights.get(ptr) + fromWeight;
-
-                            nodeData.get(j).minWeight = weightOfConnection;
                         } else {
                             fromWeight = nodeData.get(j).minWeight;
-                            weightOfConnection = nodes.get(i).weights.get(ptr) + fromWeight;
-
-                            nodeData.get(i).minWeight = weightOfConnection;
                         }
+                        
+                        int weightOfConnection = nodes.get(i).weights.get(ptr) + fromWeight;
                         
                         if (weightOfConnection < shortest) {
                             shortest = weightOfConnection;
@@ -213,6 +210,16 @@ public class Graph {
                 }
                 
             }
+        }
+
+        if (iIn) {
+            nodeData.get(rv[1]).minWeight = shortest;
+            nodeData.get(rv[1]).prevNode = nodeData.get(0).nodeName;
+            visitedNodes.add(rv[1]);
+        } else {
+            nodeData.get(rv[0]).minWeight = shortest;
+            nodeData.get(rv[0]).prevNode = nodeData.get(1).nodeName;
+            visitedNodes.add(rv[0]);
         }
 
         return rv;
