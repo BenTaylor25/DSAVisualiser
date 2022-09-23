@@ -68,9 +68,9 @@ public class PrimsAlgScreen extends FactOption {
     public String updateBefore(String factSelector) {
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
-            hintTextString = "Prim's Algorithm is used to find the Minimum Spanning Tree\n"+
-                "of a Graph. The MST is a connected subset of a Graph that\n"+
-                "has the minimum total weight across Edges. O(ElogN) Time.";
+            hintTextString = "Prim's Algorithm is used to find the Minimum Spanning Tree of a\n"+
+                "Graph. The MST is a connected subset of a Graph that has the\n"+
+                "minimum total weight across Edges. O(ElogN) Time, O(E+N) Space.";
         }
         else if (algButtonBox.checkHover()) {
             if (algActive) {

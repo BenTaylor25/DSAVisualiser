@@ -73,8 +73,8 @@ public class BubbleSortScreen extends FactOption {
         }
         else if (titleButtonBox.checkHover()) {
             hintTextString = "Bubble Sort is a simple, but inefficient Sorting Algorithm.\n"+
-                "Check adjacent pairs along the array and stop when\n"+
-                "a full cycle is completed with no swaps. O(n^2) Time, O(1) Space.";
+                "Check adjacent pairs along the array and stop when a full\n"+
+                "cycle is completed with no swaps. O(N^2) Time, O(1) Space.";
         }
         else if (sortButtonBox.checkHover()) {
             if (!sorting) {   // "Sort" is shown

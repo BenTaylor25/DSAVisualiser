@@ -82,7 +82,7 @@ public class DijkstrasAlgScreen extends FactOption {
         if (titleButtonBox.checkHover()) {
             hintTextString = "Dijkstra's Algorithm takes a Weighted Graph and a\n"+
                 "starting node, and finds the shortest path to every\n"+
-                "other node. O(N^2) Time.";
+                "other node. O(N^2) Time, O(N+E) Space.";
         }
         else if (orderButtonBox.checkHover()) {
             hintTextString = "This section shows the weight of the minimum path from\n"+

@@ -67,8 +67,8 @@ public class DfsScreen extends FactOption {
         hintTextString = "";
         if (titleButtonBox.checkHover()) {
             hintTextString = "Depth First Search is a Graph Searching Algorithm. For every\n"+
-                "neighbour you visit, visit all of their neighbours before\n"+
-                "returning back. DFS is implemented using a Stack.";
+                "neighbour you visit, visit all of their neighbours before returning\n"+
+                "back. DFS is implemented using a Stack. O(N) Time, O(H) Space.";
         }
         else if (algButtonBox.checkHover()) {
             if (algActive) {
