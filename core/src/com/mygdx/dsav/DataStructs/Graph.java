@@ -180,11 +180,11 @@ public class Graph {
         int[] rv = new int[]{-1, -1};
         int shortest = Integer.MAX_VALUE;
 
-        boolean iIn = false;                   
+        boolean shortestIIn = false;
 
         for (int i = 0; i < 3; i++) {
             for (int j = i+1; j < 4; j++) {
-                iIn = visitedNodes.contains(i);
+                boolean iIn = visitedNodes.contains(i);
                 boolean jIn = visitedNodes.contains(j);
 
                 if (iIn ^ jIn) {   // XOR; if one is- but the other is not in
@@ -205,6 +205,7 @@ public class Graph {
                             shortest = weightOfConnection;
                             rv[0] = i;
                             rv[1] = j;
+                            shortestIIn = iIn;
                         }
                     }
                 }
@@ -212,7 +213,7 @@ public class Graph {
             }
         }
 
-        if (iIn) {
+        if (shortestIIn) {
             nodeData.get(rv[1]).minWeight = shortest;
             nodeData.get(rv[1]).prevNode = nodeData.get(0).nodeName;
             visitedNodes.add(rv[1]);
