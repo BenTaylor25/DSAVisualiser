@@ -78,64 +78,92 @@ public class DijkstrasAlgScreen extends FactOption {
 
     @Override
     public String updateBefore(String factSelector) {
-        // hintTextString = "";
-        // if (titleButtonBox.checkHover()) {
-        //     hintTextString = "Graphs are collections of 'Nodes' joined together by 'Edges'.\n"+
-        //         "Graphs are extremely useful when representing relationships.\n"+
-        //         "Example: Social Media accounts are nodes that connect to others.";
-        // }
-        // else if (toggleDirectedButtonBox.checkHover()) {
-        //     hintTextString = "Graphs can be Undirected or Directed.\n"+
-        //         "Undirected is useful for symetric relations (e.g. friends).\n"+
-        //         "Directed is useful for asymetric relations (e.g. followers).";
-        // } 
-        // else if (toggleWeightedButtonBox.checkHover()) {
-        //     hintTextString = "Graphs can be Unweighted or Weighted.\n"+
-        //         "Weighted is useful for evaluating the relation.\n"+
-        //         "Examples: the distance between locations, or Network latency.";
-        // }
-        // else {
-        //     boolean nodeHover = false;
-        //     boolean controllerHover = controllerHintButtonBox.checkHover();
-        //     boolean weightHover = false;
-        //     for (int i = 0; i < GRAPHSIZE; i++) {
-        //         nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
-        //     }
+        hintTextString = "";
+        if (titleButtonBox.checkHover()) {
+            hintTextString = "Dijkstra's Algorithm takes a Weighted Graph and a\n"+
+                "starting node, and finds the shortest path to every\n"+
+                "other node. O(N^2) Time.";
+        }
+        else if (orderButtonBox.checkHover()) {
+            hintTextString = "This section shows the weight of the minimum path from\n"+
+                "the starting node to every other node. This also shows the\n"+
+                "previous node in the shortest path to it.";
+        }
+        else if (algButtonBox.checkHover()) {
+            if (algActive) {
+                if (generator.hasNext) {
+                    // "Next" is shown
+                    hintTextString = "Add the next closest Node.";
+                } else {
+                    // "Finish" is shown
+                    hintTextString = "The shortest path to all other nodes has been obtained.\n"+
+                        "Also see the A* Algorithm, which is a varient of Dijkstra's.";
+                }
+            } else {
+                if (generator.graph.isConnected()) {
+                    if (typingSelector == -1) {
+                        // "[Select]" is shown
+                        hintTextString = "Dijkstra's Algorithm requires a starting Node.\n"+
+                            "Select a Node to set the starting point.";
+                    } else {
+                        // "Start" is shown
+                        hintTextString = "Start Dijkstra's Algorithm.";
 
-        //     if (graph.isWeighted) {
-        //         for (int i = 0; i < 6; i++) {
-        //             boolean hover = weightButtonBoxes[i].checkHover();
+                        // If all weights are zero
+                        if (generator.graph.getWeightDifference() <= 0) {
+                            hintTextString += "\nYou may wish to vary the Edge\n"+
+                                "Weights before starting.";
+                        }
+                    }
+                } else {
+                    // "[Connect]" is shown
+                    hintTextString = "The Graph must be Connected (all Nodes must be reachable\n"+
+                        "from all others via Edges) in order to start the Algorithm.\n"+
+                        "This is not neccesarily the case in practice.";
+                }
+            }
+        }
+        else {
+            boolean nodeHover = false;
+            boolean controllerHover = controllerHintButtonBox.checkHover();
+            boolean weightHover = false;
+            for (int i = 0; i < GRAPHSIZE; i++) {
+                nodeHover = nodeHover || graphButtonBoxes[i].checkHover();
+            }
 
-        //             int inode = 0;
-        //             if (i >= 3) { inode++; }
-        //             if (i == 5) { inode++; }
+            for (int i = 0; i < 6; i++) {
+                boolean hover = weightButtonBoxes[i].checkHover();
 
-        //             int jnode = 3;
-        //             if (i == 0) { jnode = 1; }
-        //             if (i == 1 || i == 3) { jnode = 2; }
+                int inode = 0;
+                if (i >= 3) { inode++; }
+                if (i == 5) { inode++; }
 
-        //             boolean vertexExists = graph.nodes.get(inode).pointsTo(jnode) ||
-        //                 graph.nodes.get(jnode).pointsTo(inode);
+                int jnode = 3;
+                if (i == 0) { jnode = 1; }
+                if (i == 1 || i == 3) { jnode = 2; }
 
-        //             if (hover && vertexExists) {
-        //                 weightHover = true;
-        //             }
-        //         } 
-        //     }
+                // My Dijkstra's Alg is undirected, so if B->A, A->B (we only need to check one)
+                boolean vertexExists = generator.graph.nodes.get(inode).pointsTo(jnode);
 
-        //     if (nodeHover) {
-        //         hintTextString = "Graph Nodes store one or more values, and the connections\n"+
-        //             "it has to other nodes. Nodes are also known as Vertices.";
-        //     }
-        //     else if (controllerHover) {
-        //         hintTextString = "Controller to modify the Edge connections. Click one box\n"+
-        //             "to select the corresponding Node. Click a second to connect\n"+
-        //             "to- or disconnect from it. Edges are also known as Arcs.";
-        //     }
-        //     else if (weightHover) {
-        //         hintTextString = "Modify the Weight of the Edge.";
-        //     }
-        // }
+                if (hover && vertexExists) {
+                    weightHover = true;
+                }
+            } 
+
+            if (nodeHover) {
+                hintTextString = "The values of the Nodes do not impact the Algorithm,\n"+
+                    "but it may be helpful to present using an example.";
+            }
+            else if (controllerHover) {
+                hintTextString = "Controller to modify the Edge connections.\n"+
+                    "Click one box to select the corresponding Node.\n"+
+                    "Click a second to connect to- or disconnect from it.";
+            }
+            else if (weightHover) {
+                hintTextString = "Modify the Weight of the Edge.\n"+
+                    "This impacts the Algorithm.";
+            }
+        }
 
         // controller
         if (BenHelper.screenClicked()) {
