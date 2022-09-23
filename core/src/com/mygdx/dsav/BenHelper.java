@@ -406,7 +406,9 @@ public class BenHelper {
         }
 
         for (int i = 7; i <= 16; i ++) {
-            if (Gdx.input.isKeyJustPressed(i)) {
+            if (Gdx.input.isKeyJustPressed(i) 
+                || Gdx.input.isKeyJustPressed(137+i)) // numpad numbers
+            {
                 text += Input.Keys.toString(i);
                 typingChar = i;
             }
