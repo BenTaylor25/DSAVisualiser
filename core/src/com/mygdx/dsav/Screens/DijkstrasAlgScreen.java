@@ -221,37 +221,37 @@ public class DijkstrasAlgScreen extends FactOption {
                         i, j
                     );
 
-                    if (generator.graph.isWeighted) {
-                        int x = generator.graph.nodes.get(i).connections.indexOf(j);
-                        
-                        // weight box index
-                        int wInd;
-                        if (i == 0 || j == 0) {
-                            wInd = i + j - 1;
-                        } else if (i == 1 || j == 1) {
-                            wInd = i + j;
-                        } else {
-                            wInd = 5;
-                        }
-                        
-                        // not perfect, but should be good enough for now
-                        String text = Integer.toString(
-                            generator.graph.nodes.get(i).weights.get(x)
-                        );
-
-                        if (wInd == weightSelector) {
-                            BenHelper.textDrawCentre(
-                                batch, font, text, 
-                                weightButtonBoxes[wInd], 1f,
-                                BenHelper.HOVER_TEXT_COLOUR
-                            );
-                        } else {
-                            BenHelper.textDrawCentre(
-                                batch, font, text, 
-                                weightButtonBoxes[wInd], 1f
-                            );
-                        }
+                    
+                    int x = generator.graph.nodes.get(i).connections.indexOf(j);
+                    
+                    // weight box index
+                    int wInd;
+                    if (i == 0 || j == 0) {
+                        wInd = i + j - 1;
+                    } else if (i == 1 || j == 1) {
+                        wInd = i + j;
+                    } else {
+                        wInd = 5;
                     }
+                    
+                    // not perfect, but should be good enough for now
+                    String text = Integer.toString(
+                        generator.graph.nodes.get(i).weights.get(x)
+                    );
+
+                    if (wInd == weightSelector) {
+                        BenHelper.textDrawCentre(
+                            batch, font, text, 
+                            weightButtonBoxes[wInd], 1f,
+                            BenHelper.HOVER_TEXT_COLOUR
+                        );
+                    } else {
+                        BenHelper.textDrawCentre(
+                            batch, font, text, 
+                            weightButtonBoxes[wInd], 1f
+                        );
+                    }
+                    
                 }
             }
         }
