@@ -2,6 +2,13 @@
 
 This is a project I worked on between March and September of 2022.  
 The idea came from my university course having a Data Structures and Algorithms module starting in September of 2022.
+I wanted to create a useful visual project to help others on my course and deepen my own knowledge of the area.
+My self-imposed deadline was 'before the DSA module starts', and I'm proud to say I have succeded.
+I first created a Minimum Viable Product: visualisers for Stacks and Queues with a menu for navigation, and have built off of it.
+
+The releases section contains the full version, but the `download` folder also contains work-in-progress builds.
+I've realeased it as `.jar`, so it should work with any desktop OS that runs Java, but I have encountered a compatability issue that I'm trying to resolve.
+I will update this section as I find out more.
 
 I selected 6 Data Structures, and 6 Algorithms that I thought visualisation would be useful in the learning of.  
 I didn't include Hash Maps, for example, because I feel that once you understand Hashing, a tool to show the compound with a basic Array isn't especially useful.
