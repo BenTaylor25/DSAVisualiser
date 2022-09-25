@@ -13,6 +13,10 @@ I will update this section as I find out more.
 I selected 6 Data Structures, and 6 Algorithms that I thought visualisation would be useful in the learning of.  
 I didn't include Hash Maps, for example, because I feel that once you understand Hashing, a tool to show the compound with a basic Array isn't especially useful.
 
+A key part of the DSAVisualiser is the hint text (examples in the second and third screenshot).
+The primary goal of this feature is to tell the user what the Data Structure or Algorithm does, where it's used, how efficient it is, and how to interact with it.  
+The hint text is also used to describe the UI in some places.
+
 One of my ideas for the project was to have comprehensive implementations of all the Data Structures and Algorithms that would be used by the visualisation tool.
 This way, once you've seen them in action, you can look at the source code and see how they were implemented.  
 Unfortunately, I discovered that this wasn't as practical as I'd hoped.
