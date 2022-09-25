@@ -19,7 +19,7 @@ Unfortunately, I discovered that this wasn't as practical as I'd hoped.
 With a Stack, for example, you are only able to view the top item.
 For the visualisation to be more effective, I needed to draw all of the values. This means that the implementation of the Stack visual doesn't contain a '*true*' stack implementation. 
 Further, I had to step through the Algorithms incrementally in order to show what was happening.
-Java does not have native compatability for coroutines/generators, so the implementations loose their beginner-friendliness.
+Java does not have built-in compatability for coroutines/generators, so the implementations loose their beginner-friendliness.
 
 The project is built using Java and the <a href="https://github.com/libgdx/libgdx">LibGDX</a> framework.
 
