@@ -23,6 +23,8 @@ Java does not have native compatability for coroutines/generators, so the implem
 
 The project is built using Java and the <a href="https://github.com/libgdx/libgdx">LibGDX</a> framework.
 
+For those who are interested, there are apporximately 5500 lines of code.
+
 ![image](https://user-images.githubusercontent.com/97246704/192095688-b48f1faa-4f02-4ca6-9f1d-4628f7d0924a.png)
 ![image](https://user-images.githubusercontent.com/97246704/192096764-a850e61b-7dcc-4917-be43-253f38340592.png)
 ![image](https://user-images.githubusercontent.com/97246704/192096212-8b13abe0-6608-40fb-97da-e6c2bae8e92a.png)
