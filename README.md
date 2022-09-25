@@ -13,6 +13,14 @@ I will update this section as I find out more.
 I selected 6 Data Structures, and 6 Algorithms that I thought visualisation would be useful in the learning of.  
 I didn't include Hash Maps, for example, because I feel that once you understand Hashing, a tool to show the compound with a basic Array isn't especially useful.
 
+One of my ideas for the project was to have comprehensive implementations of all the Data Structures and Algorithms that would be used by the visualisation tool.
+This way, once you've seen them in action, you can look at the source code and see how they were implemented.  
+Unfortunately, I discovered that this wasn't as practical as I'd hoped.
+With a Stack, for example, you are only able to view the top item.
+For the visualisation to be more effective, I needed to draw all of the values. This means that the implementation of the Stack visual doesn't contain a '*true*' stack implementation. 
+Further, I had to step through the Algorithms incrementally in order to show what was happening.
+Java does not have native compatability for coroutines/generators, so the implementations loose their beginner-friendliness.
+
 The project is built using Java and the <a href="https://github.com/libgdx/libgdx">LibGDX</a> framework.
 
 ![image](https://user-images.githubusercontent.com/97246704/192095688-b48f1faa-4f02-4ca6-9f1d-4628f7d0924a.png)
