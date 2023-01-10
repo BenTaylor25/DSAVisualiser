@@ -334,7 +334,11 @@ public class DijkstrasAlgScreen extends FactOption {
         BenHelper.textDrawCentre(batch, font, "---", nodeDataX, nodeDataY - 75, 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
         for (int i = 0; i < GRAPHSIZE; i++) {
             DijkNodeData n = generator.nodeData.get(i);
-            BenHelper.textDrawCentre(batch, font, n.nodeName, nodeDataX, nodeDataY - (105 + i*90), 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
+            Color nodeNameColour = BenHelper.DEFAULT_TEXT_COLOUR;
+            if (generator.visitedNodes.contains(i)) {
+                nodeNameColour = BenHelper.HOVER_TEXT_COLOUR;
+            }
+            BenHelper.textDrawCentre(batch, font, n.nodeName, nodeDataX, nodeDataY - (105 + i*90), 0.75f, nodeNameColour);
             BenHelper.textDrawCentre(batch, font, n.minWeight+":"+n.prevNode, nodeDataX, nodeDataY - (135 + i*90), 0.75f, BenHelper.DEFAULT_TEXT_COLOUR);
         }
 
