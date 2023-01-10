@@ -200,7 +200,19 @@ public class Graph {
                         }
                         
                         int weightOfConnection = nodes.get(i).weights.get(ptr) + fromWeight;
-                        
+
+                        if (iIn) {
+                            if (weightOfConnection < nodeData.get(j).minWeight) {
+                                nodeData.get(j).minWeight = weightOfConnection;
+                                nodeData.get(j).prevNode = nodeData.get(i).nodeName;
+                            }
+                        } else {   // jIn
+                            if (weightOfConnection < nodeData.get(i).minWeight) {
+                                nodeData.get(i).minWeight = weightOfConnection;
+                                nodeData.get(i).prevNode = nodeData.get(j).nodeName;
+                            }
+                        }
+
                         if (weightOfConnection < shortest) {
                             shortest = weightOfConnection;
                             rv[0] = i;
@@ -214,12 +226,12 @@ public class Graph {
         }
 
         if (rv[0] != -1 && shortestIIn) {
-            nodeData.get(rv[1]).minWeight = shortest;
-            nodeData.get(rv[1]).prevNode = nodeData.get(rv[0]).nodeName;
+            // nodeData.get(rv[1]).minWeight = shortest;
+            // nodeData.get(rv[1]).prevNode = nodeData.get(rv[0]).nodeName;
             visitedNodes.add(rv[1]);
         } else if (rv[0] != -1) {
-            nodeData.get(rv[0]).minWeight = shortest;
-            nodeData.get(rv[0]).prevNode = nodeData.get(rv[1]).nodeName;
+            // nodeData.get(rv[0]).minWeight = shortest;
+            // nodeData.get(rv[0]).prevNode = nodeData.get(rv[1]).nodeName;
             visitedNodes.add(rv[0]);
         }
 
