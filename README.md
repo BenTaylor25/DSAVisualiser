@@ -6,6 +6,10 @@ I wanted to create a useful visual project to help others on my course and deepe
 My self-imposed deadline was 'before the DSA module starts', and I'm proud to say I have succeded.
 I first created a Minimum Viable Product: visualisers for Stacks and Queues with a menu for navigation, and have built off of it.
 
+I later created a <a href="https://www.youtube.com/playlist?list=PLWuRbZ_7VbDzPBkY5h0Wb_b25q0ta16V-">YouTube
+tutorial series to teach Data Structures and Algorithms using this project</a>.
+
+
 The releases section contains the full version, but the `download` folder also contains work-in-progress builds.
 I've realeased it as `.jar`, so it should work with any desktop OS that runs Java, but I have encountered a compatability issue that I'm trying to resolve.
 I will update this section as I find out more.
